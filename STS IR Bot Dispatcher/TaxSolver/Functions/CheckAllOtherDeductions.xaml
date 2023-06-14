@@ -1,0 +1,131 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="CheckAllOtherDeductions" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="536,898.666666666667" sap2010:WorkflowViewState.IdRef="CheckAllOtherDeductions_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="CheckAllOtherDeductions" sap:VirtualizedContainerService.HintSize="546,834" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="strExtractedTable" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Assign DisplayName="Assign - Example" sap:VirtualizedContainerService.HintSize="484,86" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[strExtractedTable]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String" xml:space="preserve">					 STANDARD DEDUCTION SUMMARY TABLE
+       (SUMMARY BELOW MUST BE COMPLETED TO CORRESPOND WITH TOTAL DEDUCTIONS ON FRONT OF TAX REPORT)
+
+						  LABOR/NON-	 SALES DELIV.	   SALES TO	   SALES OF	     OTHER
+		     WHOLESALE	   AUTO/MACH	   TAXABLE	    OUTSIDE	 GOV'T OR ITS	 GASOLINE OR	  ALLOWABLE	TOTAL DEDUCTIONS
+   TYPE OF TAX		SALES	    TRADE-INS	   SERVICES	 JURISDICTION	   AGENCIES	   LUBE OILS	  DEDUCTIONS	(Tax form column B)
+SALES 
+USE 			  0.00		0.00		   0.00		 0.00		  0.00		   0.00		  0.00		    0.00
+VENDING 		  0.00		0.00		   0.00		 0.00		  0.00		   0.00		  0.00		    0.00
+AMUSEMENT 
+MANUFACTURING 		  0.00		0.00		   0.00		 0.00		  0.00		   0.00		  0.00		    0.00
+FARM MACH. &amp; 
+EQUIP. 			  0.00		0.00		   0.00		 0.00		  0.00		   0.00		  0.00		    0.00
+AUTOMOTIVE 		  0.00		0.00		   0.00		 0.00		  0.00		   0.00		  0.00		    0.00
+POLICE 
+JURISDICTION 		  0.00		0.00		   0.00		 0.00		  0.00		   0.00		  0.00		    0.00
+TOTAL 
+DEDUCTIONS 		  0.00		0.00		   0.00		 0.00		  0.00		   0.00		  0.00		    0.00
+
+		     INSTRUCTIONS AND INFORMATION CONCERNING THE COMPLETION OF THIS REPORT
+
+       *  To avoid the application of penalty and/or interest amounts, this report must be filed on or before the 20th of the 
+	  month following the period for which the report is submitted.  United States Postal Service cancellation postmark 
+	  will determine timely filing. </InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'FrmReturns Returns'" sap:VirtualizedContainerService.HintSize="484,365.333333333333" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="390831e4fa51b0d66f9c63248a0ced27" Selector="&lt;wnd app='returns.exe' ctrlname='frmReturns' isremoteapp='1' /&gt;">
+      <ui:WindowScope.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,218" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:GetVisibleText WordsInfo="{x:Null}" DisplayName="Get Visible Text 'MX1.WndClass'" FormattedText="True" sap:VirtualizedContainerService.HintSize="388,107.333333333333" sap2010:WorkflowViewState.IdRef="GetVisibleText_1">
+              <ui:GetVisibleText.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c34ca7b0-863b-4dee-8cb0-354df233b5f2" InformativeScreenshot="4e719202d1437bd7b991c48fa3f55cc0" Selector="&lt;wnd ctrlname='frmReturn' /&gt;&lt;wnd cls='MX1.WndClass' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:GetVisibleText.Target>
+              <ui:GetVisibleText.Text>
+                <OutArgument x:TypeArguments="x:String">[strExtractedTable]</OutArgument>
+              </ui:GetVisibleText.Text>
+            </ui:GetVisibleText>
+          </Sequence>
+        </ActivityAction>
+      </ui:WindowScope.Body>
+    </ui:WindowScope>
+    <ui:Comment sap:VirtualizedContainerService.HintSize="484,192" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// Way to extract TOTAL DEDUCTIONS from text.&#xD;&#xA;1. Get text (screen Scraping)&#xD;&#xA;2. Delete first comments from text (Just keep the text where the table starts)&#xD;&#xA;3. Apply the following regex: (?&lt;=TOTAL \nDEDUCTIONS ).* just to get all total values (from the last row)&#xD;&#xA;4. Split text with the following regex: \s+&#xD;&#xA;5. Result: an array with each value" />
+  </Sequence>
+</Activity>

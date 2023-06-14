@@ -1,0 +1,368 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="TaxSolver__Extract_all_returns" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_TransactionItem" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1012.66666666667,1662</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>TaxSolver__Extract_all_returns_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="27">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>Microsoft.Activities.Expressions</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="28">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Data.Entity</AssemblyReference>
+      <AssemblyReference>Microsoft.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Georgia returns review sub process." DisplayName="TaxSolver- Georgia returns review" sap:VirtualizedContainerService.HintSize="714,1597.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Default="TaxSolver- Georgia returns review" Name="strSubProcessName" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message start" sap:VirtualizedContainerService.HintSize="672,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;Started Sub-Process {0}&quot;, strSubProcessName)]" />
+    <Flowchart DisplayName="TaxSolver- Georgia returns review flowchart" sap:VirtualizedContainerService.HintSize="672,1205.33333333333" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+      <Flowchart.Variables>
+        <Variable x:TypeArguments="x:Boolean" Default="False" Name="boolCompare" />
+        <Variable x:TypeArguments="x:String" Name="strCountyTotal" />
+        <Variable x:TypeArguments="x:String" Name="strStateTotal" />
+      </Flowchart.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+          <av:Size x:Key="ShapeSize">60,74.6666666666667</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">300,77.1666666666667 300,127.166666666667</av:PointCollection>
+          <x:Double x:Key="Width">638</x:Double>
+          <x:Double x:Key="Height">1169.333333333333</x:Double>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Flowchart.StartNode>
+        <x:Reference>__ReferenceID11</x:Reference>
+      </Flowchart.StartNode>
+      <FlowStep x:Name="__ReferenceID11">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,127.166666666667</av:Point>
+            <av:Size x:Key="ShapeSize">200,52.6666666666667</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,179.833333333333 300,226.666666666667</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Values - Compare - More than 0 workflow" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Component\Logic\Values\Compare\Values - Compare - More than 0.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_StrValueToCompare">[in_TransactionItem("Amount Due").ToString]</InArgument>
+            <OutArgument x:TypeArguments="x:Boolean" x:Key="out_BoolComparision">[boolCompare]</OutArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:InvokeWorkflowFile>
+        <FlowStep.Next>
+          <FlowDecision x:Name="__ReferenceID1" Condition="[boolCompare]" DisplayName="More than 0?" sap:VirtualizedContainerService.HintSize="76,86.6666666666667" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <av:Point x:Key="ShapeLocation">262,226.666666666667</av:Point>
+                <av:Size x:Key="ShapeSize">76,86.6666666666667</av:Size>
+                <av:PointCollection x:Key="FalseConnector">338,270 368,270 368,270.353333333333 438,270.353333333333</av:PointCollection>
+                <av:PointCollection x:Key="TrueConnector">262,270 170,270 170,530 200,530</av:PointCollection>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <FlowDecision.True>
+              <FlowStep x:Name="__ReferenceID0">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <av:Point x:Key="ShapeLocation">200,503.666666666667</av:Point>
+                    <av:Size x:Key="ShapeSize">200,52.6666666666667</av:Size>
+                    <av:PointCollection x:Key="ConnectorLocation">300,556.333333333334 300,586.333333333334</av:PointCollection>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TaxSolver - Return - Navigate on Detail workflow" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Component\Automation\TaxSolver\Return\TaxSolver - Return - Navigate on Detail.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:Int32" x:Key="in_IntDefaultTimeoutS">[Convert.ToInt32(in_config("Default_Timeout_S").ToString)]</InArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:InvokeWorkflowFile>
+                <FlowStep.Next>
+                  <FlowStep x:Name="__ReferenceID7">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <av:Point x:Key="ShapeLocation">200,586.333333333334</av:Point>
+                        <av:Size x:Key="ShapeSize">200,52.6666666666667</av:Size>
+                        <av:PointCollection x:Key="ConnectorLocation">300,639 300,669</av:PointCollection>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TaxSolver - Detail - Extract county total workflow" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="Component\Automation\TaxSolver\Detail\TaxSolver - Detail - Extract county total.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="x:Int32" x:Key="in_IntDefaultTimeoutS">[Convert.ToInt32(in_config("Default_Timeout_S").ToString)]</InArgument>
+                        <OutArgument x:TypeArguments="x:String" x:Key="out_StrCountyTotal">[strCountyTotal]</OutArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:InvokeWorkflowFile>
+                    <FlowStep.Next>
+                      <FlowStep x:Name="__ReferenceID8">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <av:Point x:Key="ShapeLocation">200,669</av:Point>
+                            <av:Size x:Key="ShapeSize">200,52.6666666666667</av:Size>
+                            <av:PointCollection x:Key="ConnectorLocation">300,721.666666666667 300,761.666666666667</av:PointCollection>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TaxSolver - Detail - Extract state total workflow" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="Component\Automation\TaxSolver\Detail\TaxSolver - Detail - Extract state total.xaml">
+                          <ui:InvokeWorkflowFile.Arguments>
+                            <InArgument x:TypeArguments="x:Int32" x:Key="in_IntDefaultTimeoutS">[Convert.ToInt32(in_config("Default_Timeout_S").ToString)]</InArgument>
+                            <OutArgument x:TypeArguments="x:String" x:Key="out_StrStateTotal">[strStateTotal]</OutArgument>
+                          </ui:InvokeWorkflowFile.Arguments>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:InvokeWorkflowFile>
+                        <FlowStep.Next>
+                          <FlowStep x:Name="__ReferenceID9">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <av:Point x:Key="ShapeLocation">200,761.666666666667</av:Point>
+                                <av:Size x:Key="ShapeSize">200,52.6666666666667</av:Size>
+                                <av:PointCollection x:Key="ConnectorLocation">300,814.333333333333 300,844.333333333333</av:PointCollection>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Values - Check - Check value before conversion to double workflow state" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="Component\Logic\String\Contains\Values - Check - Check value before conversion to double.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_valueToCheck">[strStateTotal]</InArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:InvokeWorkflowFile>
+                            <FlowStep.Next>
+                              <FlowStep x:Name="__ReferenceID10">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <av:Point x:Key="ShapeLocation">200,844.333333333333</av:Point>
+                                    <av:Size x:Key="ShapeSize">200,52.6666666666667</av:Size>
+                                    <av:PointCollection x:Key="ConnectorLocation">300,897 300,921.666666666667</av:PointCollection>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Values - Check - Check value before conversion to double workflow county" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_18" UnSafe="False" WorkflowFileName="Component\Logic\String\Contains\Values - Check - Check value before conversion to double.xaml">
+                                  <ui:InvokeWorkflowFile.Arguments>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_valueToCheck">[strCountyTotal]</InArgument>
+                                  </ui:InvokeWorkflowFile.Arguments>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:InvokeWorkflowFile>
+                                <FlowStep.Next>
+                                  <FlowStep x:Name="__ReferenceID4">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <av:Point x:Key="ShapeLocation">200,921.666666666667</av:Point>
+                                        <av:Size x:Key="ShapeSize">200,52.6666666666667</av:Size>
+                                        <av:PointCollection x:Key="ConnectorLocation">300,974.333333333334 300,1026.66666666667</av:PointCollection>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Values - Compare - Compare two double values workflow" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Component\Logic\Values\Compare\Values - Compare - Compare two double values.xaml">
+                                      <ui:InvokeWorkflowFile.Arguments>
+                                        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_BoolComparision">[boolCompare]</OutArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_StrBiggerValue">[strStateTotal]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_StrSmallerValue">[strCountyTotal]</InArgument>
+                                      </ui:InvokeWorkflowFile.Arguments>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </ui:InvokeWorkflowFile>
+                                    <FlowStep.Next>
+                                      <FlowDecision x:Name="__ReferenceID5" Condition="[boolCompare]" DisplayName="State&gt; County?" sap:VirtualizedContainerService.HintSize="86.6666666666667,86.6666666666667" sap2010:WorkflowViewState.IdRef="FlowDecision_4">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            <av:Point x:Key="ShapeLocation">256.666666666667,1026.66666666667</av:Point>
+                                            <av:Size x:Key="ShapeSize">86.6666666666667,86.6666666666667</av:Size>
+                                            <av:PointCollection x:Key="FalseConnector">343.333333333333,1070 390,1070</av:PointCollection>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <FlowDecision.False>
+                                          <FlowStep x:Name="__ReferenceID6">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <av:Point x:Key="ShapeLocation">390,1043.66666666667</av:Point>
+                                                <av:Size x:Key="ShapeSize">200,52.6666666666667</av:Size>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ReturnsFailed- Add new data workflow" sap:VirtualizedContainerService.HintSize="379.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Sub-Process\ReturnsFailed\ReturnsFailed- Add new data.xaml">
+                                              <ui:InvokeWorkflowFile.Arguments>
+                                                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_config">
+                                                  <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_config" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_StrFormName">
+                                                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Return Name&quot;).ToString" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_StrReason">
+                                                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_config(&quot;georgiaReason&quot;).ToString" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_StrFixedColumnValue">
+                                                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_config(&quot;georgiaFixed&quot;).ToString" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_StrLegalEntity">
+                                                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Legal Entity&quot;).ToString" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_TransactionItem">
+                                                  <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_TransactionItem" />
+                                                </InArgument>
+                                              </ui:InvokeWorkflowFile.Arguments>
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                            </ui:InvokeWorkflowFile>
+                                          </FlowStep>
+                                        </FlowDecision.False>
+                                      </FlowDecision>
+                                    </FlowStep.Next>
+                                  </FlowStep>
+                                </FlowStep.Next>
+                              </FlowStep>
+                            </FlowStep.Next>
+                          </FlowStep>
+                        </FlowStep.Next>
+                      </FlowStep>
+                    </FlowStep.Next>
+                  </FlowStep>
+                </FlowStep.Next>
+              </FlowStep>
+            </FlowDecision.True>
+            <FlowDecision.False>
+              <FlowStep x:Name="__ReferenceID2">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <av:Point x:Key="ShapeLocation">438,244.02</av:Point>
+                    <av:Size x:Key="ShapeSize">200,52.6666666666667</av:Size>
+                    <av:PointCollection x:Key="ConnectorLocation">538,296.686666666667 538,326.686666666667 540,326.686666666667 540,336.666666666667</av:PointCollection>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Values - Compare - Equal to 0 workflow" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Component\Logic\Values\Compare\Values - Compare - Equal to 0.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_StrValueToCompare">[in_TransactionItem("Amount Due").ToString]</InArgument>
+                    <OutArgument x:TypeArguments="x:Boolean" x:Key="out_BoolComparision">[boolCompare]</OutArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:InvokeWorkflowFile>
+                <FlowStep.Next>
+                  <FlowDecision x:Name="__ReferenceID3" Condition="[boolCompare]" DisplayName="Equal to 0?" sap:VirtualizedContainerService.HintSize="70,86.6666666666667" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <av:Point x:Key="ShapeLocation">505,336.666666666667</av:Point>
+                        <av:Size x:Key="ShapeSize">70,86.6666666666667</av:Size>
+                        <av:PointCollection x:Key="FalseConnector">575,380 605,380 605,530 400,530</av:PointCollection>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <FlowDecision.False>
+                      <x:Reference>__ReferenceID0</x:Reference>
+                    </FlowDecision.False>
+                  </FlowDecision>
+                </FlowStep.Next>
+              </FlowStep>
+            </FlowDecision.False>
+          </FlowDecision>
+        </FlowStep.Next>
+      </FlowStep>
+      <x:Reference>__ReferenceID1</x:Reference>
+      <x:Reference>__ReferenceID2</x:Reference>
+      <x:Reference>__ReferenceID3</x:Reference>
+      <x:Reference>__ReferenceID0</x:Reference>
+      <x:Reference>__ReferenceID4</x:Reference>
+      <x:Reference>__ReferenceID5</x:Reference>
+      <x:Reference>__ReferenceID6</x:Reference>
+      <x:Reference>__ReferenceID7</x:Reference>
+      <x:Reference>__ReferenceID8</x:Reference>
+      <x:Reference>__ReferenceID9</x:Reference>
+      <x:Reference>__ReferenceID10</x:Reference>
+    </Flowchart>
+    <ui:LogMessage DisplayName="Log Message finish" sap:VirtualizedContainerService.HintSize="672,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[String.Format(&quot;Ended Sub-Process {0}&quot;, strSubProcessName)]" />
+  </Sequence>
+</Activity>

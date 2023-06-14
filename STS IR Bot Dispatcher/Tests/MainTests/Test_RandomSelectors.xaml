@@ -1,0 +1,302 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="TestWorkflowTemplate" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1226,1135" sap2010:WorkflowViewState.IdRef="TestWorkflowTemplate_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Testing</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.Testing.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.Testing</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Template workflow used to create tests for workflows in the process.&#xA;Create a new test workflow by copying and renaming this file." DisplayName="Test Template" sap:VirtualizedContainerService.HintSize="558,1070" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data." Name="Config" />
+      <Variable x:TypeArguments="x:Int32" Name="Counter">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:Int32" Value="100" />
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="x:String" Name="FilingType" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message - TestTemplate" sap:VirtualizedContainerService.HintSize="496,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Testing workflow&quot;]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="496,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="594,790" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'MX1.WndClass'" sap:VirtualizedContainerService.HintSize="532,107" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+            <ui:Click.CursorPosition>
+              <ui:CursorPosition OffsetX="2" OffsetY="2" Position="TopLeft" />
+            </ui:Click.CursorPosition>
+            <ui:Click.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="5b3b541e-1c40-4eb7-9221-d3358628d10a" InformativeScreenshot="2b3402e044d9cb6bacd9ef945cb08739" Selector="&lt;wnd app='returns.exe' ctrlname='frmReturns' isremoteapp='1' /&gt;&lt;wnd ctrlname='frmReturn' /&gt;&lt;wnd cls='MX1.WndClass' /&gt;">
+                <ui:Target.TimeoutMS>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:Target.TimeoutMS>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:Click.Target>
+          </ui:Click>
+          <ui:InterruptibleWhile CurrentIndex="{x:Null}" DisplayName="While" sap:VirtualizedContainerService.HintSize="532,532" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+            <ui:InterruptibleWhile.Body>
+              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,366" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBetweenKeys="1" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="434,133" sap2010:WorkflowViewState.IdRef="SendHotkey_1" Key="right" KeyModifiers="None" SpecialKey="True">
+                  <ui:SendHotkey.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="fd379222-6ddc-40de-b3e5-4c00407fb93b">
+                      <ui:Target.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:Target.TimeoutMS>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:SendHotkey.Target>
+                </ui:SendHotkey>
+                <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Int32">[Counter]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Int32">[Counter - 1]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+            </ui:InterruptibleWhile.Body>
+            <ui:InterruptibleWhile.Condition>
+              <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="Counter &gt; 0" />
+            </ui:InterruptibleWhile.Condition>
+          </ui:InterruptibleWhile>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'WindowsForms10.Window.8...'" sap:VirtualizedContainerService.HintSize="496,107" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
+      <ui:Click.CursorPosition>
+        <ui:CursorPosition OffsetX="3" OffsetY="3" Position="TopLeft" />
+      </ui:Click.CursorPosition>
+      <ui:Click.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="33fb8e9a-42f2-464a-9c4a-4b44b9db63f5" InformativeScreenshot="1a891c79e23a0e6deea74e257a09c18f" Selector="&lt;wnd app='returns.exe' ctrlname='frmReturns' isremoteapp='1' /&gt;&lt;wnd ctrlname='_frmReturnsUnpinnedTabAreaRight' /&gt;">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:Click.Target>
+    </ui:Click>
+    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'WindowsForms10.COMBOBOX...'" sap:VirtualizedContainerService.HintSize="496,107" sap2010:WorkflowViewState.IdRef="GetValue_1">
+      <ui:GetValue.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="eff35087-1837-4419-aac0-6c76b27013b4" InformativeScreenshot="9f0fd957fc59ff9146289b8bc9c56b55" Selector="&lt;wnd app='returns.exe' ctrlname='frmReturns' isremoteapp='1' /&gt;&lt;wnd ctrlname='_frmReturnsAutoHideControl' /&gt;&lt;wnd ctrlname='DockableWindow1' /&gt;&lt;wnd ctrlname='expReturnDetails' /&gt;&lt;wnd ctrlname='ccReturnStatus' /&gt;&lt;wnd ctrlname='grpFilingType' /&gt;&lt;wnd ctrlname='cboFilingType' /&gt;">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:GetValue.Target>
+      <ui:GetValue.Value>
+        <OutArgument x:TypeArguments="x:String">[FilingType]</OutArgument>
+      </ui:GetValue.Value>
+    </ui:GetValue>
+    <Sequence DisplayName="Screen Scraping" sap:VirtualizedContainerService.HintSize="496,81" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="ui:GenericValue" Name="WficaExeReturns" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:GetVisibleText WordsInfo="{x:Null}" DisplayName="Get Visible Text 'wfica32.exe Returns'" FormattedText="False" sap:VirtualizedContainerService.HintSize="546,107" sap2010:WorkflowViewState.IdRef="GetVisibleText_2">
+        <ui:GetVisibleText.Target>
+          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0fafdec4-2b68-463c-a13c-83c11c63bcfa" InformativeScreenshot="d46e1ebdedbc230549dd46d46f245f88" Selector="&lt;wnd app='returns.exe' ctrlname='frmReturns' isremoteapp='1' /&gt;&lt;wnd ctrlname='frmReturn' /&gt;&lt;wnd cls='MX1.WndClass' /&gt;">
+            <ui:Target.TimeoutMS>
+              <InArgument x:TypeArguments="x:Int32" />
+            </ui:Target.TimeoutMS>
+            <ui:Target.WaitForReady>
+              <InArgument x:TypeArguments="ui:WaitForReady" />
+            </ui:Target.WaitForReady>
+          </ui:Target>
+        </ui:GetVisibleText.Target>
+        <ui:GetVisibleText.Text>
+          <OutArgument x:TypeArguments="ui:GenericValue">[WficaExeReturns]</OutArgument>
+        </ui:GetVisibleText.Text>
+      </ui:GetVisibleText>
+      <Sequence DisplayName="Screen Scraping" sap:VirtualizedContainerService.HintSize="546,476" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="ui:GenericValue" Name="MxWndclass" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'FrmReturns Returns'" sap:VirtualizedContainerService.HintSize="484,365" sap2010:WorkflowViewState.IdRef="WindowScope_2" InformativeScreenshot="969e72311126d6f79ef05cf717aeb59d" Selector="&lt;wnd app='returns.exe' ctrlname='frmReturns' isremoteapp='1' /&gt;">
+          <ui:WindowScope.Body>
+            <ActivityAction x:TypeArguments="x:Object">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,218" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:GetVisibleText WordsInfo="{x:Null}" DisplayName="Get Visible Text 'MX1.WndClass'" FormattedText="False" sap:VirtualizedContainerService.HintSize="388,107" sap2010:WorkflowViewState.IdRef="GetVisibleText_3">
+                  <ui:GetVisibleText.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7fce659b-0dd7-404d-9c8d-3bf8db1bd7d0" InformativeScreenshot="a7bc6a6b283cca6d0a47db5e25bc7b5e" Selector="&lt;wnd ctrlname='frmReturn' /&gt;&lt;wnd cls='MX1.WndClass' /&gt;">
+                      <ui:Target.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:Target.TimeoutMS>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:GetVisibleText.Target>
+                  <ui:GetVisibleText.Text>
+                    <OutArgument x:TypeArguments="ui:GenericValue">[MxWndclass]</OutArgument>
+                  </ui:GetVisibleText.Text>
+                </ui:GetVisibleText>
+              </Sequence>
+            </ActivityAction>
+          </ui:WindowScope.Body>
+        </ui:WindowScope>
+      </Sequence>
+    </Sequence>
+    <Sequence DisplayName="Screen Scraping" sap:VirtualizedContainerService.HintSize="496,278" sap2010:WorkflowViewState.IdRef="Sequence_9">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="ui:GenericValue" Name="MxWndclass" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'FrmReturns Returns'" sap:VirtualizedContainerService.HintSize="434,167" sap2010:WorkflowViewState.IdRef="WindowScope_3" InformativeScreenshot="305932fb708040c3f74ec8adfab97c17" Selector="&lt;wnd app='returns.exe' ctrlname='frmReturns' isremoteapp='1' /&gt;">
+        <ui:WindowScope.Body>
+          <ActivityAction x:TypeArguments="x:Object">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_10">
+              <ui:GetVisibleText WordsInfo="{x:Null}" DisplayName="Get Visible Text 'MX1.WndClass'" FormattedText="False" sap2010:WorkflowViewState.IdRef="GetVisibleText_4">
+                <ui:GetVisibleText.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8ffbd7d7-1d0a-4972-bea9-9105148a5cb7" InformativeScreenshot="e5d8934069615838fa1b7c49556ed2a9" Selector="&lt;wnd ctrlname='frmReturn' /&gt;&lt;wnd cls='MX1.WndClass' /&gt;">
+                    <ui:Target.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:Target.TimeoutMS>
+                    <ui:Target.WaitForReady>
+                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                    </ui:Target.WaitForReady>
+                  </ui:Target>
+                </ui:GetVisibleText.Target>
+                <ui:GetVisibleText.Text>
+                  <OutArgument x:TypeArguments="ui:GenericValue">[MxWndclass]</OutArgument>
+                </ui:GetVisibleText.Text>
+              </ui:GetVisibleText>
+            </Sequence>
+          </ActivityAction>
+        </ui:WindowScope.Body>
+      </ui:WindowScope>
+    </Sequence>
+  </Sequence>
+</Activity>

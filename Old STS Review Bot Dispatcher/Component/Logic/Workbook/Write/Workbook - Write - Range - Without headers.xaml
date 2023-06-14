@@ -1,0 +1,167 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Component_Template" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="File path of the workbook (file name should not be included)" Name="in_StrWorkbookFilePath" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="File name of the workbook including the extension: .xlsx, .xls etc." Name="in_StrWorkbookFileName" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="e.g. Sheet1" Name="in_StrWorkbookFileSheetName" Type="InArgument(x:String)" />
+    <x:Property Name="in_DtWorkbook" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_StrWorkbookStartingCell" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>779.333333333333,2919.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Component_Template_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="46">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="46">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Write range without headers.&#xA;" DisplayName="Workbook - Write - Range - Without headers" sap:VirtualizedContainerService.HintSize="664,2854.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Default="Workbook - Write - Range - Without headers" Name="strComponentName" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message start" sap:VirtualizedContainerService.HintSize="622,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;Started Component {0}&quot;, strComponentName)]" />
+    <Sequence DisplayName="Check Arguments In" sap:VirtualizedContainerService.HintSize="622,1545.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If Condition="[String.IsNullOrWhiteSpace(in_StrWorkbookFilePath)]" DisplayName="Check Argument in_StrWorkbookFilePath" sap:VirtualizedContainerService.HintSize="580,258.666666666667" sap2010:WorkflowViewState.IdRef="If_1">
+        <If.Then>
+          <Throw DisplayName="Throw In Argument AE file" Exception="[New Exception(&quot;Incoming Argument in_StrWorkbookFilePath is Null or Not Populated!&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
+        </If.Then>
+        <If.Else>
+          <ui:LogMessage DisplayName="Log Message file path" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Trace" Message="[String.Format(&quot;Incoming Argument in_StrWorkbookFilePath (Ref: {0}) is Not Null and is Populated!&quot;, in_StrWorkbookFilePath )]" />
+        </If.Else>
+      </If>
+      <If Condition="[String.IsNullOrWhiteSpace(in_StrWorkbookFileName)]" DisplayName="Check Argument in_StrWorkbookFileName" sap:VirtualizedContainerService.HintSize="580,258.666666666667" sap2010:WorkflowViewState.IdRef="If_5">
+        <If.Then>
+          <Throw DisplayName="Throw In Argument AE" Exception="[New Exception(&quot;Incoming Argument in_StrWorkbookFileName is Null or Not Populated!&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_5" />
+        </If.Then>
+        <If.Else>
+          <ui:LogMessage DisplayName="Log Message file name" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Trace" Message="[String.Format(&quot;Incoming Argument in_StrWorkbookFileName (Ref: {0}) is Not Null and is Populated!&quot;, in_StrWorkbookFileName )]" />
+        </If.Else>
+      </If>
+      <If Condition="[String.IsNullOrWhiteSpace(in_StrWorkbookFileSheetName)]" DisplayName="Check Argument in_StrWorkbookFileSheetName" sap:VirtualizedContainerService.HintSize="580,258.666666666667" sap2010:WorkflowViewState.IdRef="If_7">
+        <If.Then>
+          <Throw DisplayName="Throw In Argument AE" Exception="[New Exception(&quot;Incoming Argument in_StrWorkbookFileSheetName is Null or Not Populated!&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_7" />
+        </If.Then>
+        <If.Else>
+          <ui:LogMessage DisplayName="Log Message sheet name" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Trace" Message="[String.Format(&quot;Incoming Argument in_StrWorkbookFileSheetName (Ref: {0}) is Not Null and is Populated!&quot;, in_StrWorkbookFileSheetName )]" />
+        </If.Else>
+      </If>
+      <If Condition="[IsNothing(in_StrWorkbookStartingCell)]" DisplayName="Check Argument in_StrWorkbookStartingCell" sap:VirtualizedContainerService.HintSize="580,258.666666666667" sap2010:WorkflowViewState.IdRef="If_10">
+        <If.Then>
+          <Throw DisplayName="Throw In Argument AE" Exception="[New Exception(&quot;Outgoing Argument in_StrWorkbookStartingCell is Null or Not Populated!&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_10" />
+        </If.Then>
+        <If.Else>
+          <ui:LogMessage DisplayName="Log Message starting cell" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Trace" Message="[String.Format(&quot;Incoming Argument in_StrWorkbookStartingCell (Ref Rows Count: {0}) is Not Null and is Populated!&quot;, in_StrWorkbookStartingCell)]" />
+        </If.Else>
+      </If>
+      <If Condition="[IsNothing(in_DtWorkbook)]" DisplayName="Check Argument in_DtWorkbook" sap:VirtualizedContainerService.HintSize="580,258.666666666667" sap2010:WorkflowViewState.IdRef="If_8">
+        <If.Then>
+          <Throw DisplayName="Throw In Argument AE" Exception="[New Exception(&quot;Outgoing Argument in_DtWorkbook is Null or Not Populated!&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_8" />
+        </If.Then>
+        <If.Else>
+          <ui:LogMessage DisplayName="Log Message workbook" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Trace" Message="[String.Format(&quot;Incoming Argument in_DtWorkbook (Ref Rows Count: {0}) is Not Null and is Populated!&quot;, in_DtWorkbook.Rows.Count.ToString)]" />
+        </If.Else>
+      </If>
+    </Sequence>
+    <Sequence DisplayName="Perform Sequence Actions" sap:VirtualizedContainerService.HintSize="622,206.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_6">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:WriteRange AddHeaders="False" DataTable="[in_DtWorkbook]" DisplayName="Write Range perform" sap:VirtualizedContainerService.HintSize="334,114.666666666667" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="[in_StrWorkbookFileSheetName]" StartingCell="[in_StrWorkbookStartingCell]" WorkbookPath="[Path.Combine(in_StrWorkbookFilePath, in_StrWorkbookFileName)]" />
+    </Sequence>
+    <Sequence DisplayName="Post Condition Criteria" sap:VirtualizedContainerService.HintSize="622,616" sap2010:WorkflowViewState.IdRef="Sequence_10">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:Boolean" Name="boolPostCondition" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists file" Exists="[boolPostCondition]" sap:VirtualizedContainerService.HintSize="580,90.6666666666667" sap2010:WorkflowViewState.IdRef="PathExists_3" Path="[Path.Combine(in_StrWorkbookFilePath, in_StrWorkbookFileName)]" PathType="File" />
+      <ui:LogMessage DisplayName="Log Message file" sap:VirtualizedContainerService.HintSize="580,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_13" Message="[Path.Combine(in_StrWorkbookFilePath, in_StrWorkbookFileName)]" />
+      <If Condition="[NOT(boolPostCondition)]" DisplayName="If - Post-Condition Failed" sap:VirtualizedContainerService.HintSize="580,258.666666666667" sap2010:WorkflowViewState.IdRef="If_9">
+        <If.Then>
+          <Throw DisplayName="Throw - Post-Condition Failed" Exception="[New Exception(&quot;Post-Condition Failed, Workbook &quot; +in_StrWorkbookFileName + &quot; was not found at path: &quot; + in_StrWorkbookFilePath)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_9" />
+        </If.Then>
+        <If.Else>
+          <ui:LogMessage DisplayName="Log Message - Pre-Condition Successful" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Trace" Message="[&quot;Post-Condition Succesful, Workbook found!&quot;]" />
+        </If.Else>
+      </If>
+    </Sequence>
+    <ui:LogMessage DisplayName="Log Message finish" sap:VirtualizedContainerService.HintSize="622,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[String.Format(&quot;Ended Component {0}&quot;, strComponentName)]" />
+  </Sequence>
+</Activity>

@@ -1,0 +1,102 @@
+{
+  "name": "PRC_Taxpayer_Dispatcher",
+  "description": "Taxpayer process dispatcher",
+  "main": "Main.xaml",
+  "dependencies": {
+    "ATOS.Map_Network_Drive.Activities": "[1.0.0]",
+    "Microsoft.Activities": "[1.0.1]",
+    "UiPath.Excel.Activities": "[2.12.3]",
+    "UiPath.System.Activities": "[22.4.1]",
+    "UiPath.Testing.Activities": "[22.4.3]",
+    "UiPath.UIAutomation.Activities": "[22.4.5]"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "22.4.3.0",
+  "projectVersion": "1.0.14",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "netFrameworkLazyLoading": false,
+    "isPausable": true,
+    "isAttended": false,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false,
+    "mustRestoreAllDependencies": true
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [],
+    "modernBehavior": false
+  },
+  "arguments": {
+    "input": [
+      {
+        "name": "in_orchestratorQueue",
+        "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "required": false,
+        "hasDefault": true
+      },
+      {
+        "name": "in_sendEmailTo",
+        "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "required": false,
+        "hasDefault": false
+      },
+      {
+        "name": "in_sendEmailFrom",
+        "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "required": false,
+        "hasDefault": false
+      }
+    ],
+    "output": []
+  },
+  "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "7d7eb436-33b3-4de9-b063-d313f0578f5b",
+      "input": [
+        {
+          "name": "in_orchestratorQueue",
+          "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "required": false,
+          "hasDefault": true
+        },
+        {
+          "name": "in_sendEmailTo",
+          "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "required": false,
+          "hasDefault": false
+        },
+        {
+          "name": "in_sendEmailFrom",
+          "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "required": false,
+          "hasDefault": false
+        }
+      ],
+      "output": []
+    }
+  ],
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {},
+  "targetFramework": "Legacy"
+}
