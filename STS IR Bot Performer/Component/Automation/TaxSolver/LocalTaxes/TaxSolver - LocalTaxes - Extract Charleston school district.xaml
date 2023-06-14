@@ -1,0 +1,1882 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Component_Template" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/cv" xmlns:p1="http://schemas.uipath.com/workflow/activities/ocr" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing" xmlns:uc="clr-namespace:UiPath.CV;assembly=UiPath.CV" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_IntDefaultTimeoutS" Type="InArgument(x:Int32)" />
+    <x:Property Name="out_StrCharlestonSchool" Type="OutArgument(x:String)" />
+  </x:Members>
+  <sap:VirtualizedContainerService.HintSize>858.666666666667,1540.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="42">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.CV</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.Shared.ObjectLibrary</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.CV.Activities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.CV.Activities.Interfaces</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="44">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.CV.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Extract Charleston school district.&#xA;" DisplayName="TaxSolver - LocalTaxes - Extract Charleston school district" sap:VirtualizedContainerService.HintSize="568,1476" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Default="TaxSolver - LocalTaxes - Extract Charleston school district" Name="strComponentName" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message start" sap:VirtualizedContainerService.HintSize="526,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;Started Component {0}&quot;, strComponentName)]" />
+    <Sequence DisplayName="Pre Condition Criteria" sap:VirtualizedContainerService.HintSize="526,69.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_4">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:Boolean" Name="boolPreCondition" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <p:CVScope ContinueOnError="{x:Null}" DelayBefore="{x:Null}" Server="{x:Null}" CvMethod="ElementDetection, OCR" DesignTimeCacheId="ad9d9c90-0a0a-4a91-9855-764b651ff763" DisplayName="CV Screen Scope 'Local taxes' pre" sap:VirtualizedContainerService.HintSize="434,449.333333333333" sap2010:WorkflowViewState.IdRef="CVScope_1" Version="V5">
+        <p:CVScope.Body>
+          <ActivityAction x:TypeArguments="x:Object">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="x:Object" Name="CVSessionData" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Cv" sap:VirtualizedContainerService.HintSize="376,230" sap2010:WorkflowViewState.IdRef="Sequence_7">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <p:CvElementExistsWithDescriptor Descriptor="[&quot;Target: Text 'CHARLESTON' (140,202,88,12)&quot; +&#xA;&quot;Anchor: Text 'CHARLESTON' (1,202,82,12)&quot;]" DesignTimeCacheId="ad9d9c90-0a0a-4a91-9855-764b651ff763" DesignTimeScaleFactor="1.5" DisplayName="CV Element Exists - Text 'Charleston label'" sap:VirtualizedContainerService.HintSize="334,138" sap2010:WorkflowViewState.IdRef="CvElementExistsWithDescriptor_1" InformativeScreenshot="b92d11d59c9bab851be4d22ea5f2933f" Result="[boolPreCondition]" TimeoutMS="[in_IntDefaultTimeoutS]" Version="V5">
+                <p:CvElementExistsWithDescriptor.DesignTimeDescriptor>
+                  <uc:CvDescriptor Id="0f65fe7b-4b0e-4a34-be91-889dfef6c230">
+                    <uc:CvDescriptor.Anchors>
+                      <x:Array Type="uc:CvElementDescriptor">
+                        <uc:CvElementDescriptor CellExtraInfo="{x:Null}" DesignTimeArea="1, 202, 82, 12" ElementType="Text" Text="CHARLESTON" />
+                      </x:Array>
+                    </uc:CvDescriptor.Anchors>
+                    <uc:CvDescriptor.Target>
+                      <uc:CvElementDescriptor CellExtraInfo="{x:Null}" DesignTimeArea="140, 202, 88, 12" ElementType="Text" Text="CHARLESTON" />
+                    </uc:CvDescriptor.Target>
+                  </uc:CvDescriptor>
+                </p:CvElementExistsWithDescriptor.DesignTimeDescriptor>
+              </p:CvElementExistsWithDescriptor>
+            </Sequence>
+          </ActivityAction>
+        </p:CVScope.Body>
+        <p:CVScope.DesignTimeCache>
+          <uc:CVCache CvUiElements="{x:Null}" OcrTexts="{x:Null}" />
+        </p:CVScope.DesignTimeCache>
+        <p:CVScope.DesignTimeCacheContainer>
+          <uc:CvCacheContainer>
+            <uc:CvCacheContainer.Caches>
+              <scg:List x:TypeArguments="uc:CVCache" Capacity="1">
+                <uc:CVCache DisplayName="Screen CV Element Exists - 'CH (Main)" Id="ad9d9c90-0a0a-4a91-9855-764b651ff763" InformativeScreenshot="4958a753f439c5c2cff7a0830c9ae75c" LogicalPosition="400, 204" OcrText="Local Taxes (SC ST-389/ST-389A) Name of Code Gross Total Net Taxable Net Taxable Local Local Tax Total C County Sales Deductions Purchases Sales and Rate Sales Tax on Purchases Projec Purchases YORK YORK 1046 272.00 0.00 0.00 272.00 1.00% 2.72 0.00 SCHOOL DISTRICT TAX AIKEN AIKEN 5021 924.00 0.00 0.00 924.00 1.00% 9.24 0.0 ANDERSON ANDERSON 5040 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 CHARLESTON CHARLESTON 5101 10,824.00 0.00 0.00 10,824.00 1.00% 108.24 0.00 CHEROKEE CHEROKEE 5111 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 CHESTERFIELD CHESTERFIELD 5131 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 CLARENDON CLARENDON 5140 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 DARLINGTON DARLINGTON 5161 975.00 0.00 0.00 975.00 1.00% 9.75 0.00 DILLON DILLON 5170 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 HORRY HORRY 5261 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 JASPER JASPER 5271 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 KERSHAW KERSHAW 5281 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 LEXINGTON LEXINGTON 5320 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 MARLBORO MARLBORO 5351 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 0.00 0.00 0.00 0.00 1.00% 0.00 0.00" Position="400, 204" ScaleFactor="1.5" ScreenshotGuid="be6b4426-461b-48e9-916e-422e02f1be14" ServerVersion="1">
+                  <uc:CVCache.CvAnchorRelations>
+                    <scg:List x:TypeArguments="uc:AnchorRelationInfo" Capacity="0" />
+                  </uc:CVCache.CvAnchorRelations>
+                  <uc:CVCache.CvTables>
+                    <x:Array Type="uc:CvTableInfo">
+                      <uc:CvTableInfo>
+                        <uc:CvTableInfo.Columns>
+                          <x:Array Type="x:Int32">
+                            <x:Int32>138</x:Int32>
+                            <x:Int32>248</x:Int32>
+                            <x:Int32>288</x:Int32>
+                            <x:Int32>384</x:Int32>
+                            <x:Int32>478</x:Int32>
+                            <x:Int32>574</x:Int32>
+                            <x:Int32>669</x:Int32>
+                            <x:Int32>722</x:Int32>
+                            <x:Int32>817</x:Int32>
+                            <x:Int32>910</x:Int32>
+                            <x:Int32>966</x:Int32>
+                          </x:Array>
+                        </uc:CvTableInfo.Columns>
+                        <uc:CvTableInfo.Rows>
+                          <x:Array Type="x:Int32">
+                            <x:Int32>169</x:Int32>
+                            <x:Int32>184</x:Int32>
+                            <x:Int32>199</x:Int32>
+                            <x:Int32>214</x:Int32>
+                            <x:Int32>229</x:Int32>
+                            <x:Int32>245</x:Int32>
+                            <x:Int32>261</x:Int32>
+                            <x:Int32>276</x:Int32>
+                            <x:Int32>293</x:Int32>
+                            <x:Int32>308</x:Int32>
+                            <x:Int32>325</x:Int32>
+                            <x:Int32>340</x:Int32>
+                            <x:Int32>356</x:Int32>
+                            <x:Int32>372</x:Int32>
+                            <x:Int32>388</x:Int32>
+                            <x:Int32>404</x:Int32>
+                            <x:Int32>420</x:Int32>
+                            <x:Int32>436</x:Int32>
+                            <x:Int32>453</x:Int32>
+                            <x:Int32>470</x:Int32>
+                          </x:Array>
+                        </uc:CvTableInfo.Rows>
+                      </uc:CvTableInfo>
+                      <uc:CvTableInfo>
+                        <uc:CvTableInfo.Columns>
+                          <x:Array Type="x:Int32">
+                            <x:Int32>137</x:Int32>
+                            <x:Int32>248</x:Int32>
+                            <x:Int32>290</x:Int32>
+                            <x:Int32>384</x:Int32>
+                            <x:Int32>479</x:Int32>
+                            <x:Int32>572</x:Int32>
+                            <x:Int32>669</x:Int32>
+                            <x:Int32>722</x:Int32>
+                            <x:Int32>816</x:Int32>
+                            <x:Int32>910</x:Int32>
+                            <x:Int32>966</x:Int32>
+                          </x:Array>
+                        </uc:CvTableInfo.Columns>
+                        <uc:CvTableInfo.Rows>
+                          <x:Array Type="x:Int32">
+                            <x:Int32>34</x:Int32>
+                            <x:Int32>98</x:Int32>
+                            <x:Int32>115</x:Int32>
+                          </x:Array>
+                        </uc:CvTableInfo.Rows>
+                      </uc:CvTableInfo>
+                    </x:Array>
+                  </uc:CVCache.CvTables>
+                  <uc:CVCache.CvUiElements>
+                    <scg:List x:TypeArguments="uc:CvElementInfo" Capacity="256">
+                      <uc:CvElementInfo Category="ArrowButton" Region="966, 455, 14, 16" />
+                      <uc:CvElementInfo Category="ArrowButton" Region="951, 470, 16, 15" />
+                      <uc:CvElementInfo Category="ArrowButton" Region="966, 0, 14, 15" />
+                      <uc:CvElementInfo Category="ArrowButton" Region="0, 470, 14, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 404, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 420, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 34, 56, 63" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 420, 93, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 404, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 404, 93, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 420, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 229, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 388, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 420, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 436, 93, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 388, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 404, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 420, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 372, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 404, 56, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 229, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 388, 93, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 453, 93, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 372, 56, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 436, 56, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 436, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 229, 93, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 404, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 420, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 214, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 372, 93, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 245, 93, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 388, 56, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 372, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 214, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 261, 93, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 404, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 436, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 356, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 229, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 245, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 388, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 214, 93, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 388, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 420, 56, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 261, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 169, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 229, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 245, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 229, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 214, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="816, 34, 94, 63" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 261, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 356, 56, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="816, 98, 94, 17" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 245, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 245, 56, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 261, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 276, 93, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 261, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 356, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 453, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 356, 93, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 199, 95, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 388, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 214, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 453, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 404, 53, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 245, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 261, 56, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 372, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 340, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 199, 94, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 199, 95, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 34, 94, 63" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 308, 56, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 261, 53, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 293, 93, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 199, 110, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 356, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 340, 56, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 436, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 436, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 340, 93, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 199, 93, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 372, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 436, 53, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 245, 53, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 372, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 229, 53, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 245, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 34, 94, 63" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 199, 94, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 453, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 308, 93, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 229, 56, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 276, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 325, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 420, 53, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 276, 56, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 229, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 276, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 453, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 245, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 276, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 356, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 276, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 214, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 229, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 453, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 356, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 325, 93, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 214, 56, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 261, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 325, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 308, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 325, 56, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 169, 93, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 293, 56, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 276, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 372, 53, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 199, 95, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 340, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 436, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 308, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 340, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 261, 40, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 388, 53, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 340, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 340, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 293, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 98, 94, 17" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 356, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 34, 42, 63" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 169, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 293, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 325, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 325, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 293, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 308, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 276, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 293, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 276, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 308, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 308, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 325, 53, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 276, 53, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 308, 53, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 199, 56, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 356, 53, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 293, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 184, 93, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 98, 53, 17" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 340, 53, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 453, 53, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 325, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 199, 40, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 293, 53, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 184, 40, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 388, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 308, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 293, 40, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 98, 94, 17" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 184, 53, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 420, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 308, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 340, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 245, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 184, 56, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 325, 40, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="479, 98, 93, 17" />
+                      <uc:CvElementInfo Category="Cell" Region="290, 98, 94, 17" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 169, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 340, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 261, 110, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 169, 53, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 184, 95, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 214, 53, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 199, 53, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 214, 110, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 184, 94, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 436, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 169, 56, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="290, 34, 94, 63" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 372, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 453, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 325, 110, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 184, 95, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 184, 95, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 214, 40, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 184, 110, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 453, 56, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 404, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="479, 34, 93, 63" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 169, 110, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="572, 98, 96, 17" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 169, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 98, 42, 17" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 293, 110, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 184, 94, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 388, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 420, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 436, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 453, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 169, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 404, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 356, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="572, 34, 96, 63" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 372, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 98, 56, 17" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 34, 53, 63" />
+                      <uc:CvElementInfo Category="Cell" Region="137, 98, 110, 17" />
+                      <uc:CvElementInfo Category="Cell" Region="137, 34, 110, 63" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 169, 40, 15" />
+                      <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="306, 18, 654, 18" />
+                      <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="671, 42, 53, 55" />
+                      <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="34, 130, 918, 18" />
+                      <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="723, 38, 97, 61" />
+                      <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="12, 470, 18, 16" />
+                      <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="245, 0, 720, 20" />
+                      <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="576, 37, 94, 63" />
+                      <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="140, 36, 110, 73" />
+                      <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="360, 0, 475, 281" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="290, 147, 95, 21" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="912, 147, 54, 22" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="245, 147, 44, 22" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="0, 246, 132, 16" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="916, 18, 50, 17" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="141, 148, 113, 20" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="912, 114, 54, 16" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="913, 130, 54, 16" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="0, 293, 142, 16" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="817, 114, 93, 17" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="291, 114, 90, 16" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="0, 310, 140, 17" />
+                    </scg:List>
+                  </uc:CVCache.CvUiElements>
+                  <uc:CVCache.OcrTexts>
+                    <scg:List x:TypeArguments="uc:OcrTextInfo" Capacity="256">
+                      <uc:OcrTextInfo Region="0, 1, 44, 14" Text="Local" />
+                      <uc:OcrTextInfo Region="47, 1, 46, 14" Text="Taxes" />
+                      <uc:OcrTextInfo Region="96, 1, 28, 16" Text="(SC" />
+                      <uc:OcrTextInfo Region="129, 0, 126, 18" Text="ST-389/ST-389A)" />
+                      <uc:OcrTextInfo Region="171, 54, 35, 11" Text="Name" />
+                      <uc:OcrTextInfo Region="208, 54, 12, 11" Text="of" />
+                      <uc:OcrTextInfo Region="254, 54, 30, 11" Text="Code" />
+                      <uc:OcrTextInfo Region="320, 54, 34, 11" Text="Gross" />
+                      <uc:OcrTextInfo Region="418, 54, 28, 12" Text="Total" />
+                      <uc:OcrTextInfo Region="495, 54, 20, 11" Text="Net" />
+                      <uc:OcrTextInfo Region="516, 54, 44, 11" Text="Taxable" />
+                      <uc:OcrTextInfo Region="590, 54, 20, 12" Text="Net" />
+                      <uc:OcrTextInfo Region="612, 54, 44, 11" Text="Taxable" />
+                      <uc:OcrTextInfo Region="755, 54, 30, 11" Text="Local" />
+                      <uc:OcrTextInfo Region="839, 54, 31, 11" Text="Local" />
+                      <uc:OcrTextInfo Region="872, 54, 21, 10" Text="Tax" />
+                      <uc:OcrTextInfo Region="926, 54, 28, 10" Text="Total" />
+                      <uc:OcrTextInfo Region="956, 54, 10, 12" Text="C" />
+                      <uc:OcrTextInfo Region="175, 70, 39, 13" Text="County" />
+                      <uc:OcrTextInfo Region="321, 70, 33, 11" Text="Sales" />
+                      <uc:OcrTextInfo Region="402, 70, 62, 12" Text="Deductions" />
+                      <uc:OcrTextInfo Region="497, 70, 60, 12" Text="Purchases" />
+                      <uc:OcrTextInfo Region="594, 70, 32, 10" Text="Sales" />
+                      <uc:OcrTextInfo Region="629, 70, 22, 10" Text="and" />
+                      <uc:OcrTextInfo Region="685, 72, 23, 9" Text="Rate" />
+                      <uc:OcrTextInfo Region="743, 70, 32, 11" Text="Sales" />
+                      <uc:OcrTextInfo Region="778, 70, 21, 11" Text="Tax" />
+                      <uc:OcrTextInfo Region="828, 72, 14, 9" Text="on" />
+                      <uc:OcrTextInfo Region="844, 70, 60, 11" Text="Purchases" />
+                      <uc:OcrTextInfo Region="930, 70, 37, 12" Text="Projec" />
+                      <uc:OcrTextInfo Region="592, 86, 60, 12" Text="Purchases" />
+                      <uc:OcrTextInfo Region="0, 102, 35, 12" Text="YORK" />
+                      <uc:OcrTextInfo Region="141, 102, 34, 12" Text="YORK" />
+                      <uc:OcrTextInfo Region="256, 102, 28, 11" Text="1046" />
+                      <uc:OcrTextInfo Region="344, 102, 38, 10" Text="272.00" />
+                      <uc:OcrTextInfo Region="453, 102, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 102, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="629, 102, 39, 12" Text="272.00" />
+                      <uc:OcrTextInfo Region="679, 102, 36, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="791, 102, 26, 11" Text="2.72" />
+                      <uc:OcrTextInfo Region="886, 102, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="142, 153, 68, 14" Text="SCHOOL" />
+                      <uc:OcrTextInfo Region="217, 153, 74, 14" Text="DISTRICT" />
+                      <uc:OcrTextInfo Region="294, 152, 32, 15" Text="TAX" />
+                      <uc:OcrTextInfo Region="0, 172, 36, 12" Text="AIKEN" />
+                      <uc:OcrTextInfo Region="140, 172, 36, 11" Text="AIKEN" />
+                      <uc:OcrTextInfo Region="255, 172, 28, 11" Text="5021" />
+                      <uc:OcrTextInfo Region="344, 172, 38, 11" Text="924.00" />
+                      <uc:OcrTextInfo Region="453, 172, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 172, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="629, 172, 39, 11" Text="924.00" />
+                      <uc:OcrTextInfo Region="679, 172, 36, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="791, 172, 25, 11" Text="9.24" />
+                      <uc:OcrTextInfo Region="886, 172, 24, 10" Text="0.0" />
+                      <uc:OcrTextInfo Region="0, 187, 68, 11" Text="ANDERSON" />
+                      <uc:OcrTextInfo Region="142, 187, 68, 11" Text="ANDERSON" />
+                      <uc:OcrTextInfo Region="255, 187, 29, 11" Text="5040" />
+                      <uc:OcrTextInfo Region="358, 187, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="454, 188, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 187, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 188, 25, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="679, 187, 36, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="792, 187, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 187, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="1, 202, 82, 12" Text="CHARLESTON" />
+                      <uc:OcrTextInfo Region="140, 202, 88, 12" Text="CHARLESTON" />
+                      <uc:OcrTextInfo Region="255, 202, 28, 11" Text="5101" />
+                      <uc:OcrTextInfo Region="328, 202, 55, 12" Text="10,824.00" />
+                      <uc:OcrTextInfo Region="453, 202, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 202, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="613, 202, 55, 13" Text="10,824.00" />
+                      <uc:OcrTextInfo Region="680, 202, 35, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="778, 202, 37, 11" Text="108.24" />
+                      <uc:OcrTextInfo Region="886, 202, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="1, 217, 68, 11" Text="CHEROKEE" />
+                      <uc:OcrTextInfo Region="142, 217, 68, 11" Text="CHEROKEE" />
+                      <uc:OcrTextInfo Region="255, 217, 28, 11" Text="5111" />
+                      <uc:OcrTextInfo Region="358, 218, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 218, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 218, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 218, 25, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="680, 217, 35, 12" Text="1.00%" />
+                      <uc:OcrTextInfo Region="792, 218, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 218, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="0, 233, 92, 12" Text="CHESTERFIELD" />
+                      <uc:OcrTextInfo Region="141, 233, 94, 12" Text="CHESTERFIELD" />
+                      <uc:OcrTextInfo Region="255, 233, 28, 11" Text="5131" />
+                      <uc:OcrTextInfo Region="358, 233, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 233, 24, 12" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 233, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 233, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="679, 233, 36, 12" Text="1.00%" />
+                      <uc:OcrTextInfo Region="792, 234, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 233, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="0, 249, 76, 11" Text="CLARENDON" />
+                      <uc:OcrTextInfo Region="142, 249, 76, 11" Text="CLARENDON" />
+                      <uc:OcrTextInfo Region="255, 249, 29, 11" Text="5140" />
+                      <uc:OcrTextInfo Region="358, 250, 25, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 250, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 249, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 250, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="680, 249, 35, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="792, 250, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 250, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="1, 265, 78, 12" Text="DARLINGTON" />
+                      <uc:OcrTextInfo Region="142, 265, 78, 11" Text="DARLINGTON" />
+                      <uc:OcrTextInfo Region="255, 265, 28, 11" Text="5161" />
+                      <uc:OcrTextInfo Region="344, 265, 39, 11" Text="975.00" />
+                      <uc:OcrTextInfo Region="453, 265, 24, 12" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 265, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="629, 265, 38, 11" Text="975.00" />
+                      <uc:OcrTextInfo Region="679, 265, 36, 12" Text="1.00%" />
+                      <uc:OcrTextInfo Region="791, 265, 25, 11" Text="9.75" />
+                      <uc:OcrTextInfo Region="886, 266, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="0, 281, 45, 11" Text="DILLON" />
+                      <uc:OcrTextInfo Region="142, 281, 44, 12" Text="DILLON" />
+                      <uc:OcrTextInfo Region="255, 281, 29, 11" Text="5170" />
+                      <uc:OcrTextInfo Region="358, 282, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 282, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 281, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 281, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="679, 281, 36, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="792, 282, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 282, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="1, 297, 44, 11" Text="HORRY" />
+                      <uc:OcrTextInfo Region="141, 297, 44, 11" Text="HORRY" />
+                      <uc:OcrTextInfo Region="255, 297, 28, 11" Text="5261" />
+                      <uc:OcrTextInfo Region="358, 297, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 297, 24, 12" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 297, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 297, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="679, 297, 36, 12" Text="1.00%" />
+                      <uc:OcrTextInfo Region="791, 297, 25, 12" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 298, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="1, 313, 46, 12" Text="JASPER" />
+                      <uc:OcrTextInfo Region="142, 313, 47, 12" Text="JASPER" />
+                      <uc:OcrTextInfo Region="255, 313, 28, 11" Text="5271" />
+                      <uc:OcrTextInfo Region="358, 314, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 314, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 313, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 313, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="679, 313, 36, 12" Text="1.00%" />
+                      <uc:OcrTextInfo Region="792, 314, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 314, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="1, 329, 61, 11" Text="KERSHAW" />
+                      <uc:OcrTextInfo Region="142, 329, 61, 11" Text="KERSHAW" />
+                      <uc:OcrTextInfo Region="254, 328, 29, 12" Text="5281" />
+                      <uc:OcrTextInfo Region="358, 329, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 329, 24, 12" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 329, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 329, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="679, 329, 36, 12" Text="1.00%" />
+                      <uc:OcrTextInfo Region="791, 330, 25, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 330, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="1, 345, 68, 11" Text="LEXINGTON" />
+                      <uc:OcrTextInfo Region="142, 345, 68, 11" Text="LEXINGTON" />
+                      <uc:OcrTextInfo Region="255, 345, 29, 12" Text="5320" />
+                      <uc:OcrTextInfo Region="358, 346, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 346, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 345, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 345, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="679, 345, 36, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="792, 345, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 346, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="0, 361, 68, 11" Text="MARLBORO" />
+                      <uc:OcrTextInfo Region="141, 361, 68, 11" Text="MARLBORO" />
+                      <uc:OcrTextInfo Region="255, 360, 28, 12" Text="5351" />
+                      <uc:OcrTextInfo Region="358, 361, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 361, 25, 12" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 361, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 361, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="679, 361, 36, 12" Text="1.00%" />
+                      <uc:OcrTextInfo Region="792, 361, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 361, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="358, 378, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 378, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 378, 25, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 378, 25, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="679, 377, 36, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="792, 378, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 378, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="358, 393, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 393, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 393, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 393, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="679, 393, 36, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="792, 393, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 393, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="358, 410, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 410, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 409, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 410, 25, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="679, 409, 35, 12" Text="1.00%" />
+                      <uc:OcrTextInfo Region="792, 410, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 410, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="358, 425, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 425, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 425, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 425, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="679, 425, 36, 12" Text="1.00%" />
+                      <uc:OcrTextInfo Region="792, 425, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 426, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="358, 441, 25, 12" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 442, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 441, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 441, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="679, 441, 36, 12" Text="1.00%" />
+                      <uc:OcrTextInfo Region="792, 441, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 442, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="358, 458, 25, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 458, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 457, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 457, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="680, 457, 35, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="792, 457, 24, 12" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 457, 25, 11" Text="0.00" />
+                    </scg:List>
+                  </uc:CVCache.OcrTexts>
+                </uc:CVCache>
+              </scg:List>
+            </uc:CvCacheContainer.Caches>
+          </uc:CvCacheContainer>
+        </p:CVScope.DesignTimeCacheContainer>
+        <p:CVScope.OCREngine>
+          <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd:Rectangle, x:String))">
+            <ActivityFunc.Argument>
+              <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+            </ActivityFunc.Argument>
+            <p1:UiPathScreenOCR ApiKey="{x:Null}" Endpoint="{x:Null}" Output="{x:Null}" Text="{x:Null}" UseLocalServer="{x:Null}" ComputeSkewAngle="False" DisplayName="UiPathScreenOCR pre" ExtractWords="True" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="UiPathScreenOCR_2" Image="[Image]" Language="en" Profile="Screen" Scale="1" Timeout="100000" />
+          </ActivityFunc>
+        </p:CVScope.OCREngine>
+        <p:CVScope.Target>
+          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="9f1484ac-a72d-4589-8602-4e569888a1d8" InformativeScreenshot="4bd01e2608f391c66afe440f37f1ec52" Selector="&lt;wnd app='returns.exe' ctrlname='frmReturns' isremoteapp='1' /&gt;&lt;wnd ctrlname='frmReturn' /&gt;&lt;wnd cls='MX1.WndClass' /&gt;" WaitForReady="INTERACTIVE">
+            <ui:Target.TimeoutMS>
+              <InArgument x:TypeArguments="x:Int32" />
+            </ui:Target.TimeoutMS>
+          </ui:Target>
+        </p:CVScope.Target>
+        <p:CVScope.UseLocalServer>
+          <InArgument x:TypeArguments="x:Boolean" />
+        </p:CVScope.UseLocalServer>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </p:CVScope>
+      <If Condition="[boolPreCondition = false]" DisplayName="If - Pre-Condition Failed" sap:VirtualizedContainerService.HintSize="434,52.6666666666667" sap2010:WorkflowViewState.IdRef="If_3">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Throw DisplayName="Throw - Pre-Condition Failed" Exception="[New Exception(&quot;Pre-Condition Failed: Charleston school district label is not visible.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_3" />
+        </If.Then>
+      </If>
+    </Sequence>
+    <Sequence DisplayName="Perform Sequence Actions" sap:VirtualizedContainerService.HintSize="526,573.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_6">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <p:CVScope ContinueOnError="{x:Null}" DelayBefore="{x:Null}" Server="{x:Null}" CvMethod="ElementDetection, OCR" DesignTimeCacheId="d45b52ed-e044-4be1-af53-679318ee8a1b" DisplayName="CV Screen Scope 'Local taxes'" sap:VirtualizedContainerService.HintSize="434,481.333333333333" sap2010:WorkflowViewState.IdRef="CVScope_2" Version="V5">
+        <p:CVScope.Body>
+          <ActivityAction x:TypeArguments="x:Object">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="x:Object" Name="CVSessionData" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_8">
+              <p:CvGetTextWithDescriptor Descriptor="[&quot;Target: TableCell (138,217,828,253)&quot; +&#xD;&#xA;&quot;ColumnNumber: 3 (288,217,96,15)&quot; +&#xD;&#xA;&quot;RowContains: CHARLESTON (138,247,110,15) RowCell: 1&quot; +&#xD;&#xA;&quot;Anchor: Text 'CHARLESTON' (0,250,82,12)&quot; +&#xD;&#xA;&quot;Anchor: Text 'SCHOOL DISTRICT TAX' (142,201,184,14)&quot;]" DesignTimeCacheId="38cabfba-a8d5-484b-a06e-6a33ff769a7d" DesignTimeScaleFactor="1.5" DisplayName="CV Get Text - Table Cell" sap:VirtualizedContainerService.HintSize="400,170" sap2010:WorkflowViewState.IdRef="CvGetTextWithDescriptor_1" InformativeScreenshot="722fb484790cf3fa00d387b3a2568461" RefreshBefore="True" Result="[out_StrCharlestonSchool]" Version="V5">
+                <p:CvGetTextWithDescriptor.DesignTimeDescriptor>
+                  <uc:CvDescriptor Id="3a7888f8-c1de-4868-8dff-e327646e36c0">
+                    <uc:CvDescriptor.Anchors>
+                      <x:Array Type="uc:CvElementDescriptor">
+                        <uc:CvElementDescriptor CellExtraInfo="{x:Null}" DesignTimeArea="0, 250, 82, 12" ElementType="Text" Text="CHARLESTON" />
+                        <uc:CvElementDescriptor CellExtraInfo="{x:Null}" DesignTimeArea="142, 201, 184, 14" ElementType="Text" Text="SCHOOL DISTRICT TAX" />
+                      </x:Array>
+                    </uc:CvDescriptor.Anchors>
+                    <uc:CvDescriptor.Target>
+                      <uc:CvElementDescriptor DesignTimeArea="138, 217, 828, 253" ElementType="TableCell">
+                        <uc:CvElementDescriptor.CellExtraInfo>
+                          <uc:CvCellExtraInfo CellArea="288, 247, 96, 15" ColumnArea="288, 217, 96, 15" ColumnIndex="3" ColumnName="435.00" RowArea="138, 247, 110, 15" RowIndex="3" RowSearchColumnIndex="1" RowSearchValue="CHARLESTON" UseColumnIndex="True" UseRowIndex="False" />
+                        </uc:CvElementDescriptor.CellExtraInfo>
+                      </uc:CvElementDescriptor>
+                    </uc:CvDescriptor.Target>
+                  </uc:CvDescriptor>
+                </p:CvGetTextWithDescriptor.DesignTimeDescriptor>
+              </p:CvGetTextWithDescriptor>
+            </Sequence>
+          </ActivityAction>
+        </p:CVScope.Body>
+        <p:CVScope.DesignTimeCache>
+          <uc:CVCache CvUiElements="{x:Null}" OcrTexts="{x:Null}" />
+        </p:CVScope.DesignTimeCache>
+        <p:CVScope.DesignTimeCacheContainer>
+          <uc:CvCacheContainer>
+            <uc:CvCacheContainer.Caches>
+              <scg:List x:TypeArguments="uc:CVCache" Capacity="2">
+                <uc:CVCache DisplayName="Screen CV Get Text - '' (Main)" Id="d45b52ed-e044-4be1-af53-679318ee8a1b" InformativeScreenshot="4958a753f439c5c2cff7a0830c9ae75c" LogicalPosition="400, 204" OcrText="Local Taxes (SC ST-389/ST-389A) Name of Code Gross Total Net Taxable Net Taxable Local Local Tax Total C County Sales Deductions Purchases Sales and Rate Sales Tax on Purchases Projec Purchases YORK YORK 1046 272.00 0.00 0.00 272.00 1.00% 2.72 0.00 SCHOOL DISTRICT TAX AIKEN AIKEN 5021 924.00 0.00 0.00 924.00 1.00% 9.24 0.0 ANDERSON ANDERSON 5040 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 CHARLESTON CHARLESTON 5101 10,824.00 0.00 0.00 10,824.00 1.00% 108.24 0.00 CHEROKEE CHEROKEE 5111 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 CHESTERFIELD CHESTERFIELD 5131 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 CLARENDON CLARENDON 5140 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 DARLINGTON DARLINGTON 5161 975.00 0.00 0.00 975.00 1.00% 9.75 0.00 DILLON DILLON 5170 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 HORRY HORRY 5261 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 JASPER JASPER 5271 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 KERSHAW KERSHAW 5281 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 LEXINGTON LEXINGTON 5320 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 MARLBORO MARLBORO 5351 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 0.00 0.00 0.00 0.00 1.00% 0.00 0.00" Position="400, 204" ScaleFactor="1.5" ScreenshotGuid="30e7f97f-c360-4bf4-8522-19dca353522c" ServerVersion="1">
+                  <uc:CVCache.CvAnchorRelations>
+                    <scg:List x:TypeArguments="uc:AnchorRelationInfo" Capacity="0" />
+                  </uc:CVCache.CvAnchorRelations>
+                  <uc:CVCache.CvTables>
+                    <x:Array Type="uc:CvTableInfo">
+                      <uc:CvTableInfo>
+                        <uc:CvTableInfo.Columns>
+                          <x:Array Type="x:Int32">
+                            <x:Int32>138</x:Int32>
+                            <x:Int32>248</x:Int32>
+                            <x:Int32>288</x:Int32>
+                            <x:Int32>384</x:Int32>
+                            <x:Int32>478</x:Int32>
+                            <x:Int32>574</x:Int32>
+                            <x:Int32>669</x:Int32>
+                            <x:Int32>722</x:Int32>
+                            <x:Int32>817</x:Int32>
+                            <x:Int32>910</x:Int32>
+                            <x:Int32>966</x:Int32>
+                          </x:Array>
+                        </uc:CvTableInfo.Columns>
+                        <uc:CvTableInfo.Rows>
+                          <x:Array Type="x:Int32">
+                            <x:Int32>169</x:Int32>
+                            <x:Int32>184</x:Int32>
+                            <x:Int32>199</x:Int32>
+                            <x:Int32>214</x:Int32>
+                            <x:Int32>229</x:Int32>
+                            <x:Int32>245</x:Int32>
+                            <x:Int32>261</x:Int32>
+                            <x:Int32>276</x:Int32>
+                            <x:Int32>293</x:Int32>
+                            <x:Int32>308</x:Int32>
+                            <x:Int32>325</x:Int32>
+                            <x:Int32>340</x:Int32>
+                            <x:Int32>356</x:Int32>
+                            <x:Int32>372</x:Int32>
+                            <x:Int32>388</x:Int32>
+                            <x:Int32>404</x:Int32>
+                            <x:Int32>420</x:Int32>
+                            <x:Int32>436</x:Int32>
+                            <x:Int32>453</x:Int32>
+                            <x:Int32>470</x:Int32>
+                          </x:Array>
+                        </uc:CvTableInfo.Rows>
+                      </uc:CvTableInfo>
+                      <uc:CvTableInfo>
+                        <uc:CvTableInfo.Columns>
+                          <x:Array Type="x:Int32">
+                            <x:Int32>137</x:Int32>
+                            <x:Int32>248</x:Int32>
+                            <x:Int32>290</x:Int32>
+                            <x:Int32>384</x:Int32>
+                            <x:Int32>479</x:Int32>
+                            <x:Int32>572</x:Int32>
+                            <x:Int32>669</x:Int32>
+                            <x:Int32>722</x:Int32>
+                            <x:Int32>816</x:Int32>
+                            <x:Int32>910</x:Int32>
+                            <x:Int32>966</x:Int32>
+                          </x:Array>
+                        </uc:CvTableInfo.Columns>
+                        <uc:CvTableInfo.Rows>
+                          <x:Array Type="x:Int32">
+                            <x:Int32>34</x:Int32>
+                            <x:Int32>98</x:Int32>
+                            <x:Int32>115</x:Int32>
+                          </x:Array>
+                        </uc:CvTableInfo.Rows>
+                      </uc:CvTableInfo>
+                    </x:Array>
+                  </uc:CVCache.CvTables>
+                  <uc:CVCache.CvUiElements>
+                    <scg:List x:TypeArguments="uc:CvElementInfo" Capacity="256">
+                      <uc:CvElementInfo Category="ArrowButton" Region="966, 455, 14, 16" />
+                      <uc:CvElementInfo Category="ArrowButton" Region="951, 470, 16, 15" />
+                      <uc:CvElementInfo Category="ArrowButton" Region="966, 0, 14, 15" />
+                      <uc:CvElementInfo Category="ArrowButton" Region="0, 470, 14, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 404, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 420, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 34, 56, 63" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 420, 93, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 404, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 404, 93, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 420, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 229, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 388, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 420, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 436, 93, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 388, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 404, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 420, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 372, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 404, 56, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 229, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 388, 93, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 453, 93, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 372, 56, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 436, 56, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 436, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 229, 93, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 404, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 420, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 214, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 372, 93, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 245, 93, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 388, 56, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 372, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 214, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 261, 93, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 404, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 436, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 356, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 229, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 245, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 388, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 214, 93, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 388, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 420, 56, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 261, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 169, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 229, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 245, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 229, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 214, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="816, 34, 94, 63" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 261, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 356, 56, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="816, 98, 94, 17" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 245, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 245, 56, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 261, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 276, 93, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 261, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 356, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 453, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 356, 93, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 199, 95, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 388, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 214, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 453, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 404, 53, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 245, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 261, 56, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 372, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 340, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 199, 94, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 199, 95, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 34, 94, 63" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 308, 56, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 261, 53, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 293, 93, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 199, 110, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 356, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 340, 56, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 436, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 436, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 340, 93, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 199, 93, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 372, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 436, 53, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 245, 53, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 372, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 229, 53, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 245, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 34, 94, 63" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 199, 94, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 453, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 308, 93, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 229, 56, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 276, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 325, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 420, 53, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 276, 56, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 229, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 276, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 453, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 245, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 276, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 356, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 276, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 214, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 229, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 453, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 356, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 325, 93, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 214, 56, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 261, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 325, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 308, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 325, 56, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 169, 93, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 293, 56, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 276, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 372, 53, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 199, 95, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 340, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 436, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 308, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 340, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 261, 40, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 388, 53, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 340, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 340, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 293, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 98, 94, 17" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 356, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 34, 42, 63" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 169, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 293, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 325, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 325, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 293, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 308, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 276, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 293, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 276, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 308, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 308, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 325, 53, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 276, 53, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 308, 53, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 199, 56, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 356, 53, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 293, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="817, 184, 93, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 98, 53, 17" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 340, 53, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 453, 53, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 325, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 199, 40, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 293, 53, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 184, 40, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 388, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 308, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 293, 40, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 98, 94, 17" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 184, 53, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 420, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 308, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 340, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 245, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 184, 56, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 325, 40, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="479, 98, 93, 17" />
+                      <uc:CvElementInfo Category="Cell" Region="290, 98, 94, 17" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 169, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 340, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 261, 110, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 169, 53, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 184, 95, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 214, 53, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 199, 53, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 214, 110, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 184, 94, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 436, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 169, 56, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="290, 34, 94, 63" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 372, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 453, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 325, 110, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 184, 95, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 184, 95, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 214, 40, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 184, 110, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 453, 56, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 404, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="479, 34, 93, 63" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 169, 110, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="572, 98, 96, 17" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 169, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 98, 42, 17" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 293, 110, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 184, 94, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 388, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 420, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 436, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 453, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 169, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 404, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 356, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="572, 34, 96, 63" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 372, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="910, 98, 56, 17" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 34, 53, 63" />
+                      <uc:CvElementInfo Category="Cell" Region="137, 98, 110, 17" />
+                      <uc:CvElementInfo Category="Cell" Region="137, 34, 110, 63" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 169, 40, 15" />
+                      <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="306, 18, 654, 18" />
+                      <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="671, 42, 53, 55" />
+                      <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="34, 130, 918, 18" />
+                      <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="723, 38, 97, 61" />
+                      <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="12, 470, 18, 16" />
+                      <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="245, 0, 720, 20" />
+                      <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="576, 37, 94, 63" />
+                      <uc:CvElementInfo Category="Button" Confidence="Runtime" Region="140, 36, 110, 73" />
+                      <uc:CvElementInfo Category="ArrowButton" Confidence="Runtime" Region="360, 0, 475, 281" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="290, 147, 95, 21" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="912, 147, 54, 22" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="245, 147, 44, 22" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="0, 246, 132, 16" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="916, 18, 50, 17" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="141, 148, 113, 20" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="912, 114, 54, 16" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="913, 130, 54, 16" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="0, 293, 142, 16" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="817, 114, 93, 17" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="291, 114, 90, 16" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="0, 310, 140, 17" />
+                    </scg:List>
+                  </uc:CVCache.CvUiElements>
+                  <uc:CVCache.OcrTexts>
+                    <scg:List x:TypeArguments="uc:OcrTextInfo" Capacity="256">
+                      <uc:OcrTextInfo Region="0, 1, 44, 14" Text="Local" />
+                      <uc:OcrTextInfo Region="47, 1, 46, 14" Text="Taxes" />
+                      <uc:OcrTextInfo Region="96, 1, 28, 16" Text="(SC" />
+                      <uc:OcrTextInfo Region="129, 0, 126, 18" Text="ST-389/ST-389A)" />
+                      <uc:OcrTextInfo Region="171, 54, 35, 11" Text="Name" />
+                      <uc:OcrTextInfo Region="208, 54, 12, 11" Text="of" />
+                      <uc:OcrTextInfo Region="254, 54, 30, 11" Text="Code" />
+                      <uc:OcrTextInfo Region="320, 54, 34, 11" Text="Gross" />
+                      <uc:OcrTextInfo Region="418, 54, 28, 12" Text="Total" />
+                      <uc:OcrTextInfo Region="495, 54, 20, 11" Text="Net" />
+                      <uc:OcrTextInfo Region="516, 54, 44, 11" Text="Taxable" />
+                      <uc:OcrTextInfo Region="590, 54, 20, 12" Text="Net" />
+                      <uc:OcrTextInfo Region="612, 54, 44, 11" Text="Taxable" />
+                      <uc:OcrTextInfo Region="755, 54, 30, 11" Text="Local" />
+                      <uc:OcrTextInfo Region="839, 54, 31, 11" Text="Local" />
+                      <uc:OcrTextInfo Region="872, 54, 21, 10" Text="Tax" />
+                      <uc:OcrTextInfo Region="926, 54, 28, 10" Text="Total" />
+                      <uc:OcrTextInfo Region="956, 54, 10, 12" Text="C" />
+                      <uc:OcrTextInfo Region="175, 70, 39, 13" Text="County" />
+                      <uc:OcrTextInfo Region="321, 70, 33, 11" Text="Sales" />
+                      <uc:OcrTextInfo Region="402, 70, 62, 12" Text="Deductions" />
+                      <uc:OcrTextInfo Region="497, 70, 60, 12" Text="Purchases" />
+                      <uc:OcrTextInfo Region="594, 70, 32, 10" Text="Sales" />
+                      <uc:OcrTextInfo Region="629, 70, 22, 10" Text="and" />
+                      <uc:OcrTextInfo Region="685, 72, 23, 9" Text="Rate" />
+                      <uc:OcrTextInfo Region="743, 70, 32, 11" Text="Sales" />
+                      <uc:OcrTextInfo Region="778, 70, 21, 11" Text="Tax" />
+                      <uc:OcrTextInfo Region="828, 72, 14, 9" Text="on" />
+                      <uc:OcrTextInfo Region="844, 70, 60, 11" Text="Purchases" />
+                      <uc:OcrTextInfo Region="930, 70, 37, 12" Text="Projec" />
+                      <uc:OcrTextInfo Region="592, 86, 60, 12" Text="Purchases" />
+                      <uc:OcrTextInfo Region="0, 102, 35, 12" Text="YORK" />
+                      <uc:OcrTextInfo Region="141, 102, 34, 12" Text="YORK" />
+                      <uc:OcrTextInfo Region="256, 102, 28, 11" Text="1046" />
+                      <uc:OcrTextInfo Region="344, 102, 38, 10" Text="272.00" />
+                      <uc:OcrTextInfo Region="453, 102, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 102, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="629, 102, 39, 12" Text="272.00" />
+                      <uc:OcrTextInfo Region="679, 102, 36, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="791, 102, 26, 11" Text="2.72" />
+                      <uc:OcrTextInfo Region="886, 102, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="142, 153, 68, 14" Text="SCHOOL" />
+                      <uc:OcrTextInfo Region="217, 153, 74, 14" Text="DISTRICT" />
+                      <uc:OcrTextInfo Region="294, 152, 32, 15" Text="TAX" />
+                      <uc:OcrTextInfo Region="0, 172, 36, 12" Text="AIKEN" />
+                      <uc:OcrTextInfo Region="140, 172, 36, 11" Text="AIKEN" />
+                      <uc:OcrTextInfo Region="255, 172, 28, 11" Text="5021" />
+                      <uc:OcrTextInfo Region="344, 172, 38, 11" Text="924.00" />
+                      <uc:OcrTextInfo Region="453, 172, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 172, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="629, 172, 39, 11" Text="924.00" />
+                      <uc:OcrTextInfo Region="679, 172, 36, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="791, 172, 25, 11" Text="9.24" />
+                      <uc:OcrTextInfo Region="886, 172, 24, 10" Text="0.0" />
+                      <uc:OcrTextInfo Region="0, 187, 68, 11" Text="ANDERSON" />
+                      <uc:OcrTextInfo Region="142, 187, 68, 11" Text="ANDERSON" />
+                      <uc:OcrTextInfo Region="255, 187, 29, 11" Text="5040" />
+                      <uc:OcrTextInfo Region="358, 187, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="454, 188, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 187, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 188, 25, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="679, 187, 36, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="792, 187, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 187, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="1, 202, 82, 12" Text="CHARLESTON" />
+                      <uc:OcrTextInfo Region="140, 202, 88, 12" Text="CHARLESTON" />
+                      <uc:OcrTextInfo Region="255, 202, 28, 11" Text="5101" />
+                      <uc:OcrTextInfo Region="328, 202, 55, 12" Text="10,824.00" />
+                      <uc:OcrTextInfo Region="453, 202, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 202, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="613, 202, 55, 13" Text="10,824.00" />
+                      <uc:OcrTextInfo Region="680, 202, 35, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="778, 202, 37, 11" Text="108.24" />
+                      <uc:OcrTextInfo Region="886, 202, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="1, 217, 68, 11" Text="CHEROKEE" />
+                      <uc:OcrTextInfo Region="142, 217, 68, 11" Text="CHEROKEE" />
+                      <uc:OcrTextInfo Region="255, 217, 28, 11" Text="5111" />
+                      <uc:OcrTextInfo Region="358, 218, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 218, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 218, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 218, 25, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="680, 217, 35, 12" Text="1.00%" />
+                      <uc:OcrTextInfo Region="792, 218, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 218, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="0, 233, 92, 12" Text="CHESTERFIELD" />
+                      <uc:OcrTextInfo Region="141, 233, 94, 12" Text="CHESTERFIELD" />
+                      <uc:OcrTextInfo Region="255, 233, 28, 11" Text="5131" />
+                      <uc:OcrTextInfo Region="358, 233, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 233, 24, 12" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 233, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 233, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="679, 233, 36, 12" Text="1.00%" />
+                      <uc:OcrTextInfo Region="792, 234, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 233, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="0, 249, 76, 11" Text="CLARENDON" />
+                      <uc:OcrTextInfo Region="142, 249, 76, 11" Text="CLARENDON" />
+                      <uc:OcrTextInfo Region="255, 249, 29, 11" Text="5140" />
+                      <uc:OcrTextInfo Region="358, 250, 25, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 250, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 249, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 250, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="680, 249, 35, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="792, 250, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 250, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="1, 265, 78, 12" Text="DARLINGTON" />
+                      <uc:OcrTextInfo Region="142, 265, 78, 11" Text="DARLINGTON" />
+                      <uc:OcrTextInfo Region="255, 265, 28, 11" Text="5161" />
+                      <uc:OcrTextInfo Region="344, 265, 39, 11" Text="975.00" />
+                      <uc:OcrTextInfo Region="453, 265, 24, 12" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 265, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="629, 265, 38, 11" Text="975.00" />
+                      <uc:OcrTextInfo Region="679, 265, 36, 12" Text="1.00%" />
+                      <uc:OcrTextInfo Region="791, 265, 25, 11" Text="9.75" />
+                      <uc:OcrTextInfo Region="886, 266, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="0, 281, 45, 11" Text="DILLON" />
+                      <uc:OcrTextInfo Region="142, 281, 44, 12" Text="DILLON" />
+                      <uc:OcrTextInfo Region="255, 281, 29, 11" Text="5170" />
+                      <uc:OcrTextInfo Region="358, 282, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 282, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 281, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 281, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="679, 281, 36, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="792, 282, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 282, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="1, 297, 44, 11" Text="HORRY" />
+                      <uc:OcrTextInfo Region="141, 297, 44, 11" Text="HORRY" />
+                      <uc:OcrTextInfo Region="255, 297, 28, 11" Text="5261" />
+                      <uc:OcrTextInfo Region="358, 297, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 297, 24, 12" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 297, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 297, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="679, 297, 36, 12" Text="1.00%" />
+                      <uc:OcrTextInfo Region="791, 297, 25, 12" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 298, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="1, 313, 46, 12" Text="JASPER" />
+                      <uc:OcrTextInfo Region="142, 313, 47, 12" Text="JASPER" />
+                      <uc:OcrTextInfo Region="255, 313, 28, 11" Text="5271" />
+                      <uc:OcrTextInfo Region="358, 314, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 314, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 313, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 313, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="679, 313, 36, 12" Text="1.00%" />
+                      <uc:OcrTextInfo Region="792, 314, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 314, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="1, 329, 61, 11" Text="KERSHAW" />
+                      <uc:OcrTextInfo Region="142, 329, 61, 11" Text="KERSHAW" />
+                      <uc:OcrTextInfo Region="254, 328, 29, 12" Text="5281" />
+                      <uc:OcrTextInfo Region="358, 329, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 329, 24, 12" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 329, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 329, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="679, 329, 36, 12" Text="1.00%" />
+                      <uc:OcrTextInfo Region="791, 330, 25, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 330, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="1, 345, 68, 11" Text="LEXINGTON" />
+                      <uc:OcrTextInfo Region="142, 345, 68, 11" Text="LEXINGTON" />
+                      <uc:OcrTextInfo Region="255, 345, 29, 12" Text="5320" />
+                      <uc:OcrTextInfo Region="358, 346, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 346, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 345, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 345, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="679, 345, 36, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="792, 345, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 346, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="0, 361, 68, 11" Text="MARLBORO" />
+                      <uc:OcrTextInfo Region="141, 361, 68, 11" Text="MARLBORO" />
+                      <uc:OcrTextInfo Region="255, 360, 28, 12" Text="5351" />
+                      <uc:OcrTextInfo Region="358, 361, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 361, 25, 12" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 361, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 361, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="679, 361, 36, 12" Text="1.00%" />
+                      <uc:OcrTextInfo Region="792, 361, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 361, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="358, 378, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 378, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 378, 25, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 378, 25, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="679, 377, 36, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="792, 378, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 378, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="358, 393, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 393, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 393, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 393, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="679, 393, 36, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="792, 393, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 393, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="358, 410, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 410, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 409, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 410, 25, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="679, 409, 35, 12" Text="1.00%" />
+                      <uc:OcrTextInfo Region="792, 410, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 410, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="358, 425, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 425, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 425, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 425, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="679, 425, 36, 12" Text="1.00%" />
+                      <uc:OcrTextInfo Region="792, 425, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 426, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="358, 441, 25, 12" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 442, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 441, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 441, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="679, 441, 36, 12" Text="1.00%" />
+                      <uc:OcrTextInfo Region="792, 441, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 442, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="358, 458, 25, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 458, 24, 10" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 457, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 457, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="680, 457, 35, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="792, 457, 24, 12" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 457, 25, 11" Text="0.00" />
+                    </scg:List>
+                  </uc:CVCache.OcrTexts>
+                </uc:CVCache>
+                <uc:CVCache DisplayName="Screen CV Get Text - ''" Id="38cabfba-a8d5-484b-a06e-6a33ff769a7d" InformativeScreenshot="00ad645bbdc01159b0170d6aefefe5fe" LogicalPosition="400, 204" OcrText="Local Taxes (SC ST-389/ST-389A) Name of Code Gross Total Net Taxable Net Taxable Local Local Tax Total C County Sales Deductions Purchases Sales and Rate Sales Tax on Purchases Projec Purchases SPARTANBURG SPARTANBURG 1042 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 SUMTER SUMTER 1043 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 WILLIAMSBURG WILLIAMSBURG 1045 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 YORK YORK 1046 46.00 0.00 0.00 46.00 1.00% 0.46 0.00 SCHOOL DISTRICT TAX AIKEN AIKEN 5021 435.00 0.00 0.00 435.00 1.00% 4.35 0.00 ANDERSON ANDERSON 5040 39.00 0.00 0.00 39.00 1.00% 0.39 0.00 CHARLESTON CHARLESTON 5101 8,268.00 0.00 0.00 8,268.00 1.00% 82.68 0.00 CHEROKEE CHEROKEE 5111 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 CHESTERFIELD CHESTERFIELD 5131 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 CLARENDON CLARENDON 5140 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 DARLINGTON DARLINGTON 5161 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 DILLON DILLON 5170 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 HORRY HORRY 5261 80.00 0.00 0.00 80.00 1.00% 0.80 0.00 JASPER JASPER 5271 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 KERSHAW KERSHAW 5281 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 LEXINGTON LEXINGTON 5320 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 MARLBORO MARLBORO 5351 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 0.00 0.00 0.00 0.00 1.00% 0.00 0.00 0.00 0.00 0.00 0.00 1.00% 0.00 0.00" Position="400, 204" ScaleFactor="1.5" ScreenshotGuid="cb72474d-7a44-416d-a704-8d1714efe64e" ServerVersion="1">
+                  <uc:CVCache.CvAnchorRelations>
+                    <scg:List x:TypeArguments="uc:AnchorRelationInfo" Capacity="0" />
+                  </uc:CVCache.CvAnchorRelations>
+                  <uc:CVCache.CvTables>
+                    <x:Array Type="uc:CvTableInfo">
+                      <uc:CvTableInfo>
+                        <uc:CvTableInfo.Columns>
+                          <x:Array Type="x:Int32">
+                            <x:Int32>138</x:Int32>
+                            <x:Int32>248</x:Int32>
+                            <x:Int32>288</x:Int32>
+                            <x:Int32>384</x:Int32>
+                            <x:Int32>478</x:Int32>
+                            <x:Int32>574</x:Int32>
+                            <x:Int32>668</x:Int32>
+                            <x:Int32>722</x:Int32>
+                            <x:Int32>816</x:Int32>
+                            <x:Int32>911</x:Int32>
+                            <x:Int32>966</x:Int32>
+                          </x:Array>
+                        </uc:CvTableInfo.Columns>
+                        <uc:CvTableInfo.Rows>
+                          <x:Array Type="x:Int32">
+                            <x:Int32>217</x:Int32>
+                            <x:Int32>232</x:Int32>
+                            <x:Int32>247</x:Int32>
+                            <x:Int32>262</x:Int32>
+                            <x:Int32>278</x:Int32>
+                            <x:Int32>294</x:Int32>
+                            <x:Int32>310</x:Int32>
+                            <x:Int32>325</x:Int32>
+                            <x:Int32>342</x:Int32>
+                            <x:Int32>357</x:Int32>
+                            <x:Int32>373</x:Int32>
+                            <x:Int32>390</x:Int32>
+                            <x:Int32>405</x:Int32>
+                            <x:Int32>421</x:Int32>
+                            <x:Int32>438</x:Int32>
+                            <x:Int32>453</x:Int32>
+                            <x:Int32>470</x:Int32>
+                          </x:Array>
+                        </uc:CvTableInfo.Rows>
+                      </uc:CvTableInfo>
+                      <uc:CvTableInfo>
+                        <uc:CvTableInfo.Columns>
+                          <x:Array Type="x:Int32">
+                            <x:Int32>138</x:Int32>
+                            <x:Int32>247</x:Int32>
+                            <x:Int32>289</x:Int32>
+                            <x:Int32>384</x:Int32>
+                            <x:Int32>478</x:Int32>
+                            <x:Int32>574</x:Int32>
+                            <x:Int32>669</x:Int32>
+                            <x:Int32>722</x:Int32>
+                            <x:Int32>816</x:Int32>
+                            <x:Int32>911</x:Int32>
+                            <x:Int32>966</x:Int32>
+                          </x:Array>
+                        </uc:CvTableInfo.Columns>
+                        <uc:CvTableInfo.Rows>
+                          <x:Array Type="x:Int32">
+                            <x:Int32>34</x:Int32>
+                            <x:Int32>97</x:Int32>
+                            <x:Int32>114</x:Int32>
+                            <x:Int32>130</x:Int32>
+                            <x:Int32>146</x:Int32>
+                            <x:Int32>164</x:Int32>
+                          </x:Array>
+                        </uc:CvTableInfo.Rows>
+                      </uc:CvTableInfo>
+                    </x:Array>
+                  </uc:CVCache.CvTables>
+                  <uc:CVCache.CvUiElements>
+                    <scg:List x:TypeArguments="uc:CvElementInfo" Capacity="256">
+                      <uc:CvElementInfo Category="ArrowButton" Region="967, 455, 13, 16" />
+                      <uc:CvElementInfo Category="ArrowButton" Region="950, 470, 17, 15" />
+                      <uc:CvElementInfo Category="ArrowButton" Region="966, 0, 14, 15" />
+                      <uc:CvElementInfo Category="ArrowButton" Region="0, 470, 14, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 130, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 130, 109, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 130, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 130, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="816, 130, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="289, 130, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="816, 146, 94, 17" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 114, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="816, 438, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 405, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 438, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 438, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 421, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 114, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="816, 421, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 114, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="247, 130, 42, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 405, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 421, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 453, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="668, 421, 54, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="911, 130, 55, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 405, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="668, 438, 54, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 438, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="816, 453, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 438, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 421, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 421, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 390, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 405, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 294, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="911, 421, 54, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="816, 405, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 146, 95, 17" />
+                      <uc:CvElementInfo Category="Cell" Region="668, 405, 54, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="247, 114, 42, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 130, 52, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 373, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="816, 390, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 278, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 310, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="668, 453, 54, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 97, 52, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 342, 110, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 390, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 97, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 294, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="911, 357, 54, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 310, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 373, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 342, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 146, 95, 17" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 114, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 357, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="816, 310, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 130, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 97, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="816, 262, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 97, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 390, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="911, 342, 54, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 373, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 294, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 357, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="668, 390, 54, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="816, 373, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 97, 109, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="247, 97, 42, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="911, 405, 54, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="911, 114, 55, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 325, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="816, 114, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 325, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 357, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="911, 438, 54, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 438, 96, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 310, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 453, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 278, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="816, 342, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="816, 278, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 146, 94, 17" />
+                      <uc:CvElementInfo Category="Cell" Region="911, 390, 54, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="816, 357, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 405, 96, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="816, 325, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 278, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="911, 310, 54, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 373, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 342, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="911, 325, 54, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="668, 294, 54, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 146, 94, 17" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 262, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="911, 373, 54, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="816, 294, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 390, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 453, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="911, 453, 54, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 114, 52, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="289, 97, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 232, 95, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 278, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 310, 40, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 342, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="911, 278, 54, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 342, 96, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 262, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="911, 262, 54, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 453, 96, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="247, 146, 42, 17" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 262, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 247, 110, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="911, 294, 54, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 97, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 247, 95, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="668, 373, 54, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="668, 278, 54, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="816, 247, 94, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="668, 357, 54, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 390, 96, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="289, 114, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 373, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 421, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 438, 110, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 453, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 373, 96, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 146, 109, 17" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 325, 95, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 247, 94, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="816, 232, 94, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 421, 96, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 405, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 453, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 294, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 294, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="911, 97, 55, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 278, 96, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 278, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 421, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 262, 96, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="289, 146, 94, 17" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 294, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 373, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 217, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 342, 40, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 325, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 357, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 310, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 247, 94, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="668, 325, 54, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 278, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 357, 96, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="668, 342, 54, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 294, 96, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 357, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 146, 52, 17" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 217, 110, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="247, 34, 42, 62" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 390, 40, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="668, 310, 54, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="668, 262, 54, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="816, 97, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="911, 247, 54, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 310, 96, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="668, 217, 54, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 325, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="911, 146, 55, 17" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 232, 94, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 438, 40, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 247, 94, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 325, 96, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 325, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 262, 94, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 310, 110, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 34, 94, 62" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 262, 40, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 357, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="911, 232, 54, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 342, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 232, 94, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 232, 94, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 232, 96, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="669, 34, 52, 62" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 217, 95, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 390, 110, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="816, 217, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 232, 40, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="668, 232, 54, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="816, 34, 94, 62" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 262, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 453, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="289, 34, 94, 62" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 247, 40, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 34, 94, 62" />
+                      <uc:CvElementInfo Category="Cell" Region="478, 34, 95, 62" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 232, 110, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 405, 110, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="668, 247, 54, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="722, 217, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 34, 109, 62" />
+                      <uc:CvElementInfo Category="Cell" Region="384, 217, 94, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 247, 96, 14" />
+                      <uc:CvElementInfo Category="Cell" Region="248, 217, 40, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="911, 217, 54, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="288, 217, 96, 15" />
+                      <uc:CvElementInfo Category="Cell" Region="138, 114, 109, 16" />
+                      <uc:CvElementInfo Category="Cell" Region="574, 34, 95, 62" />
+                      <uc:CvElementInfo Category="Cell" Region="911, 34, 55, 62" />
+                      <uc:CvElementInfo Category="Cell" Region="0, 341, 138, 15" />
+                      <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="289, 249, 95, 14" />
+                      <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="166, 197, 789, 21" />
+                      <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="138, 132, 110, 16" />
+                      <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="138, 147, 112, 17" />
+                      <uc:CvElementInfo Category="Icon" Confidence="Runtime" Region="955, 53, 12, 13" />
+                      <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="288, 233, 96, 15" />
+                      <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="139, 115, 110, 16" />
+                      <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="249, 248, 40, 16" />
+                      <uc:CvElementInfo Category="InputBox" Confidence="Runtime" Region="198, 199, 94, 20" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="0, 325, 139, 15" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="0, 357, 137, 16" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="0, 310, 135, 16" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="0, 373, 137, 16" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="0, 451, 138, 20" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="914, 18, 52, 16" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="912, 195, 54, 22" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="915, 206, 50, 12" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="0, 390, 138, 15" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="0, 438, 138, 18" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="0, 293, 138, 16" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="0, 178, 140, 16" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="0, 195, 135, 19" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="138, 197, 110, 20" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="0, 404, 138, 17" />
+                      <uc:CvElementInfo Category="Cell" Confidence="Runtime" Region="0, 19, 153, 16" />
+                    </scg:List>
+                  </uc:CVCache.CvUiElements>
+                  <uc:CVCache.OcrTexts>
+                    <scg:List x:TypeArguments="uc:OcrTextInfo" Capacity="256">
+                      <uc:OcrTextInfo Region="0, 0, 43, 15" Text="Local" />
+                      <uc:OcrTextInfo Region="47, 1, 46, 14" Text="Taxes" />
+                      <uc:OcrTextInfo Region="96, 1, 29, 17" Text="(SC" />
+                      <uc:OcrTextInfo Region="129, 0, 126, 18" Text="ST-389/ST-389A)" />
+                      <uc:OcrTextInfo Region="171, 54, 35, 11" Text="Name" />
+                      <uc:OcrTextInfo Region="208, 54, 12, 11" Text="of" />
+                      <uc:OcrTextInfo Region="254, 54, 30, 11" Text="Code" />
+                      <uc:OcrTextInfo Region="320, 54, 34, 12" Text="Gross" />
+                      <uc:OcrTextInfo Region="419, 54, 28, 12" Text="Total" />
+                      <uc:OcrTextInfo Region="495, 54, 21, 11" Text="Net" />
+                      <uc:OcrTextInfo Region="517, 54, 44, 11" Text="Taxable" />
+                      <uc:OcrTextInfo Region="590, 54, 20, 11" Text="Net" />
+                      <uc:OcrTextInfo Region="612, 54, 44, 11" Text="Taxable" />
+                      <uc:OcrTextInfo Region="755, 54, 31, 11" Text="Local" />
+                      <uc:OcrTextInfo Region="839, 54, 31, 11" Text="Local" />
+                      <uc:OcrTextInfo Region="872, 54, 21, 11" Text="Tax" />
+                      <uc:OcrTextInfo Region="926, 54, 28, 11" Text="Total" />
+                      <uc:OcrTextInfo Region="956, 54, 10, 12" Text="C" />
+                      <uc:OcrTextInfo Region="175, 70, 40, 14" Text="County" />
+                      <uc:OcrTextInfo Region="321, 70, 32, 12" Text="Sales" />
+                      <uc:OcrTextInfo Region="401, 70, 64, 12" Text="Deductions" />
+                      <uc:OcrTextInfo Region="497, 70, 60, 12" Text="Purchases" />
+                      <uc:OcrTextInfo Region="594, 70, 33, 12" Text="Sales" />
+                      <uc:OcrTextInfo Region="629, 70, 22, 10" Text="and" />
+                      <uc:OcrTextInfo Region="685, 71, 23, 10" Text="Rate" />
+                      <uc:OcrTextInfo Region="743, 70, 32, 11" Text="Sales" />
+                      <uc:OcrTextInfo Region="778, 70, 21, 11" Text="Tax" />
+                      <uc:OcrTextInfo Region="827, 72, 15, 8" Text="on" />
+                      <uc:OcrTextInfo Region="844, 70, 61, 12" Text="Purchases" />
+                      <uc:OcrTextInfo Region="930, 70, 37, 12" Text="Projec" />
+                      <uc:OcrTextInfo Region="592, 86, 61, 12" Text="Purchases" />
+                      <uc:OcrTextInfo Region="0, 102, 91, 12" Text="SPARTANBURG" />
+                      <uc:OcrTextInfo Region="141, 102, 90, 11" Text="SPARTANBURG" />
+                      <uc:OcrTextInfo Region="256, 102, 28, 12" Text="1042" />
+                      <uc:OcrTextInfo Region="358, 102, 24, 12" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 102, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 102, 24, 12" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 102, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="680, 102, 35, 12" Text="1.00%" />
+                      <uc:OcrTextInfo Region="791, 102, 25, 12" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 102, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="0, 118, 52, 12" Text="SUMTER" />
+                      <uc:OcrTextInfo Region="141, 118, 51, 11" Text="SUMTER" />
+                      <uc:OcrTextInfo Region="256, 118, 28, 11" Text="1043" />
+                      <uc:OcrTextInfo Region="358, 118, 24, 12" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 118, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 118, 24, 12" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 118, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="680, 118, 35, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="791, 118, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 118, 24, 12" Text="0.00" />
+                      <uc:OcrTextInfo Region="0, 134, 92, 12" Text="WILLIAMSBURG" />
+                      <uc:OcrTextInfo Region="140, 134, 92, 12" Text="WILLIAMSBURG" />
+                      <uc:OcrTextInfo Region="256, 134, 28, 12" Text="1045" />
+                      <uc:OcrTextInfo Region="358, 134, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 134, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 134, 24, 12" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 134, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="680, 134, 35, 12" Text="1.00%" />
+                      <uc:OcrTextInfo Region="791, 134, 25, 12" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 134, 24, 12" Text="0.00" />
+                      <uc:OcrTextInfo Region="0, 150, 35, 12" Text="YORK" />
+                      <uc:OcrTextInfo Region="141, 150, 34, 11" Text="YORK" />
+                      <uc:OcrTextInfo Region="256, 150, 28, 12" Text="1046" />
+                      <uc:OcrTextInfo Region="350, 150, 32, 11" Text="46.00" />
+                      <uc:OcrTextInfo Region="453, 150, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 150, 24, 12" Text="0.00" />
+                      <uc:OcrTextInfo Region="636, 150, 32, 10" Text="46.00" />
+                      <uc:OcrTextInfo Region="680, 150, 35, 12" Text="1.00%" />
+                      <uc:OcrTextInfo Region="791, 150, 25, 11" Text="0.46" />
+                      <uc:OcrTextInfo Region="886, 150, 24, 12" Text="0.00" />
+                      <uc:OcrTextInfo Region="142, 201, 69, 14" Text="SCHOOL" />
+                      <uc:OcrTextInfo Region="215, 201, 76, 14" Text="DISTRICT" />
+                      <uc:OcrTextInfo Region="294, 201, 32, 14" Text="TAX" />
+                      <uc:OcrTextInfo Region="0, 220, 36, 12" Text="AIKEN" />
+                      <uc:OcrTextInfo Region="140, 220, 36, 11" Text="AIKEN" />
+                      <uc:OcrTextInfo Region="255, 220, 28, 11" Text="5021" />
+                      <uc:OcrTextInfo Region="344, 220, 40, 11" Text="435.00" />
+                      <uc:OcrTextInfo Region="453, 220, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 220, 26, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="629, 220, 39, 11" Text="435.00" />
+                      <uc:OcrTextInfo Region="680, 220, 35, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="791, 220, 25, 11" Text="4.35" />
+                      <uc:OcrTextInfo Region="886, 220, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="0, 235, 69, 11" Text="ANDERSON" />
+                      <uc:OcrTextInfo Region="140, 235, 70, 11" Text="ANDERSON" />
+                      <uc:OcrTextInfo Region="255, 235, 28, 11" Text="5040" />
+                      <uc:OcrTextInfo Region="351, 235, 32, 11" Text="39.00" />
+                      <uc:OcrTextInfo Region="453, 235, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 235, 24, 12" Text="0.00" />
+                      <uc:OcrTextInfo Region="636, 235, 32, 12" Text="39.00" />
+                      <uc:OcrTextInfo Region="680, 235, 35, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="791, 235, 25, 11" Text="0.39" />
+                      <uc:OcrTextInfo Region="886, 235, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="0, 250, 82, 12" Text="CHARLESTON" />
+                      <uc:OcrTextInfo Region="141, 250, 83, 12" Text="CHARLESTON" />
+                      <uc:OcrTextInfo Region="255, 250, 28, 12" Text="5101" />
+                      <uc:OcrTextInfo Region="334, 250, 50, 12" Text="8,268.00" />
+                      <uc:OcrTextInfo Region="453, 250, 25, 12" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 250, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="619, 250, 49, 12" Text="8,268.00" />
+                      <uc:OcrTextInfo Region="680, 250, 35, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="784, 250, 32, 11" Text="82.68" />
+                      <uc:OcrTextInfo Region="886, 250, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="0, 265, 69, 11" Text="CHEROKEE" />
+                      <uc:OcrTextInfo Region="141, 265, 69, 11" Text="CHEROKEE" />
+                      <uc:OcrTextInfo Region="255, 265, 28, 11" Text="5111" />
+                      <uc:OcrTextInfo Region="358, 265, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 265, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 265, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 265, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="680, 265, 35, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="791, 265, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 265, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="0, 281, 92, 12" Text="CHESTERFIELD" />
+                      <uc:OcrTextInfo Region="142, 281, 92, 11" Text="CHESTERFIELD" />
+                      <uc:OcrTextInfo Region="255, 281, 28, 11" Text="5131" />
+                      <uc:OcrTextInfo Region="358, 281, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 281, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 281, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 281, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="680, 281, 35, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="791, 281, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 281, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="0, 297, 76, 11" Text="CLARENDON" />
+                      <uc:OcrTextInfo Region="142, 297, 76, 11" Text="CLARENDON" />
+                      <uc:OcrTextInfo Region="255, 297, 29, 11" Text="5140" />
+                      <uc:OcrTextInfo Region="358, 297, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 297, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 297, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 297, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="680, 297, 35, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="791, 297, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 297, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="0, 313, 78, 11" Text="DARLINGTON" />
+                      <uc:OcrTextInfo Region="141, 313, 79, 11" Text="DARLINGTON" />
+                      <uc:OcrTextInfo Region="255, 313, 28, 11" Text="5161" />
+                      <uc:OcrTextInfo Region="358, 313, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 313, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 313, 24, 12" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 313, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="680, 313, 35, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="791, 313, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 313, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="0, 329, 44, 11" Text="DILLON" />
+                      <uc:OcrTextInfo Region="141, 329, 45, 11" Text="DILLON" />
+                      <uc:OcrTextInfo Region="255, 329, 28, 11" Text="5170" />
+                      <uc:OcrTextInfo Region="358, 329, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 329, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 329, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 329, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="680, 329, 35, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="791, 329, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 329, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="0, 345, 44, 11" Text="HORRY" />
+                      <uc:OcrTextInfo Region="141, 345, 44, 11" Text="HORRY" />
+                      <uc:OcrTextInfo Region="255, 345, 28, 11" Text="5261" />
+                      <uc:OcrTextInfo Region="351, 345, 32, 11" Text="80.00" />
+                      <uc:OcrTextInfo Region="453, 345, 25, 12" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 345, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="636, 345, 32, 11" Text="80.00" />
+                      <uc:OcrTextInfo Region="680, 345, 35, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="791, 345, 25, 11" Text="0.80" />
+                      <uc:OcrTextInfo Region="886, 345, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="0, 361, 48, 11" Text="JASPER" />
+                      <uc:OcrTextInfo Region="140, 361, 48, 11" Text="JASPER" />
+                      <uc:OcrTextInfo Region="255, 361, 28, 11" Text="5271" />
+                      <uc:OcrTextInfo Region="358, 361, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 361, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 361, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 361, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="680, 361, 35, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="791, 361, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 361, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="0, 377, 61, 11" Text="KERSHAW" />
+                      <uc:OcrTextInfo Region="140, 377, 62, 11" Text="KERSHAW" />
+                      <uc:OcrTextInfo Region="255, 377, 28, 11" Text="5281" />
+                      <uc:OcrTextInfo Region="358, 377, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 377, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 377, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 377, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="680, 377, 35, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="791, 377, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 377, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="0, 393, 69, 11" Text="LEXINGTON" />
+                      <uc:OcrTextInfo Region="141, 393, 69, 11" Text="LEXINGTON" />
+                      <uc:OcrTextInfo Region="255, 393, 28, 11" Text="5320" />
+                      <uc:OcrTextInfo Region="358, 393, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 393, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 393, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 393, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="680, 393, 35, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="791, 393, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 393, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="0, 409, 68, 11" Text="MARLBORO" />
+                      <uc:OcrTextInfo Region="141, 409, 68, 11" Text="MARLBORO" />
+                      <uc:OcrTextInfo Region="255, 408, 28, 12" Text="5351" />
+                      <uc:OcrTextInfo Region="358, 409, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 409, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 409, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 409, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="680, 409, 35, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="791, 409, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 409, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="358, 425, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 425, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 425, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 425, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="680, 425, 35, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="791, 425, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 425, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="358, 441, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 441, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 441, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 441, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="680, 441, 35, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="791, 441, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 441, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="358, 457, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="453, 457, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="548, 457, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="643, 457, 24, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="680, 457, 35, 11" Text="1.00%" />
+                      <uc:OcrTextInfo Region="791, 457, 25, 11" Text="0.00" />
+                      <uc:OcrTextInfo Region="886, 457, 24, 11" Text="0.00" />
+                    </scg:List>
+                  </uc:CVCache.OcrTexts>
+                </uc:CVCache>
+              </scg:List>
+            </uc:CvCacheContainer.Caches>
+          </uc:CvCacheContainer>
+        </p:CVScope.DesignTimeCacheContainer>
+        <p:CVScope.OCREngine>
+          <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd:Rectangle, x:String))">
+            <ActivityFunc.Argument>
+              <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+            </ActivityFunc.Argument>
+            <p1:UiPathScreenOCR ApiKey="{x:Null}" Endpoint="{x:Null}" Output="{x:Null}" Text="{x:Null}" UseLocalServer="{x:Null}" ComputeSkewAngle="False" ExtractWords="True" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="UiPathScreenOCR_2" Image="[Image]" Language="en" Profile="Screen" Scale="1" Timeout="100000" />
+          </ActivityFunc>
+        </p:CVScope.OCREngine>
+        <p:CVScope.Target>
+          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b34915e6-6afb-41db-ba0f-1ed248baf09d" InformativeScreenshot="4bd01e2608f391c66afe440f37f1ec52" Selector="&lt;wnd app='returns.exe' ctrlname='frmReturns' isremoteapp='1' /&gt;&lt;wnd ctrlname='frmReturn' /&gt;&lt;wnd cls='MX1.WndClass' /&gt;" WaitForReady="INTERACTIVE">
+            <ui:Target.TimeoutMS>
+              <InArgument x:TypeArguments="x:Int32" />
+            </ui:Target.TimeoutMS>
+          </ui:Target>
+        </p:CVScope.Target>
+        <p:CVScope.UseLocalServer>
+          <InArgument x:TypeArguments="x:Boolean" />
+        </p:CVScope.UseLocalServer>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </p:CVScope>
+    </Sequence>
+    <Sequence DisplayName="Check Arguments Out" sap:VirtualizedContainerService.HintSize="526,346.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If Condition="[String.IsNullOrEmpty(out_StrCharlestonSchool)]" DisplayName="If out_StrCharlestonSchool is nothing" sap:VirtualizedContainerService.HintSize="484,254.666666666667" sap2010:WorkflowViewState.IdRef="If_1">
+        <If.Then>
+          <Throw DisplayName="Throw AE" Exception="[New Exception(&quot;Failed: &quot; + strComponentName + &quot;: Output Argument out_StrCharlestonSchool is null&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
+        </If.Then>
+      </If>
+    </Sequence>
+    <ui:LogMessage DisplayName="Log Message finish" sap:VirtualizedContainerService.HintSize="526,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[String.Format(&quot;Ended Component {0}&quot;, strComponentName)]" />
+  </Sequence>
+</Activity>
