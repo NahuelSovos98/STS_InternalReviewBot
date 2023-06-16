@@ -1,3 +1,6 @@
 Old STS Review Bot Dispatcher/
 Old STS Review Bot Performer/
 STS IR Bot Dispatcher/.local/
+STS IR Bot Dispatcher/.objects/*
+STS IR Bot Performer/.local/
+STS IR Bot Performer/.objects/*

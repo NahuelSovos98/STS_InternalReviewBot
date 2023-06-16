@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>536,868</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>847,930</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ParseSelectedReturnsAsDatatable_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -65,20 +65,19 @@
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ParseSelectedReturnsAsDatatable" sap:VirtualizedContainerService.HintSize="496,803.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ParseSelectedReturnsAsDatatable" sap:VirtualizedContainerService.HintSize="496,865" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,96" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;ParseSelectedTextAsDatatable starts&quot;]" />
-    <ui:MultipleAssign sap2010:Annotation.AnnotationText="First: Replace all commas by blank spaces.&#xA;Second: Replace all Tab keys to commas." DisplayName="Multiple Assign - Replace strSelectedText" sap:VirtualizedContainerService.HintSize="434,176.666666666667" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;ParseSelectedTextAsDatatable starts&quot;]" />
+    <ui:MultipleAssign sap2010:Annotation.AnnotationText="First: Replace all commas by blank spaces.&#xA;Second: Replace all Tab keys to commas.&#xD;&#xA;&#xD;&#xA;WARNING: This parse can affect the following columns: &lt;Display Name, Return ID&gt;.&#xD;&#xA;The column names and the values of the rest of the columns are parsed correctly" DisplayName="Multiple Assign - Replace strSelectedText" sap:VirtualizedContainerService.HintSize="434,249" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -105,7 +104,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:MultipleAssign>
-    <ui:GenerateDataTable ColumnSizes="{x:Null}" NewLineSeparator="{x:Null}" Positions="{x:Null}" CSVParsing="True" ColumnSeparators="," DataTable="[out_dtTextParsed]" DisplayName="Generate Data Table out_dtReturnsTable" sap:VirtualizedContainerService.HintSize="434,204" sap2010:WorkflowViewState.IdRef="GenerateDataTable_1" Input="[in_TextToParse]" UseColumnHeader="True">
+    <ui:GenerateDataTable ColumnSizes="{x:Null}" NewLineSeparator="{x:Null}" Positions="{x:Null}" CSVParsing="True" ColumnSeparators="," DataTable="[out_dtTextParsed]" DisplayName="Generate Data Table out_dtReturnsTable" sap:VirtualizedContainerService.HintSize="434,201" sap2010:WorkflowViewState.IdRef="GenerateDataTable_1" Input="[in_TextToParse]" UseColumnHeader="True">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -113,6 +112,6 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:GenerateDataTable>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,96" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;ParseSelectedTextAsDatatable ends&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;ParseSelectedTextAsDatatable ends&quot;]" />
   </Sequence>
 </Activity>
