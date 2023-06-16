@@ -115,16 +115,16 @@
               <av:PointCollection x:Key="ConnectorLocation">290,211.666666666667 290,292.333333333333</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <TryCatch DisplayName="TryCatch adjustment validation" sap:VirtualizedContainerService.HintSize="434,278.666666666667" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+          <TryCatch DisplayName="TryCatch adjustment validation" sap:VirtualizedContainerService.HintSize="2136,2200" sap2010:WorkflowViewState.IdRef="TryCatch_1">
             <TryCatch.Try>
-              <Sequence DisplayName="Get datatable's value with filter" sap:VirtualizedContainerService.HintSize="450,84.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+              <Sequence DisplayName="Get datatable's value with filter" sap:VirtualizedContainerService.HintSize="2097.33333333333,1960.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:FilterDataTable DataTable="[in_dtTfrCurrentPeriod]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="1504,164" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dt_filteredValues]" SelectColumnsMode="Keep">
+                <ui:FilterDataTable DataTable="[in_dtTfrCurrentPeriod]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="2035.33333333333,164" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dt_filteredValues]" SelectColumnsMode="Keep">
                   <ui:FilterDataTable.Filters>
                     <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                       <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
@@ -159,9 +159,9 @@
                     </scg:List>
                   </ui:FilterDataTable.SelectColumns>
                 </ui:FilterDataTable>
-                <If Condition="[dt_filteredValues.Rows.Count &gt; 0]" DisplayName="Check if filtered datatable return some value" sap:VirtualizedContainerService.HintSize="1504,301.333333333333" sap2010:WorkflowViewState.IdRef="If_3">
+                <If Condition="[dt_filteredValues.Rows.Count &gt; 0]" DisplayName="Check if filtered datatable return some value" sap:VirtualizedContainerService.HintSize="2035.33333333333,301.333333333333" sap2010:WorkflowViewState.IdRef="If_3">
                   <If.Then>
-                    <Sequence sap:VirtualizedContainerService.HintSize="450,104.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                    <Sequence sap:VirtualizedContainerService.HintSize="994.666666666667,104.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_7">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -170,17 +170,17 @@
                     </Sequence>
                   </If.Then>
                   <If.Else>
-                    <Sequence sap:VirtualizedContainerService.HintSize="450,136" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                    <Sequence sap:VirtualizedContainerService.HintSize="994.666666666667,136" sap2010:WorkflowViewState.IdRef="Sequence_8">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Throw Exception="[new Exception(&quot;no records were found in the file with the entered values. (&quot;+in_legalEntity+&quot;, &quot;+in_returnName+&quot;, &quot;+in_state+&quot; &quot;+&quot;)&quot;)]" sap:VirtualizedContainerService.HintSize="388,25.3333333333333" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                      <Throw Exception="[new Exception(&quot;no records were found in the file with the entered values. (&quot;+in_legalEntity+&quot;, &quot;+in_returnName+&quot;, &quot;+in_state+&quot; &quot;+&quot;)&quot;)]" sap:VirtualizedContainerService.HintSize="932.666666666667,25.3333333333333" sap2010:WorkflowViewState.IdRef="Throw_1" />
                     </Sequence>
                   </If.Else>
                 </If>
-                <Assign DisplayName="set value Adjustments" sap:VirtualizedContainerService.HintSize="1504,85.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
+                <Assign DisplayName="set value Adjustments" sap:VirtualizedContainerService.HintSize="2035.33333333333,85.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Double">[dbl_adjustments]</OutArgument>
                   </Assign.To>
@@ -188,7 +188,7 @@
                     <InArgument x:TypeArguments="x:Double">[Double.Parse(dt_filteredValues.Rows(0)("Adjustments").ToString)]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <If Condition="[dbl_adjustments = 0]" DisplayName="Validate that adjustment's value be zero" sap:VirtualizedContainerService.HintSize="1504,1179.33333333333" sap2010:WorkflowViewState.IdRef="If_1">
+                <If Condition="[dbl_adjustments = 0]" DisplayName="Validate that adjustment's value be zero" sap:VirtualizedContainerService.HintSize="2035.33333333333,1179.33333333333" sap2010:WorkflowViewState.IdRef="If_1">
                   <If.Then>
                     <Sequence DisplayName="Its Zero" sap:VirtualizedContainerService.HintSize="450,206.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_3">
                       <sap:WorkflowViewStateService.ViewState>
@@ -238,7 +238,7 @@
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,96" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Value is a integer number,we should not check margins.&quot;]" />
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,96" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Value is a integer number. We should not check margins.&quot;]" />
                           </Sequence>
                         </If.Then>
                         <If.Else>
@@ -274,10 +274,10 @@
               </Sequence>
             </TryCatch.Try>
             <TryCatch.Catches>
-              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,105.333333333333" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="2102,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
