@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="CheckMargins" this:CheckMargins.in_pathMargins="C:\Users\martin.martinez\Desktop\Returns Taxpayer documentation\Returns Taxpayer documentation\Lists\Sovos Forms With Margin on Imported (1).xlsx" this:CheckMargins.in_valueAdjustment="4347.46" this:CheckMargins.in_state="WA" this:CheckMargins.in_returnName="WA REV-40 2406" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="CheckMargins" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_pathMargins" Type="InArgument(x:String)" />
     <x:Property Name="in_valueAdjustment" Type="InArgument(x:Double)" />
@@ -229,7 +229,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Throw Exception="[new Exception(&quot;no records were found in the margins file with the entered values. (&quot;+in_state+&quot;, &quot;+in_returnName+&quot;). The adjustment is not correct.&quot;)]" sap:VirtualizedContainerService.HintSize="388,25.3333333333333" sap2010:WorkflowViewState.IdRef="Throw_1" />
+            <Throw Exception="[new BusinessRuleException(&quot;no records were found in the margins file with the entered values. (&quot;+in_state+&quot;, &quot;+in_returnName+&quot;). The adjustment is not correct.&quot;)]" sap:VirtualizedContainerService.HintSize="388,25.3333333333333" sap2010:WorkflowViewState.IdRef="Throw_1" />
           </Sequence>
         </If.Else>
       </If>
@@ -259,7 +259,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Throw Exception="[new Exception(&quot;the adjustment is not correct because is not within the margins.&quot;)]" sap:VirtualizedContainerService.HintSize="388,25.3333333333333" sap2010:WorkflowViewState.IdRef="Throw_2" />
+            <Throw Exception="[new BusinessRuleException(&quot;the adjustment is not correct because is not within the margins.&quot;)]" sap:VirtualizedContainerService.HintSize="388,25.3333333333333" sap2010:WorkflowViewState.IdRef="Throw_2" />
           </Sequence>
         </If.Else>
       </If>
