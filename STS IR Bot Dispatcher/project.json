@@ -1,6 +1,6 @@
 {
-  "name": "PRC_Taxpayer_v2",
-  "description": "Taxpayer process 2nd version",
+  "name": "InternalReviewBot_Dispatcher",
+  "description": "Get Returns List from Taxsolver. Save the table in an excel file. Upload each return item to the queue.",
   "main": "Main.xaml",
   "dependencies": {
     "ATOS.Map_Network_Drive.Activities": "[1.0.0]",
@@ -92,6 +92,13 @@
         "testCaseType": "TestCase",
         "executionTemplateType": "Local",
         "fileName": "Tests\\MainTests\\Test_RandomSelectors.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "deabf58b-4c72-47f6-b580-ed9d6a377655",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\MainTests\\WorkflowTestCaseTemplate.xaml"
       }
     ],
     "modernBehavior": false

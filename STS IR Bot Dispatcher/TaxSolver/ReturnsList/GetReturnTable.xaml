@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="GetReturnTable" this:GetReturnTable.in_TotalReturnsDisplayed="41" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="GetReturnTable" this:GetReturnTable.in_TotalReturnsDisplayed="68" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_TotalReturnsDisplayed" Type="InArgument(x:Int32)" />
     <x:Property Name="out_dtReturnsTable" Type="OutArgument(sd:DataTable)" />
@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>634.666666666667,2124</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>847,1990</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetReturnTable_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -78,7 +78,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GetReturnTable" sap:VirtualizedContainerService.HintSize="644.666666666667,2059.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="GetReturnTable" sap:VirtualizedContainerService.HintSize="546,1925" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strSelectedReturns" />
       <Variable x:TypeArguments="x:Int32" Default="0" Name="AmountTimesPageDown" />
@@ -88,21 +88,21 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="582.666666666667,96" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;GetReturnTable starts&quot;]" />
-    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'Returns List'" sap:VirtualizedContainerService.HintSize="582.666666666667,1382" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="0aeda596a9375a02ebaa58f911e0a65a" Selector="&lt;wnd app='returns.exe' ctrlname='frmReturns' isremoteapp='1' /&gt;">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;GetReturnTable starts&quot;]" />
+    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'Returns List'" sap:VirtualizedContainerService.HintSize="484,974" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="0aeda596a9375a02ebaa58f911e0a65a" Selector="&lt;wnd app='returns.exe' ctrlname='frmReturns' isremoteapp='1' /&gt;">
       <ui:WindowScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="548.666666666667,1234.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,827" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" AlterIfDisabled="True" sap2010:Annotation.AnnotationText="Just to make sure we are in the table" ClickType="CLICK_SINGLE" DisplayName="Click 'Data Entry Type' header" sap:VirtualizedContainerService.HintSize="486.666666666667,138" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+            <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" AlterIfDisabled="True" sap2010:Annotation.AnnotationText="Just to make sure we are in the table" ClickType="CLICK_SINGLE" DisplayName="Click 'Data Entry Type' header" sap:VirtualizedContainerService.HintSize="388,138" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
               <ui:Click.CursorPosition>
                 <ui:CursorPosition OffsetY="10" Position="Center">
                   <ui:CursorPosition.OffsetX>
@@ -126,9 +126,14 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:Click>
-            <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" sap2010:Annotation.AnnotationText="First step is positioning into the beginning of the table" DisplayName="Send Hotkey - RePag" sap:VirtualizedContainerService.HintSize="486.666666666667,167.333333333333" sap2010:WorkflowViewState.IdRef="SendHotkey_1" Key="pgup" KeyModifiers="None" SpecialKey="True">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GoToTheFirstRowWithHotkeys workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="TaxSolver\ReturnsList\GoToTheFirstRowWithHotkeys.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <scg:Dictionary x:TypeArguments="x:String, Argument" />
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey - Ctrl + Shift + End" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="SendHotkey_6" Key="end" KeyModifiers="Ctrl, Shift" SpecialKey="True">
               <ui:SendHotkey.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="bafe964b-48ce-426c-a64c-2472347977c1">
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="1dc7bcfd-030a-495c-8b81-06e6269adf6b">
                   <ui:Target.TimeoutMS>
                     <InArgument x:TypeArguments="x:Int32" />
                   </ui:Target.TimeoutMS>
@@ -139,96 +144,22 @@
               </ui:SendHotkey.Target>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:SendHotkey>
-            <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[in_TotalReturnsDisplayed &gt; 0]" DisplayName="While TotalRecords are &gt; 0" sap:VirtualizedContainerService.HintSize="486.666666666667,54" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
-              <ui:InterruptibleWhile.Body>
-                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,560" sap2010:WorkflowViewState.IdRef="Sequence_3">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" sap2010:Annotation.AnnotationText="To select the next records, press Shift+AvPag. Notice that you move 30 (more or less) rows down each time you press these hotkeys." DisplayName="Send Hotkey - Shift + AvPag" sap:VirtualizedContainerService.HintSize="434,198.666666666667" sap2010:WorkflowViewState.IdRef="SendHotkey_2" Key="pgdn" KeyModifiers="Shift" SpecialKey="True">
-                    <ui:SendHotkey.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="bafe964b-48ce-426c-a64c-2472347977c1">
-                        <ui:Target.TimeoutMS>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:Target.TimeoutMS>
-                        <ui:Target.WaitForReady>
-                          <InArgument x:TypeArguments="ui:WaitForReady" />
-                        </ui:Target.WaitForReady>
-                      </ui:Target>
-                    </ui:SendHotkey.Target>
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                  </ui:SendHotkey>
-                  <Assign DisplayName="Assign AmountTimesPageDown" sap:VirtualizedContainerService.HintSize="434,85.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_2">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="x:Int32">[AmountTimesPageDown]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="x:Int32">[AmountTimesPageDown + 1]</InArgument>
-                    </Assign.Value>
-                  </Assign>
-                  <Assign DisplayName="Assign - in_TotalReturnsDisplayed" sap:VirtualizedContainerService.HintSize="434,85.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="x:Int32">[in_TotalReturnsDisplayed]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="x:Int32">[in_TotalReturnsDisplayed - 30]</InArgument>
-                    </Assign.Value>
-                  </Assign>
-                </Sequence>
-              </ui:InterruptibleWhile.Body>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-            </ui:InterruptibleWhile>
-            <ui:Comment sap:VirtualizedContainerService.HintSize="486.666666666667,76" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// Now it has selected all the records, copy all values to the clipboard." />
-            <ui:CopySelectedText SendWindowMessages="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Copy Selected Returns in Clipboard" sap:VirtualizedContainerService.HintSize="486.666666666667,25.3333333333333" sap2010:WorkflowViewState.IdRef="CopySelectedText_1">
+            </ui:SendHotkey>
+            <ui:Comment sap:VirtualizedContainerService.HintSize="388,75" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// Now it has selected all the records, copy all values to the clipboard." />
+            <ui:CopySelectedText SendWindowMessages="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Copy Selected Returns in Clipboard" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="CopySelectedText_1">
               <ui:CopySelectedText.Result>
                 <OutArgument x:TypeArguments="x:String">[strSelectedReturns]</OutArgument>
               </ui:CopySelectedText.Result>
             </ui:CopySelectedText>
-            <ui:InterruptibleWhile CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Press PageUp as many times as you pressed PageDown.&#xA;This is a measure to make sure the table will start at the beginning" Condition="[AmountTimesPageDown &gt; 0]" DisplayName="While AmountTimesPageDown is greater than 0" sap:VirtualizedContainerService.HintSize="486.666666666667,463.333333333333" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_2">
-              <ui:InterruptibleWhile.Body>
-                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,247.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_5">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey - PageUp" sap:VirtualizedContainerService.HintSize="388,136.666666666667" sap2010:WorkflowViewState.IdRef="SendHotkey_3" Key="pgup" KeyModifiers="None" SpecialKey="True">
-                    <ui:SendHotkey.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="a79586dc-6ea4-4ae1-bf0f-b71bb434ac5b">
-                        <ui:Target.TimeoutMS>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:Target.TimeoutMS>
-                        <ui:Target.WaitForReady>
-                          <InArgument x:TypeArguments="ui:WaitForReady" />
-                        </ui:Target.WaitForReady>
-                      </ui:Target>
-                    </ui:SendHotkey.Target>
-                  </ui:SendHotkey>
-                </Sequence>
-              </ui:InterruptibleWhile.Body>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:InterruptibleWhile>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GoToTheFirstRowWithHotkeys workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="TaxSolver\ReturnsList\GoToTheFirstRowWithHotkeys.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <scg:Dictionary x:TypeArguments="x:String, Argument" />
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
           </Sequence>
         </ActivityAction>
       </ui:WindowScope.Body>
@@ -239,7 +170,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:WindowScope>
-    <ui:WriteTextFile File="{x:Null}" sap2010:Annotation.AnnotationText="Just to have a backup of what the bot has selected" DisplayName="Write Text File - Output.txt" FileName="Output.txt" sap:VirtualizedContainerService.HintSize="582.666666666667,99.3333333333333" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[strSelectedReturns]">
+    <ui:WriteTextFile File="{x:Null}" sap2010:Annotation.AnnotationText="Just to have a backup of what the bot has selected" DisplayName="Write Text File - Output.txt" FileName="Output.txt" sap:VirtualizedContainerService.HintSize="484,94" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[strSelectedReturns]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -248,16 +179,26 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:WriteTextFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ParseSelectedReturnsAsDatatable workflow" sap:VirtualizedContainerService.HintSize="582.666666666667,115.333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="TaxSolver\ReturnsList\ParseSelectedReturnsAsDatatable.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ParseSelectedReturnsAsDatatable workflow" sap:VirtualizedContainerService.HintSize="484,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="TaxSolver\ReturnsList\ParseSelectedReturnsAsDatatable.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_TextToParse">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strSelectedReturns" />
-        </InArgument>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtTextParsed">
-          <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="out_dtReturnsTable" />
-        </OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_TextToParse">[strSelectedReturns]</InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtTextParsed">[out_dtReturnsTable]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="582.666666666667,96" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;GetReturnTable ends&quot;]" />
+    <If Condition="[out_dtReturnsTable.RowCount &lt;&gt; in_TotalReturnsDisplayed]" DisplayName="If the table does not have the same rows as displayed in TaxSolver" sap:VirtualizedContainerService.HintSize="484,249" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Throw DisplayName="Throw BE - RowCount does not match" Exception="[new BusinessRuleException(&quot;The amount of rows displayed in TaxSolver (&quot;+in_TotalReturnsDisplayed.ToString+&quot;) does not match with the amount of rows copied from clipboard (&quot;+out_dtReturnsTable.RowCount.ToString+&quot;). Please check if the bot is doing the right conversion and check the Output bkp text file.&quot;)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_1" />
+      </If.Then>
+      <If.Else>
+        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;GetReturnTable ends&quot;]" />
   </Sequence>
 </Activity>
