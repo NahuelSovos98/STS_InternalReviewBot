@@ -118,7 +118,7 @@
                 <InArgument x:TypeArguments="x:String">["Form"]</InArgument>
               </ui:FilterOperationArgument.Column>
               <ui:FilterOperationArgument.Operand>
-                <InArgument x:TypeArguments="x:String">[in_returnName.ToUpper.Trim]</InArgument>
+                <InArgument x:TypeArguments="x:String">[in_returnName.Trim]</InArgument>
               </ui:FilterOperationArgument.Operand>
             </ui:FilterOperationArgument>
           </scg:List>
