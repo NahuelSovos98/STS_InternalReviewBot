@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="TestScreenScrapingLogic" this:TestScreenScrapingLogic.in_RegexToApply="(?&lt;=K\.\s*OTHER\:\D*)(\d[\d,. \n]*)" this:TestScreenScrapingLogic.in_ExpectedMatches="1" this:TestScreenScrapingLogic.in_SplitRegex="\s{5,}" this:TestScreenScrapingLogic.in_ExpectedSplitElements="2" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:this="clr-namespace:" xmlns:uasa="clr-namespace:UiPath.Activities.System.Arrays;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<Activity mc:Ignorable="sap sap2010" x:Class="TestScreenScrapingLogic" this:TestScreenScrapingLogic.in_RegexToApply="(?&lt;=Other \(including cash refunds, newspapers and magazines, etc\.\) - identify below \s+16\s+).*" this:TestScreenScrapingLogic.in_ExpectedMatches="1" this:TestScreenScrapingLogic.in_SplitRegex="\s+" this:TestScreenScrapingLogic.in_ExpectedSplitElements="2" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:this="clr-namespace:" xmlns:uasa="clr-namespace:UiPath.Activities.System.Arrays;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_RegexToApply" Type="InArgument(x:String)" />
     <x:Property Name="in_ExpectedMatches" Type="InArgument(x:Int32)" />
@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1174,2921</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1216,2938</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>TestScreenScrapingLogic_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -79,7 +79,7 @@
       <AssemblyReference>UiPath.Platform</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="TestScreenScrapingLogic" sap:VirtualizedContainerService.HintSize="1073,2856" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="TestScreenScrapingLogic" sap:VirtualizedContainerService.HintSize="1075,2873" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="ExtractedText" />
       <Variable x:TypeArguments="str:MatchCollection" Name="ListMatches" />
@@ -90,7 +90,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'Returns'" sap:VirtualizedContainerService.HintSize="1011,365" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="f76a862c97fd4251cf6c760197eadaa0" Selector="&lt;wnd app='returns.exe' ctrlname='frmReturns' isremoteapp='1' /&gt;">
+    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'Returns'" sap:VirtualizedContainerService.HintSize="1013,365" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="f76a862c97fd4251cf6c760197eadaa0" Selector="&lt;wnd app='returns.exe' ctrlname='frmReturns' isremoteapp='1' /&gt;">
       <ui:WindowScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -121,8 +121,8 @@
         </ActivityAction>
       </ui:WindowScope.Body>
     </ui:WindowScope>
-    <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="Tests\Output screen scraping.txt" sap:VirtualizedContainerService.HintSize="1011,133" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[ExtractedText]" />
-    <Assign DisplayName="Assign ListMatches" sap:VirtualizedContainerService.HintSize="1011,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="Tests\Output screen scraping.txt" sap:VirtualizedContainerService.HintSize="1013,133" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[ExtractedText]" />
+    <Assign DisplayName="Assign ListMatches" sap:VirtualizedContainerService.HintSize="1013,82" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="str:MatchCollection">[ListMatches]</OutArgument>
       </Assign.To>
@@ -130,7 +130,7 @@
         <InArgument x:TypeArguments="str:MatchCollection">[System.Text.RegularExpressions.Regex.Matches(ExtractedText, in_RegexToApply)]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1011,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1013,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,171" sap2010:WorkflowViewState.IdRef="Sequence_10">
           <sap:WorkflowViewStateService.ViewState>
@@ -148,7 +148,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <If Condition="[ListMatches.Count &lt;&gt; in_ExpectedMatches]" DisplayName="If amount of matches is not ok" sap:VirtualizedContainerService.HintSize="1011,249" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[ListMatches.Count &lt;&gt; in_ExpectedMatches]" DisplayName="If amount of matches is not ok" sap:VirtualizedContainerService.HintSize="1013,249" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
         <Throw DisplayName="Throw BE - Amount of matches are wrong" Exception="[New BusinessRuleException(&quot;Amount of matches unexpected. It got &lt;&quot;+ListMatches.Count.ToString+&quot;&gt; but expected &lt;&quot;+in_ExpectedMatches.ToString+&quot;&gt;&quot;)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_1" />
       </If.Then>
@@ -162,13 +162,13 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:ForEach x:TypeArguments="str:Match" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1011,1117" sap2010:WorkflowViewState.IdRef="ForEach`1_12" Values="[ListMatches]">
+    <ui:ForEach x:TypeArguments="str:Match" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1013,1120" sap2010:WorkflowViewState.IdRef="ForEach`1_12" Values="[ListMatches]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="str:Match">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="str:Match" Name="Match" />
           </ActivityAction.Argument>
-          <If Condition="[Not String.IsNullOrWhiteSpace(in_SplitRegex)]" DisplayName="If it needs to split each match" sap:VirtualizedContainerService.HintSize="975,991" sap2010:WorkflowViewState.IdRef="If_2">
+          <If Condition="[Not String.IsNullOrWhiteSpace(in_SplitRegex)]" DisplayName="If it needs to split each match" sap:VirtualizedContainerService.HintSize="975,994" sap2010:WorkflowViewState.IdRef="If_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -176,7 +176,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence DisplayName="Split Regex Match and upload to ListQueue" sap:VirtualizedContainerService.HintSize="546,831" sap2010:WorkflowViewState.IdRef="Sequence_6">
+              <Sequence DisplayName="Split Regex Match and upload to ListQueue" sap:VirtualizedContainerService.HintSize="546,834" sap2010:WorkflowViewState.IdRef="Sequence_6">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="scg:List(x:String)" Name="ListSplittedItems" />
                 </Sequence.Variables>
@@ -213,13 +213,13 @@
                     <Throw DisplayName="Throw BE - Amount of item are not expected" Exception="[New BusinessRuleException(&quot;Amount of matches unexpected after the split. It got &lt;&quot;+ListSplittedItems.Count.ToString+&quot;&gt; but expected &lt;&quot;+in_ExpectedSplitElements.ToString+&quot;&gt;&quot;)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_2" />
                   </If.Then>
                 </If>
-                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="484,259" sap2010:WorkflowViewState.IdRef="ForEach`1_13" Values="[ListSplittedItems]">
+                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="484,262" sap2010:WorkflowViewState.IdRef="ForEach`1_13" Values="[ListSplittedItems]">
                   <ui:ForEach.Body>
                     <ActivityAction x:TypeArguments="x:String">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="x:String" Name="item" />
                       </ActivityAction.Argument>
-                      <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List" sap:VirtualizedContainerService.HintSize="384,133" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_4" ItemToAppend="[System.Text.RegularExpressions.Regex.Replace(item, &quot;\s&quot;,&quot;&quot;)]" List="[ListItemsToCheck]" />
+                      <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" DisplayName="Append Item to List" sap:VirtualizedContainerService.HintSize="384,136" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_4" ItemToAppend="[System.Text.RegularExpressions.Regex.Replace(item, &quot;\s&quot;,&quot;&quot;)]" List="[ListItemsToCheck]" />
                     </ActivityAction>
                   </ui:ForEach.Body>
                 </ui:ForEach>
@@ -232,15 +232,15 @@
         </ActivityAction>
       </ui:ForEach.Body>
     </ui:ForEach>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each Item to check" sap:VirtualizedContainerService.HintSize="1011,375" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[ListItemsToCheck]">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each Item to check" sap:VirtualizedContainerService.HintSize="1012.66666666667,385.333333333333" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[ListItemsToCheck]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="item" />
           </ActivityAction.Argument>
-          <If Condition="[Not CDbl(item).Equals(0)]" DisplayName="If item is not equals to 0" sap:VirtualizedContainerService.HintSize="484,249" sap2010:WorkflowViewState.IdRef="If_4">
+          <If Condition="[Not CDbl(item).Equals(0)]" DisplayName="If item is not equals to 0" sap:VirtualizedContainerService.HintSize="484,256" sap2010:WorkflowViewState.IdRef="If_4">
             <If.Then>
-              <Throw DisplayName="Throw BE - Amount of item are not expected" Exception="[New BusinessRuleException(&quot;Item with value &quot; + item + &quot; is not equals to 0. The other deductions is failed&quot;)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_3" />
+              <Throw DisplayName="Throw BE - Amount of item are not expected" Exception="[New BusinessRuleException(&quot;Item with value &quot; + item + &quot; is not equals to 0. The other deductions is failed&quot;)]" sap:VirtualizedContainerService.HintSize="200,25.3333333333333" sap2010:WorkflowViewState.IdRef="Throw_3" />
             </If.Then>
             <If.Else>
               <Sequence sap:VirtualizedContainerService.HintSize="450,104.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_9">
@@ -255,6 +255,6 @@
         </ActivityAction>
       </ui:ForEach.Body>
     </ui:ForEach>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1011,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Finished&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1012.66666666667,96" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Finished&quot;]" />
   </Sequence>
 </Activity>
