@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="OpenCorrespondingReturn" this:OpenCorrespondingReturn.in_CustomerAccount="Squire - LLR" this:OpenCorrespondingReturn.in_ReturnName="ID 850" this:OpenCorrespondingReturn.in_ReturnWorkflow="Filed" this:OpenCorrespondingReturn.in_ExceptionalReturnNameCase="SER" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="OpenCorrespondingReturn" this:OpenCorrespondingReturn.in_CustomerAccount="2015" this:OpenCorrespondingReturn.in_ReturnName="CO kasjdhjdas" this:OpenCorrespondingReturn.in_ReturnWorkflow="Filed" this:OpenCorrespondingReturn.in_ExceptionalReturnNameCase="SER" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_CustomerAccount" Type="InArgument(x:String)" />
     <x:Property Name="in_ReturnName" Type="InArgument(x:String)" />
@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1121,2935</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1216,2935</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>OpenCorrespondingReturn_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -77,7 +77,6 @@
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="OpenCorrespondingReturn" sap:VirtualizedContainerService.HintSize="1131,2870" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -90,6 +89,7 @@
       </Variable>
       <Variable x:TypeArguments="x:Boolean" Default="False" Name="boolReturnOpened" />
       <Variable x:TypeArguments="x:String" Name="ReturnToCompare" />
+      <Variable x:TypeArguments="x:Int32" Name="ReturnIndex" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -147,7 +147,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:Click>
-            <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[Not boolLastReturnInTaxsolver And Not boolReturnOpened]" DisplayName="While this return is not the last one and return was not opened" sap:VirtualizedContainerService.HintSize="973,1641" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+            <ui:InterruptibleWhile Condition="[Not boolLastReturnInTaxsolver And Not boolReturnOpened]" CurrentIndex="[ReturnIndex]" DisplayName="While this return is not the last one and return was not opened" sap:VirtualizedContainerService.HintSize="973,1641" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
               <ui:InterruptibleWhile.Body>
                 <Sequence DisplayName="TryToOpenReturn" sap:VirtualizedContainerService.HintSize="937,1475" sap2010:WorkflowViewState.IdRef="Sequence_8">
                   <sap:WorkflowViewStateService.ViewState>
@@ -202,7 +202,7 @@ dtSelectedReturn.Rows(0)("Workflow").toString]</InArgument>
                       <OutArgument x:TypeArguments="x:Boolean">[boolLastReturnInTaxsolver]</OutArgument>
                     </Assign.To>
                     <Assign.Value>
-                      <InArgument x:TypeArguments="x:Boolean">[InfoLastReturn.toLower.Equals(SelectedReturnItem)]</InArgument>
+                      <InArgument x:TypeArguments="x:Boolean">[InfoLastReturn.toLower.Equals(SelectedReturnItem.ToLower)]</InArgument>
                     </Assign.Value>
                   </Assign>
                   <If Condition="[ReturnToCompare.ToLower.Equals(SelectedReturnItem.ToLower) And Not boolExceptionalReturnCase]" DisplayName="If the current item has the same values as the required" sap:VirtualizedContainerService.HintSize="875,504" sap2010:WorkflowViewState.IdRef="If_1">
@@ -271,7 +271,7 @@ dtSelectedReturn.Rows(0)("Workflow").toString]</InArgument>
     </ui:WindowScope>
     <If Condition="[Not boolReturnOpened]" DisplayName="If return item was not found/opened" sap:VirtualizedContainerService.HintSize="1069,256" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
-        <Throw sap2010:Annotation.AnnotationText="It can also assign an output to the Process" DisplayName="Throw BE - ReturnItem was not found" Exception="[new BusinessRuleException(&quot;The bot reached the last return item in Taxsolver and it couldn't find the required return item: &quot; +ReturnToCompare )]" sap:VirtualizedContainerService.HintSize="200,67" sap2010:WorkflowViewState.IdRef="Throw_1">
+        <Throw sap2010:Annotation.AnnotationText="It can also assign an output to the Process" DisplayName="Throw BE - ReturnItem was not found" Exception="[new BusinessRuleException(&quot;The bot reached the last return item in Taxsolver and it couldn't find the required return item: &quot; +ReturnToCompare )]" sap:VirtualizedContainerService.HintSize="200,67" sap2010:WorkflowViewState.IdRef="Throw_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -289,6 +289,6 @@ dtSelectedReturn.Rows(0)("Workflow").toString]</InArgument>
         </Sequence>
       </If.Else>
     </If>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1069,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;OpenCorrespondingReturnInTaxsolver ends&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1069,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;OpenCorrespondingReturnInTaxsolver ends. Movements: &quot; + ReturnIndex.ToString]" />
   </Sequence>
 </Activity>

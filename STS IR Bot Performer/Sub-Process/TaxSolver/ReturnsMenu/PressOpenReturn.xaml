@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="PressOpenReturn" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="847,1272" sap2010:WorkflowViewState.IdRef="PressOpenReturn_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="PressOpenReturn" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1216,1605" sap2010:WorkflowViewState.IdRef="PressOpenReturn_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -52,7 +52,6 @@
       <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
@@ -62,9 +61,17 @@
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="PressOpenReturn" sap:VirtualizedContainerService.HintSize="596,1540" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="s:DateTime" Name="DateTimeStartWorkflow">
+        <Variable.Default>
+          <mva:VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="Now" />
+        </Variable.Default>
+      </Variable>
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -151,7 +158,7 @@
               <TryCatch.Try>
                 <ui:WaitUiElementAppear WaitActive="{x:Null}" WaitVisible="{x:Null}" sap2010:Annotation.AnnotationText="Output is OkButton" DisplayName="Find Element 'Return Editing Authorization'" FoundElement="[OkButton]" sap:VirtualizedContainerService.HintSize="334,138" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_1">
                   <ui:WaitUiElementAppear.Target>
-                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="51ae3c9c-0411-4f25-abbe-81e368051941" InformativeScreenshot="b83d73c0d8ab59b67e857b57b03cc4f5" Selector="&lt;wnd app='returns.exe' cls='#32770' isremoteapp='1' title='Return Editing Authorization' /&gt;&lt;wnd ctrlid='2' title='OK' /&gt;" TimeoutMS="10000">
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="51ae3c9c-0411-4f25-abbe-81e368051941" InformativeScreenshot="b83d73c0d8ab59b67e857b57b03cc4f5" Selector="&lt;wnd app='returns.exe' cls='#32770' isremoteapp='1' title='Return Editing Authorization' /&gt;&lt;wnd ctrlid='2' title='OK' /&gt;" TimeoutMS="60000">
                       <ui:Target.WaitForReady>
                         <InArgument x:TypeArguments="ui:WaitForReady" />
                       </ui:Target.WaitForReady>
@@ -228,17 +235,13 @@
             </ui:Click>
             <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'Main Return window'" sap:VirtualizedContainerService.HintSize="438,107" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_2">
               <ui:WaitUiElementAppear.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d82952e2-ea55-4251-9ec5-b9cc279c1475" InformativeScreenshot="663ea4a68cfd1fdbffa779382cd4d9d2" Selector="&lt;wnd ctrlname='frmReturn' /&gt;&lt;wnd cls='MX1.WndClass' /&gt;" WaitForReady="COMPLETE">
-                  <ui:Target.TimeoutMS>
-                    <InArgument x:TypeArguments="x:Int32" />
-                  </ui:Target.TimeoutMS>
-                </ui:Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d82952e2-ea55-4251-9ec5-b9cc279c1475" InformativeScreenshot="663ea4a68cfd1fdbffa779382cd4d9d2" Selector="&lt;wnd ctrlname='frmReturn' /&gt;&lt;wnd cls='MX1.WndClass' /&gt;" TimeoutMS="60000" WaitForReady="COMPLETE" />
               </ui:WaitUiElementAppear.Target>
             </ui:WaitUiElementAppear>
           </Sequence>
         </ActivityAction>
       </ui:WindowScope.Body>
     </ui:WindowScope>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="534,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;PressOpenReturn button ends&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="534,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;PressOpenReturn button ends. Time: &quot; + (Now - DateTimeStartWorkflow).Seconds.ToString + &quot; seconds.&quot;]" />
   </Sequence>
 </Activity>

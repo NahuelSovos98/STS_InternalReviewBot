@@ -1,15 +1,16 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="CheckDatatableIsCorrect" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="CheckDatatableIsCorrect" this:CheckDatatableIsCorrect.in_WorksheetRange="A4:V9999" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_pathTFR" Type="InArgument(x:String)" />
     <x:Property Name="in_sheetNameTFR" Type="InArgument(x:String)" />
     <x:Property Name="in_columnsToVerify" Type="InArgument(x:String)" />
     <x:Property Name="out_boolTFRValidation" Type="OutArgument(x:Boolean)" />
     <x:Property Name="out_dtTfrCurrentPeriod" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="in_WorksheetRange" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1513.33333333333,3252.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1174,1314</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CheckDatatableIsCorrect_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -78,10 +79,9 @@
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CheckDatatableIsCorrect" sap:VirtualizedContainerService.HintSize="1054,3188" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CheckDatatableIsCorrect" sap:VirtualizedContainerService.HintSize="1007,1249" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="bool_LegalEntityExist" />
       <Variable x:TypeArguments="x:Boolean" Name="bool_returnNameExist" />
@@ -100,7 +100,7 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="bool TFR Validation" sap:VirtualizedContainerService.HintSize="992,85.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_10">
+    <Assign DisplayName="bool TFR Validation" sap:VirtualizedContainerService.HintSize="945,82" sap2010:WorkflowViewState.IdRef="Assign_10">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Boolean">[out_boolTFRValidation]</OutArgument>
       </Assign.To>
@@ -108,14 +108,14 @@
         <InArgument x:TypeArguments="x:Boolean">False</InArgument>
       </Assign.Value>
     </Assign>
-    <Sequence DisplayName="Read Range starting from cell A4" sap:VirtualizedContainerService.HintSize="992,402.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Read Range starting from cell A4" sap:VirtualizedContainerService.HintSize="945,400" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ReadRange AddHeaders="True" DataTable="[out_dtTfrCurrentPeriod]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="434,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" Range="A4:V9999" SheetName="[in_sheetNameTFR]" WorkbookPath="[in_pathTFR]" />
-      <ui:FilterDataTable DataTable="[out_dtTfrCurrentPeriod]" DisplayName="Filter Data Table - we are left only with the values ​​of the table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="434,164" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[out_dtTfrCurrentPeriod]" SelectColumnsMode="Keep">
+      <ui:ReadRange AddHeaders="True" DataTable="[out_dtTfrCurrentPeriod]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="434,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" Range="[in_WorksheetRange]" SheetName="[in_sheetNameTFR]" WorkbookPath="[in_pathTFR]" />
+      <ui:FilterDataTable DataTable="[out_dtTfrCurrentPeriod]" DisplayName="Filter Data Table - we are left only with the values ​​of the table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="434,161" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[out_dtTfrCurrentPeriod]" SelectColumnsMode="Keep">
         <ui:FilterDataTable.Filters>
           <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
             <ui:FilterOperationArgument BooleanOperator="And" Operator="NOTEQ">
@@ -135,7 +135,7 @@
         </ui:FilterDataTable.SelectColumns>
       </ui:FilterDataTable>
     </Sequence>
-    <If Condition="[IsNumeric(out_dtTfrCurrentPeriod.Rows(0)) or String.IsNullOrEmpty(out_dtTfrCurrentPeriod.Rows(0).ToString)]" DisplayName="Check if datatable start in cell A4" sap:VirtualizedContainerService.HintSize="992,372" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[IsNumeric(out_dtTfrCurrentPeriod.Rows(0)) or String.IsNullOrEmpty(out_dtTfrCurrentPeriod.Rows(0).ToString)]" DisplayName="Check if datatable start in cell A4" sap:VirtualizedContainerService.HintSize="945,363" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -149,28 +149,28 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Throw Exception="[New Exception(&quot;Datatable in TFR Excel File not start in cell A4&quot;)]" sap:VirtualizedContainerService.HintSize="388,25.3333333333333" sap2010:WorkflowViewState.IdRef="Throw_1" />
+          <Throw Exception="[New Exception(&quot;Datatable in TFR Excel File not start in cell A4&quot;)]" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="Throw_1" />
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="450,206.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_7">
+        <Sequence sap:VirtualizedContainerService.HintSize="450,203" sap2010:WorkflowViewState.IdRef="Sequence_7">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,96" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Datatable in TFR Excel File start in cell A4&quot;]" />
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Datatable in TFR Excel File start in cell A4&quot;]" />
         </Sequence>
       </If.Else>
     </If>
-    <Sequence DisplayName="validate the existence of the columns that the bot will use" sap:VirtualizedContainerService.HintSize="992,1560" sap2010:WorkflowViewState.IdRef="Sequence_4">
+    <Sequence DisplayName="validate the existence of the columns that the bot will use" sap:VirtualizedContainerService.HintSize="945,81" sap2010:WorkflowViewState.IdRef="Sequence_4">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Get Columns names to verify" sap:VirtualizedContainerService.HintSize="496,822.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_5">
+      <Sequence DisplayName="Get Columns names to verify" sap:VirtualizedContainerService.HintSize="496,803" sap2010:WorkflowViewState.IdRef="Sequence_5">
         <Sequence.Variables>
           <Variable x:TypeArguments="s:String[]" Name="array_columnsValues" />
         </Sequence.Variables>
@@ -180,7 +180,7 @@
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <Assign DisplayName="Split" sap:VirtualizedContainerService.HintSize="434,85.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_6">
+        <Assign DisplayName="Split" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_6">
           <Assign.To>
             <OutArgument x:TypeArguments="s:String[]">[array_columnsValues]</OutArgument>
           </Assign.To>
@@ -188,7 +188,7 @@
             <InArgument x:TypeArguments="s:String[]">[in_columnsToVerify.Split(","c)]</InArgument>
           </Assign.Value>
         </Assign>
-        <Assign DisplayName="Assign Column Value 1" sap:VirtualizedContainerService.HintSize="434,85.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_7">
+        <Assign DisplayName="Assign Column Value 1" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_7">
           <Assign.To>
             <OutArgument x:TypeArguments="x:String">[str_LegalEntityValue]</OutArgument>
           </Assign.To>
@@ -196,7 +196,7 @@
             <InArgument x:TypeArguments="x:String">[array_columnsValues(0).ToString.Trim]</InArgument>
           </Assign.Value>
         </Assign>
-        <Assign DisplayName="Assign Column Value 2" sap:VirtualizedContainerService.HintSize="434,85.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_8">
+        <Assign DisplayName="Assign Column Value 2" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_8">
           <Assign.To>
             <OutArgument x:TypeArguments="x:String">[str_StateValue]</OutArgument>
           </Assign.To>
@@ -204,7 +204,7 @@
             <InArgument x:TypeArguments="x:String">[array_columnsValues(1).ToString.Trim]</InArgument>
           </Assign.Value>
         </Assign>
-        <Assign DisplayName="Assign Column Value 3" sap:VirtualizedContainerService.HintSize="434,85.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_9">
+        <Assign DisplayName="Assign Column Value 3" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_9">
           <Assign.To>
             <OutArgument x:TypeArguments="x:String">[str_ReturnNameValue]</OutArgument>
           </Assign.To>
@@ -212,7 +212,7 @@
             <InArgument x:TypeArguments="x:String">[array_columnsValues(2).ToString.Trim]</InArgument>
           </Assign.Value>
         </Assign>
-        <Assign DisplayName="Assign Column Value 4" sap:VirtualizedContainerService.HintSize="434,85.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_12">
+        <Assign DisplayName="Assign Column Value 4" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_12">
           <Assign.To>
             <OutArgument x:TypeArguments="x:String">[str_taxImportedValue]</OutArgument>
           </Assign.To>
@@ -220,7 +220,7 @@
             <InArgument x:TypeArguments="x:String">[array_columnsValues(3).ToString.Trim]</InArgument>
           </Assign.Value>
         </Assign>
-        <Assign DisplayName="Assign Column Value 5" sap:VirtualizedContainerService.HintSize="434,85.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_13">
+        <Assign DisplayName="Assign Column Value 5" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_13">
           <Assign.To>
             <OutArgument x:TypeArguments="x:String">[str_adjustmentValue]</OutArgument>
           </Assign.To>
@@ -270,16 +270,22 @@
         </Assign.Value>
       </Assign>
     </Sequence>
-    <If Condition="[bool_stateExist and bool_LegalEntityExist and bool_returnNameExist and bool_taxImportedExist and bool_adjustmentExist]" DisplayName="exist column values that bot will search?" sap:VirtualizedContainerService.HintSize="992,497.333333333333" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[bool_stateExist and bool_LegalEntityExist and bool_returnNameExist and bool_taxImportedExist and bool_adjustmentExist]" DisplayName="exist column values that bot will search?" sap:VirtualizedContainerService.HintSize="945,52" sap2010:WorkflowViewState.IdRef="If_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="496,332" sap2010:WorkflowViewState.IdRef="Sequence_8">
+        <Sequence sap:VirtualizedContainerService.HintSize="496,325" sap2010:WorkflowViewState.IdRef="Sequence_8">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,96" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;TFR datatable validation is OK&quot;]" />
-          <Assign DisplayName="bool TFR Validation" sap:VirtualizedContainerService.HintSize="434,85.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_11">
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;TFR datatable validation is OK&quot;]" />
+          <Assign DisplayName="bool TFR Validation" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_11">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Boolean">[out_boolTFRValidation]</OutArgument>
             </Assign.To>
@@ -296,7 +302,7 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Throw Exception="[New Exception(&quot;Some columns values in TFR datatable doesn´t exist&quot;)]" sap:VirtualizedContainerService.HintSize="388,25.3333333333333" sap2010:WorkflowViewState.IdRef="Throw_2" />
+          <Throw Exception="[New Exception(&quot;Some columns values in TFR datatable doesn´t exist&quot;)]" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="Throw_2" />
         </Sequence>
       </If.Else>
     </If>
