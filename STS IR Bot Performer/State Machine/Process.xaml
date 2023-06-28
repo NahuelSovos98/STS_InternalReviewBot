@@ -12,7 +12,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1141,1419</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1514,1419</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="54">
@@ -97,21 +97,11 @@
     <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="524,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process for transaction item: &quot;+in_TransactionItem(&quot;Customer Account&quot;).ToString+&quot;_&quot;+in_TransactionItem(&quot;Return Name&quot;).ToString]" />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke OpenCorrespondingReturn workflow" sap:VirtualizedContainerService.HintSize="524,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\OpenCorrespondingReturn.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_CustomerAccount">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Customer Account&quot;).ToString" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Return Name&quot;).ToString" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ReturnWorkflow">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Workflow&quot;).ToString" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionalReturnNameCase">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ReturnNameExceptionalCase&quot;).ToString" />
-        </InArgument>
-        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolReturnWasOpened">
-          <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="boolReturnWasOpened" />
-        </OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_CustomerAccount">[in_TransactionItem("Customer Account").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">[in_TransactionItem("Return Name").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ReturnWorkflow">[in_TransactionItem("Workflow").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionalReturnNameCase">[in_Config("ReturnNameExceptionalCase").ToString]</InArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolReturnWasOpened">[boolReturnWasOpened]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <If Condition="[boolReturnWasOpened]" DisplayName="If return was opened" sap:VirtualizedContainerService.HintSize="524,886" sap2010:WorkflowViewState.IdRef="If_1">
