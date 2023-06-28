@@ -4,11 +4,12 @@
     <x:Property Name="in_PathReviewSheetFile" Type="InArgument(x:String)" />
     <x:Property Name="in_CurrentMonth" Type="InArgument(x:String)" />
     <x:Property Name="in_CurrentYear" Type="InArgument(x:Int32)" />
+    <x:Property Name="out_WorksheetReviewSheet" Type="OutArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1141,1146</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1141,1258</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CreateNewWorksheet_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -69,7 +70,6 @@
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
@@ -82,19 +82,19 @@
       <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CreateNewWorksheet" sap:VirtualizedContainerService.HintSize="642,1081" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CreateNewWorksheet" sap:VirtualizedContainerService.HintSize="546,1193" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="NewWorksheetName" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="ListSheets" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="580,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;CreateNewWorksheet in ReviewSheetFile starts&quot;]" />
-    <Assign sap2010:Annotation.AnnotationText="CurrentMonth + CurrentYear" DisplayName="Assign - NewWorksheetName" sap:VirtualizedContainerService.HintSize="580,113" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;CreateNewWorksheet in ReviewSheetFile starts&quot;]" />
+    <Assign sap2010:Annotation.AnnotationText="CurrentMonth + CurrentYear" DisplayName="Assign - NewWorksheetName" sap:VirtualizedContainerService.HintSize="484,113" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[NewWorksheetName]</OutArgument>
+        <OutArgument x:TypeArguments="x:String">[out_WorksheetReviewSheet]</OutArgument>
       </Assign.To>
       <Assign.Value>
         <InArgument x:TypeArguments="x:String">[in_CurrentMonth + " " + in_CurrentYear.ToString]</InArgument>
@@ -105,40 +105,46 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - ReviewSheetFile" sap:VirtualizedContainerService.HintSize="580,553" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[in_PathReviewSheetFile]">
+    <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope - ReviewSheetFile" sap:VirtualizedContainerService.HintSize="484,246" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" ReadOnly="True" Visible="False" WorkbookPath="[in_PathReviewSheetFile]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="546,443" sap2010:WorkflowViewState.IdRef="Sequence_2">
-            <Sequence.Variables>
-              <Variable x:TypeArguments="scg:List(x:String)" Name="ListSheets" />
-            </Sequence.Variables>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,136" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ExcelGetWorkbookSheets DisplayName="Get Workbook Sheets - ListSheets" sap:VirtualizedContainerService.HintSize="484,25" sap2010:WorkflowViewState.IdRef="ExcelGetWorkbookSheets_1" Sheets="[ListSheets]" />
-            <If Condition="[Not ListSheets.Contains(NewWorksheetName)]" DisplayName="If worksheet does not exist" sap:VirtualizedContainerService.HintSize="484,267" sap2010:WorkflowViewState.IdRef="If_1">
-              <If.Then>
-                <ui:ExcelCopySheet DestinationFilePath="{x:Null}" DestinationSheetName="[NewWorksheetName]" DisplayName="Copy Template Sheet" sap:VirtualizedContainerService.HintSize="334,80" sap2010:WorkflowViewState.IdRef="ExcelCopySheet_1" SheetName="[in_Config(&quot;ReviewSheet_WorksheetName&quot;).ToString]" />
-              </If.Then>
-              <If.Else>
-                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_3">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </Sequence>
-              </If.Else>
-            </If>
+            <ui:ExcelGetWorkbookSheets DisplayName="Get Workbook Sheets - ListSheets" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="ExcelGetWorkbookSheets_1" Sheets="[ListSheets]" />
           </Sequence>
         </ActivityAction>
       </ui:ExcelApplicationScope.Body>
     </ui:ExcelApplicationScope>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="580,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;CreateNewWorksheet in ReviewSheetFile ends&quot;]" />
+    <If Condition="[Not ListSheets.Contains(out_WorksheetReviewSheet)]" DisplayName="If worksheet does not exist in ReviewSheet" sap:VirtualizedContainerService.HintSize="484,379" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - in_TemplatesFile" sap:VirtualizedContainerService.HintSize="434,190" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[in_Config(&quot;PathTemplatesFile&quot;).ToString]">
+          <ui:ExcelApplicationScope.Body>
+            <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+              </ActivityAction.Argument>
+              <ui:ExcelCopySheet DestinationFilePath="[in_PathReviewSheetFile]" DestinationSheetName="[out_WorksheetReviewSheet]" DisplayName="Copy Template Sheet" sap:VirtualizedContainerService.HintSize="334,80" sap2010:WorkflowViewState.IdRef="ExcelCopySheet_1" SheetName="[in_Config(&quot;TemplateFile_WorksheetReviewSheetTemplate&quot;).ToString]" />
+            </ActivityAction>
+          </ui:ExcelApplicationScope.Body>
+        </ui:ExcelApplicationScope>
+      </If.Then>
+      <If.Else>
+        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;CreateNewWorksheet in ReviewSheetFile ends&quot;]" />
   </Sequence>
 </Activity>
