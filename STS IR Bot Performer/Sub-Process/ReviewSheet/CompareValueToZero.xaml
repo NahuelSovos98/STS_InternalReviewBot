@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="CompareValueToZero" this:CompareValueToZero.in_ColumnName="Credit Held" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="CompareValueToZero" this:CompareValueToZero.in_legalEntity="BASKIN" this:CompareValueToZero.in_state="AZ" this:CompareValueToZero.in_returnName="AZ TPT-2" this:CompareValueToZero.in_ColumnName="Credit Held" this:CompareValueToZero.in_pathReviewSheet="Data\Templates.xlsx" this:CompareValueToZero.in_sheetReviewSheet="ReviewSheet" this:CompareValueToZero.in_rangeReviewSheet="G6" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_dtTFRFile" Type="InArgument(sd:DataTable)" />
     <x:Property Name="in_legalEntity" Type="InArgument(x:String)" />
@@ -12,7 +12,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1514,1916</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1514,1586</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CompareValueToZero_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -76,14 +76,14 @@
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CompareValueToZero" sap:VirtualizedContainerService.HintSize="1107,1851" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CompareValueToZero" sap:VirtualizedContainerService.HintSize="648,1521" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="boolTFR" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_tfrFile" />
@@ -95,31 +95,19 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="1045,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Sub-Process\Adjustment\CheckDatatableIsCorrect.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="586,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Sub-Process\Adjustment\CheckDatatableIsCorrect.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pathTFR">
-          <Literal x:TypeArguments="x:String">C:\Users\martin.martinez\Desktop\filesForTesting\BASKIN Tax Filed 202303.xlsx</Literal>
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_sheetNameTFR">
-          <Literal x:TypeArguments="x:String">Current Period Returns</Literal>
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_columnsToVerify">
-          <Literal x:TypeArguments="x:String">Legal Entity,State,Return Name,Tax Imported - Current Period,Adjustments</Literal>
-        </InArgument>
-        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolTFRValidation">
-          <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="boolTFR" />
-        </OutArgument>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtTfrCurrentPeriod">
-          <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dt_tfrFile" />
-        </OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_WorksheetRange">
-          <Literal x:TypeArguments="x:String">A4:V9999</Literal>
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pathTFR">C:\Users\martin.martinez\Desktop\filesForTesting\BASKIN Tax Filed 202303.xlsx</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_sheetNameTFR">Current Period Returns</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_columnsToVerify">Legal Entity,State,Return Name,Tax Imported - Current Period,Adjustments</InArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolTFRValidation">[boolTFR]</OutArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtTfrCurrentPeriod">[dt_tfrFile]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_WorksheetRange">A4:V9999</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <TryCatch DisplayName="Value validation" sap:VirtualizedContainerService.HintSize="1045,1587" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Value validation" sap:VirtualizedContainerService.HintSize="586,1257" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <Sequence DisplayName="Value validation - Try" sap:VirtualizedContainerService.HintSize="1007,1359" sap2010:WorkflowViewState.IdRef="Sequence_7">
+        <Sequence DisplayName="Value validation - Try" sap:VirtualizedContainerService.HintSize="1007,1356" sap2010:WorkflowViewState.IdRef="Sequence_7">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -160,7 +148,7 @@
               </scg:List>
             </ui:FilterDataTable.SelectColumns>
           </ui:FilterDataTable>
-          <If Condition="[Not dt_filtered.Rows.Count &gt; 0]" DisplayName="Check if filtered datatable return some value" sap:VirtualizedContainerService.HintSize="945,457" sap2010:WorkflowViewState.IdRef="If_2">
+          <If Condition="[Not dt_filtered.Rows.Count &gt; 0]" DisplayName="Check if filtered datatable return some value" sap:VirtualizedContainerService.HintSize="945,456" sap2010:WorkflowViewState.IdRef="If_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -179,7 +167,7 @@
               </Sequence>
             </If.Then>
             <If.Else>
-              <Sequence sap:VirtualizedContainerService.HintSize="242,103" sap2010:WorkflowViewState.IdRef="Sequence_6">
+              <Sequence sap:VirtualizedContainerService.HintSize="450,103" sap2010:WorkflowViewState.IdRef="Sequence_6">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -188,7 +176,7 @@
               </Sequence>
             </If.Else>
           </If>
-          <Assign DisplayName="set value Margin to compare" sap:VirtualizedContainerService.HintSize="945,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign DisplayName="set value Margin to compare" sap:VirtualizedContainerService.HintSize="945,81" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Double">[dbl_valueColumn]</OutArgument>
             </Assign.To>
@@ -196,7 +184,7 @@
               <InArgument x:TypeArguments="x:Double">[Double.Parse(dt_filtered.Rows(0)(in_ColumnName).ToString)]</InArgument>
             </Assign.Value>
           </Assign>
-          <If Condition="[not dbl_valueColumn.Equals(0)]" DisplayName="Check if selected value is equal to zero" sap:VirtualizedContainerService.HintSize="945,428" sap2010:WorkflowViewState.IdRef="If_3">
+          <If Condition="[not dbl_valueColumn.Equals(0)]" DisplayName="Check if selected value is equal to zero" sap:VirtualizedContainerService.HintSize="945,427" sap2010:WorkflowViewState.IdRef="If_3">
             <If.Then>
               <Sequence sap:VirtualizedContainerService.HintSize="450,268" sap2010:WorkflowViewState.IdRef="Sequence_10">
                 <sap:WorkflowViewStateService.ViewState>
@@ -215,17 +203,17 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;the record that it was finding in the TFR file with the entered values. (&quot;+in_state+&quot;, &quot;+in_returnName+&quot;, &quot;+in_state +  &quot;). is equal to zero in the column &quot;+in_ColumnName]" />
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;the record that it was finding in the TFR file with the entered values. (&quot;+in_state+&quot;, &quot;+in_returnName+&quot;, &quot;+ in_legalEntity +  &quot;). is equal to zero in the column &quot;+in_ColumnName]" />
               </Sequence>
             </If.Else>
           </If>
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="1011,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="552,1094" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -233,32 +221,35 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Add row in review sheet" sap:VirtualizedContainerService.HintSize="450,291" sap2010:WorkflowViewState.IdRef="Sequence_8">
+            <Sequence DisplayName="Add row in review sheet" sap:VirtualizedContainerService.HintSize="546,1025" sap2010:WorkflowViewState.IdRef="Sequence_8">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="sd:DataTable" Name="dtReturnsFailed" />
+              </Sequence.Variables>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:ReadRange DataTable="{x:Null}" AddHeaders="True" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="388,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" Range="[in_rangeReviewSheet]" SheetName="[in_sheetReviewSheet]" WorkbookPath="[in_pathReviewSheet]" />
-              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="CommentOut_2">
-                <ui:CommentOut.Body>
-                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,453" sap2010:WorkflowViewState.IdRef="Sequence_9">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <ui:AddDataRow ArrayRow="{x:Null}" DataRow="{x:Null}" DataTable="{x:Null}" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="388,186" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
-                    <ui:WriteRange DataTable="{x:Null}" SheetName="{x:Null}" StartingCell="{x:Null}" WorkbookPath="{x:Null}" AddHeaders="False" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="388,116" sap2010:WorkflowViewState.IdRef="WriteRange_1" />
-                  </Sequence>
-                </ui:CommentOut.Body>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:CommentOut>
+              <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="484,914" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[in_pathReviewSheet]">
+                <ui:ExcelApplicationScope.Body>
+                  <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,804" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:ExcelReadRange AddHeaders="True" DataTable="[dtReturnsFailed]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" Range="[in_rangeReviewSheet]" SheetName="[in_sheetReviewSheet]" />
+                      <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{in_returnName,in_legalEntity,exception.Message}]" DataTable="[dtReturnsFailed]" DisplayName="Add Data Row in dtReturnsFailed" sap:VirtualizedContainerService.HintSize="388,186" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
+                      <ui:SortDataTable ColumnName="{x:Null}" DataColumn="{x:Null}" ColumnIndex="[0]" DataTable="[dtReturnsFailed]" DisplayName="Sort Data Table" sap:VirtualizedContainerService.HintSize="388,239" sap2010:WorkflowViewState.IdRef="SortDataTable_1" Order="Ascending" OutputDataTable="[dtReturnsFailed]" SortOrder="Ascending" />
+                      <ui:ExcelWriteRange AddHeaders="True" DataTable="[dtReturnsFailed]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="388,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="[in_sheetReviewSheet]" StartingCell="[in_rangeReviewSheet]" />
+                    </Sequence>
+                  </ActivityAction>
+                </ui:ExcelApplicationScope.Body>
+              </ui:ExcelApplicationScope>
             </Sequence>
           </ActivityAction>
         </Catch>
