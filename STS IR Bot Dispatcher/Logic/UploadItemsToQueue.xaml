@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1726,2150</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1726,2384</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>UploadItemsToQueue_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -79,11 +79,11 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="UploadItemsToQueue" sap:VirtualizedContainerService.HintSize="1736,2085" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="UploadItemsToQueue" sap:VirtualizedContainerService.HintSize="1736,2319" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="Username" />
       <Variable x:TypeArguments="x:Int32" Name="AmountUploadedItems" />
       <Variable x:TypeArguments="x:Int32" Name="AmountSkippedItems" />
-      <Variable x:TypeArguments="x:String" Name="Username" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -92,14 +92,36 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1674,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;UploadItemsToQueue starts&quot;]" />
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1674,92" sap2010:WorkflowViewState.IdRef="LogMessage_5" Message="[&quot;Amount of return items: &quot; + in_dtReturns.RowCount.ToString]" />
-    <Assign DisplayName="Assign UserName" sap:VirtualizedContainerService.HintSize="1674,82" sap2010:WorkflowViewState.IdRef="Assign_4">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[Username]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[System.Environment.UserName.ToLower]</InArgument>
-      </Assign.Value>
-    </Assign>
+    <ui:MultipleAssign DisplayName="Multiple Assign Constants" sap:VirtualizedContainerService.HintSize="1674,163" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[Username]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[System.Environment.UserName.ToLower]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:Int32">[AmountSkippedItems]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:Int32">0</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:Int32">[AmountUploadedItems]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:Int32">0</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+    </ui:MultipleAssign>
     <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dtReturns]" DisplayName="For Each Row in dtReturns" sap:VirtualizedContainerService.HintSize="1674,1456" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
@@ -264,6 +286,16 @@ in_CustomerName + "_" + ReturnName]</InArgument>
         </ActivityAction>
       </ui:ForEachRow.Body>
     </ui:ForEachRow>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ShowMessageUploadedItems workflow" sap:VirtualizedContainerService.HintSize="1674,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Logic\ShowMessageUploadedItems.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_AmountUploadedItems">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="AmountUploadedItems" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_AmountSkippedItems">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="AmountSkippedItems" />
+        </InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1674,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;UploadItemsToQueue ends. Items uploaded to the queue: &quot;+AmountUploadedItems.ToString+&quot;. Items skipped: &quot;+AmountSkippedItems.ToString+&quot;.&quot;]" />
   </Sequence>
 </Activity>
