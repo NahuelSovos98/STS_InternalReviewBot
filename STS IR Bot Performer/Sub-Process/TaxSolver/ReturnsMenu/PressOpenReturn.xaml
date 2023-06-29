@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="PressOpenReturn" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1216,1605" sap2010:WorkflowViewState.IdRef="PressOpenReturn_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="PressOpenReturn" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1228,1300" sap2010:WorkflowViewState.IdRef="PressOpenReturn_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -64,13 +64,9 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="PressOpenReturn" sap:VirtualizedContainerService.HintSize="596,1540" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="PressOpenReturn" sap:VirtualizedContainerService.HintSize="596,1235" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="s:DateTime" Name="DateTimeStartWorkflow">
-        <Variable.Default>
-          <mva:VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="Now" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="s:DateTime" Default="[Now]" Name="DateTimeStartWorkflow" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -78,13 +74,13 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="534,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;PressOpenReturn button starts&quot;]" />
-    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'Returns'" sap:VirtualizedContainerService.HintSize="534,1165" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="fffcd85c469052b3e5ffd1c6fbb0babc" Selector="&lt;wnd app='returns.exe' ctrlname='frmReturns' isremoteapp='1' /&gt;">
+    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'Returns'" sap:VirtualizedContainerService.HintSize="534,860" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="fffcd85c469052b3e5ffd1c6fbb0babc" Selector="&lt;wnd app='returns.exe' ctrlname='frmReturns' isremoteapp='1' /&gt;">
       <ui:WindowScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="500,1018" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="500,713" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <Sequence.Variables>
               <Variable x:TypeArguments="ui:UiElement" Name="OkButton" />
             </Sequence.Variables>
@@ -151,24 +147,15 @@
                 </ui:Target>
               </ui:ClickText.Target>
             </ui:ClickText>
-            <TryCatch DisplayName="Try Catch - FindReturnEditingAuthorization" sap:VirtualizedContainerService.HintSize="438,366" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+            <TryCatch DisplayName="Try Catch - FindMainReturnScreen" sap:VirtualizedContainerService.HintSize="438,335" sap2010:WorkflowViewState.IdRef="TryCatch_1">
               <TryCatch.Variables>
                 <Variable x:TypeArguments="x:Boolean" Name="boolReturnsLocked" />
               </TryCatch.Variables>
               <TryCatch.Try>
-                <ui:WaitUiElementAppear WaitActive="{x:Null}" WaitVisible="{x:Null}" sap2010:Annotation.AnnotationText="Output is OkButton" DisplayName="Find Element 'Return Editing Authorization'" FoundElement="[OkButton]" sap:VirtualizedContainerService.HintSize="334,138" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_1">
+                <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'Main Return window'" sap:VirtualizedContainerService.HintSize="334,107" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_3">
                   <ui:WaitUiElementAppear.Target>
-                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="51ae3c9c-0411-4f25-abbe-81e368051941" InformativeScreenshot="b83d73c0d8ab59b67e857b57b03cc4f5" Selector="&lt;wnd app='returns.exe' cls='#32770' isremoteapp='1' title='Return Editing Authorization' /&gt;&lt;wnd ctrlid='2' title='OK' /&gt;" TimeoutMS="60000">
-                      <ui:Target.WaitForReady>
-                        <InArgument x:TypeArguments="ui:WaitForReady" />
-                      </ui:Target.WaitForReady>
-                    </ui:Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d82952e2-ea55-4251-9ec5-b9cc279c1475" InformativeScreenshot="663ea4a68cfd1fdbffa779382cd4d9d2" Selector="&lt;wnd ctrlname='frmReturn' /&gt;&lt;wnd cls='MX1.WndClass' /&gt;" TimeoutMS="60000" WaitForReady="COMPLETE" />
                   </ui:WaitUiElementAppear.Target>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
                 </ui:WaitUiElementAppear>
               </TryCatch.Try>
               <TryCatch.Catches>
@@ -183,61 +170,124 @@
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Check if return is locked" sap:VirtualizedContainerService.HintSize="546,476" sap2010:WorkflowViewState.IdRef="Sequence_7">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                      <ui:UiElementExists DisplayName="Element Exists 'ReturnsLocked' popup" Exists="[boolReturnsLocked]" sap:VirtualizedContainerService.HintSize="484,107" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
-                        <ui:UiElementExists.Target>
-                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d8380085-a63e-4ac9-8a99-8609eb59e449" InformativeScreenshot="e6d93a49dafe9201ede3bcb5cd133a10" Selector="&lt;wnd app='returns.exe' omit:cls='#32770' isremoteapp='1' title='Returns Locked' /&gt;" TimeoutMS="3000">
-                            <ui:Target.WaitForReady>
-                              <InArgument x:TypeArguments="ui:WaitForReady" />
-                            </ui:Target.WaitForReady>
-                          </ui:Target>
-                        </ui:UiElementExists.Target>
-                      </ui:UiElementExists>
-                      <If Condition="[boolReturnsLocked]" DisplayName="If return is locked" sap:VirtualizedContainerService.HintSize="484,218" sap2010:WorkflowViewState.IdRef="If_1">
-                        <If.Then>
-                          <Throw DisplayName="Throw BE - Return locked in TaxSolver" Exception="[new BusinessRuleException(&quot;The return was locked in Taxsolver. It tried to access but Taxsolver said it was locked by remote processing.&quot;)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_1" />
-                        </If.Then>
-                        <If.Else>
-                          <Rethrow DisplayName="Rethrow SE" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
-                        </If.Else>
-                      </If>
-                    </Sequence>
+                    <TryCatch DisplayName="Try Catch Find Editing popup" sap:VirtualizedContainerService.HintSize="488,883" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                      <TryCatch.Try>
+                        <Sequence DisplayName="Click on popup and continue" sap:VirtualizedContainerService.HintSize="450,655" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Warn" Message="[&quot;Main Return page does not appear. Trying to find Return Editing popup&quot;]" />
+                          <ui:WaitUiElementAppear WaitActive="{x:Null}" WaitVisible="{x:Null}" sap2010:Annotation.AnnotationText="Output is OkButton" DisplayName="Find Element 'Return Editing Authorization'" FoundElement="[OkButton]" sap:VirtualizedContainerService.HintSize="388,138" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_1">
+                            <ui:WaitUiElementAppear.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="51ae3c9c-0411-4f25-abbe-81e368051941" InformativeScreenshot="b83d73c0d8ab59b67e857b57b03cc4f5" Selector="&lt;wnd app='returns.exe' cls='#32770' isremoteapp='1' title='Return Editing Authorization' /&gt;&lt;wnd ctrlid='2' title='OK' /&gt;" TimeoutMS="60000">
+                                <ui:Target.WaitForReady>
+                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                </ui:Target.WaitForReady>
+                              </ui:Target>
+                            </ui:WaitUiElementAppear.Target>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:WaitUiElementAppear>
+                          <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" AlterIfDisabled="True" ClickType="CLICK_SINGLE" DisplayName="Click on Ok Button" sap:VirtualizedContainerService.HintSize="388,87" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+                            <ui:Click.CursorPosition>
+                              <ui:CursorPosition Position="Center">
+                                <ui:CursorPosition.OffsetX>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetX>
+                                <ui:CursorPosition.OffsetY>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetY>
+                              </ui:CursorPosition>
+                            </ui:Click.CursorPosition>
+                            <ui:Click.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[OkButton]" Id="eb47e57a-57d1-4b2f-9155-98e25703181c">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                                <ui:Target.WaitForReady>
+                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                </ui:Target.WaitForReady>
+                              </ui:Target>
+                            </ui:Click.Target>
+                          </ui:Click>
+                          <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'Main Return window'" sap:VirtualizedContainerService.HintSize="388,107" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_2">
+                            <ui:WaitUiElementAppear.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d82952e2-ea55-4251-9ec5-b9cc279c1475" InformativeScreenshot="663ea4a68cfd1fdbffa779382cd4d9d2" Selector="&lt;wnd ctrlname='frmReturn' /&gt;&lt;wnd cls='MX1.WndClass' /&gt;" TimeoutMS="60000" WaitForReady="COMPLETE" />
+                            </ui:WaitUiElementAppear.Target>
+                          </ui:WaitUiElementAppear>
+                        </Sequence>
+                      </TryCatch.Try>
+                      <TryCatch.Catches>
+                        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="454,21" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ActivityAction x:TypeArguments="s:Exception">
+                            <ActivityAction.Argument>
+                              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                            </ActivityAction.Argument>
+                            <Sequence DisplayName="Check if return is locked" sap:VirtualizedContainerService.HintSize="757,629" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="695,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Warn" Message="[&quot;Return Editing popup does not appear. See what is the issue&quot;]" />
+                              <ui:UiElementExists DisplayName="Element Exists 'ReturnsLocked' popup" Exists="[boolReturnsLocked]" sap:VirtualizedContainerService.HintSize="695,107" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+                                <ui:UiElementExists.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d8380085-a63e-4ac9-8a99-8609eb59e449" InformativeScreenshot="e6d93a49dafe9201ede3bcb5cd133a10" Selector="&lt;wnd app='returns.exe' omit:cls='#32770' isremoteapp='1' title='Returns Locked' /&gt;" TimeoutMS="3000">
+                                    <ui:Target.WaitForReady>
+                                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                                    </ui:Target.WaitForReady>
+                                  </ui:Target>
+                                </ui:UiElementExists.Target>
+                              </ui:UiElementExists>
+                              <If Condition="[boolReturnsLocked]" DisplayName="If return is locked" sap:VirtualizedContainerService.HintSize="695,239" sap2010:WorkflowViewState.IdRef="If_1">
+                                <If.Then>
+                                  <Sequence DisplayName="Close popup and throw error" sap:VirtualizedContainerService.HintSize="450,81" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey - Hotkey" sap:VirtualizedContainerService.HintSize="388,133" sap2010:WorkflowViewState.IdRef="SendHotkey_1" Key="enter" KeyModifiers="None" SpecialKey="True">
+                                      <ui:SendHotkey.Target>
+                                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="f800f577-7078-4388-aa0d-94d36c9955d1">
+                                          <ui:Target.TimeoutMS>
+                                            <InArgument x:TypeArguments="x:Int32" />
+                                          </ui:Target.TimeoutMS>
+                                          <ui:Target.WaitForReady>
+                                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                                          </ui:Target.WaitForReady>
+                                        </ui:Target>
+                                      </ui:SendHotkey.Target>
+                                    </ui:SendHotkey>
+                                    <Throw DisplayName="Throw BE - Return locked in TaxSolver" Exception="[new BusinessRuleException(&quot;The return was locked in Taxsolver. It tried to access but Taxsolver said it was locked by remote processing.&quot;)]" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                                  </Sequence>
+                                </If.Then>
+                                <If.Else>
+                                  <Rethrow DisplayName="Rethrow SE" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
+                                </If.Else>
+                              </If>
+                            </Sequence>
+                          </ActivityAction>
+                        </Catch>
+                      </TryCatch.Catches>
+                    </TryCatch>
                   </ActivityAction>
                 </Catch>
               </TryCatch.Catches>
             </TryCatch>
-            <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" AlterIfDisabled="True" ClickType="CLICK_SINGLE" DisplayName="Click on Ok Button" sap:VirtualizedContainerService.HintSize="438,87" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
-              <ui:Click.CursorPosition>
-                <ui:CursorPosition Position="Center">
-                  <ui:CursorPosition.OffsetX>
-                    <InArgument x:TypeArguments="x:Int32" />
-                  </ui:CursorPosition.OffsetX>
-                  <ui:CursorPosition.OffsetY>
-                    <InArgument x:TypeArguments="x:Int32" />
-                  </ui:CursorPosition.OffsetY>
-                </ui:CursorPosition>
-              </ui:Click.CursorPosition>
-              <ui:Click.Target>
-                <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[OkButton]" Id="eb47e57a-57d1-4b2f-9155-98e25703181c">
-                  <ui:Target.TimeoutMS>
-                    <InArgument x:TypeArguments="x:Int32" />
-                  </ui:Target.TimeoutMS>
-                  <ui:Target.WaitForReady>
-                    <InArgument x:TypeArguments="ui:WaitForReady" />
-                  </ui:Target.WaitForReady>
-                </ui:Target>
-              </ui:Click.Target>
-            </ui:Click>
-            <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'Main Return window'" sap:VirtualizedContainerService.HintSize="438,107" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_2">
-              <ui:WaitUiElementAppear.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d82952e2-ea55-4251-9ec5-b9cc279c1475" InformativeScreenshot="663ea4a68cfd1fdbffa779382cd4d9d2" Selector="&lt;wnd ctrlname='frmReturn' /&gt;&lt;wnd cls='MX1.WndClass' /&gt;" TimeoutMS="60000" WaitForReady="COMPLETE" />
-              </ui:WaitUiElementAppear.Target>
-            </ui:WaitUiElementAppear>
           </Sequence>
         </ActivityAction>
       </ui:WindowScope.Body>
