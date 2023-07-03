@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1228,2476</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>681,2781</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CheckOtherDeductions_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -79,7 +79,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CheckOtherDeductions" sap:VirtualizedContainerService.HintSize="655,2411" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CheckOtherDeductions" sap:VirtualizedContainerService.HintSize="691,2716" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="FormPage" />
       <Variable x:TypeArguments="x:String" Name="TabPage" />
@@ -92,9 +92,9 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="593,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;CheckOtherDeductions starts&quot;]" />
-    <ui:Comment sap:VirtualizedContainerService.HintSize="593,75" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// First: Find what way the bot needs to process this return." />
-    <Sequence DisplayName="Look for the bot path" sap:VirtualizedContainerService.HintSize="593,624" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="629,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;CheckOtherDeductions starts&quot;]" />
+    <ui:Comment sap:VirtualizedContainerService.HintSize="629,75" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// First: Find what way the bot needs to process this return." />
+    <Sequence DisplayName="Look for the bot path" sap:VirtualizedContainerService.HintSize="629,624" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -138,7 +138,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[dtBotPath.RowCount &lt;&gt; 0]" DisplayName="If there are results" sap:VirtualizedContainerService.HintSize="972,490" sap2010:WorkflowViewState.IdRef="If_2">
+            <If Condition="[dtBotPath.RowCount &lt;&gt; 0]" DisplayName="If there are results" sap:VirtualizedContainerService.HintSize="972,483" sap2010:WorkflowViewState.IdRef="If_2">
               <If.Then>
                 <ui:MultipleAssign DisplayName="Multiple Assign - outputs" sap:VirtualizedContainerService.HintSize="431,163" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
                   <ui:MultipleAssign.AssignOperations>
@@ -172,14 +172,14 @@
                 </ui:MultipleAssign>
               </If.Then>
               <If.Else>
-                <Sequence DisplayName="No results" sap:VirtualizedContainerService.HintSize="496,332" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                <Sequence DisplayName="No results" sap:VirtualizedContainerService.HintSize="496,325" sap2010:WorkflowViewState.IdRef="Sequence_8">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign DisplayName="Assign boolNeedCheckOtherDeductions" sap:VirtualizedContainerService.HintSize="434,85.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
+                  <Assign DisplayName="Assign boolNeedCheckOtherDeductions" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:Boolean">[boolNeedCheckOtherDeductions]</OutArgument>
                     </Assign.To>
@@ -187,7 +187,7 @@
                       <InArgument x:TypeArguments="x:Boolean">False</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,96" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Warn" Message="[&quot;There are no matches for the following return in the OtherDeductionsList: &lt;&quot;+in_ReturnName+&quot;&gt;&quot;]" />
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Warn" Message="[&quot;There are no matches for the following return in the OtherDeductionsList: &lt;&quot;+in_ReturnName+&quot;&gt;&quot;]" />
                 </Sequence>
               </If.Else>
             </If>
@@ -201,20 +201,20 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:CommentOut>
     </Sequence>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtBotPath]" DisplayName="For Each Row in dtBotPath" sap:VirtualizedContainerService.HintSize="593,1257" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtBotPath]" DisplayName="For Each Row in dtBotPath" sap:VirtualizedContainerService.HintSize="629,1562" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Apply Other deductions logic" sap:VirtualizedContainerService.HintSize="559,1140" sap2010:WorkflowViewState.IdRef="Sequence_12">
+          <Sequence DisplayName="Apply Other deductions logic" sap:VirtualizedContainerService.HintSize="595,1445" sap2010:WorkflowViewState.IdRef="Sequence_12">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:MultipleAssign DisplayName="Multiple Assign - outputs" sap:VirtualizedContainerService.HintSize="497,163" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+            <ui:MultipleAssign DisplayName="Multiple Assign - outputs" sap:VirtualizedContainerService.HintSize="533,163" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
               <ui:MultipleAssign.AssignOperations>
                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
@@ -244,9 +244,9 @@
                 </scg:List>
               </ui:MultipleAssign.AssignOperations>
             </ui:MultipleAssign>
-            <ui:Comment sap:VirtualizedContainerService.HintSize="497,75" sap2010:WorkflowViewState.IdRef="Comment_4" Text="// Second: Go to the following Form and Page tab" />
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="497,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Message="[&quot;Applying other deductions for return: &lt;&quot;+in_ReturnName+IF(String.IsNullOrWhiteSpace(FormPage),&quot;&quot;,&quot;,&quot; + FormPage)+&quot;&gt;&quot;]" />
-            <Sequence DisplayName="Go to corresponding Form and Page tab" sap:VirtualizedContainerService.HintSize="497,81" sap2010:WorkflowViewState.IdRef="Sequence_11">
+            <ui:Comment sap:VirtualizedContainerService.HintSize="533,75" sap2010:WorkflowViewState.IdRef="Comment_4" Text="// Second: Go to the following Form and Page tab" />
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="533,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Message="[&quot;Applying other deductions for return: &lt;&quot;+in_ReturnName+IF(String.IsNullOrWhiteSpace(FormPage),&quot;&quot;,&quot;,&quot; + FormPage)+&quot;&gt;&quot;]" />
+            <Sequence DisplayName="Go to corresponding Form and Page tab" sap:VirtualizedContainerService.HintSize="533,81" sap2010:WorkflowViewState.IdRef="Sequence_11">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -277,8 +277,8 @@
                 </ui:InvokeWorkflowFile.Arguments>
               </ui:InvokeWorkflowFile>
             </Sequence>
-            <ui:Comment sap:VirtualizedContainerService.HintSize="497,75" sap2010:WorkflowViewState.IdRef="Comment_5" Text="// Third: Apply the following workflow for its bot path." />
-            <Switch x:TypeArguments="x:String" DisplayName="Switch BotPath" Expression="[BotPath.ToUpper.Trim]" sap:VirtualizedContainerService.HintSize="497,343" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+            <ui:Comment sap:VirtualizedContainerService.HintSize="533,75" sap2010:WorkflowViewState.IdRef="Comment_5" Text="// Third: Apply the following workflow for its bot path." />
+            <Switch x:TypeArguments="x:String" DisplayName="Switch BotPath" Expression="[BotPath.ToUpper.Trim]" sap:VirtualizedContainerService.HintSize="533,648" sap2010:WorkflowViewState.IdRef="Switch`1_1">
               <Switch.Default>
                 <Throw DisplayName="Throw BE - unrecognized Bot Path" Exception="[new BusinessRuleException(&quot;The following bot path was not recognized &quot;&quot;&quot;+BotPath+&quot;&quot;&quot;. Please, check the OtherDeductionsList file.&quot;)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_3">
                   <sap:WorkflowViewStateService.ViewState>
@@ -313,19 +313,58 @@
               </ui:InvokeWorkflowFile>
               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="CELL INTERSECTING" DisplayName="Invoke CheckByCellIntersecting workflow" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Sub-Process\CheckOtherDeductions\CheckByCellIntersecting.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                    <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ReturnName" />
-                  </InArgument>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">[in_ReturnName]</InArgument>
                 </ui:InvokeWorkflowFile.Arguments>
               </ui:InvokeWorkflowFile>
+              <Sequence x:Key="EXPORT WORKSHEET" DisplayName="Export Worksheet" sap:VirtualizedContainerService.HintSize="493,396" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:String" Name="PathTempCsvFile" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:MultipleAssign DisplayName="Multiple Assign - PathTempCsvFile" sap:VirtualizedContainerService.HintSize="431,132" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+                  <ui:MultipleAssign.AssignOperations>
+                    <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[PathTempCsvFile]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">\\somproddfs1.prod.sovos.org\depts\TaxSolver Files\test export detail worksheet.csv</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[PathTempCsvFile]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[Path.ChangeExtension(PathTempCsvFile, in_ReturnName+"_"+ Now.ToString("ddMMyyyy hhmmss")+ ".csv")]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                    </scg:List>
+                  </ui:MultipleAssign.AssignOperations>
+                </ui:MultipleAssign>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TestExportAsWorksheet workflow" sap:VirtualizedContainerService.HintSize="431,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Tests\TestExportAsWorksheet.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_PathTempCsvFile">
+                      <Literal x:TypeArguments="x:String">\\somproddfs1.prod.sovos.org\depts\TaxSolver Files\test export detail worksheet.csv</Literal>
+                    </InArgument>
+                    <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_ListCells">
+                      <mva:VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="new List(Of String) ({&quot;Y1&quot;,&quot;AM1&quot;})" />
+                    </InArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+              </Sequence>
             </Switch>
           </Sequence>
         </ActivityAction>
       </ui:ForEachRow.Body>
     </ui:ForEachRow>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="593,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;CheckOtherDeductions ends&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="629,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;CheckOtherDeductions ends&quot;]" />
   </Sequence>
 </Activity>
