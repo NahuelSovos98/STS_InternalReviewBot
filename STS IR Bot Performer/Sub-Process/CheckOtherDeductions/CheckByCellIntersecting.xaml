@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1141,1776</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1162,2300</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CheckByScreenScraping_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -40,6 +40,7 @@
       <x:String>System.Xml.Serialization</x:String>
       <x:String>UiPath.Excel.Activities</x:String>
       <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -77,13 +78,10 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CheckByScreenScraping" sap:VirtualizedContainerService.HintSize="608,1711" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CheckByScreenScraping" sap:VirtualizedContainerService.HintSize="608,2235" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="RegexToApply" />
-      <Variable x:TypeArguments="x:String" Name="AmountMatches" />
-      <Variable x:TypeArguments="x:String" Name="SplitRegex" />
-      <Variable x:TypeArguments="x:String" Name="ExpectedItems" />
-      <Variable x:TypeArguments="x:String" Name="HotkeysToApply" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtCellIntersecting" />
+      <Variable x:TypeArguments="x:Int32" Name="RowIndex" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -92,23 +90,20 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="546,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;CheckByScreenScraping starts&quot;]" />
     <ui:Comment sap:VirtualizedContainerService.HintSize="546,75" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// First: Find the corresponding regex for this return name in the ScreenScraping worksheet." />
-    <Sequence DisplayName="Get regex and its parameters" sap:VirtualizedContainerService.HintSize="546,953" sap2010:WorkflowViewState.IdRef="Sequence_2">
-      <Sequence.Variables>
-        <Variable x:TypeArguments="sd:DataTable" Name="dtScreenScraping" />
-      </Sequence.Variables>
+    <Sequence DisplayName="Get regex and its parameters" sap:VirtualizedContainerService.HintSize="546,821" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dtScreenScraping]" DisplayName="Read Range - dtScreenScraping" sap:VirtualizedContainerService.HintSize="484,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="[in_Config(&quot;OtherDeductionsList_SheetScreenScraping&quot;).ToString]" WorkbookPath="[in_Config(&quot;PathOtherDeductionsList&quot;).ToString]" />
-      <ui:FilterDataTable DataTable="[dtScreenScraping]" DisplayName="Filter Data Table by ReturnName" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="484,161" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dtScreenScraping]" SelectColumnsMode="Keep">
+      <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dtCellIntersecting]" DisplayName="Read Range - dtScreenScraping" sap:VirtualizedContainerService.HintSize="484,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="[in_Config(&quot;OtherDeductionsList_SheetCellIntersecting&quot;).ToString]" WorkbookPath="[in_Config(&quot;PathOtherDeductionsList&quot;).ToString]" />
+      <ui:FilterDataTable DataTable="[dtCellIntersecting]" DisplayName="Filter Data Table by ReturnName" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="484,161" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dtCellIntersecting]" SelectColumnsMode="Keep">
         <ui:FilterDataTable.Filters>
           <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
             <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
               <ui:FilterOperationArgument.Column>
-                <InArgument x:TypeArguments="x:String">["Return Name"]</InArgument>
+                <InArgument x:TypeArguments="x:String">["ReturnName"]</InArgument>
               </ui:FilterOperationArgument.Column>
               <ui:FilterOperationArgument.Operand>
                 <InArgument x:TypeArguments="x:String">[in_ReturnName]</InArgument>
@@ -122,7 +117,7 @@
           </scg:List>
         </ui:FilterDataTable.SelectColumns>
       </ui:FilterDataTable>
-      <If Condition="[dtScreenScraping.RowCount = 0]" DisplayName="If the required return was not found in the ScreenScraping list" sap:VirtualizedContainerService.HintSize="484,248" sap2010:WorkflowViewState.IdRef="If_1">
+      <If Condition="[dtCellIntersecting.RowCount = 0]" DisplayName="If the required return was not found in the ScreenScraping list" sap:VirtualizedContainerService.HintSize="484,249" sap2010:WorkflowViewState.IdRef="If_1">
         <If.Then>
           <Throw DisplayName="Throw - Return case not found" Exception="[new BusinessRuleException(&quot;The required return was not found in the ScreenScraping list. Please check the ScreenScraping list (Config file managed by the developers.)&quot;)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_1" />
         </If.Then>
@@ -136,73 +131,98 @@
           </Sequence>
         </If.Else>
       </If>
-      <ui:MultipleAssign DisplayName="Multiple Assign - ScreenScrapingOutputs" sap:VirtualizedContainerService.HintSize="484,225" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
-        <ui:MultipleAssign.AssignOperations>
-          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
-            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
-              <ui:AssignOperation.To>
-                <OutArgument x:TypeArguments="x:String">[RegexToApply]</OutArgument>
-              </ui:AssignOperation.To>
-              <ui:AssignOperation.Value>
-                <InArgument x:TypeArguments="x:String">[dtScreenScraping.Rows(0)("Regex").ToString]</InArgument>
-              </ui:AssignOperation.Value>
-            </ui:AssignOperation>
-            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
-              <ui:AssignOperation.To>
-                <OutArgument x:TypeArguments="x:String">[AmountMatches]</OutArgument>
-              </ui:AssignOperation.To>
-              <ui:AssignOperation.Value>
-                <InArgument x:TypeArguments="x:String">[dtScreenScraping.Rows(0)("Matches").ToString]</InArgument>
-              </ui:AssignOperation.Value>
-            </ui:AssignOperation>
-            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
-              <ui:AssignOperation.To>
-                <OutArgument x:TypeArguments="x:String">[SplitRegex]</OutArgument>
-              </ui:AssignOperation.To>
-              <ui:AssignOperation.Value>
-                <InArgument x:TypeArguments="x:String">[dtScreenScraping.Rows(0)("Split Regex").ToString]</InArgument>
-              </ui:AssignOperation.Value>
-            </ui:AssignOperation>
-            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
-              <ui:AssignOperation.To>
-                <OutArgument x:TypeArguments="x:String">[ExpectedItems]</OutArgument>
-              </ui:AssignOperation.To>
-              <ui:AssignOperation.Value>
-                <InArgument x:TypeArguments="x:String">[dtScreenScraping.Rows(0)("Expected Items").ToString]</InArgument>
-              </ui:AssignOperation.Value>
-            </ui:AssignOperation>
-            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
-              <ui:AssignOperation.To>
-                <OutArgument x:TypeArguments="x:String">[HotkeysToApply]</OutArgument>
-              </ui:AssignOperation.To>
-              <ui:AssignOperation.Value>
-                <InArgument x:TypeArguments="x:String">[dtScreenScraping.Rows(0)("Hotkeys").ToString]</InArgument>
-              </ui:AssignOperation.Value>
-            </ui:AssignOperation>
-          </scg:List>
-        </ui:MultipleAssign.AssignOperations>
-      </ui:MultipleAssign>
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[&quot;Amount of results in Cell Intersecting page: &quot; + dtCellIntersecting.RowCount.ToString]" />
     </Sequence>
     <ui:Comment sap:VirtualizedContainerService.HintSize="546,75" sap2010:WorkflowViewState.IdRef="Comment_2" Text="// Second: apply Screen scraping logic with its parameters" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TestScreenScrapingLogic workflow" sap:VirtualizedContainerService.HintSize="546,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Tests\TestScreenScrapingLogic.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="RegexToApply" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedMatches">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Cint(AmountMatches)" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_SplitRegex">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="SplitRegex" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedSplitElements">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(ExpectedItems)" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="HotkeysToApply" />
-        </InArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[RowIndex]" DataTable="[dtCellIntersecting]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="546,769" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="493,652" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="RegexToApply" />
+              <Variable x:TypeArguments="x:String" Name="AmountMatches" />
+              <Variable x:TypeArguments="x:String" Name="SplitRegex" />
+              <Variable x:TypeArguments="x:String" Name="ExpectedItems" />
+              <Variable x:TypeArguments="x:String" Name="HotkeysToApply" />
+              <Variable x:TypeArguments="x:String" Name="PositionInList" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:MultipleAssign DisplayName="Multiple Assign - ScreenScrapingOutputs" sap:VirtualizedContainerService.HintSize="431,256" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+              <ui:MultipleAssign.AssignOperations>
+                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[RegexToApply]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[CurrentRow("Regex").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[AmountMatches]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[CurrentRow("Matches").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[SplitRegex]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[CurrentRow("Split Regex").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[ExpectedItems]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[CurrentRow("Expected Items").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[HotkeysToApply]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[CurrentRow("Hotkeys").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[PositionInList]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[CurrentRow("PositionInList").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                </scg:List>
+              </ui:MultipleAssign.AssignOperations>
+            </ui:MultipleAssign>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="431,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Message="[&quot;Check case n°: &lt;&quot;+RowIndex.ToString+&quot;&gt; with following regex: &lt;&quot;+RegexToApply+&quot;&gt;&quot;]" />
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ALTestCellIntersecting workflow" sap:VirtualizedContainerService.HintSize="431,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Tests\ALTestCellIntersecting.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">[RegexToApply]</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedMatches">[Cint(AmountMatches)]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_SplitRegex">[SplitRegex]</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedSplitElements">[Cint( If(String.IsNullOrWhiteSpace(ExpectedItems),"0",ExpectedItems) )]</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_positionInList">[Cint(PositionInList)]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey">[HotkeysToApply]</InArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+    </ui:ForEachRow>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="546,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;CheckByScreenScraping ends&quot;]" />
   </Sequence>
 </Activity>
