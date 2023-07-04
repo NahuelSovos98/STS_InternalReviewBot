@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1141,1776</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1162,1776</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CheckByScreenScraping_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -196,7 +196,7 @@
           <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="SplitRegex" />
         </InArgument>
         <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedSplitElements">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(ExpectedItems)" />
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Cint( If( String.IsNullOrWhiteSpace(ExpectedItems),&quot;0&quot;,ExpectedItems))" />
         </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey">
           <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="HotkeysToApply" />
