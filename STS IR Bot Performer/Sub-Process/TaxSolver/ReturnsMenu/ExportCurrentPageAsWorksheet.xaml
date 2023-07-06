@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>584.666666666667,2657.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1508,2668</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GoBackToReturnList_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -72,22 +72,18 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GoBackToReturnList" sap:VirtualizedContainerService.HintSize="594.666666666667,2592.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="GoBackToReturnList" sap:VirtualizedContainerService.HintSize="757,2603" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:DateTime" Default="[Now]" Name="DateTimeStartWorkflow" />
-      <Variable x:TypeArguments="x:Int32" Name="SecondsToWaitDownloadFile">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:Int32" Value="20" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:Int32" Default="20" Name="SecondsToWaitDownloadFile" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="532.666666666667,96" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;ExportCurrentPageAsWorksheet starts&quot;]" />
-    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'Returns'" sap:VirtualizedContainerService.HintSize="532.666666666667,365.333333333333" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="b6edf2164dd97b3eb8f1e1143c0fd439" Selector="&lt;wnd app='returns.exe' ctrlname='frmReturns' isremoteapp='1' /&gt;">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="695,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;ExportCurrentPageAsWorksheet starts&quot;]" />
+    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'Returns'" sap:VirtualizedContainerService.HintSize="695,365" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="b6edf2164dd97b3eb8f1e1143c0fd439" Selector="&lt;wnd app='returns.exe' ctrlname='frmReturns' isremoteapp='1' /&gt;">
       <ui:WindowScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -99,7 +95,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Export the Detail Worksheet' button" sap:VirtualizedContainerService.HintSize="388,107.333333333333" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Export the Detail Worksheet' button" sap:VirtualizedContainerService.HintSize="388,107" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
               <ui:Click.CursorPosition>
                 <ui:CursorPosition Position="Center">
                   <ui:CursorPosition.OffsetX>
@@ -125,9 +121,9 @@
         </ActivityAction>
       </ui:WindowScope.Body>
     </ui:WindowScope>
-    <If Condition="[File.Exists(in_PathTempCsvFile)]" DisplayName="If temp file already exists" sap:VirtualizedContainerService.HintSize="532.666666666667,278" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[File.Exists(in_PathTempCsvFile)]" DisplayName="If temp file already exists" sap:VirtualizedContainerService.HintSize="695,269" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <ui:DeleteFileX DisplayName="Delete TempCsvFile" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[in_PathTempCsvFile]" />
+        <ui:DeleteFileX DisplayName="Delete TempCsvFile" sap:VirtualizedContainerService.HintSize="434,80" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[in_PathTempCsvFile]" />
       </If.Then>
       <If.Else>
         <Sequence sap2010:WorkflowViewState.IdRef="Sequence_4">
@@ -139,19 +135,19 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'Select path and file name'" sap:VirtualizedContainerService.HintSize="532.666666666667,718.666666666667" sap2010:WorkflowViewState.IdRef="WindowScope_2" InformativeScreenshot="47dfcae91cf6e4f2a1adc9973f3a59e8" Selector="&lt;wnd app='returns.exe' omit:cls='#32770' isremoteapp='1' title='Select path and file name*' /&gt;">
+    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'Select path and file name'" sap:VirtualizedContainerService.HintSize="695,718" sap2010:WorkflowViewState.IdRef="WindowScope_2" InformativeScreenshot="47dfcae91cf6e4f2a1adc9973f3a59e8" Selector="&lt;wnd app='returns.exe' omit:cls='#32770' isremoteapp='1' title='Select path and file name*' /&gt;">
       <ui:WindowScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,571.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,571" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" AlterIfDisabled="True" DisplayName="Type Into 'Filename'" EmptyField="True" sap:VirtualizedContainerService.HintSize="388,135.333333333333" sap2010:WorkflowViewState.IdRef="TypeInto_1" SimulateType="False" Text="[in_PathTempCsvFile]">
+            <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" AlterIfDisabled="True" DisplayName="Type Into 'Filename'" EmptyField="True" sap:VirtualizedContainerService.HintSize="388,135" sap2010:WorkflowViewState.IdRef="TypeInto_1" SimulateType="False" Text="[in_PathTempCsvFile]">
               <ui:TypeInto.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="50716b4e-d81e-4979-8f93-f6757abfbe37" InformativeScreenshot="12714ebdbe6430ea48dce00872543ebf" Selector="&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;wnd aaname='File name*' cls='ComboBox' /&gt;&lt;wnd ctrlid='1001' /&gt;" WaitForReady="COMPLETE">
                   <ui:Target.TimeoutMS>
@@ -160,7 +156,7 @@
                 </ui:Target>
               </ui:TypeInto.Target>
             </ui:TypeInto>
-            <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" AlterIfDisabled="True" ClickType="CLICK_SINGLE" DisplayName="Click 'Save' button" sap:VirtualizedContainerService.HintSize="388,107.333333333333" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+            <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" AlterIfDisabled="True" ClickType="CLICK_SINGLE" DisplayName="Click 'Save' button" sap:VirtualizedContainerService.HintSize="388,107" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
               <ui:Click.CursorPosition>
                 <ui:CursorPosition Position="Center">
                   <ui:CursorPosition.OffsetX>
@@ -216,16 +212,16 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:WindowScope>
-    <ui:InterruptibleWhile CurrentIndex="{x:Null}" DisplayName="While there are seconds left to wait" sap:VirtualizedContainerService.HintSize="532.666666666667,432" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+    <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[Not File.Exists(in_PathTempCsvFile) AND SecondsToWaitDownloadFile &gt; 0]" DisplayName="While there are seconds left to wait" sap:VirtualizedContainerService.HintSize="695,424" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
       <ui:InterruptibleWhile.Body>
-        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,261.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,258" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Delay DisplayName="Delay 4 seconds" Duration="[Timespan.FromSeconds(4)]" sap:VirtualizedContainerService.HintSize="434,25.3333333333333" sap2010:WorkflowViewState.IdRef="Delay_1" />
-          <Assign DisplayName="Assign - SecondsToWait" sap:VirtualizedContainerService.HintSize="434,85.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Delay DisplayName="Delay 4 seconds" Duration="[Timespan.FromSeconds(4)]" sap:VirtualizedContainerService.HintSize="434,25" sap2010:WorkflowViewState.IdRef="Delay_1" />
+          <Assign DisplayName="Assign - SecondsToWait" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Int32">[SecondsToWaitDownloadFile]</OutArgument>
             </Assign.To>
@@ -235,16 +231,13 @@
           </Assign>
         </Sequence>
       </ui:InterruptibleWhile.Body>
-      <ui:InterruptibleWhile.Condition>
-        <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="Not File.Exists(in_PathTempCsvFile) AND SecondsToWaitDownloadFile &gt; 0" />
-      </ui:InterruptibleWhile.Condition>
     </ui:InterruptibleWhile>
-    <If Condition="[Not File.Exists(in_PathTempCsvFile)]" DisplayName="If the file does not exist" sap:VirtualizedContainerService.HintSize="532.666666666667,256" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[Not File.Exists(in_PathTempCsvFile)]" DisplayName="If the file does not exist" sap:VirtualizedContainerService.HintSize="695,292" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
-        <Throw DisplayName="Throw SE - File was not downloaded" Exception="[new SystemException(&quot;Filepath was not downloaded correctly: &quot; + in_PathTempCsvFile)]" sap:VirtualizedContainerService.HintSize="200,25.3333333333333" sap2010:WorkflowViewState.IdRef="Throw_1" />
+        <Throw DisplayName="Throw SE - File was not downloaded" Exception="[new SystemException(&quot;Filepath was not downloaded correctly: &quot; + in_PathTempCsvFile)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_1" />
       </If.Then>
       <If.Else>
-        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence sap:VirtualizedContainerService.HintSize="450,103" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -253,6 +246,6 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="532.666666666667,96" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[&quot;ExportCurrentPageAsWorksheet starts&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="695,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[&quot;ExportCurrentPageAsWorksheet ends&quot;]" />
   </Sequence>
 </Activity>
