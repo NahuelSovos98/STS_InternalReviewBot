@@ -1,4 +1,12 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="HI_StateBalancing" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1162,1166" sap2010:WorkflowViewState.IdRef="HI_StateBalancing_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="HI_StateBalancing" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1161,3437</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>HI_StateBalancing_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -22,6 +30,12 @@
       <x:String>UiPath.Core</x:String>
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -49,23 +63,208 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="HI_StateBalancing" sap:VirtualizedContainerService.HintSize="450,1101" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="HI_StateBalancing" sap:VirtualizedContainerService.HintSize="608,3372" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Double" Name="OahuResult" />
+      <Variable x:TypeArguments="x:Double" Name="HawaiiResult" />
+      <Variable x:TypeArguments="x:Double" Name="KauaiResult" />
+      <Variable x:TypeArguments="x:String" Name="OahuCurrentPeriod" />
+      <Variable x:TypeArguments="x:String" Name="HawaiiCurrentPeriod" />
+      <Variable x:TypeArguments="x:String" Name="KauaiCurrentPeriod" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;HI_StateBalancing starts&quot;]" />
-    <ui:Comment sap:VirtualizedContainerService.HintSize="388,75" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// It can be something similar to CA. Cell Intersecting with these regex" />
-    <ui:Comment sap:VirtualizedContainerService.HintSize="388,94" sap2010:WorkflowViewState.IdRef="Comment_2" Text="// No hotkeys. Result position= 2. Regex: (?&lt;=Oahu Taxation District.*NET TAX\n.*Retailing.*)[\d\.\,]+(?=.*\n) " />
-    <ui:Comment sap:VirtualizedContainerService.HintSize="388,94" sap2010:WorkflowViewState.IdRef="Comment_3" Text="// // No hotkeys. Result position= 2. Regex: (?&lt;=Hawaii Taxation District.*NET TAX\n.*Retailing.*)[\d\.\,]+(?=.*\n)" />
-    <ui:Comment sap:VirtualizedContainerService.HintSize="388,94" sap2010:WorkflowViewState.IdRef="Comment_4" Text="// // No hotkeys. Result position= 2. Regex: (?&lt;=Hawaii Taxation District.*NET TAX\n.*Retailing.*)[\d\.\,]+(?=.*\n)" />
-    <ui:Comment sap:VirtualizedContainerService.HintSize="388,94" sap2010:WorkflowViewState.IdRef="Comment_5" Text="// Hotkeys: [d(ctrl)][d(end)][u(ctrl)][u(end)]. Result position 2. Regex:                                                                    4,689.83                     0.00             4,689.83   Line 11b                 187.59                  0.00                187.59" />
-    <ui:Comment sap:VirtualizedContainerService.HintSize="388,75" sap2010:WorkflowViewState.IdRef="Comment_6" Text="// Expected matches for each case: 7 matches (with no split regex)" />
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;HI_StateBalancing ends&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="546,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;HI_StateBalancing starts&quot;]" />
+    <Sequence sap2010:Annotation.AnnotationText="Go to Part II page. Extract values from Oahu, Hawaii and Kauai" DisplayName="Get Values from Part II page" sap:VirtualizedContainerService.HintSize="546,714" sap2010:WorkflowViewState.IdRef="Sequence_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SelectTab workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\TabMenu\SelectTab.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="in_PageName">[in_Config("StateBalancing_HI_PagePartII").ToString]</InArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TestGetResultCellIntersecting workflow - OAHU" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Tests\TestGetResultCellIntersecting.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">[in_Config("StateBalancing_HI_PartII_RegexOahu").ToString]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedMatches">1</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_SplitRegex">[Nothing]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedSplitElements">1</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_positionInList">[CInt(in_Config("StateBalancing_HI_PartII_Position").toString)]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey">[Nothing]</InArgument>
+          <OutArgument x:TypeArguments="x:Double" x:Key="out_Result">[OahuResult]</OutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TestGetResultCellIntersecting workflow - HAWAII" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Tests\TestGetResultCellIntersecting.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">[in_Config("StateBalancing_HI_PartII_RegexHawaii").ToString]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedMatches">1</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_SplitRegex">[Nothing]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedSplitElements">1</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_positionInList">[CInt(in_Config("StateBalancing_HI_PartII_Position").toString)]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey">[Nothing]</InArgument>
+          <OutArgument x:TypeArguments="x:Double" x:Key="out_Result">[HawaiiResult]</OutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TestGetResultCellIntersecting workflow - KAUAI" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Tests\TestGetResultCellIntersecting.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">[in_Config("StateBalancing_HI_PartII_RegexKauai").ToString]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedMatches">1</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_SplitRegex">[Nothing]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedSplitElements">1</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_positionInList">[CInt(in_Config("StateBalancing_HI_PartII_Position").toString)]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey">[in_Config("StateBalancing_HI_PartII_HotkeysKauai").ToString]</InArgument>
+          <OutArgument x:TypeArguments="x:Double" x:Key="out_Result">[KauaiResult]</OutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+    </Sequence>
+    <Sequence DisplayName="Get Values from Part III page" sap:VirtualizedContainerService.HintSize="546,1280" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="str:MatchCollection" Name="MatchTableText" />
+        <Variable x:TypeArguments="str:MatchCollection" Name="MatchesTaxableColumn" />
+        <Variable x:TypeArguments="x:String" Name="TableText" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SelectTab workflow" sap:VirtualizedContainerService.HintSize="484,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\TabMenu\SelectTab.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="in_PageName">[in_Config("StateBalancing_HI_PagePartIII").ToString]</InArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TestGetResultsFromReturnPage workflow" sap:VirtualizedContainerService.HintSize="484,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Tests\TestGetResultsFromReturnPage.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">[in_Config("StateBalancing_HI_RegexExtractTableText").ToString]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey">[Nothing]</InArgument>
+          <OutArgument x:TypeArguments="str:MatchCollection" x:Key="out_ListMatches">[MatchTableText]</OutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <If Condition="[MatchTableText.Count = 0]" DisplayName="If table was  not found" sap:VirtualizedContainerService.HintSize="484,249" sap2010:WorkflowViewState.IdRef="If_1">
+        <If.Then>
+          <Throw DisplayName="Throw BE - Table was not found - " Exception="[new BusinessRuleException(&quot;Table &quot;)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_1" />
+        </If.Then>
+        <If.Else>
+          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_5">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Sequence>
+        </If.Else>
+      </If>
+      <Assign DisplayName="Assign MatchesTaxableColumn" sap:VirtualizedContainerService.HintSize="484,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+        <Assign.To>
+          <OutArgument x:TypeArguments="str:MatchCollection">[MatchesTaxableColumn]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="str:MatchCollection">[System.Text.RegularExpressions.Regex.Matches(MatchTableText.Item(0).ToString, in_Config("").ToString)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <If Condition="[MatchesTaxableColumn.Count &lt;&gt; 3]" DisplayName="If there are not 3 rows in the Taxable column" sap:VirtualizedContainerService.HintSize="484,249" sap2010:WorkflowViewState.IdRef="If_2">
+        <If.Then>
+          <Throw DisplayName="Throw BE - Table was not found - " Exception="[new BusinessRuleException(&quot;Amount of rows &lt;&quot;+MatchesTaxableColumn.Count.ToString+&quot;&gt; unexpected in the Part IV Current Period table.&quot;)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_2" />
+        </If.Then>
+        <If.Else>
+          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_6">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Sequence>
+        </If.Else>
+      </If>
+      <ui:MultipleAssign DisplayName="Multiple Assign - Outputs" sap:VirtualizedContainerService.HintSize="484,163" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+        <ui:MultipleAssign.AssignOperations>
+          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[OahuCurrentPeriod]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">[MatchesTaxableColumn.Item(0).ToString.Trim]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[HawaiiCurrentPeriod]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">[MatchesTaxableColumn.Item(1).ToString.Trim]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[KauaiCurrentPeriod]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">[MatchesTaxableColumn.Item(2).ToString.Trim]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+          </scg:List>
+        </ui:MultipleAssign.AssignOperations>
+      </ui:MultipleAssign>
+    </Sequence>
+    <ui:Comment sap:VirtualizedContainerService.HintSize="546,56" sap2010:WorkflowViewState.IdRef="Comment_7" Text="// Compare outputs" />
+    <If Condition="[OahuResult.ToString.Equals(OahuCurrentPeriod)]" DisplayName="If Oahu values does not match" sap:VirtualizedContainerService.HintSize="546,249" sap2010:WorkflowViewState.IdRef="If_3">
+      <If.Then>
+        <Throw DisplayName="Throw BE - Oahu values does not match" Exception="[new BusinessRuleException(&quot;The following values for Oahu does not match in State Balancing. &lt;&quot;+OahuResult.ToString+&quot;&gt; ; &lt;&quot;+OahuCurrentPeriod+&quot;&gt;&quot;)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_3" />
+      </If.Then>
+      <If.Else>
+        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Else>
+    </If>
+    <If Condition="[HawaiiResult.ToString.Equals(HawaiiCurrentPeriod)]" DisplayName="If Hawaii values does not match" sap:VirtualizedContainerService.HintSize="546,249" sap2010:WorkflowViewState.IdRef="If_4">
+      <If.Then>
+        <Throw DisplayName="Throw BE - Hawaii values does not match" Exception="[new BusinessRuleException(&quot;The following values for Hawaii does not match in State Balancing. &lt;&quot;+HawaiiResult.ToString+&quot;&gt; ; &lt;&quot;+HawaiiCurrentPeriod+&quot;&gt;&quot;)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_4" />
+      </If.Then>
+      <If.Else>
+        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Else>
+    </If>
+    <If Condition="[KauaiResult.ToString.Equals(KauaiCurrentPeriod)]" DisplayName="If Kauai values does not match" sap:VirtualizedContainerService.HintSize="546,249" sap2010:WorkflowViewState.IdRef="If_5">
+      <If.Then>
+        <Throw DisplayName="Throw BE - Kauai values does not match" Exception="[new BusinessRuleException(&quot;The following values for Kauai does not match in State Balancing. &lt;&quot;+KauaiResult.ToString+&quot;&gt; ; &lt;&quot;+KauaiCurrentPeriod+&quot;&gt;&quot;)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_5" />
+      </If.Then>
+      <If.Else>
+        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_9">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="546,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;HI_StateBalancing ends&quot;]" />
   </Sequence>
 </Activity>
