@@ -72,7 +72,6 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
@@ -93,7 +92,7 @@
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[&quot;Copy and paste excel sheet starts&quot;]" />
     <ui:Comment sap:VirtualizedContainerService.HintSize="484,75" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//Copy the information from CSV file to XSLM file" />
     <ui:ReadCsvFile DataTable="[dt_fileCopy]" Delimitator="Comma" DisplayName="Read CSV" FilePath="[in_pathFileToCopy]" sap:VirtualizedContainerService.HintSize="484,153" sap2010:WorkflowViewState.IdRef="ReadCsvFile_2" IncludeColumnNames="False" />
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="484,482" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[in_pathFileToPaste]">
+    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="484,482" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[in_pathFileToPaste]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>

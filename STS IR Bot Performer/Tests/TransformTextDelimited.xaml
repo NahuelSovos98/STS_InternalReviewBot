@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="TransformTextDelimited" this:TransformTextDelimited.in_pathTxt="C:\Users\martin.martinez\Desktop\filesForTesting\BusinessLocationRates.txt" this:TransformTextDelimited.in_maximumColumn="35" this:TransformTextDelimited.in_pathCOTool="C:\Users\martin.martinez\Desktop\filesForTesting\CO DR-0100 XML tool.xlsm" this:TransformTextDelimited.in_sheetnameCOTool="Website" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="TransformTextDelimited" this:TransformTextDelimited.in_pathCOTool="C:\Users\martin.martinez\Desktop\filesForTesting\CO DR-0100 XML tool.xlsm" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_pathTxt" Type="InArgument(x:String)" />
     <x:Property Name="in_maximumColumn" Type="InArgument(x:Int32)" />
@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1508,2476</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1508,2473</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>TransformTextDelimited_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -74,20 +74,22 @@
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="TransformTextDelimited" sap:VirtualizedContainerService.HintSize="594,2411" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="TransformTextDelimited" sap:VirtualizedContainerService.HintSize="594,2408" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="str_textData" />
       <Variable x:TypeArguments="s:String[]" Name="arr_eachLine" />
       <Variable x:TypeArguments="s:String[]" Name="arr_rowData" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_txttransformed" />
       <Variable x:TypeArguments="x:Int32" Name="int_counterColumn" />
+      <Variable x:TypeArguments="x:Boolean" Name="bool_txtExist" />
+      <Variable x:TypeArguments="x:Int32" Name="int_counterDynamicWait" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -95,7 +97,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="532,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;TransformTextDelimited starts&quot;]" />
-    <Assign DisplayName="Initialization Datatable" sap:VirtualizedContainerService.HintSize="532,82" sap2010:WorkflowViewState.IdRef="Assign_4">
+    <Assign DisplayName="Initialization Datatable" sap:VirtualizedContainerService.HintSize="532,81" sap2010:WorkflowViewState.IdRef="Assign_4">
       <Assign.To>
         <OutArgument x:TypeArguments="sd:DataTable">[dt_txttransformed]</OutArgument>
       </Assign.To>
@@ -103,7 +105,7 @@
         <InArgument x:TypeArguments="sd:DataTable">[New DataTable()]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Initialization - Counter to add new Column" sap:VirtualizedContainerService.HintSize="532,82" sap2010:WorkflowViewState.IdRef="Assign_7">
+    <Assign DisplayName="Initialization - Counter to add new Column" sap:VirtualizedContainerService.HintSize="532,81" sap2010:WorkflowViewState.IdRef="Assign_7">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Int32">[int_counterColumn]</OutArgument>
       </Assign.To>
@@ -111,7 +113,7 @@
         <InArgument x:TypeArguments="x:Int32">0</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:InterruptibleWhile CurrentIndex="{x:Null}" DisplayName="While Loop - Add New Column according ConfigFile" sap:VirtualizedContainerService.HintSize="532,585" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+    <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[int_counterColumn &lt; in_maximumColumn]" DisplayName="While Loop - Add New Column according ConfigFile" sap:VirtualizedContainerService.HintSize="532,585" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
       <ui:InterruptibleWhile.Body>
         <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,419" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
@@ -130,12 +132,9 @@
           </Assign>
         </Sequence>
       </ui:InterruptibleWhile.Body>
-      <ui:InterruptibleWhile.Condition>
-        <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="int_counterColumn &lt; in_maximumColumn" />
-      </ui:InterruptibleWhile.Condition>
     </ui:InterruptibleWhile>
-    <ui:ReadTextFile File="{x:Null}" Content="[str_textData]" DisplayName="Read Text File of Colorado WebPage" FileName="[in_pathTxt]" sap:VirtualizedContainerService.HintSize="532,80" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
-    <Assign DisplayName="Assign - Split for New Line" sap:VirtualizedContainerService.HintSize="532,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <ui:ReadTextFile File="{x:Null}" Content="[str_textData]" DisplayName="Read Text File of Colorado WebPage" FileName="[in_pathTxt]" sap:VirtualizedContainerService.HintSize="532,80" sap2010:WorkflowViewState.IdRef="ReadTextFile_2" />
+    <Assign DisplayName="Assign - Split for New Line" sap:VirtualizedContainerService.HintSize="532,81" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="s:String[]">[arr_eachLine]</OutArgument>
       </Assign.To>
