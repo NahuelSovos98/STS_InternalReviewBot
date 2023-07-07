@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1508,5811</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1508,4608</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CO_StateBalancing_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -70,7 +70,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CO_StateBalancing" sap:VirtualizedContainerService.HintSize="608,5746" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CO_StateBalancing" sap:VirtualizedContainerService.HintSize="608,4543" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Double" Name="dbl_stateRegistrationID" />
       <Variable x:TypeArguments="x:Boolean" Name="bool_ExcelToolCOExist" />
@@ -105,65 +105,13 @@
       </If>
       <ui:CopyFile ContinueOnError="{x:Null}" Destination="Data\Output" DisplayName="Copy Excel CO tool File in output" sap:VirtualizedContainerService.HintSize="484,158" sap2010:WorkflowViewState.IdRef="CopyFile_1" Path="Data\Input\CO DR-0100 XML tool.xlsm" />
     </Sequence>
-    <ui:Comment sap:VirtualizedContainerService.HintSize="546,56" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// Go to Detail tab" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SelectTab workflow" sap:VirtualizedContainerService.HintSize="546,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\TabMenu\SelectTab.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_PageName">Detail</InArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="546,303" sap2010:WorkflowViewState.IdRef="CommentOut_2">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,224" sap2010:WorkflowViewState.IdRef="Sequence_3">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SelectTab workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\TabMenu\SelectTab.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_PageName">[in_Config("StateBalancing_CO_TabName").ToString]</InArgument>
-            </ui:InvokeWorkflowFile.Arguments>
-          </ui:InvokeWorkflowFile>
-        </Sequence>
-      </ui:CommentOut.Body>
-    </ui:CommentOut>
-    <ui:Comment sap:VirtualizedContainerService.HintSize="546,75" sap2010:WorkflowViewState.IdRef="Comment_2" Text="// Export the Detail Worksheet and save it in a shared temp location" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ExportCurrentPageAsWorksheet Workflow" sap:VirtualizedContainerService.HintSize="546,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnsMenu\ExportCurrentPageAsWorksheet.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_PathTempCsvFile">P:\TaxReturnOutSourcing\Preparer\UIPathPublish\IR Bot Temp Files\tempCoCsv.csv</InArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="546,303" sap2010:WorkflowViewState.IdRef="CommentOut_3">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,224" sap2010:WorkflowViewState.IdRef="Sequence_4">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ExportCurrentPageAsWorksheet Workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnsMenu\ExportCurrentPageAsWorksheet.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_PathTempCsvFile">[in_Config("StateBalancing_CO_PathCsvTemp").ToString]</InArgument>
-            </ui:InvokeWorkflowFile.Arguments>
-          </ui:InvokeWorkflowFile>
-        </Sequence>
-      </ui:CommentOut.Body>
-    </ui:CommentOut>
     <ui:Comment sap:VirtualizedContainerService.HintSize="546,75" sap2010:WorkflowViewState.IdRef="Comment_3" Text="// Paste the information downloaded from TaxSolver into the CO Excel tool" />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CopyAndPaste Excel Information Workflow" sap:VirtualizedContainerService.HintSize="546,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Logic\CopyAndPasteExcelSheet.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pathFileToCopy">
-          <Literal x:TypeArguments="x:String">P:\TaxReturnOutSourcing\Preparer\UIPathPublish\IR Bot Temp Files\tempCoCsv.csv</Literal>
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_sheetnameToCopy">
-          <Literal x:TypeArguments="x:String">tempCoCsv</Literal>
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pathFileToPaste">
-          <Literal x:TypeArguments="x:String">Data\Output\CO DR-0100 XML tool.xlsm</Literal>
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_sheetnameToPaste">
-          <Literal x:TypeArguments="x:String">Detail</Literal>
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pathFileToCopy">P:\TaxReturnOutSourcing\Preparer\UIPathPublish\IR Bot Temp Files\tempCoCsv.csv</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_sheetnameToCopy">tempCoCsv</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pathFileToPaste">Data\Output\CO DR-0100 XML tool.xlsm</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_sheetnameToPaste">Detail</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="546,303" sap2010:WorkflowViewState.IdRef="CommentOut_4">
@@ -259,18 +207,10 @@
           </sap:WorkflowViewStateService.ViewState>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ProcessInColoradoWebSite workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="Tests\ProcessInColoradoWebSite.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_urlCOWebsite">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_CO_urlWebsite&quot;).ToString" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_stateRegistrationID">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="dbl_stateRegistrationID.ToString" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_pathTXTCO">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_CO_pathTXTCOWeb&quot;).ToString" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_pathTempFolder">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;PathTempDirectory&quot;).ToString" />
-              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_urlCOWebsite">[in_Config("StateBalancing_CO_urlWebsite").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_stateRegistrationID">[dbl_stateRegistrationID.ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_pathTXTCO">[in_Config("StateBalancing_CO_pathTXTCOWeb").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_pathTempFolder">[in_Config("PathTempDirectory").ToString]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
         </Sequence>
@@ -278,18 +218,10 @@
     </ui:CommentOut>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ProcessInColoradoWebSite workflow" sap:VirtualizedContainerService.HintSize="546,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="Tests\ProcessInColoradoWebSite.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_urlCOWebsite">
-          <Literal x:TypeArguments="x:String">https://www.colorado.gov/revenueonline/</Literal>
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_stateRegistrationID">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="dbl_stateRegistrationID.ToString" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pathTXTCO">
-          <Literal x:TypeArguments="x:String">P:\TaxReturnOutSourcing\Preparer\UIPathPublish\IR Bot Temp Files\txttemp.txt</Literal>
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pathTempFolder">
-          <Literal x:TypeArguments="x:String">P:\TaxReturnOutSourcing\Preparer\UIPathPublish\IR Bot Temp Files</Literal>
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_urlCOWebsite">https://www.colorado.gov/revenueonline/</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_stateRegistrationID">[dbl_stateRegistrationID.ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pathTXTCO">P:\TaxReturnOutSourcing\Preparer\UIPathPublish\IR Bot Temp Files\txttemp.txt</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pathTempFolder">P:\TaxReturnOutSourcing\Preparer\UIPathPublish\IR Bot Temp Files</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:Comment sap:VirtualizedContainerService.HintSize="546,75" sap2010:WorkflowViewState.IdRef="Comment_7" Text="//transcribe Colorado TXT file from webpage to Colorado xslm tool file" />
@@ -320,18 +252,10 @@
     </ui:CommentOut>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TransformTextDelimited workflow" sap:VirtualizedContainerService.HintSize="546,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Tests\TransformTextDelimited.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pathTxt">
-          <Literal x:TypeArguments="x:String">P:\TaxReturnOutSourcing\Preparer\UIPathPublish\IR Bot Temp Files\txttemp.txt</Literal>
-        </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_maximumColumn">
-          <Literal x:TypeArguments="x:Int32" Value="35" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pathCOTool">
-          <Literal x:TypeArguments="x:String">Data\Output\CO DR-0100 XML tool.xlsm</Literal>
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_sheetnameCOTool">
-          <Literal x:TypeArguments="x:String">Website</Literal>
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pathTxt">P:\TaxReturnOutSourcing\Preparer\UIPathPublish\IR Bot Temp Files\txttemp.txt</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_maximumColumn">35</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pathCOTool">Data\Output\CO DR-0100 XML tool.xlsm</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_sheetnameCOTool">Website</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:Comment sap:VirtualizedContainerService.HintSize="546,56" sap2010:WorkflowViewState.IdRef="Comment_8" Text="//PENDING THIRD PART OF THE PROCESS" />
