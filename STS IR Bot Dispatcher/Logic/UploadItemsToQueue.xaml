@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1726,2384</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1726,2415</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>UploadItemsToQueue_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -79,7 +79,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="UploadItemsToQueue" sap:VirtualizedContainerService.HintSize="1736,2319" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="UploadItemsToQueue" sap:VirtualizedContainerService.HintSize="1736,2350" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="Username" />
       <Variable x:TypeArguments="x:Int32" Name="AmountUploadedItems" />
@@ -122,13 +122,13 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dtReturns]" DisplayName="For Each Row in dtReturns" sap:VirtualizedContainerService.HintSize="1674,1456" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dtReturns]" DisplayName="For Each Row in dtReturns" sap:VirtualizedContainerService.HintSize="1674,1487" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1640,1339" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1640,1370" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="TransactionItemReference" />
               <Variable x:TypeArguments="x:String" Name="CurrentPeriod" />
@@ -138,13 +138,14 @@
               <Variable x:TypeArguments="x:String" Name="ReturnWorkflow" />
               <Variable x:TypeArguments="x:String" Name="ReturnState" />
               <Variable x:TypeArguments="scg:IEnumerable(ui:QueueItem)" Name="ResultQueueItems" />
+              <Variable x:TypeArguments="x:String" Name="ReturnLegalEntity" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:MultipleAssign sap2010:Annotation.AnnotationText="Reference = &#xA;Username + CurrentMonth + CurrentYear + CustomerName + ReturnName&#xA;&#xA;ReturnItemDetails = &#xA;&lt;CustomerAccount ; ReturnName ; Workflow ; State&gt;" DisplayName="Multiple Assign - Reference" sap:VirtualizedContainerService.HintSize="1578,358" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+            <ui:MultipleAssign sap2010:Annotation.AnnotationText="Reference = &#xA;Username + CurrentMonth + CurrentYear + CustomerName + ReturnName&#xA;&#xA;ReturnItemDetails = &#xA;&lt;CustomerAccount ; ReturnName ; Workflow ; State&gt;" DisplayName="Multiple Assign - Reference" sap:VirtualizedContainerService.HintSize="1578,389" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
               <ui:MultipleAssign.AssignOperations>
                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
@@ -161,6 +162,14 @@
                     </ui:AssignOperation.To>
                     <ui:AssignOperation.Value>
                       <InArgument x:TypeArguments="x:String">[CurrentRow("Customer Account").ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[ReturnLegalEntity]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[CurrentRow("Legal Entity").ToString]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
@@ -184,7 +193,7 @@
                       <OutArgument x:TypeArguments="x:String">[ReturnItemDetails]</OutArgument>
                     </ui:AssignOperation.To>
                     <ui:AssignOperation.Value>
-                      <InArgument x:TypeArguments="x:String">["&lt;"+ReturnCustomerAccount+";"+ReturnName+";"+ReturnWorkflow+";"+ReturnState+"&gt;"]</InArgument>
+                      <InArgument x:TypeArguments="x:String">["&lt;"+ReturnCustomerAccount+";"+ReturnLegalEntity+";"+ReturnName+";"+ReturnWorkflow+";"+ReturnState+"&gt;"]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -193,7 +202,7 @@
                     </ui:AssignOperation.To>
                     <ui:AssignOperation.Value>
                       <InArgument x:TypeArguments="x:String" xml:space="preserve">[Username + "_" + in_CurrentMonth + "_" + in_CurrentYear.ToString + "_" + 
-in_CustomerName + "_" + ReturnName]</InArgument>
+in_CustomerName + "_" + ReturnLegalEntity + "_"  + ReturnName]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
                 </scg:List>
@@ -288,12 +297,8 @@ in_CustomerName + "_" + ReturnName]</InArgument>
     </ui:ForEachRow>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ShowMessageUploadedItems workflow" sap:VirtualizedContainerService.HintSize="1674,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Logic\ShowMessageUploadedItems.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_AmountUploadedItems">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="AmountUploadedItems" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_AmountSkippedItems">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="AmountSkippedItems" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_AmountUploadedItems">[AmountUploadedItems]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_AmountSkippedItems">[AmountSkippedItems]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1674,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;UploadItemsToQueue ends. Items uploaded to the queue: &quot;+AmountUploadedItems.ToString+&quot;. Items skipped: &quot;+AmountSkippedItems.ToString+&quot;.&quot;]" />
