@@ -14,7 +14,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1410,3069</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1508,3069</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="54">
@@ -284,6 +284,9 @@
                             <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">
                               <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="ReturnName" />
                             </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_outputFolder">
+                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PathOutputFolder" />
+                            </InArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                         </ui:InvokeWorkflowFile>
                       </TryCatch.Try>
@@ -299,7 +302,7 @@
                             <ActivityAction.Argument>
                               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                             </ActivityAction.Argument>
-                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AddNewRow workflow" sap:VirtualizedContainerService.HintSize="346,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="Sub-Process\ReviewSheet\AddNewRow.xaml">
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AddNewRow workflow" sap:VirtualizedContainerService.HintSize="365,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="Sub-Process\ReviewSheet\AddNewRow.xaml">
                               <ui:InvokeWorkflowFile.Arguments>
                                 <InArgument x:TypeArguments="x:String" x:Key="in_PathReviewSheetFile">[in_PathReviewSheet]</InArgument>
                                 <InArgument x:TypeArguments="x:String" x:Key="in_WorksheetReviewSheet">[in_WorksheetReviewSheet]</InArgument>
