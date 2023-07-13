@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1162,2697</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>828,3974</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CheckOtherDeductions_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -83,7 +83,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CheckOtherDeductions" sap:VirtualizedContainerService.HintSize="658,2632" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CheckOtherDeductions" sap:VirtualizedContainerService.HintSize="838,3909" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="FormPage" />
       <Variable x:TypeArguments="x:String" Name="TabPage" />
@@ -97,9 +97,9 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="596,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;CheckOtherDeductions starts&quot;]" />
-    <ui:Comment sap:VirtualizedContainerService.HintSize="596,75" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// First: Find what way the bot needs to process this return." />
-    <Sequence DisplayName="Check if return name is not Local state" sap:VirtualizedContainerService.HintSize="596,824" sap2010:WorkflowViewState.IdRef="Sequence_13">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="776,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;CheckOtherDeductions starts&quot;]" />
+    <ui:Comment sap:VirtualizedContainerService.HintSize="776,75" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// First: Find what way the bot needs to process this return." />
+    <Sequence DisplayName="Check if return name is not Local state" sap:VirtualizedContainerService.HintSize="776,291" sap2010:WorkflowViewState.IdRef="Sequence_13">
       <Sequence.Variables>
         <Variable x:TypeArguments="sd:DataTable" Name="dtNonLocalStates" />
       </Sequence.Variables>
@@ -109,8 +109,14 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dtNonLocalStates]" DisplayName="Read Range - dtBotPath" sap:VirtualizedContainerService.HintSize="534,88" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="[in_Config(&quot;OtherDeductionsList_NonLocalStates&quot;).ToString]" WorkbookPath="[in_Config(&quot;PathOtherDeductionsList&quot;).ToString]" />
-      <TryCatch DisplayName="Try Catch Filter by return name" sap:VirtualizedContainerService.HintSize="534,585" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dtNonLocalStates]" DisplayName="Read Range - dtBotPath" sap:VirtualizedContainerService.HintSize="388,88" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="[in_Config(&quot;OtherDeductionsList_NonLocalStates&quot;).ToString]" WorkbookPath="[in_Config(&quot;PathOtherDeductionsList&quot;).ToString]" />
+      <TryCatch DisplayName="Try Catch Filter by return name" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
         <TryCatch.Try>
           <Sequence DisplayName="Filter by return name" sap:VirtualizedContainerService.HintSize="496,357" sap2010:WorkflowViewState.IdRef="Sequence_15">
             <sap:WorkflowViewStateService.ViewState>
@@ -171,7 +177,7 @@
         </TryCatch.Catches>
       </TryCatch>
     </Sequence>
-    <Sequence DisplayName="Look for the bot path" sap:VirtualizedContainerService.HintSize="596,536" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Look for the bot path" sap:VirtualizedContainerService.HintSize="776,536" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -302,9 +308,9 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:CommentOut>
     </Sequence>
-    <If Condition="[dtBotPath.RowCount &lt;&gt; 0]" DisplayName="If there are items to process" sap:VirtualizedContainerService.HintSize="596,702" sap2010:WorkflowViewState.IdRef="If_5">
+    <If Condition="[dtBotPath.RowCount &lt;&gt; 0]" DisplayName="If there are items to process" sap:VirtualizedContainerService.HintSize="776,2512" sap2010:WorkflowViewState.IdRef="If_5">
       <If.Then>
-        <Sequence DisplayName="Process OtherDeductions" sap:VirtualizedContainerService.HintSize="546,513" sap2010:WorkflowViewState.IdRef="Sequence_16">
+        <Sequence DisplayName="Process OtherDeductions" sap:VirtualizedContainerService.HintSize="740,2323" sap2010:WorkflowViewState.IdRef="Sequence_16">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:Boolean" Name="boolReturnWasOpened" />
           </Sequence.Variables>
@@ -313,34 +319,24 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke OpenCorrespondingReturn workflow" sap:VirtualizedContainerService.HintSize="484,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\OpenCorrespondingReturn.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke OpenCorrespondingReturn workflow" sap:VirtualizedContainerService.HintSize="678,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\OpenCorrespondingReturn.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_CustomerAccount">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_CustomerAccount" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ReturnName" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionalReturnNameCase">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ReturnNameExceptionalCase&quot;).ToString" />
-              </InArgument>
-              <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolReturnWasOpened">
-                <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="boolReturnWasOpened" />
-              </OutArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_LegalEntity">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_LegalEntity" />
-              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_CustomerAccount">[in_CustomerAccount]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">[in_ReturnName]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionalReturnNameCase">[in_Config("ReturnNameExceptionalCase").ToString]</InArgument>
+              <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolReturnWasOpened">[boolReturnWasOpened]</OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_LegalEntity">[in_LegalEntity]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
-          <If Condition="[boolReturnWasOpened]" DisplayName="If return item was opened" sap:VirtualizedContainerService.HintSize="484,249" sap2010:WorkflowViewState.IdRef="If_6">
+          <If Condition="[boolReturnWasOpened]" DisplayName="If return item was opened" sap:VirtualizedContainerService.HintSize="678,2059" sap2010:WorkflowViewState.IdRef="If_6">
             <If.Then>
-              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtBotPath]" DisplayName="For Each Row in dtBotPath" sap:VirtualizedContainerService.HintSize="224,52" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtBotPath]" DisplayName="For Each Row in dtBotPath" sap:VirtualizedContainerService.HintSize="642,1870" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
                 <ui:ForEachRow.Body>
                   <ActivityAction x:TypeArguments="sd:DataRow">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Apply Other deductions logic" sap:VirtualizedContainerService.HintSize="608,1557" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                    <Sequence DisplayName="Apply Other deductions logic" sap:VirtualizedContainerService.HintSize="608,1753" sap2010:WorkflowViewState.IdRef="Sequence_12">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="x:String" Name="ReturnName" />
                       </Sequence.Variables>
@@ -422,7 +418,7 @@
                         </ui:InvokeWorkflowFile>
                       </Sequence>
                       <ui:Comment sap:VirtualizedContainerService.HintSize="546,75" sap2010:WorkflowViewState.IdRef="Comment_5" Text="// Third: Apply the following workflow for its bot path." />
-                      <Switch x:TypeArguments="x:String" DisplayName="Switch BotPath" Expression="[BotPath.ToUpper.Trim]" sap:VirtualizedContainerService.HintSize="546,244" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+                      <Switch x:TypeArguments="x:String" DisplayName="Switch BotPath" Expression="[BotPath.ToUpper.Trim]" sap:VirtualizedContainerService.HintSize="546,440" sap2010:WorkflowViewState.IdRef="Switch`1_1">
                         <Switch.Default>
                           <Throw DisplayName="Throw BE - unrecognized Bot Path" Exception="[new BusinessRuleException(&quot;The following bot path was not recognized &quot;&quot;&quot;+BotPath+&quot;&quot;&quot;. Please, check the OtherDeductionsList file.&quot;)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_3">
                             <sap:WorkflowViewStateService.ViewState>
@@ -475,8 +471,12 @@
                         </ui:InvokeWorkflowFile>
                         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="EXPORT WORKSHEET" sap2010:Annotation.AnnotationText="This works only with CO " DisplayName="Invoke TestExportAsWorksheet workflow" sap:VirtualizedContainerService.HintSize="350,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Tests\TestExportAsWorksheet.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_PathTempCsvFile">[in_Config("StateBalancing_CO_PathCsvTemp").ToString]</InArgument>
-                            <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_ListCells">[in_Config("ExportWorksheet_ListCells_CO_DR0100 XML ").ToString.Split(","c).ToList]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_PathTempCsvFile">
+                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_CO_PathCsvTemp&quot;).ToString" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_ListCells">
+                              <mva:VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="in_Config(&quot;ExportWorksheet_ListCells_CO_DR0100_XML&quot;).ToString.Split(&quot;,&quot;c).ToList" />
+                            </InArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -490,7 +490,7 @@
                 </ui:ForEachRow.Body>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
@@ -518,6 +518,6 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="596,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;CheckOtherDeductions ends&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="776,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;CheckOtherDeductions ends&quot;]" />
   </Sequence>
 </Activity>

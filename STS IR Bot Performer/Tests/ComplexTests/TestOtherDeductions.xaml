@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="TestWorkflowTemplate" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1228,2216" sap2010:WorkflowViewState.IdRef="TestWorkflowTemplate_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="TestWorkflowTemplate" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1162,2411" sap2010:WorkflowViewState.IdRef="TestWorkflowTemplate_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -75,7 +75,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Template workflow used to create tests for workflows in the process.&#xA;Create a new test workflow by copying and renaming this file." DisplayName="Test Template" sap:VirtualizedContainerService.HintSize="756,2151" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Template workflow used to create tests for workflows in the process.&#xA;Create a new test workflow by copying and renaming this file." DisplayName="Test Template" sap:VirtualizedContainerService.HintSize="806,2346" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data." Name="Config" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtReturnsTablke" />
@@ -86,7 +86,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - TestTemplate" sap:VirtualizedContainerService.HintSize="694,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Testing workflow&quot;]">
+    <ui:LogMessage DisplayName="Log Message - TestTemplate" sap:VirtualizedContainerService.HintSize="744,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Testing workflow&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -94,7 +94,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <Sequence DisplayName="... Given" sap:VirtualizedContainerService.HintSize="694,530" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="... Given" sap:VirtualizedContainerService.HintSize="744,530" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Int32" Name="CurrentReturns" />
       </Sequence.Variables>
@@ -122,7 +122,7 @@
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
     </Sequence>
-    <Sequence DisplayName="... When" sap:VirtualizedContainerService.HintSize="694,1296" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <Sequence DisplayName="... When" sap:VirtualizedContainerService.HintSize="744,1491" sap2010:WorkflowViewState.IdRef="Sequence_3">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Int32" Name="ReturnIndex" />
       </Sequence.Variables>
@@ -131,14 +131,14 @@
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:Comment DisplayName="Actions to be performed" sap:VirtualizedContainerService.HintSize="632,75" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// Workflow to be invoked or actions to be performed" />
-      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[ReturnIndex]" DataTable="[dtReturnsTablke]" DisplayName="For Each Row in dtReturnsTable" sap:VirtualizedContainerService.HintSize="632,1070" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <ui:Comment DisplayName="Actions to be performed" sap:VirtualizedContainerService.HintSize="682,75" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// Workflow to be invoked or actions to be performed" />
+      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[ReturnIndex]" DataTable="[dtReturnsTablke]" DisplayName="For Each Row in dtReturnsTable" sap:VirtualizedContainerService.HintSize="682,1265" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
         <ui:ForEachRow.Body>
           <ActivityAction x:TypeArguments="sd:DataRow">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="598,953" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="648,1148" sap2010:WorkflowViewState.IdRef="Sequence_4">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:Boolean" Name="boolReturnWasOpened" />
               </Sequence.Variables>
@@ -147,8 +147,8 @@
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="536,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[&quot;Return number &quot; + (ReturnIndex+1).ToString]" />
-              <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="536,710" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="586,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[&quot;Return number &quot; + (ReturnIndex+1).ToString]" />
+              <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="586,905" sap2010:WorkflowViewState.IdRef="TryCatch_1">
                 <TryCatch.Try>
                   <Sequence DisplayName="Other deductions" sap:VirtualizedContainerService.HintSize="548,677" sap2010:WorkflowViewState.IdRef="Sequence_5">
                     <sap:WorkflowViewStateService.ViewState>
@@ -164,17 +164,14 @@
                         <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">
                           <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentRow(&quot;Return Name&quot;).toString" />
                         </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_ReturnWorkflow">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentRow(&quot;Workflow&quot;).toString" />
-                        </InArgument>
                         <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionalReturnNameCase">
                           <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;ReturnNameExceptionalCase&quot;).ToString" />
                         </InArgument>
                         <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolReturnWasOpened">
                           <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="boolReturnWasOpened" />
                         </OutArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_DisplayName">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentRow(&quot;Display Name&quot;).toString" />
+                        <InArgument x:TypeArguments="x:String" x:Key="in_LegalEntity">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentRow(&quot;Legal Entity&quot;).toString" />
                         </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
@@ -188,9 +185,24 @@
                           </sap:WorkflowViewStateService.ViewState>
                           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckOtherDeductions workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Sub-Process\CheckOtherDeductions\CheckOtherDeductions.xaml">
                             <ui:InvokeWorkflowFile.Arguments>
-                              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">[CurrentRow("Return Name").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_State">[CurrentRow("State").ToString]</InArgument>
+                              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                                <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
+                              </InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">
+                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentRow(&quot;Return Name&quot;).ToString" />
+                              </InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_State">
+                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentRow(&quot;State&quot;).ToString" />
+                              </InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_CustomerAccount">
+                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentRow(&quot;Customer Account&quot;).ToString" />
+                              </InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_LegalEntity">
+                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentRow(&quot;Legal Entity&quot;).ToString" />
+                              </InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_PathOutputFolder">
+                                <Literal x:TypeArguments="x:String">Data\Output</Literal>
+                              </InArgument>
                             </ui:InvokeWorkflowFile.Arguments>
                           </ui:InvokeWorkflowFile>
                         </Sequence>
@@ -208,10 +220,10 @@
                   </Sequence>
                 </TryCatch.Try>
                 <TryCatch.Catches>
-                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="502,547" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="552,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
@@ -239,12 +251,8 @@
                         </Assign>
                         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="State Machine\TakeScreenshot.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_Folder">
-                              <Literal x:TypeArguments="x:String">Tests\Screenshots</Literal>
-                            </InArgument>
-                            <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath">
-                              <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="PathScreenshot" />
-                            </InOutArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_Folder">Tests\Screenshots</InArgument>
+                            <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath">[PathScreenshot]</InOutArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                         </ui:InvokeWorkflowFile>
                       </Sequence>

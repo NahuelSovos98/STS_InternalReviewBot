@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="TestExportAsWorksheet" this:TestExportAsWorksheet.in_PathTempCsvFile="\\somproddfs1.prod.sovos.org\depts\TaxSolver Files\test export detail worksheet.csv" this:TestExportAsWorksheet.in_ListCells="[new List(Of String) ({&quot;Y1&quot;,&quot;AM1&quot;})]" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="TestExportAsWorksheet" this:TestExportAsWorksheet.in_PathTempCsvFile="P:\TaxReturnOutSourcing\Preparer\UIPathPublish\IR Bot Temp Files\tempCoCsv.csv" this:TestExportAsWorksheet.in_ListCells="[new List(Of String) ({&quot;Y1&quot;,&quot;AM1&quot;})]" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_PathTempCsvFile" Type="InArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="A List of cells with its format. Example: A1 , AM2, etc" Name="in_ListCells" Type="InArgument(scg:List(x:String))" />
@@ -43,6 +43,7 @@
       <x:String>UiPath.Excel</x:String>
       <x:String>UiPath.Excel.Activities</x:String>
       <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -84,6 +85,7 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="TestExportAsWorksheet" sap:VirtualizedContainerService.HintSize="873,2028" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -97,7 +99,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="811,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;ExportAsWorksheet starts&quot;]" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ExportCurrentPageAsWorksheet workflow" sap:VirtualizedContainerService.HintSize="811,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnsMenu\ExportCurrentPageAsWorksheet.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ExportCurrentPageAsWorksheet workflow" sap:VirtualizedContainerService.HintSize="811,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnsMenu\ExportCurrentPageAsWorksheet.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_PathTempCsvFile">[in_PathTempCsvFile]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
@@ -126,7 +128,7 @@
                   </ActivityAction.Argument>
                   <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="679,943" sap2010:WorkflowViewState.IdRef="Sequence_5">
                     <Sequence.Variables>
-                      <Variable x:TypeArguments="x:String" Name="CellResult" />
+                      <Variable x:TypeArguments="x:Object" Name="CellResult" />
                       <Variable x:TypeArguments="x:String" Name="strCellResult" />
                     </Sequence.Variables>
                     <sap:WorkflowViewStateService.ViewState>
@@ -137,7 +139,7 @@
                     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="617,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Trace" Message="[&quot;Checking cell &quot; +cell+ &quot; in the csv file.&quot;]" />
                     <ui:ExcelReadCell Cell="[cell]" DisplayName="Read Cell value" sap:VirtualizedContainerService.HintSize="617,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_1" SheetName="[WorksheetName]">
                       <ui:ExcelReadCell.Result>
-                        <OutArgument x:TypeArguments="x:String">[CellResult]</OutArgument>
+                        <OutArgument x:TypeArguments="x:Object">[CellResult]</OutArgument>
                       </ui:ExcelReadCell.Result>
                     </ui:ExcelReadCell>
                     <Assign DisplayName="Assign strCellResult" sap:VirtualizedContainerService.HintSize="617,82" sap2010:WorkflowViewState.IdRef="Assign_1">
@@ -155,7 +157,7 @@
                             <Throw DisplayName="Throw BE - value distint of 0" Exception="[new BusinessRuleException(&quot;The following value &quot; +strCellResult+ &quot; in the cell &quot;+cell+&quot; is distint to 0.&quot;)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_1" />
                           </If.Then>
                           <If.Else>
-                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Trace" Message="[&quot;The following value &quot; +strCellResult+ &quot; in the cell &quot;+cell+&quot; is equals to 0.&quot;]" />
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;The following value &quot; +strCellResult+ &quot; in the cell &quot;+cell+&quot; is equals to 0.&quot;]" />
                           </If.Else>
                         </If>
                       </TryCatch.Try>
