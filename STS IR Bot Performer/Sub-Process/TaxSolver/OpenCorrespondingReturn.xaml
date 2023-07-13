@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1162,1539</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1162,3780</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>OpenCorrespondingReturn_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -78,10 +78,9 @@
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="OpenCorrespondingReturn" sap:VirtualizedContainerService.HintSize="546,1474" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="OpenCorrespondingReturn" sap:VirtualizedContainerService.HintSize="1167,3715" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Default="False" Name="boolLastReturnInTaxsolver" />
       <Variable x:TypeArguments="x:String" Name="InfoLastReturn">
@@ -97,8 +96,8 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;OpenCorrespondingReturnInTaxsolver starts&quot;]" />
-    <Assign DisplayName="Assign - out_boolReturnWasOpened" sap:VirtualizedContainerService.HintSize="484,82" sap2010:WorkflowViewState.IdRef="Assign_8">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1105,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;OpenCorrespondingReturnInTaxsolver starts&quot;]" />
+    <Assign DisplayName="Assign - out_boolReturnWasOpened" sap:VirtualizedContainerService.HintSize="1105,82" sap2010:WorkflowViewState.IdRef="Assign_8">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Boolean">[out_boolReturnWasOpened]</OutArgument>
       </Assign.To>
@@ -106,7 +105,7 @@
         <InArgument x:TypeArguments="x:Boolean">False</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Assign - ReturnToCompare" sap:VirtualizedContainerService.HintSize="484,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Assign - ReturnToCompare" sap:VirtualizedContainerService.HintSize="1105,82" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[ReturnToCompare]</OutArgument>
       </Assign.To>
@@ -114,23 +113,21 @@
         <InArgument x:TypeArguments="x:String">[in_CustomerAccount+";"+in_ReturnName + ";" + in_LegalEntity]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Trace" Message="[&quot;Return to look for in Taxsolver: &quot; + ReturnToCompare]" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckReturnWindowIsOpen workflow" sap:VirtualizedContainerService.HintSize="484,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\CheckReturnWindowIsOpen.xaml">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1105,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Trace" Message="[&quot;Return to look for in Taxsolver: &quot; + ReturnToCompare]" />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckReturnWindowIsOpen workflow" sap:VirtualizedContainerService.HintSize="1105,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\CheckReturnWindowIsOpen.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolReturnWindowIsOpen">
-          <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="out_boolReturnWasOpened" />
-        </OutArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolReturnWindowIsOpen">[out_boolReturnWasOpened]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <If Condition="[Not out_boolReturnWasOpened]" DisplayName="If Return item is not opened" sap:VirtualizedContainerService.HintSize="484,249" sap2010:WorkflowViewState.IdRef="If_3">
+    <If Condition="[Not out_boolReturnWasOpened]" DisplayName="If Return item is not opened" sap:VirtualizedContainerService.HintSize="1105,2490" sap2010:WorkflowViewState.IdRef="If_3">
       <If.Then>
-        <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'Returns'" sap:VirtualizedContainerService.HintSize="216,52" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="9db3211b08d60b36164c23be7d5dae15" Selector="&lt;wnd app='returns.exe' ctrlname='frmReturns' isremoteapp='1' /&gt;">
+        <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'Returns'" sap:VirtualizedContainerService.HintSize="1069,2301" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="9db3211b08d60b36164c23be7d5dae15" Selector="&lt;wnd app='returns.exe' ctrlname='frmReturns' isremoteapp='1' /&gt;">
           <ui:WindowScope.Body>
             <ActivityAction x:TypeArguments="x:Object">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1035,2062" sap2010:WorkflowViewState.IdRef="Sequence_2">
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1035,2154" sap2010:WorkflowViewState.IdRef="Sequence_2">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:String" Name="strSelectedReturnText" />
                   <Variable x:TypeArguments="sd:DataTable" Name="dtSelectedReturn" />
@@ -142,12 +139,49 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" AlterIfDisabled="True" sap2010:Annotation.AnnotationText="Just to make sure we are in the table" ClickType="CLICK_SINGLE" DisplayName="Click 'Data Entry Type' header" sap:VirtualizedContainerService.HintSize="973,138" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="False">
+                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="973,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                  <ui:CommentOut.Body>
+                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,249" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" AlterIfDisabled="True" sap2010:Annotation.AnnotationText="Just to make sure we are in the table" ClickType="CLICK_SINGLE" DisplayName="Click 'Data Entry Type' header" sap:VirtualizedContainerService.HintSize="388,138" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="False">
+                        <ui:Click.CursorPosition>
+                          <ui:CursorPosition OffsetX="30" OffsetY="30" Position="TopLeft" />
+                        </ui:Click.CursorPosition>
+                        <ui:Click.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="38ba616b-a0c2-48d5-ae94-d180223e92cf" InformativeScreenshot="e6a17fcab30b04e29acbb060b7e143a0" Selector="&lt;wnd ctrlname='frmReturnList' /&gt;&lt;wnd ctrlname='SplitContainer2' /&gt;&lt;wnd ctrlname='grdReturnList' /&gt;">
+                            <ui:Target.TimeoutMS>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:Target.TimeoutMS>
+                            <ui:Target.WaitForReady>
+                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                            </ui:Target.WaitForReady>
+                          </ui:Target>
+                        </ui:Click.Target>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:Click>
+                    </Sequence>
+                  </ui:CommentOut.Body>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:CommentOut>
+                <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" AlterIfDisabled="True" sap2010:Annotation.AnnotationText="Just to make sure we are in the table" ClickType="CLICK_SINGLE" DisplayName="Click 'State' header" sap:VirtualizedContainerService.HintSize="973,138" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="False">
                   <ui:Click.CursorPosition>
-                    <ui:CursorPosition OffsetX="30" OffsetY="30" Position="TopLeft" />
+                    <ui:CursorPosition OffsetX="56" OffsetY="8" Position="TopLeft" />
                   </ui:Click.CursorPosition>
                   <ui:Click.Target>
-                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="38ba616b-a0c2-48d5-ae94-d180223e92cf" InformativeScreenshot="e6a17fcab30b04e29acbb060b7e143a0" Selector="&lt;wnd ctrlname='frmReturnList' /&gt;&lt;wnd ctrlname='SplitContainer2' /&gt;&lt;wnd ctrlname='grdReturnList' /&gt;">
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="38ba616b-a0c2-48d5-ae94-d180223e92cf" InformativeScreenshot="7e4950856d2fe135ca06ebdda134d029" Selector="&lt;wnd ctrlname='frmReturnList' /&gt;&lt;wnd ctrlname='SplitContainer2' /&gt;&lt;wnd ctrlname='grdReturnList' /&gt;&lt;ctrl name='Column Headers' role='grouping' /&gt;&lt;ctrl name='State' role='column header' /&gt;">
                       <ui:Target.TimeoutMS>
                         <InArgument x:TypeArguments="x:Int32" />
                       </ui:Target.TimeoutMS>
@@ -280,7 +314,7 @@ dtSelectedReturn.Rows(0)("Legal Entity").toString]</InArgument>
           </ui:WindowScope.Body>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -296,7 +330,7 @@ dtSelectedReturn.Rows(0)("Legal Entity").toString]</InArgument>
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[boolLastReturnInTaxsolver]" DisplayName="If return item was the last one" sap:VirtualizedContainerService.HintSize="484,281" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[boolLastReturnInTaxsolver]" DisplayName="If return item was the last one" sap:VirtualizedContainerService.HintSize="1105,281" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
         <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Warn" Message="[&quot;Taxsolver had reached the end of the table and didn't find the required return.&quot;]" />
       </If.Then>
@@ -310,6 +344,6 @@ dtSelectedReturn.Rows(0)("Legal Entity").toString]</InArgument>
         </Sequence>
       </If.Else>
     </If>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;OpenCorrespondingReturnInTaxsolver ends. Movements: &quot; + ReturnIndex.ToString]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1105,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;OpenCorrespondingReturnInTaxsolver ends. Movements: &quot; + ReturnIndex.ToString]" />
   </Sequence>
 </Activity>
