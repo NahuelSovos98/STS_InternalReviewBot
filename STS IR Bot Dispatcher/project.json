@@ -99,6 +99,13 @@
         "testCaseType": "TestCase",
         "executionTemplateType": "Local",
         "fileName": "Tests\\MainTests\\WorkflowTestCaseTemplate.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "3ea5e82a-e2b5-4d13-ad4b-fceed050598d",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\MainTests\\Test_CopyInputFiles.xaml"
       }
     ],
     "modernBehavior": false

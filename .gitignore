@@ -5,3 +5,9 @@ STS IR Bot Dispatcher/.objects/*
 STS IR Bot Performer/.local/
 STS IR Bot Performer/.objects/*
 STS IR Bot Performer/Tests/Output screen scraping.txt
+STS IR Bot Dispatcher/Data/Customer Account List.xlsx
+STS IR Bot Dispatcher/Data/Margins List.xlsx
+STS IR Bot Dispatcher/Data/Other Deductions List.xlsx
+STS IR Bot Performer/Data/Customer Account List.xlsx
+STS IR Bot Performer/Data/Margins List.xlsx
+STS IR Bot Performer/Data/Other Deductions List.xlsx
