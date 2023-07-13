@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1502,2329</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1502,2101</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CheckStateBalancing_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -73,7 +73,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CheckStateBalancing" sap:VirtualizedContainerService.HintSize="938,2264" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CheckStateBalancing" sap:VirtualizedContainerService.HintSize="938,2036" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strStateAbreviation" />
       <Variable x:TypeArguments="x:Boolean" Name="boolReturnWasOpened" />
@@ -145,9 +145,9 @@
         </ui:ForEach.Body>
       </ui:ForEach>
     </Sequence>
-    <If Condition="[boolReturnWasOpened]" DisplayName="If return was opened" sap:VirtualizedContainerService.HintSize="876,863" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[boolReturnWasOpened]" DisplayName="If return was opened" sap:VirtualizedContainerService.HintSize="876,635" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
-        <Switch x:TypeArguments="x:String" DisplayName="Switch 'States'" Expression="[strStateAbreviation]" sap:VirtualizedContainerService.HintSize="497,703" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+        <Switch x:TypeArguments="x:String" DisplayName="Switch 'States'" Expression="[strStateAbreviation]" sap:VirtualizedContainerService.HintSize="497,475" sap2010:WorkflowViewState.IdRef="Switch`1_1">
           <Switch.Default>
             <ui:LogMessage DisplayName="Log Message 'No abreviation'" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Warn" Message="[&quot;Not found for state balancing checks.&quot;]" />
           </Switch.Default>
@@ -160,15 +160,17 @@
           </ui:InvokeWorkflowFile>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="CO DR-0100 XML" DisplayName="Invoke CO_StateBalancing workflow" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Sub-Process\StateBalancing\CO_StateBalancing.xaml">
             <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_pathOutputFolder">[in_PathOutputFolder]</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="LA R-1029" DisplayName="Invoke LA_StateBalancing workflow" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Sub-Process\StateBalancing\LA_StateBalancing.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
                 <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
               </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_pathOutputFolder">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PathOutputFolder" />
-              </InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
-          <x:Null x:Key="LA R-1029" />
           <TryCatch x:Key="WA" DisplayName="TryCatch CheckStateBalancing WA with OtherDeductions logic" sap:VirtualizedContainerService.HintSize="438,341" sap2010:WorkflowViewState.IdRef="TryCatch_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -179,24 +181,12 @@
             <TryCatch.Try>
               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckOtherDeductions workflow" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Sub-Process\CheckOtherDeductions\CheckOtherDeductions.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                    <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_WA_ReturnNameForCheckOtherDeductions&quot;).ToString" />
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_State">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strStateAbreviation" />
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_CustomerAccount">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_CustomerAccount" />
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_LegalEntity">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_LegalEntity" />
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_PathOutputFolder">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PathOutputFolder" />
-                  </InArgument>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">[in_Config("StateBalancing_WA_ReturnNameForCheckOtherDeductions").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_State">[strStateAbreviation]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_CustomerAccount">[in_CustomerAccount]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_LegalEntity">[in_LegalEntity]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_PathOutputFolder">[in_PathOutputFolder]</InArgument>
                 </ui:InvokeWorkflowFile.Arguments>
               </ui:InvokeWorkflowFile>
             </TryCatch.Try>

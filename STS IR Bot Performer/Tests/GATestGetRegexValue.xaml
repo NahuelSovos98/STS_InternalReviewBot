@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="GATestGetRegexValue" this:GATestGetRegexValue.in_RegexToApply="(?&lt;=County Totals \&gt;\s+)(\d+).*" this:GATestGetRegexValue.in_ExpectedMatches="1" this:GATestGetRegexValue.in_SplitRegex="\s{3,}" this:GATestGetRegexValue.in_ExpectedSplitElements="7" this:GATestGetRegexValue.in_positionInList="2" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:this="clr-namespace:" xmlns:uasa="clr-namespace:UiPath.Activities.System.Arrays;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="GATestGetRegexValue" this:GATestGetRegexValue.in_RegexToApply="(?&lt;=Monthly)(\s+(\d{1,3}(,\d{3})*(\.\d+)?))" this:GATestGetRegexValue.in_ExpectedMatches="1" this:GATestGetRegexValue.in_SplitRegex="\s+" this:GATestGetRegexValue.in_ExpectedSplitElements="1" this:GATestGetRegexValue.in_positionInList="0" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:this="clr-namespace:" xmlns:uasa="clr-namespace:UiPath.Activities.System.Arrays;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_RegexToApply" Type="InArgument(x:String)" />
     <x:Property Name="in_ExpectedMatches" Type="InArgument(x:Int32)" />
@@ -11,7 +11,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1508,4029</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1101,4018</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GATestGetRegexValue_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -77,10 +77,9 @@
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GATestGetRegexValue" sap:VirtualizedContainerService.HintSize="1111,3964" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="GATestGetRegexValue" sap:VirtualizedContainerService.HintSize="1111,3953" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="ExtractedText" />
       <Variable x:TypeArguments="str:MatchCollection" Name="ListMatches" />
@@ -92,13 +91,13 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1049,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;GA Get Value with regex starts&quot;]" />
-    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'Return window'" sap:VirtualizedContainerService.HintSize="1049,994" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="68d1a7e0c0624fbd27bf8d643be56e0e" Selector="&lt;wnd app='returns.exe' ctrlname='frmReturns' isremoteapp='1' /&gt;&lt;wnd ctrlname='frmReturn' /&gt;">
+    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'Return window'" sap:VirtualizedContainerService.HintSize="1049,991" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="68d1a7e0c0624fbd27bf8d643be56e0e" Selector="&lt;wnd app='returns.exe' ctrlname='frmReturns' isremoteapp='1' /&gt;&lt;wnd ctrlname='frmReturn' /&gt;">
       <ui:WindowScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="548,847" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="548,844" sap2010:WorkflowViewState.IdRef="Sequence_5">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -116,7 +115,7 @@
                 </ui:Target>
               </ui:SendHotkey.Target>
             </ui:SendHotkey>
-            <If Condition="[Not String.IsNullOrEmpty(in_sendHotkey)]" DisplayName="Check if the bot have to send hotkeys for view the correct part of the screen" sap:VirtualizedContainerService.HintSize="486,416" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[Not String.IsNullOrEmpty(in_sendHotkey)]" DisplayName="Check if the bot have to send hotkeys for view the correct part of the screen" sap:VirtualizedContainerService.HintSize="486,413" sap2010:WorkflowViewState.IdRef="If_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -176,8 +175,8 @@
         </ActivityAction>
       </ui:WindowScope.Body>
     </ui:WindowScope>
-    <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="Tests\Output screen scraping.txt" sap:VirtualizedContainerService.HintSize="1011,135" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[ExtractedText]" />
-    <Assign DisplayName="Assign ListMatches" sap:VirtualizedContainerService.HintSize="1011,83" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="Tests\Output screen scraping.txt" sap:VirtualizedContainerService.HintSize="1049,133" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[ExtractedText]" />
+    <Assign DisplayName="Assign ListMatches" sap:VirtualizedContainerService.HintSize="1049,82" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="str:MatchCollection">[ListMatches]</OutArgument>
       </Assign.To>
@@ -187,7 +186,7 @@
     </Assign>
     <If Condition="[ListMatches.Count &lt;&gt; in_ExpectedMatches]" DisplayName="If amount of matches is not ok" sap:VirtualizedContainerService.HintSize="1049,545" sap2010:WorkflowViewState.IdRef="If_3">
       <If.Then>
-        <If sap2010:Annotation.AnnotationText="If is equal to 0, we expected n matches" Condition="[Not in_ExpectedMatches.Equals(0)]" DisplayName="Validate if expected matches is equal to 0" sap:VirtualizedContainerService.HintSize="945,356" sap2010:WorkflowViewState.IdRef="If_2">
+        <If sap2010:Annotation.AnnotationText="If is equal to 0, we expected n matches" Condition="[Not in_ExpectedMatches.Equals(0)]" DisplayName="Validate if expected matches is equal to 0" sap:VirtualizedContainerService.HintSize="486,356" sap2010:WorkflowViewState.IdRef="If_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -319,7 +318,7 @@
         </ActivityAction>
       </ui:ForEach.Body>
     </ui:ForEach>
-    <Assign DisplayName="Assign value to Double" sap:VirtualizedContainerService.HintSize="1011,83" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign DisplayName="Assign value to Double" sap:VirtualizedContainerService.HintSize="1049,82" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Double">[out_value]</OutArgument>
       </Assign.To>
@@ -327,7 +326,7 @@
         <InArgument x:TypeArguments="x:Double">[CDbl(ListItemsToCheck(in_positionInList))]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1011,94" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[&quot;The value returned with the regex: &quot;+ in_RegexToApply +&quot; was: &quot; + out_value.ToString]" />
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1011,94" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;GA Get Value with regex ends&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1049,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[&quot;The value returned with the regex: &quot;+ in_RegexToApply +&quot; was: &quot; + out_value.ToString]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1049,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;GA Get Value with regex ends&quot;]" />
   </Sequence>
 </Activity>
