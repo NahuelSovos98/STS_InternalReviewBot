@@ -70,6 +70,7 @@
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="CheckStateBalancing" sap:VirtualizedContainerService.HintSize="938,2036" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -216,8 +217,21 @@
           </ui:InvokeWorkflowFile>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="CA" DisplayName="Invoke CA_StateBalancing workflow" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Sub-Process\StateBalancing\CA_StateBalancing.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_State">[strStateAbreviation]</InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_State">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strStateAbreviation" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_CustomerAccount">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_CustomerAccount" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_LegalEntity">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_LegalEntity" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_PathOutputFolder">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PathOutputFolder" />
+              </InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
           <x:Null x:Key="SC" />

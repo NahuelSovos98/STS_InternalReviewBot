@@ -1,8 +1,20 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="CA_StateBalancing" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="CA_StateBalancing" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_State" Type="InArgument(x:String)" />
+    <x:Property Name="in_CustomerAccount" Type="InArgument(x:String)" />
+    <x:Property Name="in_LegalEntity" Type="InArgument(x:String)" />
+    <x:Property Name="in_PathOutputFolder" Type="InArgument(x:String)" />
   </x:Members>
+  <this:CA_StateBalancing.in_CustomerAccount>
+    <InArgument x:TypeArguments="x:String" />
+  </this:CA_StateBalancing.in_CustomerAccount>
+  <this:CA_StateBalancing.in_LegalEntity>
+    <InArgument x:TypeArguments="x:String" />
+  </this:CA_StateBalancing.in_LegalEntity>
+  <this:CA_StateBalancing.in_PathOutputFolder>
+    <InArgument x:TypeArguments="x:String" />
+  </this:CA_StateBalancing.in_PathOutputFolder>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
@@ -86,9 +98,24 @@
       <TryCatch.Try>
         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckOtherDeductions workflow" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Sub-Process\CheckOtherDeductions\CheckOtherDeductions.xaml">
           <ui:InvokeWorkflowFile.Arguments>
-            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">[in_Config("StateBalancing_CA_ReturnNameForCheckOtherDeductions").ToString]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_State">[in_State]</InArgument>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+              <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_CA_ReturnNameForCheckOtherDeductions&quot;).ToString" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_State">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_State" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_CustomerAccount">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_CustomerAccount" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_LegalEntity">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_LegalEntity" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_PathOutputFolder">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PathOutputFolder" />
+            </InArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
       </TryCatch.Try>
@@ -120,26 +147,18 @@
       <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[&quot;Get TransactionsObject value&quot;]" />
       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SelectForm workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\TabMenu\SelectForm.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="in_FormName">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_CA_TransactionsObjectForm&quot;).ToString" />
-          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_FormName">[in_Config("StateBalancing_CA_TransactionsObjectForm").ToString]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SelectTab workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\TabMenu\SelectTab.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="in_PageName">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_CA_TransactionsObjectPage&quot;).ToString" />
-          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_PageName">[in_Config("StateBalancing_CA_TransactionsObjectPage").ToString]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TestGetResultClickOnText workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Tests\TestGetResultClickOnText.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="in_StringToClickOn">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_CA_TransactionsObject_TextToClickOn&quot;).ToString" />
-          </InArgument>
-          <OutArgument x:TypeArguments="x:String" x:Key="out_Result">
-            <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="TransactionObjectValue" />
-          </OutArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_StringToClickOn">[in_Config("StateBalancing_CA_TransactionsObject_TextToClickOn").ToString]</InArgument>
+          <OutArgument x:TypeArguments="x:String" x:Key="out_Result">[TransactionObjectValue]</OutArgument>
           <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey">
             <Literal x:TypeArguments="x:String" Value="" />
           </InArgument>
@@ -157,29 +176,19 @@
       <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,92" sap2010:WorkflowViewState.IdRef="LogMessage_5" Message="[&quot;Get B5Row value&quot;]" />
       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SelectForm workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\TabMenu\SelectForm.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="in_FormName">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_CA_B5RowForm&quot;).ToString" />
-          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_FormName">[in_Config("StateBalancing_CA_B5RowForm").ToString]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SelectTab workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\TabMenu\SelectTab.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="in_PageName">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_CA_B5RowPage&quot;).ToString" />
-          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_PageName">[in_Config("StateBalancing_CA_B5RowPage").ToString]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TestGetResultClickOnText workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Tests\TestGetResultClickOnText.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="in_StringToClickOn">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_CA_B5Row_TextToClickOn&quot;).ToString" />
-          </InArgument>
-          <OutArgument x:TypeArguments="x:String" x:Key="out_Result">
-            <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="B5RowValue" />
-          </OutArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_CA_B5Row_Hotkeys&quot;).ToString" />
-          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_StringToClickOn">[in_Config("StateBalancing_CA_B5Row_TextToClickOn").ToString]</InArgument>
+          <OutArgument x:TypeArguments="x:String" x:Key="out_Result">[B5RowValue]</OutArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey">[in_Config("StateBalancing_CA_B5Row_Hotkeys").ToString]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
       <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,92" sap2010:WorkflowViewState.IdRef="LogMessage_6" Message="[&quot;B5Row value is &quot; + B5RowValue]" />
