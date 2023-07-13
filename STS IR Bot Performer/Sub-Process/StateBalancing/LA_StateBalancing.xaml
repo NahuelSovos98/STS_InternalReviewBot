@@ -83,33 +83,27 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1502,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;LA_StateBalancing workflow starts&quot;]" />
     <ui:Comment sap:VirtualizedContainerService.HintSize="1502,75" sap2010:WorkflowViewState.IdRef="Comment_3" Text="// Navigate to page 'Filing Options' in LA Return" />
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1502,303" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SelectTab workflow" sap:VirtualizedContainerService.HintSize="1502,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\TabMenu\SelectTab.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_PageName">[in_Config("StateBalancing_LA_SecondSelectTab").ToString]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1502,303" sap2010:WorkflowViewState.IdRef="CommentOut_6">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,224" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,224" sap2010:WorkflowViewState.IdRef="Sequence_14">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SelectTab workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\TabMenu\SelectTab.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SelectTab workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\TabMenu\SelectTab.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_PageName">[in_Config("StateBalancing_LA_SecondSelectTab").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_PageName">Filing Options</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
         </Sequence>
       </ui:CommentOut.Body>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SelectTab workflow" sap:VirtualizedContainerService.HintSize="1502,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\TabMenu\SelectTab.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_PageName">Filing Options</InArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
     <ui:Comment sap:VirtualizedContainerService.HintSize="1502,56" sap2010:WorkflowViewState.IdRef="Comment_4" Text="// Get specific value to compare" />
     <TryCatch sap2010:Annotation.AnnotationText="is inside a Try Catch because the validation must be done only if the number appears. There are cases where this number to be compared does not appear, and this indicates that the validation is correct." DisplayName="Try Catch - get specific value" sap:VirtualizedContainerService.HintSize="1502,959" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
@@ -126,25 +120,13 @@
           </sap:WorkflowViewStateService.ViewState>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GATestGetRegexValue workflow" sap:VirtualizedContainerService.HintSize="486,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Tests\GATestGetRegexValue.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_LA_RegexToApply&quot;).ToString" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedMatches">
-                <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;StateBalancing_LA_ExpectedMatches&quot;).ToString)" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_SplitRegex">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_LA_SplitRegex&quot;).ToString" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedSplitElements">
-                <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;StateBalancing_LA_ExpectedSplitElements&quot;).ToString)" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:Int32" x:Key="in_positionInList">
-                <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;StateBalancing_LA_PositionInList&quot;).ToString)" />
-              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">[in_Config("StateBalancing_LA_RegexToApply").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedMatches">[CInt(in_Config("StateBalancing_LA_ExpectedMatches").ToString)]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_SplitRegex">[in_Config("StateBalancing_LA_SplitRegex").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedSplitElements">[CInt(in_Config("StateBalancing_LA_ExpectedSplitElements").ToString)]</InArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="in_positionInList">[CInt(in_Config("StateBalancing_LA_PositionInList").ToString)]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey" />
-              <OutArgument x:TypeArguments="x:Double" x:Key="out_value">
-                <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="dbl_valueToCompare" />
-              </OutArgument>
+              <OutArgument x:TypeArguments="x:Double" x:Key="out_value">[dbl_valueToCompare]</OutArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
           <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="486,303" sap2010:WorkflowViewState.IdRef="CommentOut_5">

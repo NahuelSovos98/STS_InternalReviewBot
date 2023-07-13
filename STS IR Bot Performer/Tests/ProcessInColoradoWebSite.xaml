@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1508,4005</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1502,4005</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessInColoradoWebSite_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -256,7 +256,7 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:GetLastDownloadedFile IgnoreFiles="{x:Null}" DisplayName="Wait for Download" DownloadFolder="[in_pathTempFolder]" File="[str_File]" sap:VirtualizedContainerService.HintSize="580,907" sap2010:WorkflowViewState.IdRef="GetLastDownloadedFile_1" Timeout="60000">
+          <ui:GetLastDownloadedFile IgnoreFiles="{x:Null}" DisplayName="Wait for Download" DownloadFolder="[Path.GetDirectoryName(in_pathTXTCO)]" File="[str_File]" sap:VirtualizedContainerService.HintSize="580,907" sap2010:WorkflowViewState.IdRef="GetLastDownloadedFile_1" Timeout="60">
             <ui:GetLastDownloadedFile.Body>
               <ActivityAction>
                 <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="546,651" sap2010:WorkflowViewState.IdRef="Sequence_14">
