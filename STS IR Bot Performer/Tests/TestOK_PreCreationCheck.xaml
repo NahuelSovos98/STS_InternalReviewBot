@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1508,3449</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1502,4290</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>TestOK_PreCreationCheck_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -67,7 +67,6 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
@@ -75,7 +74,7 @@
       <AssemblyReference>System.Data.Entity</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="TestOK_PreCreationCheck" sap:VirtualizedContainerService.HintSize="1007,3384" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="TestOK_PreCreationCheck" sap:VirtualizedContainerService.HintSize="1007,4225" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="bool_PreCreationCheck" />
       <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="dt_ErrorDescription" />
@@ -153,15 +152,15 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <ui:InterruptibleWhile CurrentIndex="{x:Null}" DisplayName="While - Loop while until element be visible within screen" sap:VirtualizedContainerService.HintSize="945,730" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+    <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[not bool_PreCreationCheck]" DisplayName="While - Loop while until element be visible within screen" sap:VirtualizedContainerService.HintSize="945,1206" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
       <ui:InterruptibleWhile.Body>
-        <Sequence DisplayName="Loop while element is nothing" sap:VirtualizedContainerService.HintSize="496,564" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Loop while element is nothing" sap:VirtualizedContainerService.HintSize="596,1040" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Scroll Down'" sap:VirtualizedContainerService.HintSize="434,107" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+          <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_DOUBLE" DisplayName="Click 'Scroll Down'" sap:VirtualizedContainerService.HintSize="534,107" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
             <ui:Click.CursorPosition>
               <ui:CursorPosition Position="Center">
                 <ui:CursorPosition.OffsetX>
@@ -183,7 +182,7 @@
               </ui:Target>
             </ui:Click.Target>
           </ui:Click>
-          <Assign DisplayName="sum counter clicks" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_6">
+          <Assign DisplayName="sum counter clicks" sap:VirtualizedContainerService.HintSize="534,82" sap2010:WorkflowViewState.IdRef="Assign_6">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Int32">[int_counterClick]</OutArgument>
             </Assign.To>
@@ -191,9 +190,9 @@
               <InArgument x:TypeArguments="x:Int32">[int_counterClick + 1]</InArgument>
             </Assign.Value>
           </Assign>
-          <TryCatch DisplayName="Try Catch to know if Pre Creation Check is avalaible" sap:VirtualizedContainerService.HintSize="434,184" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+          <TryCatch DisplayName="Try Catch to know if Pre Creation Check is avalaible" sap:VirtualizedContainerService.HintSize="534,660" sap2010:WorkflowViewState.IdRef="TryCatch_2">
             <TryCatch.Try>
-              <Sequence DisplayName="Is avalable - loop not necessary" sap:VirtualizedContainerService.HintSize="496,632" sap2010:WorkflowViewState.IdRef="Sequence_6">
+              <Sequence DisplayName="Is avalable - loop not necessary" sap:VirtualizedContainerService.HintSize="496,432" sap2010:WorkflowViewState.IdRef="Sequence_6">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -211,46 +210,63 @@
                     </ui:CursorPosition>
                   </ui:Click.CursorPosition>
                   <ui:Click.Target>
-                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b950d869-3bec-4a16-9667-cffdaf8f4a36" InformativeScreenshot="cde567d9ae9caf91d26452e2760d3495" Selector="&lt;wnd app='returns.exe' ctrlname='frmReturns' isremoteapp='1' /&gt;&lt;wnd ctrlname='WindowDockingArea2' /&gt;&lt;wnd ctrlname='DockableWindow2' /&gt;&lt;wnd ctrlname='expReturns' /&gt;&lt;ctrl name='Pre-Creation Check' role='push button' /&gt;" TimeoutMS="500" WaitForReady="NONE" />
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b950d869-3bec-4a16-9667-cffdaf8f4a36" InformativeScreenshot="cde567d9ae9caf91d26452e2760d3495" Selector="&lt;wnd app='returns.exe' ctrlname='frmReturns' isremoteapp='1' /&gt;&lt;wnd ctrlname='WindowDockingArea2' /&gt;&lt;wnd ctrlname='DockableWindow2' /&gt;&lt;wnd ctrlname='expReturns' /&gt;&lt;ctrl name='Pre-Creation Check' role='push button' /&gt;" TimeoutMS="50" WaitForReady="NONE" />
                   </ui:Click.Target>
                 </ui:Click>
-                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Scroll Down'" sap:VirtualizedContainerService.HintSize="434,107" sap2010:WorkflowViewState.IdRef="Click_8" KeyModifiers="None" MouseButton="BTN_LEFT">
-                  <ui:Click.CursorPosition>
-                    <ui:CursorPosition Position="Center">
-                      <ui:CursorPosition.OffsetX>
-                        <InArgument x:TypeArguments="x:Int32" />
-                      </ui:CursorPosition.OffsetX>
-                      <ui:CursorPosition.OffsetY>
-                        <InArgument x:TypeArguments="x:Int32" />
-                      </ui:CursorPosition.OffsetY>
-                    </ui:CursorPosition>
-                  </ui:Click.CursorPosition>
-                  <ui:Click.Target>
-                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2cfa6a92-d7d3-472b-a828-57272a5ae945" InformativeScreenshot="bf107a6f7f173223ba117af762e0797c" Selector="&lt;wnd app='returns.exe' ctrlname='frmReturns' isremoteapp='1' /&gt;&lt;wnd ctrlname='WindowDockingArea2' /&gt;&lt;wnd ctrlname='DockableWindow2' /&gt;&lt;wnd ctrlname='expReturns' /&gt;&lt;ctrl name='Vertical scrollbar' role='scroll bar' /&gt;&lt;ctrl name='Line down' role='push button' /&gt;">
-                      <ui:Target.TimeoutMS>
-                        <InArgument x:TypeArguments="x:Int32" />
-                      </ui:Target.TimeoutMS>
-                      <ui:Target.WaitForReady>
-                        <InArgument x:TypeArguments="ui:WaitForReady" />
-                      </ui:Target.WaitForReady>
-                    </ui:Target>
-                  </ui:Click.Target>
-                </ui:Click>
-                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Pre Creation Check'" sap:VirtualizedContainerService.HintSize="434,107" sap2010:WorkflowViewState.IdRef="Click_9" KeyModifiers="None" MouseButton="BTN_LEFT">
-                  <ui:Click.CursorPosition>
-                    <ui:CursorPosition Position="Center">
-                      <ui:CursorPosition.OffsetX>
-                        <InArgument x:TypeArguments="x:Int32" />
-                      </ui:CursorPosition.OffsetX>
-                      <ui:CursorPosition.OffsetY>
-                        <InArgument x:TypeArguments="x:Int32" />
-                      </ui:CursorPosition.OffsetY>
-                    </ui:CursorPosition>
-                  </ui:Click.CursorPosition>
-                  <ui:Click.Target>
-                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b950d869-3bec-4a16-9667-cffdaf8f4a36" InformativeScreenshot="cde567d9ae9caf91d26452e2760d3495" Selector="&lt;wnd app='returns.exe' ctrlname='frmReturns' isremoteapp='1' /&gt;&lt;wnd ctrlname='WindowDockingArea2' /&gt;&lt;wnd ctrlname='DockableWindow2' /&gt;&lt;wnd ctrlname='expReturns' /&gt;&lt;ctrl name='Pre-Creation Check' role='push button' /&gt;" TimeoutMS="500" WaitForReady="NONE" />
-                  </ui:Click.Target>
-                </ui:Click>
+                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                  <ui:CommentOut.Body>
+                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,365" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Scroll Down'" sap:VirtualizedContainerService.HintSize="388,107" sap2010:WorkflowViewState.IdRef="Click_8" KeyModifiers="None" MouseButton="BTN_LEFT">
+                        <ui:Click.CursorPosition>
+                          <ui:CursorPosition Position="Center">
+                            <ui:CursorPosition.OffsetX>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetX>
+                            <ui:CursorPosition.OffsetY>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetY>
+                          </ui:CursorPosition>
+                        </ui:Click.CursorPosition>
+                        <ui:Click.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2cfa6a92-d7d3-472b-a828-57272a5ae945" InformativeScreenshot="bf107a6f7f173223ba117af762e0797c" Selector="&lt;wnd app='returns.exe' ctrlname='frmReturns' isremoteapp='1' /&gt;&lt;wnd ctrlname='WindowDockingArea2' /&gt;&lt;wnd ctrlname='DockableWindow2' /&gt;&lt;wnd ctrlname='expReturns' /&gt;&lt;ctrl name='Vertical scrollbar' role='scroll bar' /&gt;&lt;ctrl name='Line down' role='push button' /&gt;">
+                            <ui:Target.TimeoutMS>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:Target.TimeoutMS>
+                            <ui:Target.WaitForReady>
+                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                            </ui:Target.WaitForReady>
+                          </ui:Target>
+                        </ui:Click.Target>
+                      </ui:Click>
+                      <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Pre Creation Check'" sap:VirtualizedContainerService.HintSize="388,107" sap2010:WorkflowViewState.IdRef="Click_10" KeyModifiers="None" MouseButton="BTN_LEFT">
+                        <ui:Click.CursorPosition>
+                          <ui:CursorPosition Position="Center">
+                            <ui:CursorPosition.OffsetX>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetX>
+                            <ui:CursorPosition.OffsetY>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetY>
+                          </ui:CursorPosition>
+                        </ui:Click.CursorPosition>
+                        <ui:Click.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b950d869-3bec-4a16-9667-cffdaf8f4a36" InformativeScreenshot="cde567d9ae9caf91d26452e2760d3495" Selector="&lt;wnd app='returns.exe' ctrlname='frmReturns' isremoteapp='1' /&gt;&lt;wnd ctrlname='WindowDockingArea2' /&gt;&lt;wnd ctrlname='DockableWindow2' /&gt;&lt;wnd ctrlname='expReturns' /&gt;&lt;ctrl name='Pre-Creation Check' role='push button' /&gt;" TimeoutMS="50" WaitForReady="NONE" />
+                        </ui:Click.Target>
+                      </ui:Click>
+                    </Sequence>
+                  </ui:CommentOut.Body>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:CommentOut>
                 <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_3">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Boolean">[bool_PreCreationCheck]</OutArgument>
@@ -262,7 +278,7 @@
               </Sequence>
             </TryCatch.Try>
             <TryCatch.Catches>
-              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,21" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="500,21" sap2010:WorkflowViewState.IdRef="Catch`1_2">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -294,9 +310,6 @@
           </TryCatch>
         </Sequence>
       </ui:InterruptibleWhile.Body>
-      <ui:InterruptibleWhile.Condition>
-        <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="not bool_PreCreationCheck" />
-      </ui:InterruptibleWhile.Condition>
     </ui:InterruptibleWhile>
     <ui:Comment sap:VirtualizedContainerService.HintSize="945,75" sap2010:WorkflowViewState.IdRef="Comment_2" Text="// Get value of check. Must be 'No errors were found'." />
     <Sequence DisplayName="Data Scraping" sap:VirtualizedContainerService.HintSize="945,476" sap2010:WorkflowViewState.IdRef="Sequence_10">
@@ -336,7 +349,28 @@
     </Sequence>
     <ui:Comment sap:VirtualizedContainerService.HintSize="945,75" sap2010:WorkflowViewState.IdRef="Comment_3" Text="// Check result of the validation and scroll up until 'Go back to return list'" />
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="945,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Scroll down until 'Pre Creation Check' Button ends&quot;]" />
-    <If Condition="[dt_ErrorDescription.Rows(0)(&quot;Column-3&quot;).ToString.Contains(in_Config(&quot;StateBalancing_OK_TextToCompareInDT&quot;).ToString)]" DisplayName="Check if Error Description is 'error not found'" sap:VirtualizedContainerService.HintSize="945,516" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[dt_ErrorDescription.RowCount.Equals(0)]" DisplayName="If - validate value of data scraping" sap:VirtualizedContainerService.HintSize="945,325" sap2010:WorkflowViewState.IdRef="If_2">
+      <If.Then>
+        <Sequence DisplayName="Throw - no rows in dt" sap:VirtualizedContainerService.HintSize="450,136" sap2010:WorkflowViewState.IdRef="Sequence_16">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Throw Exception="[new BusinessRuleException(&quot;Pre creation check table is empty. The bot could not check for errors&quot;)]" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="Throw_2" />
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap:VirtualizedContainerService.HintSize="243,103" sap2010:WorkflowViewState.IdRef="Sequence_17">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Else>
+    </If>
+    <If Condition="[dt_ErrorDescription.Rows(0)(3).ToString.Contains(in_Config(&quot;StateBalancing_OK_TextToCompareInDT&quot;).ToString)]" DisplayName="Check if Error Description is 'error not found'" sap:VirtualizedContainerService.HintSize="945,516" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
         <Sequence DisplayName="OK Balancing is OK" sap:VirtualizedContainerService.HintSize="450,356" sap2010:WorkflowViewState.IdRef="Sequence_12">
           <sap:WorkflowViewStateService.ViewState>
@@ -347,9 +381,7 @@
           <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,92" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Error description in a Pre Creation Check table is: &lt;&quot;+dt_ErrorDescription.Rows(0)(&quot;Column-3&quot;).ToString+&quot;&gt;. Process continues&quot;]" />
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Scroll Up Workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnsMenu\ScrollUpToGoBackToReturnListButton.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:Int32" x:Key="in_intCounterClick">
-                <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="int_counterClick" />
-              </InArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="in_intCounterClick">[int_counterClick]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
         </Sequence>
