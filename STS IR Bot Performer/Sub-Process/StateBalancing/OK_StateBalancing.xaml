@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1508,1448</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1502,2151</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>OK_StateBalancing_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -63,16 +63,16 @@
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="OK_StateBalancing" sap:VirtualizedContainerService.HintSize="918,1383" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="OK_StateBalancing" sap:VirtualizedContainerService.HintSize="1007,2086" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="str_filingType" />
     </Sequence.Variables>
@@ -81,58 +81,103 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="856,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;OK_StateBalancing workflow starts&quot;]" />
-    <ui:Comment sap:VirtualizedContainerService.HintSize="856,56" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// Click on 'Return Status'" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Click On Return Status Workflow" sap:VirtualizedContainerService.HintSize="856,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnsMenu\ClickOnReturnStatus.xaml">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="945,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;OK_StateBalancing workflow starts&quot;]" />
+    <ui:Comment sap:VirtualizedContainerService.HintSize="945,56" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// Click on 'Return Status'" />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Click On Return Status Workflow" sap:VirtualizedContainerService.HintSize="945,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnsMenu\ClickOnReturnStatus.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:Comment sap:VirtualizedContainerService.HintSize="856,56" sap2010:WorkflowViewState.IdRef="Comment_2" Text="// Get Text of Filing Type" />
-    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'Filing Type'" sap:VirtualizedContainerService.HintSize="856,107" sap2010:WorkflowViewState.IdRef="GetValue_1">
-      <ui:GetValue.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="ce232b18-090c-44d8-b58b-64f9f2db5710" InformativeScreenshot="a91884aa2e5a391b99a000a2dcab2183" Selector="&lt;wnd app='returns.exe' ctrlname='frmReturns' isremoteapp='1' /&gt;&lt;wnd ctrlname='_frmReturnsAutoHideControl' /&gt;&lt;wnd ctrlname='DockableWindow1' /&gt;&lt;wnd ctrlname='expReturnDetails' /&gt;&lt;wnd ctrlname='ccReturnStatus' /&gt;&lt;wnd ctrlname='grpFilingType' /&gt;&lt;wnd ctrlname='cboFilingType' /&gt;">
-          <ui:Target.TimeoutMS>
-            <InArgument x:TypeArguments="x:Int32" />
-          </ui:Target.TimeoutMS>
-          <ui:Target.WaitForReady>
-            <InArgument x:TypeArguments="ui:WaitForReady" />
-          </ui:Target.WaitForReady>
-        </ui:Target>
-      </ui:GetValue.Target>
-      <ui:GetValue.Value>
-        <OutArgument x:TypeArguments="x:String">[str_filingType]</OutArgument>
-      </ui:GetValue.Value>
-    </ui:GetValue>
-    <If Condition="[str_filingType.ToUpper.Equals(&quot;ELECTRONIC&quot;)]" DisplayName="If Filing Type is equal to Electronic" sap:VirtualizedContainerService.HintSize="856,516" sap2010:WorkflowViewState.IdRef="If_1">
+    <ui:Comment sap:VirtualizedContainerService.HintSize="945,56" sap2010:WorkflowViewState.IdRef="Comment_2" Text="// Get Text of Filing Type" />
+    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'Return page'" sap:VirtualizedContainerService.HintSize="945,810" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="107adf0a70231dbdb70e11ede8f9c2f4" Selector="&lt;wnd app='returns.exe' ctrlname='frmReturns' isremoteapp='1' /&gt;">
+      <ui:WindowScope.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="548,663" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:GetValue ContinueOnError="True" DisplayName="Get Text 'Filing Type'" sap:VirtualizedContainerService.HintSize="486,107" sap2010:WorkflowViewState.IdRef="GetValue_2">
+              <ui:GetValue.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4bc03c08-107e-4f57-9e2f-c7a289fdc704" InformativeScreenshot="6fa8a1869e104d50cf7eff57188691b1" Selector="&lt;wnd ctrlname='_frmReturnsAutoHideControl' /&gt;&lt;wnd ctrlname='DockableWindow1' /&gt;&lt;wnd ctrlname='expReturnDetails' /&gt;&lt;wnd ctrlname='ccReturnStatus' /&gt;&lt;wnd ctrlname='grpFilingType' /&gt;&lt;wnd ctrlname='cboFilingType' /&gt;" TimeoutMS="1000" WaitForReady="COMPLETE" />
+              </ui:GetValue.Target>
+              <ui:GetValue.Value>
+                <OutArgument x:TypeArguments="x:String">[str_filingType]</OutArgument>
+              </ui:GetValue.Value>
+            </ui:GetValue>
+            <If Condition="[String.IsNullOrEmpty(str_filingType)]" DisplayName="If - filing type get text fail retry with another selector" sap:VirtualizedContainerService.HintSize="486,405" sap2010:WorkflowViewState.IdRef="If_2">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="450,218" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:GetValue ContinueOnError="True" DisplayName="Get Text 'Filing Type'" sap:VirtualizedContainerService.HintSize="388,107" sap2010:WorkflowViewState.IdRef="GetValue_3">
+                    <ui:GetValue.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4bc03c08-107e-4f57-9e2f-c7a289fdc704" InformativeScreenshot="fcf4cdce3a37e1dfcc888784a8ce2630" Selector="&lt;wnd ctrlname='WindowDockingArea4' /&gt;&lt;wnd ctrlname='DockableWindow1' /&gt;&lt;wnd ctrlname='expReturnDetails' /&gt;&lt;wnd ctrlname='ccReturnStatus' /&gt;&lt;wnd ctrlname='grpFilingType' /&gt;&lt;wnd ctrlname='cboFilingType' /&gt;" WaitForReady="COMPLETE">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                      </ui:Target>
+                    </ui:GetValue.Target>
+                    <ui:GetValue.Value>
+                      <OutArgument x:TypeArguments="x:String">[str_filingType]</OutArgument>
+                    </ui:GetValue.Value>
+                  </ui:GetValue>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </If.Else>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </ui:WindowScope.Body>
+    </ui:WindowScope>
+    <If Condition="[str_filingType.ToUpper.Equals(&quot;ELECTRONIC&quot;)]" DisplayName="If Filing Type is equal to Electronic" sap:VirtualizedContainerService.HintSize="945,516" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Sequence DisplayName="Is equal to electronic" sap:VirtualizedContainerService.HintSize="425,356" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Is equal to electronic" sap:VirtualizedContainerService.HintSize="450,356" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="363,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Message="[&quot;Filing type is equal than 'Electronic. Process continues'&quot;]" />
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Pre Creation Check Workflow" sap:VirtualizedContainerService.HintSize="363,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Tests\TestOK_PreCreationCheck.xaml">
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Message="[&quot;Filing type is equal than 'Electronic. Process continues'&quot;]" />
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Pre Creation Check Workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Tests\TestOK_PreCreationCheck.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-              </InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Not equal to electronic" sap:VirtualizedContainerService.HintSize="386,136" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence DisplayName="Not equal to electronic" sap:VirtualizedContainerService.HintSize="450,136" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Throw Exception="[new BusinessRuleException(&quot;Filing Type is not equal to Electonic. Filing Type is: &lt;&quot; + str_filingType + &quot;&gt;&quot;)]" sap:VirtualizedContainerService.HintSize="324,25" sap2010:WorkflowViewState.IdRef="Throw_1" />
+          <Throw Exception="[new BusinessRuleException(&quot;Filing Type is not equal to Electonic. Filing Type is: &lt;&quot; + str_filingType + &quot;&gt;&quot;)]" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="Throw_1" />
         </Sequence>
       </If.Else>
     </If>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="856,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;OK_StateBalancing workflow ends&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="945,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;OK_StateBalancing workflow ends&quot;]" />
   </Sequence>
 </Activity>
