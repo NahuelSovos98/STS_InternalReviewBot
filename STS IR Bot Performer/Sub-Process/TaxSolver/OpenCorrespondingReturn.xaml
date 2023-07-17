@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1162,3780</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1502,3780</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>OpenCorrespondingReturn_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -176,9 +176,9 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:CommentOut>
-                <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" AlterIfDisabled="True" sap2010:Annotation.AnnotationText="Just to make sure we are in the table" ClickType="CLICK_SINGLE" DisplayName="Click 'State' header" sap:VirtualizedContainerService.HintSize="973,138" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="False">
+                <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" AlterIfDisabled="True" sap2010:Annotation.AnnotationText="Just to make sure we are in the table" ClickType="CLICK_SINGLE" DisplayName="Click 'State' header" sap:VirtualizedContainerService.HintSize="973,138" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
                   <ui:Click.CursorPosition>
-                    <ui:CursorPosition OffsetX="56" OffsetY="8" Position="TopLeft" />
+                    <ui:CursorPosition OffsetX="30" OffsetY="30" Position="TopLeft" />
                   </ui:Click.CursorPosition>
                   <ui:Click.Target>
                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="38ba616b-a0c2-48d5-ae94-d180223e92cf" InformativeScreenshot="7e4950856d2fe135ca06ebdda134d029" Selector="&lt;wnd ctrlname='frmReturnList' /&gt;&lt;wnd ctrlname='SplitContainer2' /&gt;&lt;wnd ctrlname='grdReturnList' /&gt;&lt;ctrl name='Column Headers' role='grouping' /&gt;&lt;ctrl name='State' role='column header' /&gt;">
