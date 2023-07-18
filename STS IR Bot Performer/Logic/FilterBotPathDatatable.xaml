@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1162,928</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1228,1563</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>FilterBotPathDatatable_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -71,18 +71,19 @@
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="FilterBotPathDatatable" sap:VirtualizedContainerService.HintSize="536,863" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="FilterBotPathDatatable" sap:VirtualizedContainerService.HintSize="1125,1498" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="474,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;FilterBotPathDatatable starts&quot;]" />
-    <TryCatch DisplayName="Try Catch filter dtBotPath" sap:VirtualizedContainerService.HintSize="474,356" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1063,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;FilterBotPathDatatable starts&quot;]" />
+    <TryCatch DisplayName="Try Catch filter dtBotPath" sap:VirtualizedContainerService.HintSize="1063,991" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <If Condition="[in_boolFilterByEquals]" DisplayName="If it needs to filterByEquals" sap:VirtualizedContainerService.HintSize="913,284" sap2010:WorkflowViewState.IdRef="If_2">
+        <If Condition="[in_boolFilterByEquals]" DisplayName="If it needs to filterByEquals" sap:VirtualizedContainerService.HintSize="1025,763" sap2010:WorkflowViewState.IdRef="If_2">
           <If.Then>
             <Assign sap2010:Annotation.AnnotationText="Column(&quot;State&quot;) equals in_State AND&#xA;in_ReturnName equals Column(&quot;Return Name&quot;)" DisplayName="Assign - io_dtBotPath" sap:VirtualizedContainerService.HintSize="434,124" sap2010:WorkflowViewState.IdRef="Assign_1">
               <Assign.To>
@@ -99,27 +100,60 @@
             </Assign>
           </If.Then>
           <If.Else>
-            <Assign sap2010:Annotation.AnnotationText="Column(&quot;State&quot;) equals in_State AND&#xA;in_ReturnName StartsWith Column(&quot;Return Name&quot;)" DisplayName="Assign - io_dtBotPath" sap:VirtualizedContainerService.HintSize="434,124" sap2010:WorkflowViewState.IdRef="Assign_3">
-              <Assign.To>
-                <OutArgument x:TypeArguments="sd:DataTable">[io_dtBotPath]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="sd:DataTable">[io_dtBotPath.AsEnumerable().Where(function(r) r("State").ToString.Trim.Equals(in_State.Trim) AND in_ReturnName.Trim.Contains ( r("Return Name").ToString.Trim )).CopyToDataTable]</InArgument>
-              </Assign.Value>
+            <Sequence DisplayName="Filter by startsWith" sap:VirtualizedContainerService.HintSize="546,603" sap2010:WorkflowViewState.IdRef="Sequence_3">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-            </Assign>
+              <Assign sap2010:Annotation.AnnotationText="Column(&quot;State&quot;) equals in_State AND&#xA;in_ReturnName StartsWith Column(&quot;Return Name&quot;)" DisplayName="Assign - io_dtBotPath" sap:VirtualizedContainerService.HintSize="484,124" sap2010:WorkflowViewState.IdRef="Assign_5">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="sd:DataTable">[io_dtBotPath]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="sd:DataTable">[io_dtBotPath.AsEnumerable().Where(function(r) r("State").ToString.Trim.Equals(in_State.Trim) AND in_ReturnName.Trim.Contains ( r("Return Name").ToString.Trim )).CopyToDataTable]</InArgument>
+                </Assign.Value>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Assign>
+              <If Condition="[io_dtBotPath.RowCount &gt; 1]" DisplayName="If there are more than 1 result" sap:VirtualizedContainerService.HintSize="484,328" sap2010:WorkflowViewState.IdRef="If_3">
+                <If.Then>
+                  <Assign sap2010:Annotation.AnnotationText="Filter by equals&#xD;&#xA;Column(&quot;State&quot;) equals in_State AND&#xA;in_ReturnName equals Column(&quot;Return Name&quot;)" DisplayName="Assign - io_dtBotPath" sap:VirtualizedContainerService.HintSize="434,139" sap2010:WorkflowViewState.IdRef="Assign_6">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="sd:DataTable">[io_dtBotPath]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="sd:DataTable">[io_dtBotPath.AsEnumerable().Where(function(r) r("State").ToString.Trim.Equals(in_State.Trim) AND in_ReturnName.Trim.Equals ( r("Return Name").ToString.Trim )).CopyToDataTable]</InArgument>
+                    </Assign.Value>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </Assign>
+                </If.Then>
+                <If.Else>
+                  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_2">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </Sequence>
+                </If.Else>
+              </If>
+            </Sequence>
           </If.Else>
         </If>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="440,193" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="1029,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -127,24 +161,32 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Assign sap2010:Annotation.AnnotationText="Column(&quot;State&quot;) equals in_State AND&#xA;in_ReturnName equals Column(&quot;Return Name&quot;)" DisplayName="Assign - io_dtBotPath" sap:VirtualizedContainerService.HintSize="434,124" sap2010:WorkflowViewState.IdRef="Assign_4">
-              <Assign.To>
-                <OutArgument x:TypeArguments="sd:DataTable">[io_dtBotPath]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="sd:DataTable">[New DataTable]</InArgument>
-              </Assign.Value>
+            <Sequence DisplayName="Log error and continue" sap:VirtualizedContainerService.HintSize="496,367" sap2010:WorkflowViewState.IdRef="Sequence_4">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-            </Assign>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Error" Message="[&quot;Exception while filtering the datatable. &quot; + exception.Message + &quot;.Continue with empty datatable&quot;]" />
+              <Assign sap2010:Annotation.AnnotationText="Column(&quot;State&quot;) equals in_State AND&#xA;in_ReturnName equals Column(&quot;Return Name&quot;)" DisplayName="Assign - io_dtBotPath" sap:VirtualizedContainerService.HintSize="434,124" sap2010:WorkflowViewState.IdRef="Assign_4">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="sd:DataTable">[io_dtBotPath]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="sd:DataTable">[New DataTable]</InArgument>
+                </Assign.Value>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Assign>
+            </Sequence>
           </ActivityAction>
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="474,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Trace" Message="[&quot;Amount of Bot Path for return &lt;&quot;+in_ReturnName+&quot;&gt; is: &quot; + io_dtBotPath.RowCount.ToString]" />
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="474,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;FilterBotPathDatatable ends&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1063,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Trace" Message="[&quot;Amount of Bot Path for return &lt;&quot;+in_ReturnName+&quot;&gt; is: &quot; + io_dtBotPath.RowCount.ToString]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1063,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;FilterBotPathDatatable ends&quot;]" />
   </Sequence>
 </Activity>
