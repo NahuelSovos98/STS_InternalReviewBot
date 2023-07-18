@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1162,2101</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1228,2101</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CheckStateBalancing_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -217,24 +217,23 @@
           </ui:InvokeWorkflowFile>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="CA" DisplayName="Invoke CA_StateBalancing workflow" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Sub-Process\StateBalancing\CA_StateBalancing.xaml">
             <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_State">[strStateAbreviation]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_CustomerAccount">[in_CustomerAccount]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_LegalEntity">[in_LegalEntity]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_PathOutputFolder">[in_PathOutputFolder]</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="SC" DisplayName="Invoke SC_StateBalancing workflow" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Sub-Process\StateBalancing\SC_StateBalancing.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
                 <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_State">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strStateAbreviation" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_CustomerAccount">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_CustomerAccount" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_LegalEntity">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_LegalEntity" />
               </InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_PathOutputFolder">
                 <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PathOutputFolder" />
               </InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
-          <x:Null x:Key="SC" />
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="HI" DisplayName="Invoke HI_StateBalancing workflow" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Sub-Process\StateBalancing\HI_StateBalancing.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
