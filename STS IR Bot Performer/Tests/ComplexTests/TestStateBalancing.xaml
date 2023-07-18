@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="TestWorkflowTemplate" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1162,2411" sap2010:WorkflowViewState.IdRef="TestWorkflowTemplate_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="TestWorkflowTemplate" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="796,2411" sap2010:WorkflowViewState.IdRef="TestWorkflowTemplate_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -110,12 +110,12 @@
           <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_Config">[Config]</OutArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GetCurrentReturnsDisplayed workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\GetCurrentReturnsDisplayed.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GetCurrentReturnsDisplayed workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnsList\GetCurrentReturnsDisplayed.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <OutArgument x:TypeArguments="x:Int32" x:Key="out_DisplayedRecords">[CurrentReturns]</OutArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GetReturnTable workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\GetReturnTable.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GetReturnTable workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnsList\GetReturnTable.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="x:Int32" x:Key="in_TotalReturnsDisplayed">[CurrentReturns]</InArgument>
           <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtReturnsTable">[dtReturnsTablke]</OutArgument>
@@ -156,14 +156,21 @@
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke OpenCorrespondingReturn workflow" sap:VirtualizedContainerService.HintSize="486,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\OpenCorrespondingReturn.xaml">
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke OpenCorrespondingReturn workflow" sap:VirtualizedContainerService.HintSize="486,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnsList\OpenCorrespondingReturn.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_CustomerAccount">[CurrentRow("Customer Account").toString]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">[CurrentRow("Return Name").toString]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_ReturnWorkflow">[CurrentRow("Workflow").toString]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionalReturnNameCase">[Config("ReturnNameExceptionalCase").ToString]</InArgument>
-                        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolReturnWasOpened">[boolReturnWasOpened]</OutArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_DisplayName">[CurrentRow("Display Name").toString]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_CustomerAccount">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentRow(&quot;Customer Account&quot;).toString" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentRow(&quot;Return Name&quot;).toString" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionalReturnNameCase">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;ReturnNameExceptionalCase&quot;).ToString" />
+                        </InArgument>
+                        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolReturnWasOpened">
+                          <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="boolReturnWasOpened" />
+                        </OutArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_LegalEntity" />
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <If Condition="[boolReturnWasOpened]" DisplayName="If return was opened" sap:VirtualizedContainerService.HintSize="486,413" sap2010:WorkflowViewState.IdRef="If_1">
@@ -176,12 +183,8 @@
                           </sap:WorkflowViewStateService.ViewState>
                           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckStateBalancing workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Sub-Process\StateBalancing\CheckStateBalancing.xaml">
                             <ui:InvokeWorkflowFile.Arguments>
-                              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                                <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">
-                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentRow(&quot;Return Name&quot;).ToString" />
-                              </InArgument>
+                              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">[CurrentRow("Return Name").ToString]</InArgument>
                             </ui:InvokeWorkflowFile.Arguments>
                           </ui:InvokeWorkflowFile>
                         </Sequence>

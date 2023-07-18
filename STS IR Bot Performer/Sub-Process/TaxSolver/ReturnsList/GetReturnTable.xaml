@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1228,2008</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>536,1990</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetReturnTable_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -77,14 +77,10 @@
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GetReturnTable" sap:VirtualizedContainerService.HintSize="546,1943" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="GetReturnTable" sap:VirtualizedContainerService.HintSize="546,1925" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strSelectedReturns" />
-      <Variable x:TypeArguments="x:Int32" Name="AmountTimesPageDown">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:Int32" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:Int32" Default="0" Name="AmountTimesPageDown" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -125,7 +121,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:Click>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GoToTheFirstRowWithHotkeys workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\GoToTheFirstRowWithHotkeys.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GoToTheFirstRowWithHotkeys workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnsList\GoToTheFirstRowWithHotkeys.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <scg:Dictionary x:TypeArguments="x:String, Argument" />
               </ui:InvokeWorkflowFile.Arguments>
@@ -154,7 +150,7 @@
                 <OutArgument x:TypeArguments="x:String">[strSelectedReturns]</OutArgument>
               </ui:CopySelectedText.Result>
             </ui:CopySelectedText>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GoToTheFirstRowWithHotkeys workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\GoToTheFirstRowWithHotkeys.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GoToTheFirstRowWithHotkeys workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnsList\GoToTheFirstRowWithHotkeys.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <scg:Dictionary x:TypeArguments="x:String, Argument" />
               </ui:InvokeWorkflowFile.Arguments>
@@ -169,7 +165,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:WindowScope>
-    <ui:WriteTextFile File="{x:Null}" sap2010:Annotation.AnnotationText="Just to have a backup of what the bot has selected" DisplayName="Write Text File - Output.txt" FileName="Output.txt" sap:VirtualizedContainerService.HintSize="484,99.3333333333333" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[strSelectedReturns]">
+    <ui:WriteTextFile File="{x:Null}" sap2010:Annotation.AnnotationText="Just to have a backup of what the bot has selected" DisplayName="Write Text File - Output.txt" FileName="Output.txt" sap:VirtualizedContainerService.HintSize="484,94" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[strSelectedReturns]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -178,15 +174,15 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:WriteTextFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ParseSelectedReturnsAsDatatable workflow" sap:VirtualizedContainerService.HintSize="484,115.333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ParseSelectedReturnsAsDatatable.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ParseSelectedReturnsAsDatatable workflow" sap:VirtualizedContainerService.HintSize="484,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnsList\ParseSelectedReturnsAsDatatable.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_TextToParse">[strSelectedReturns]</InArgument>
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtTextParsed">[out_dtReturnsTable]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <If Condition="[out_dtReturnsTable.RowCount &lt;&gt; in_TotalReturnsDisplayed]" DisplayName="If the table does not have the same rows as displayed in TaxSolver" sap:VirtualizedContainerService.HintSize="484,256" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[out_dtReturnsTable.RowCount &lt;&gt; in_TotalReturnsDisplayed]" DisplayName="If the table does not have the same rows as displayed in TaxSolver" sap:VirtualizedContainerService.HintSize="484,249" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Throw DisplayName="Throw BE - RowCount does not match" Exception="[new BusinessRuleException(&quot;The amount of rows displayed in TaxSolver (&quot;+in_TotalReturnsDisplayed.ToString+&quot;) does not match with the amount of rows copied from clipboard (&quot;+out_dtReturnsTable.RowCount.ToString+&quot;). Please check if the bot is doing the right conversion and check the Output bkp text file.&quot;)]" sap:VirtualizedContainerService.HintSize="200,25.3333333333333" sap2010:WorkflowViewState.IdRef="Throw_1" />
+        <Throw DisplayName="Throw BE - RowCount does not match" Exception="[new BusinessRuleException(&quot;The amount of rows displayed in TaxSolver (&quot;+in_TotalReturnsDisplayed.ToString+&quot;) does not match with the amount of rows copied from clipboard (&quot;+out_dtReturnsTable.RowCount.ToString+&quot;). Please check if the bot is doing the right conversion and check the Output bkp text file.&quot;)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_1" />
       </If.Then>
       <If.Else>
         <Sequence sap2010:WorkflowViewState.IdRef="Sequence_7">
@@ -198,6 +194,6 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,96" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;GetReturnTable ends&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;GetReturnTable ends&quot;]" />
   </Sequence>
 </Activity>

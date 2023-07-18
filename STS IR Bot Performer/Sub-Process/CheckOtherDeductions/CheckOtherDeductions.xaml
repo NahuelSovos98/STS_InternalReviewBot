@@ -80,7 +80,6 @@
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="CheckOtherDeductions" sap:VirtualizedContainerService.HintSize="838,3909" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -319,7 +318,7 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke OpenCorrespondingReturn workflow" sap:VirtualizedContainerService.HintSize="678,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\OpenCorrespondingReturn.xaml">
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke OpenCorrespondingReturn workflow" sap:VirtualizedContainerService.HintSize="678,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnsList\OpenCorrespondingReturn.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="x:String" x:Key="in_CustomerAccount">[in_CustomerAccount]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">[in_ReturnName]</InArgument>
@@ -471,12 +470,8 @@
                         </ui:InvokeWorkflowFile>
                         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="EXPORT WORKSHEET" sap2010:Annotation.AnnotationText="This works only with CO " DisplayName="Invoke TestExportAsWorksheet workflow" sap:VirtualizedContainerService.HintSize="350,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Tests\TestExportAsWorksheet.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_PathTempCsvFile">
-                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_CO_PathCsvTemp&quot;).ToString" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_ListCells">
-                              <mva:VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="in_Config(&quot;ExportWorksheet_ListCells_CO_DR0100_XML&quot;).ToString.Split(&quot;,&quot;c).ToList" />
-                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_PathTempCsvFile">[in_Config("StateBalancing_CO_PathCsvTemp").ToString]</InArgument>
+                            <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_ListCells">[in_Config("ExportWorksheet_ListCells_CO_DR0100_XML").ToString.Split(","c).ToList]</InArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">

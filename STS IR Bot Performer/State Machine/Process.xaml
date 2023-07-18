@@ -1,4 +1,4 @@
-﻿<Activity mc:Ignorable="sap sap2010" x:Class="Process" this:Process.in_LegalEntityInTFR="2015" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" this:Process.in_LegalEntityInTFR="2015" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
@@ -14,7 +14,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1162,2979</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1031,2381</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="54">
@@ -83,10 +83,9 @@
       <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
       <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1041,2914" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1041,2316" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="boolReturnWasOpened" />
       <Variable x:TypeArguments="x:String" Name="ReturnName" />
@@ -157,9 +156,9 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <If Condition="[Not ReturnName.Contains(in_Config(&quot;ReturnNameExceptionalCase&quot;).ToString)]" DisplayName="If return name is not exceptional case" sap:VirtualizedContainerService.HintSize="979,2303" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[Not ReturnName.Contains(in_Config(&quot;ReturnNameExceptionalCase&quot;).ToString)]" DisplayName="If return name is not exceptional case" sap:VirtualizedContainerService.HintSize="979,1705" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
-        <Sequence DisplayName="Open return and start process" sap:VirtualizedContainerService.HintSize="600,2143" sap2010:WorkflowViewState.IdRef="Sequence_14">
+        <Sequence DisplayName="Open return and start process" sap:VirtualizedContainerService.HintSize="600,1545" sap2010:WorkflowViewState.IdRef="Sequence_14">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -177,56 +176,7 @@
               <InArgument x:TypeArguments="x:String" x:Key="in_rangeReviewSheet">[in_Config("ReviewSheet_StartCellReturnsFailedTable").ToString]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
-          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="538,52" sap2010:WorkflowViewState.IdRef="CommentOut_5">
-            <ui:CommentOut.Body>
-              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,224" sap2010:WorkflowViewState.IdRef="Sequence_15">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke OpenCorrespondingReturn workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\OpenCorrespondingReturn.xaml">
-                  <ui:InvokeWorkflowFile.Arguments>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_CustomerAccount">[CustomerAccount]</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">[ReturnName]</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionalReturnNameCase">[in_Config("ReturnNameExceptionalCase").ToString]</InArgument>
-                    <OutArgument x:TypeArguments="x:Boolean" x:Key="out_boolReturnWasOpened">[boolReturnWasOpened]</OutArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_LegalEntity">[LegalEntity]</InArgument>
-                  </ui:InvokeWorkflowFile.Arguments>
-                </ui:InvokeWorkflowFile>
-              </Sequence>
-            </ui:CommentOut.Body>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </ui:CommentOut>
-          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="538,52" sap2010:WorkflowViewState.IdRef="CommentOut_6">
-            <ui:CommentOut.Body>
-              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,224" sap2010:WorkflowViewState.IdRef="Sequence_16">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke State Balancing Checks workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\TaxSolver - State Balancing Checks.xaml">
-                  <ui:InvokeWorkflowFile.Arguments>
-                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_config">[in_Config]</InArgument>
-                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
-                  </ui:InvokeWorkflowFile.Arguments>
-                </ui:InvokeWorkflowFile>
-              </Sequence>
-            </ui:CommentOut.Body>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </ui:CommentOut>
-          <TryCatch DisplayName="Try Catch - Process Return Name" sap:VirtualizedContainerService.HintSize="538,1603" sap2010:WorkflowViewState.IdRef="TryCatch_16">
+          <TryCatch DisplayName="Try Catch - Process Return Name" sap:VirtualizedContainerService.HintSize="538,1281" sap2010:WorkflowViewState.IdRef="TryCatch_16">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -234,7 +184,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <TryCatch.Try>
-              <Sequence DisplayName="Process Return Name" sap:VirtualizedContainerService.HintSize="500,1375" sap2010:WorkflowViewState.IdRef="Sequence_17">
+              <Sequence DisplayName="Process Return Name" sap:VirtualizedContainerService.HintSize="500,1053" sap2010:WorkflowViewState.IdRef="Sequence_17">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -278,7 +228,7 @@
                     </Catch>
                   </TryCatch.Catches>
                 </TryCatch>
-                <TryCatch DisplayName="Try Catch - CheckOtherDeductions" sap:VirtualizedContainerService.HintSize="438,345" sap2010:WorkflowViewState.IdRef="TryCatch_14">
+                <TryCatch DisplayName="Try Catch - CheckOtherDeductions" sap:VirtualizedContainerService.HintSize="438,184" sap2010:WorkflowViewState.IdRef="TryCatch_14">
                   <TryCatch.Try>
                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckOtherDeductions workflow" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="Sub-Process\CheckOtherDeductions\CheckOtherDeductions.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
@@ -292,10 +242,10 @@
                     </ui:InvokeWorkflowFile>
                   </TryCatch.Try>
                   <TryCatch.Catches>
-                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,182" sap2010:WorkflowViewState.IdRef="Catch`1_14">
+                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,21" sap2010:WorkflowViewState.IdRef="Catch`1_14">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
@@ -303,33 +253,21 @@
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                         </ActivityAction.Argument>
-                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AddNewRow workflow" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="Sub-Process\ReviewSheet\AddNewRow.xaml">
+                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AddNewRow workflow" sap:VirtualizedContainerService.HintSize="365,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="Sub-Process\ReviewSheet\AddNewRow.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_PathReviewSheetFile">
-                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PathReviewSheet" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_WorksheetReviewSheet">
-                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_WorksheetReviewSheet" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">
-                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;For Other Deductions: &quot; + exception.Message" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">
-                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="ReturnName" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_LegalEntity">
-                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CustomerAccount" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_ReturnsTableStartCell">
-                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ReviewSheet_StartCellReturnsFailedTable&quot;).ToString" />
-                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_PathReviewSheetFile">[in_PathReviewSheet]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_WorksheetReviewSheet">[in_WorksheetReviewSheet]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">["For Other Deductions: " + exception.Message]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">[ReturnName]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_LegalEntity">[CustomerAccount]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_ReturnsTableStartCell">[in_Config("ReviewSheet_StartCellReturnsFailedTable").ToString]</InArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                         </ui:InvokeWorkflowFile>
                       </ActivityAction>
                     </Catch>
                   </TryCatch.Catches>
                 </TryCatch>
-                <TryCatch DisplayName="Try Catch - CheckStateBalancing" sap:VirtualizedContainerService.HintSize="438,345" sap2010:WorkflowViewState.IdRef="TryCatch_15">
+                <TryCatch DisplayName="Try Catch - CheckStateBalancing" sap:VirtualizedContainerService.HintSize="438,184" sap2010:WorkflowViewState.IdRef="TryCatch_15">
                   <TryCatch.Try>
                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckStateBalancing workflow" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_22" UnSafe="False" WorkflowFileName="Sub-Process\StateBalancing\CheckStateBalancing.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
@@ -342,10 +280,10 @@
                     </ui:InvokeWorkflowFile>
                   </TryCatch.Try>
                   <TryCatch.Catches>
-                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,182" sap2010:WorkflowViewState.IdRef="Catch`1_15">
+                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,21" sap2010:WorkflowViewState.IdRef="Catch`1_15">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
@@ -353,26 +291,14 @@
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                         </ActivityAction.Argument>
-                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AddNewRow workflow" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_23" UnSafe="False" WorkflowFileName="Sub-Process\ReviewSheet\AddNewRow.xaml">
+                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AddNewRow workflow" sap:VirtualizedContainerService.HintSize="365,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_23" UnSafe="False" WorkflowFileName="Sub-Process\ReviewSheet\AddNewRow.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_PathReviewSheetFile">
-                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PathReviewSheet" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_WorksheetReviewSheet">
-                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_WorksheetReviewSheet" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">
-                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;For State Balancing: &quot; + exception.Message" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">
-                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="ReturnName" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_LegalEntity">
-                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CustomerAccount" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_ReturnsTableStartCell">
-                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ReviewSheet_StartCellReturnsFailedTable&quot;).ToString" />
-                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_PathReviewSheetFile">[in_PathReviewSheet]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_WorksheetReviewSheet">[in_WorksheetReviewSheet]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">["For State Balancing: " + exception.Message]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">[ReturnName]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_LegalEntity">[CustomerAccount]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_ReturnsTableStartCell">[in_Config("ReviewSheet_StartCellReturnsFailedTable").ToString]</InArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                         </ui:InvokeWorkflowFile>
                       </ActivityAction>
@@ -415,224 +341,6 @@
               </Catch>
             </TryCatch.Catches>
           </TryCatch>
-          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="538,52" sap2010:WorkflowViewState.IdRef="CommentOut_7">
-            <ui:CommentOut.Body>
-              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="698,361" sap2010:WorkflowViewState.IdRef="Sequence_19">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <If Condition="[boolReturnWasOpened]" DisplayName="If return was opened" sap:VirtualizedContainerService.HintSize="636,250" sap2010:WorkflowViewState.IdRef="If_1">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <If.Then>
-                    <TryCatch DisplayName="Try Catch - Process Return Name" sap:VirtualizedContainerService.HintSize="257,52" sap2010:WorkflowViewState.IdRef="TryCatch_6">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                      <TryCatch.Try>
-                        <Sequence DisplayName="Process Return Name" sap:VirtualizedContainerService.HintSize="500,1459" sap2010:WorkflowViewState.IdRef="Sequence_11">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <TryCatch DisplayName="Try Catch CheckAdjustments" sap:VirtualizedContainerService.HintSize="438,341" sap2010:WorkflowViewState.IdRef="TryCatch_10">
-                            <TryCatch.Try>
-                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckAdjustment workflow" sap:VirtualizedContainerService.HintSize="368,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Sub-Process\Adjustment\CheckAdjustment.xaml">
-                                <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_legalEntity">[LegalEntity]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_returnName">[ReturnName]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_state">[ReturnState]</InArgument>
-                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtTfrCurrentPeriod">[in_dtTaxFiledReport]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_pathMarginsFile">[in_Config("PathMarginsList").ToString]</InArgument>
-                                </ui:InvokeWorkflowFile.Arguments>
-                              </ui:InvokeWorkflowFile>
-                            </TryCatch.Try>
-                            <TryCatch.Catches>
-                              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_10">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <ActivityAction x:TypeArguments="s:Exception">
-                                  <ActivityAction.Argument>
-                                    <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
-                                  </ActivityAction.Argument>
-                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AddNewRow workflow" sap:VirtualizedContainerService.HintSize="346,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Sub-Process\ReviewSheet\AddNewRow.xaml">
-                                    <ui:InvokeWorkflowFile.Arguments>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_PathReviewSheetFile">[in_PathReviewSheet]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_WorksheetReviewSheet">[in_WorksheetReviewSheet]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">[exception.Message]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">[ReturnName]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_LegalEntity">[CustomerAccount]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_ReturnsTableStartCell">[in_Config("ReviewSheet_StartCellReturnsFailedTable").ToString]</InArgument>
-                                    </ui:InvokeWorkflowFile.Arguments>
-                                  </ui:InvokeWorkflowFile>
-                                </ActivityAction>
-                              </Catch>
-                            </TryCatch.Catches>
-                          </TryCatch>
-                          <TryCatch DisplayName="Try Catch - CheckOtherDeductions" sap:VirtualizedContainerService.HintSize="438,341" sap2010:WorkflowViewState.IdRef="TryCatch_11">
-                            <TryCatch.Try>
-                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckOtherDeductions workflow" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Sub-Process\CheckOtherDeductions\CheckOtherDeductions.xaml">
-                                <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">[ReturnName]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_State">[ReturnState]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_CustomerAccount">[CustomerAccount]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_LegalEntity">[LegalEntity]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_PathOutputFolder">[in_PathOutputFolder]</InArgument>
-                                </ui:InvokeWorkflowFile.Arguments>
-                              </ui:InvokeWorkflowFile>
-                            </TryCatch.Try>
-                            <TryCatch.Catches>
-                              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_11">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <ActivityAction x:TypeArguments="s:Exception">
-                                  <ActivityAction.Argument>
-                                    <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
-                                  </ActivityAction.Argument>
-                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AddNewRow workflow" sap:VirtualizedContainerService.HintSize="346,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Sub-Process\ReviewSheet\AddNewRow.xaml">
-                                    <ui:InvokeWorkflowFile.Arguments>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_PathReviewSheetFile">[in_PathReviewSheet]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_WorksheetReviewSheet">[in_WorksheetReviewSheet]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">[exception.Message]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">[ReturnName]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_LegalEntity">[CustomerAccount]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_ReturnsTableStartCell">[in_Config("ReviewSheet_StartCellReturnsFailedTable").ToString]</InArgument>
-                                    </ui:InvokeWorkflowFile.Arguments>
-                                  </ui:InvokeWorkflowFile>
-                                </ActivityAction>
-                              </Catch>
-                            </TryCatch.Catches>
-                          </TryCatch>
-                          <TryCatch DisplayName="Try Catch - CheckStateBalancing" sap:VirtualizedContainerService.HintSize="438,341" sap2010:WorkflowViewState.IdRef="TryCatch_12">
-                            <TryCatch.Try>
-                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckStateBalancing workflow" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="Sub-Process\StateBalancing\CheckStateBalancing.xaml">
-                                <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">[ReturnName]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_CustomerAccount">[CustomerAccount]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_LegalEntity">[LegalEntity]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_PathOutputFolder">[in_PathOutputFolder]</InArgument>
-                                </ui:InvokeWorkflowFile.Arguments>
-                              </ui:InvokeWorkflowFile>
-                            </TryCatch.Try>
-                            <TryCatch.Catches>
-                              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_12">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <ActivityAction x:TypeArguments="s:Exception">
-                                  <ActivityAction.Argument>
-                                    <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
-                                  </ActivityAction.Argument>
-                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AddNewRow workflow" sap:VirtualizedContainerService.HintSize="365,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="Sub-Process\ReviewSheet\AddNewRow.xaml">
-                                    <ui:InvokeWorkflowFile.Arguments>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_PathReviewSheetFile">[in_PathReviewSheet]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_WorksheetReviewSheet">[in_WorksheetReviewSheet]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">[exception.Message]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">[ReturnName]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_LegalEntity">[CustomerAccount]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_ReturnsTableStartCell">[in_Config("ReviewSheet_StartCellReturnsFailedTable").ToString]</InArgument>
-                                    </ui:InvokeWorkflowFile.Arguments>
-                                  </ui:InvokeWorkflowFile>
-                                </ActivityAction>
-                              </Catch>
-                            </TryCatch.Catches>
-                          </TryCatch>
-                          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="438,52" sap2010:WorkflowViewState.IdRef="CommentOut_4">
-                            <ui:CommentOut.Body>
-                              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,224" sap2010:WorkflowViewState.IdRef="Sequence_10">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke State Balancing Checks workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\TaxSolver - State Balancing Checks.xaml">
-                                  <ui:InvokeWorkflowFile.Arguments>
-                                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_config">[in_Config]</InArgument>
-                                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
-                                  </ui:InvokeWorkflowFile.Arguments>
-                                </ui:InvokeWorkflowFile>
-                              </Sequence>
-                            </ui:CommentOut.Body>
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </ui:CommentOut>
-                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GoBackToReturnList workflow" sap:VirtualizedContainerService.HintSize="438,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnsMenu\GoBackToReturnList.xaml">
-                            <ui:InvokeWorkflowFile.Arguments>
-                              <scg:Dictionary x:TypeArguments="x:String, Argument" />
-                            </ui:InvokeWorkflowFile.Arguments>
-                          </ui:InvokeWorkflowFile>
-                        </Sequence>
-                      </TryCatch.Try>
-                      <TryCatch.Catches>
-                        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="504,21" sap2010:WorkflowViewState.IdRef="Catch`1_6">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <ActivityAction x:TypeArguments="s:Exception">
-                            <ActivityAction.Argument>
-                              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
-                            </ActivityAction.Argument>
-                            <Sequence DisplayName="Write Returns Failed" sap:VirtualizedContainerService.HintSize="450,289" sap2010:WorkflowViewState.IdRef="Sequence_13">
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GoBackToReturnList workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnsMenu\GoBackToReturnList.xaml">
-                                <ui:InvokeWorkflowFile.Arguments>
-                                  <scg:Dictionary x:TypeArguments="x:String, Argument" />
-                                </ui:InvokeWorkflowFile.Arguments>
-                              </ui:InvokeWorkflowFile>
-                              <Rethrow DisplayName="Rethrow Exception" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
-                            </Sequence>
-                          </ActivityAction>
-                        </Catch>
-                      </TryCatch.Catches>
-                    </TryCatch>
-                  </If.Then>
-                  <If.Else>
-                    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Warn" Message="[&quot;The current return name was not opened. Continue with the following return.&quot;]" />
-                  </If.Else>
-                </If>
-              </Sequence>
-            </ui:CommentOut.Body>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </ui:CommentOut>
         </Sequence>
       </If.Then>
       <If.Else>
