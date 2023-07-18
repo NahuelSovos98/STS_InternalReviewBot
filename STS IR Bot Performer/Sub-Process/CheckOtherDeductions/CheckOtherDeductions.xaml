@@ -468,7 +468,7 @@
                             <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                         </ui:InvokeWorkflowFile>
-                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="EXPORT WORKSHEET" sap2010:Annotation.AnnotationText="This works only with CO " DisplayName="Invoke TestExportAsWorksheet workflow" sap:VirtualizedContainerService.HintSize="350,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Tests\TestExportAsWorksheet.xaml">
+                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="EXPORT WORKSHEET" sap2010:Annotation.AnnotationText="This works only with CO " DisplayName="Invoke TestExportAsWorksheet workflow" sap:VirtualizedContainerService.HintSize="379,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Sub-Process\SpecificWorkflows\CO_CheckOtherDeductions.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
                             <InArgument x:TypeArguments="x:String" x:Key="in_PathTempCsvFile">[in_Config("StateBalancing_CO_PathCsvTemp").ToString]</InArgument>
                             <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_ListCells">[in_Config("ExportWorksheet_ListCells_CO_DR0100_XML").ToString.Split(","c).ToList]</InArgument>

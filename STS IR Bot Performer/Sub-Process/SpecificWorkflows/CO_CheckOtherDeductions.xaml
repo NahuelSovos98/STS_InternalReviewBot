@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1162,2093</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>863,2093</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>TestExportAsWorksheet_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -84,8 +84,8 @@
       <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="TestExportAsWorksheet" sap:VirtualizedContainerService.HintSize="873,2028" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -98,7 +98,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="811,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;ExportAsWorksheet starts&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="811,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;CO_CheckOtherDeductions starts&quot;]" />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ExportCurrentPageAsWorksheet workflow" sap:VirtualizedContainerService.HintSize="811,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnsMenu\ExportCurrentPageAsWorksheet.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_PathTempCsvFile">[in_PathTempCsvFile]</InArgument>
@@ -204,6 +204,6 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="811,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;ExportAsWorksheet ends&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="811,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;CO_CheckOtherDeductions ends&quot;]" />
   </Sequence>
 </Activity>
