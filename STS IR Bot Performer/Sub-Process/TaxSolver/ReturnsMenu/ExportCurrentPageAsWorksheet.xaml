@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1508,2668</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1164,2799</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GoBackToReturnList_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -69,10 +69,9 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GoBackToReturnList" sap:VirtualizedContainerService.HintSize="757,2603" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="GoBackToReturnList" sap:VirtualizedContainerService.HintSize="757,2734" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:DateTime" Default="[Now]" Name="DateTimeStartWorkflow" />
       <Variable x:TypeArguments="x:Int32" Default="20" Name="SecondsToWaitDownloadFile" />
@@ -135,19 +134,28 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'Select path and file name'" sap:VirtualizedContainerService.HintSize="695,718" sap2010:WorkflowViewState.IdRef="WindowScope_2" InformativeScreenshot="47dfcae91cf6e4f2a1adc9973f3a59e8" Selector="&lt;wnd app='returns.exe' omit:cls='#32770' isremoteapp='1' title='Select path and file name*' /&gt;">
+    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'Select path and file name'" sap:VirtualizedContainerService.HintSize="695,893" sap2010:WorkflowViewState.IdRef="WindowScope_2" InformativeScreenshot="47dfcae91cf6e4f2a1adc9973f3a59e8" Selector="&lt;wnd app='returns.exe' omit:cls='#32770' isremoteapp='1' title='Select path and file name*' /&gt;">
       <ui:WindowScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,571" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,746" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" AlterIfDisabled="True" DisplayName="Type Into 'Filename'" EmptyField="True" sap:VirtualizedContainerService.HintSize="388,135" sap2010:WorkflowViewState.IdRef="TypeInto_1" SimulateType="False" Text="[in_PathTempCsvFile]">
+            <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" AlterIfDisabled="True" DisplayName="Type Into 'Filename'" EmptyField="True" sap:VirtualizedContainerService.HintSize="388,135" sap2010:WorkflowViewState.IdRef="TypeInto_1" SimulateType="True" Text="[in_PathTempCsvFile]">
+              <ui:TypeInto.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="50716b4e-d81e-4979-8f93-f6757abfbe37" InformativeScreenshot="12714ebdbe6430ea48dce00872543ebf" Selector="&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;wnd aaname='File name*' cls='ComboBox' /&gt;&lt;wnd ctrlid='1001' /&gt;" WaitForReady="COMPLETE">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                </ui:Target>
+              </ui:TypeInto.Target>
+            </ui:TypeInto>
+            <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" AlterIfDisabled="True" DisplayName="Type Into 'Filename'" EmptyField="False" sap:VirtualizedContainerService.HintSize="388,135" sap2010:WorkflowViewState.IdRef="TypeInto_2" SimulateType="False" Text=" ">
               <ui:TypeInto.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="50716b4e-d81e-4979-8f93-f6757abfbe37" InformativeScreenshot="12714ebdbe6430ea48dce00872543ebf" Selector="&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;wnd aaname='File name*' cls='ComboBox' /&gt;&lt;wnd ctrlid='1001' /&gt;" WaitForReady="COMPLETE">
                   <ui:Target.TimeoutMS>
@@ -232,7 +240,7 @@
         </Sequence>
       </ui:InterruptibleWhile.Body>
     </ui:InterruptibleWhile>
-    <If Condition="[Not File.Exists(in_PathTempCsvFile)]" DisplayName="If the file does not exist" sap:VirtualizedContainerService.HintSize="695,292" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[Not File.Exists(in_PathTempCsvFile)]" DisplayName="If the file does not exist" sap:VirtualizedContainerService.HintSize="695,248" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
         <Throw DisplayName="Throw SE - File was not downloaded" Exception="[new SystemException(&quot;Filepath was not downloaded correctly: &quot; + in_PathTempCsvFile)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_1" />
       </If.Then>

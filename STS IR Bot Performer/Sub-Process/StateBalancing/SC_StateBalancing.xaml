@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1228,2569</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1164,2743</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SC_StateBalancing_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -90,11 +90,11 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SC_StateBalancing" sap:VirtualizedContainerService.HintSize="656,2504" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SC_StateBalancing" sap:VirtualizedContainerService.HintSize="656,2678" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="PathDestinationScTool" />
       <Variable x:TypeArguments="x:String" Name="PathDetailCsv" />
@@ -182,29 +182,30 @@
       <ui:CopyFile ContinueOnError="{x:Null}" Destination="[PathDestinationScTool]" DisplayName="Copy File - Tool file" sap:VirtualizedContainerService.HintSize="434,158" sap2010:WorkflowViewState.IdRef="CopyFile_2" Overwrite="True" Path="[PathScTool]" />
     </Sequence>
     <ui:Comment sap:VirtualizedContainerService.HintSize="594,56" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// Copy detail worksheet into the Tool file" />
-    <Sequence DisplayName="Copy paste Detail worksheet" sap:VirtualizedContainerService.HintSize="594,81" sap2010:WorkflowViewState.IdRef="Sequence_14">
+    <Sequence DisplayName="Copy paste Detail worksheet" sap:VirtualizedContainerService.HintSize="594,255" sap2010:WorkflowViewState.IdRef="Sequence_14">
       <Sequence.Variables>
         <Variable x:TypeArguments="sd:DataTable" Name="dtDetail" />
       </Sequence.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope - PathDestinationDetailFile" sap:VirtualizedContainerService.HintSize="484,401" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" ReadOnly="True" Visible="False" WorkbookPath="[PathDestinationDetailFile]">
+      <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope - PathDestinationDetailFile" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" ReadOnly="True" Visible="False" WorkbookPath="[PathDestinationDetailFile]">
         <ui:ExcelApplicationScope.Body>
           <ActivityAction x:TypeArguments="ui:WorkbookApplication">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,291" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,81" sap2010:WorkflowViewState.IdRef="Sequence_3">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:String" Name="WorksheetName" />
               </Sequence.Variables>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <ui:ExcelGetWorkbookSheet DisplayName="Get First Workbook Sheet" sap:VirtualizedContainerService.HintSize="388,80" sap2010:WorkflowViewState.IdRef="ExcelGetWorkbookSheet_1" Index="0" Sheet="[WorksheetName]" />
@@ -220,12 +221,35 @@
         </ui:ExcelApplicationScope.Body>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:ExcelApplicationScope>
-      <ui:WriteRange AddHeaders="False" DataTable="[dtDetail]" DisplayName="Write Range dtDetail into sc tool" sap:VirtualizedContainerService.HintSize="484,116" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="[in_Config(&quot;StateBalancing_SC_Tool_DetailWorksheet&quot;).ToString]" StartingCell="A1" WorkbookPath="[PathDestinationScTool]" />
+      <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - PathSCToolFile" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[PathDestinationScTool]">
+        <ui:ExcelApplicationScope.Body>
+          <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,372" sap2010:WorkflowViewState.IdRef="Sequence_22">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ExcelDeleteRange DisplayName="Delete Range - Clear Detail worksheet" sap:VirtualizedContainerService.HintSize="388,133" sap2010:WorkflowViewState.IdRef="ExcelDeleteRange_1" Range="1:9999" SheetName="[in_Config(&quot;StateBalancing_SC_Tool_DetailWorksheet&quot;).ToString]" ShiftCells="False" ShiftOption="EntireRow" />
+              <ui:ExcelWriteRange AddHeaders="False" DataTable="[dtDetail]" DisplayName="Write Range dtDetail into sc tool" sap:VirtualizedContainerService.HintSize="388,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_2" SheetName="[in_Config(&quot;StateBalancing_SC_Tool_DetailWorksheet&quot;).ToString]" StartingCell="A1" />
+            </Sequence>
+          </ActivityAction>
+        </ui:ExcelApplicationScope.Body>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:ExcelApplicationScope>
     </Sequence>
     <ui:Comment sap2010:Annotation.AnnotationText="Taxsolver TAX column = TS Gross * 0.01&#xA;Taxsolver DIF column = TAX column - Taxsolver TAX column&#xA;TS Gross column = from Local taxes in tax solver" sap:VirtualizedContainerService.HintSize="594,166" sap2010:WorkflowViewState.IdRef="Comment_2" Text="// Get TaxSolver gross column for the following states in SC: &#xA;Aiken, Charleston, Horry, Berkeley">
       <sap:WorkflowViewStateService.ViewState>
@@ -261,15 +285,9 @@ Replace("&lt;COUNTY_LIST&gt;",in_Config("StateBalancing_SC_CountyList").toString
       </Assign>
       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TestGetResultsFromReturnPage workflow" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Tests\TestGetResultsFromReturnPage.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="RegexGetCounty" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey">
-            <Literal x:TypeArguments="x:String">[k(pgup)]</Literal>
-          </InArgument>
-          <OutArgument x:TypeArguments="str:MatchCollection" x:Key="out_ListMatches">
-            <mva:VisualBasicReference x:TypeArguments="str:MatchCollection" ExpressionText="ResultMatchCollection" />
-          </OutArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">[RegexGetCounty]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey">%[k(pgup)]</InArgument>
+          <OutArgument x:TypeArguments="str:MatchCollection" x:Key="out_ListMatches">[ResultMatchCollection]</OutArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
       <Assign sap2010:Annotation.AnnotationText="List&lt;Match&gt; matchList = new List&lt;Match&gt;(matches.Cast&lt;Match&gt;());" DisplayName="Assign ListMatches" sap:VirtualizedContainerService.HintSize="434,112" sap2010:WorkflowViewState.IdRef="Assign_1">
@@ -287,15 +305,9 @@ Replace("&lt;COUNTY_LIST&gt;",in_Config("StateBalancing_SC_CountyList").toString
       </Assign>
       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TestGetResultsFromReturnPage workflow" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Tests\TestGetResultsFromReturnPage.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="RegexGetCounty" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey">
-            <Literal x:TypeArguments="x:String">[k(pgdn)]</Literal>
-          </InArgument>
-          <OutArgument x:TypeArguments="str:MatchCollection" x:Key="out_ListMatches">
-            <mva:VisualBasicReference x:TypeArguments="str:MatchCollection" ExpressionText="ResultMatchCollection" />
-          </OutArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">[RegexGetCounty]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey">%[k(pgdn)]</InArgument>
+          <OutArgument x:TypeArguments="str:MatchCollection" x:Key="out_ListMatches">[ResultMatchCollection]</OutArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
       <Assign sap2010:Annotation.AnnotationText="List&lt;Match&gt; matchList = new List&lt;Match&gt;(matches.Cast&lt;Match&gt;());" DisplayName="Assign ListMatches" sap:VirtualizedContainerService.HintSize="434,112" sap2010:WorkflowViewState.IdRef="Assign_11">
