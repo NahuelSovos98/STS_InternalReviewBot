@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>928,2101</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1129,2555</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CheckStateBalancing_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -70,9 +70,10 @@
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CheckStateBalancing" sap:VirtualizedContainerService.HintSize="938,2036" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CheckStateBalancing" sap:VirtualizedContainerService.HintSize="1029,2490" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strStateAbreviation" />
       <Variable x:TypeArguments="x:Boolean" Name="boolReturnWasOpened" />
@@ -82,8 +83,8 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message start" sap:VirtualizedContainerService.HintSize="876,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;State Balancing Checks starts&quot;]" />
-    <Sequence DisplayName="Get State abreviation" sap:VirtualizedContainerService.HintSize="876,894" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <ui:LogMessage DisplayName="Log Message start" sap:VirtualizedContainerService.HintSize="967,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;State Balancing Checks starts&quot;]" />
+    <Sequence DisplayName="Get State abreviation" sap:VirtualizedContainerService.HintSize="967,894" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="scg:List(x:String)" Name="ListAbreviations" />
       </Sequence.Variables>
@@ -144,9 +145,9 @@
         </ui:ForEach.Body>
       </ui:ForEach>
     </Sequence>
-    <If Condition="[boolReturnWasOpened]" DisplayName="If return was opened" sap:VirtualizedContainerService.HintSize="876,635" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[boolReturnWasOpened]" DisplayName="If return was opened" sap:VirtualizedContainerService.HintSize="967,1089" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
-        <Switch x:TypeArguments="x:String" DisplayName="Switch 'States'" Expression="[strStateAbreviation]" sap:VirtualizedContainerService.HintSize="497,475" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+        <Switch x:TypeArguments="x:String" DisplayName="Switch 'States'" Expression="[strStateAbreviation]" sap:VirtualizedContainerService.HintSize="588,929" sap2010:WorkflowViewState.IdRef="Switch`1_1">
           <Switch.Default>
             <ui:LogMessage DisplayName="Log Message 'No abreviation'" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Warn" Message="[&quot;Not found for state balancing checks.&quot;]" />
           </Switch.Default>
@@ -163,11 +164,45 @@
               <InArgument x:TypeArguments="x:String" x:Key="in_pathOutputFolder">[in_PathOutputFolder]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="LA" DisplayName="Invoke LA_StateBalancing workflow" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Sub-Process\StateBalancing\LA_StateBalancing.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-            </ui:InvokeWorkflowFile.Arguments>
-          </ui:InvokeWorkflowFile>
+          <Sequence x:Key="LA" DisplayName="Invoke LA_StateBalancing " sap:VirtualizedContainerService.HintSize="548,567" sap2010:WorkflowViewState.IdRef="Sequence_6">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="486,303" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,224" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke LA_StateBalancing workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Sub-Process\StateBalancing\LA_StateBalancing.xaml">
+                    <ui:InvokeWorkflowFile.Arguments>
+                      <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                    </ui:InvokeWorkflowFile.Arguments>
+                  </ui:InvokeWorkflowFile>
+                </Sequence>
+              </ui:CommentOut.Body>
+            </ui:CommentOut>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke LA_StateBalancing_v2 workflow" sap:VirtualizedContainerService.HintSize="486,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Sub-Process\StateBalancing\LA_StateBalancing_v2.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                  <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ReturnName" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_LegalEntity">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_LegalEntity" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_CustomerName">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_CustomerAccount" />
+                </InArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+          </Sequence>
           <TryCatch x:Key="WA" DisplayName="TryCatch CheckStateBalancing WA with OtherDeductions logic" sap:VirtualizedContainerService.HintSize="438,341" sap2010:WorkflowViewState.IdRef="TryCatch_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -240,7 +275,7 @@
         <ui:LogMessage DisplayName="Log Message 'No abreviation'" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Warn" Message="[&quot;Not found for state balancing checks.&quot;]" />
       </If.Else>
     </If>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="876,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="967,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,163" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
@@ -326,6 +361,6 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:LogMessage DisplayName="Log Message start" sap:VirtualizedContainerService.HintSize="876,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;State Balancing Checks ends&quot;]" />
+    <ui:LogMessage DisplayName="Log Message start" sap:VirtualizedContainerService.HintSize="967,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;State Balancing Checks ends&quot;]" />
   </Sequence>
 </Activity>

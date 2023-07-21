@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>536,2238</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>785,2330</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>HI_StateBalancing_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -69,7 +69,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="HI_StateBalancing" sap:VirtualizedContainerService.HintSize="546,2173" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="HI_StateBalancing" sap:VirtualizedContainerService.HintSize="546,2265" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Double" Name="OahuResult" />
       <Variable x:TypeArguments="x:Double" Name="HawaiiResult" />
@@ -84,7 +84,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;HI_StateBalancing starts&quot;]" />
-    <Sequence sap2010:Annotation.AnnotationText="Go to Part II page. Extract values from Oahu, Hawaii and Kauai" DisplayName="Get Values from Part II page" sap:VirtualizedContainerService.HintSize="484,714" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence sap2010:Annotation.AnnotationText="Go to Part II page. Extract values from Oahu, Hawaii and Kauai" DisplayName="Get Values from Part II page" sap:VirtualizedContainerService.HintSize="484,806" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -97,7 +97,57 @@
           <InArgument x:TypeArguments="x:String" x:Key="in_PageName">[in_Config("StateBalancing_HI_PagePartII").ToString]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TestGetResultCellIntersecting workflow - OAHU" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Tests\TestGetResultCellIntersecting.xaml">
+      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+        <ui:CommentOut.Body>
+          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,530" sap2010:WorkflowViewState.IdRef="Sequence_10">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TestGetResultCellIntersecting workflow - OAHU" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Tests\TestGetResultCellIntersecting.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">[in_Config("StateBalancing_HI_PartII_RegexOahu").ToString]</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedMatches">[Cint(in_Config("StateBalancing_HI_PartII_ExpectedMatches").ToString)]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_SplitRegex">[Nothing]</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedSplitElements">1</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_positionInList">[CInt(in_Config("StateBalancing_HI_PartII_Position").toString)]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey">[Nothing]</InArgument>
+                <OutArgument x:TypeArguments="x:Double" x:Key="out_Result">[OahuResult]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TestGetResultCellIntersecting workflow - HAWAII" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Tests\TestGetResultCellIntersecting.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">[in_Config("StateBalancing_HI_PartII_RegexHawaii").ToString]</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedMatches">[Cint(in_Config("StateBalancing_HI_PartII_ExpectedMatches").ToString)]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_SplitRegex">[Nothing]</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedSplitElements">1</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_positionInList">[CInt(in_Config("StateBalancing_HI_PartII_Position").toString)]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey">[in_Config("StateBalancing_HI_PartII_HotkeysHawaii").ToString]</InArgument>
+                <OutArgument x:TypeArguments="x:Double" x:Key="out_Result">[HawaiiResult]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TestGetResultCellIntersecting workflow - KAUAI" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Tests\TestGetResultCellIntersecting.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">[in_Config("StateBalancing_HI_PartII_RegexKauai").ToString]</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedMatches">[Cint(in_Config("StateBalancing_HI_PartII_ExpectedMatches").ToString)]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_SplitRegex">[Nothing]</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedSplitElements">1</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_positionInList">[CInt(in_Config("StateBalancing_HI_PartII_Position").toString)]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey">[in_Config("StateBalancing_HI_PartII_HotkeysKauai").ToString]</InArgument>
+                <OutArgument x:TypeArguments="x:Double" x:Key="out_Result">[KauaiResult]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+          </Sequence>
+        </ui:CommentOut.Body>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:CommentOut>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ScreenScraping_GetResultByPosition - OAHU" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnWindow\ScreenScraping_GetResultByPosition.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">[in_Config("StateBalancing_HI_PartII_RegexOahu").ToString]</InArgument>
           <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedMatches">[Cint(in_Config("StateBalancing_HI_PartII_ExpectedMatches").ToString)]</InArgument>
@@ -105,35 +155,21 @@
           <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedSplitElements">1</InArgument>
           <InArgument x:TypeArguments="x:Int32" x:Key="in_positionInList">[CInt(in_Config("StateBalancing_HI_PartII_Position").toString)]</InArgument>
           <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey">[Nothing]</InArgument>
-          <OutArgument x:TypeArguments="x:Double" x:Key="out_Result">[OahuResult]</OutArgument>
+          <OutArgument x:TypeArguments="x:Double" x:Key="out_value">[OahuResult]</OutArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TestGetResultCellIntersecting workflow - HAWAII" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Tests\TestGetResultCellIntersecting.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ScreenScraping_GetResultByPosition - HAWAII" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnWindow\ScreenScraping_GetResultByPosition.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_HI_PartII_RegexHawaii&quot;).ToString" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedMatches">
-            <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Cint(in_Config(&quot;StateBalancing_HI_PartII_ExpectedMatches&quot;).ToString)" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_SplitRegex">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Nothing" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedSplitElements">
-            <Literal x:TypeArguments="x:Int32" Value="1" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:Int32" x:Key="in_positionInList">
-            <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;StateBalancing_HI_PartII_Position&quot;).toString)" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_HI_PartII_HotkeysHawaii&quot;).ToString" />
-          </InArgument>
-          <OutArgument x:TypeArguments="x:Double" x:Key="out_Result">
-            <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="HawaiiResult" />
-          </OutArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">[in_Config("StateBalancing_HI_PartII_RegexHawaii").ToString]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedMatches">[Cint(in_Config("StateBalancing_HI_PartII_ExpectedMatches").ToString)]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_SplitRegex">[Nothing]</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedSplitElements">1</InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_positionInList">[CInt(in_Config("StateBalancing_HI_PartII_Position").toString)]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey">[in_Config("StateBalancing_HI_PartII_HotkeysHawaii").ToString]</InArgument>
+          <OutArgument x:TypeArguments="x:Double" x:Key="out_value">[HawaiiResult]</OutArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TestGetResultCellIntersecting workflow - KAUAI" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Tests\TestGetResultCellIntersecting.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ScreenScraping_GetResultByPosition - KAUAI" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnWindow\ScreenScraping_GetResultByPosition.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">[in_Config("StateBalancing_HI_PartII_RegexKauai").ToString]</InArgument>
           <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedMatches">[Cint(in_Config("StateBalancing_HI_PartII_ExpectedMatches").ToString)]</InArgument>
@@ -141,13 +177,13 @@
           <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedSplitElements">1</InArgument>
           <InArgument x:TypeArguments="x:Int32" x:Key="in_positionInList">[CInt(in_Config("StateBalancing_HI_PartII_Position").toString)]</InArgument>
           <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey">[in_Config("StateBalancing_HI_PartII_HotkeysKauai").ToString]</InArgument>
-          <OutArgument x:TypeArguments="x:Double" x:Key="out_Result">[KauaiResult]</OutArgument>
+          <OutArgument x:TypeArguments="x:Double" x:Key="out_value">[KauaiResult]</OutArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
     </Sequence>
-    <Sequence DisplayName="Get Values from Part III page" sap:VirtualizedContainerService.HintSize="484,81" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <Sequence DisplayName="Get Values from Part III page" sap:VirtualizedContainerService.HintSize="546,1373" sap2010:WorkflowViewState.IdRef="Sequence_3">
       <Sequence.Variables>
-        <Variable x:TypeArguments="str:MatchCollection" Name="MatchTableText" />
+        <Variable x:TypeArguments="scg:List(str:Match)" Name="MatchTableText" />
         <Variable x:TypeArguments="str:MatchCollection" Name="MatchesTaxableColumn" />
         <Variable x:TypeArguments="x:String" Name="TableText" />
       </Sequence.Variables>
@@ -162,13 +198,43 @@
           <InArgument x:TypeArguments="x:String" x:Key="in_PageName">[in_Config("StateBalancing_HI_PagePartIII").ToString]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TestGetResultsFromReturnPage workflow" sap:VirtualizedContainerService.HintSize="484,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Tests\TestGetResultsFromReturnPage.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ApplyScreenScraping workflow" sap:VirtualizedContainerService.HintSize="484,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnWindow\ApplyScreenScraping.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">[in_Config("StateBalancing_HI_RegexExtractTableText").ToString]</InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey">[Nothing]</InArgument>
-          <OutArgument x:TypeArguments="str:MatchCollection" x:Key="out_ListMatches">[MatchTableText]</OutArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_HI_RegexExtractTableText&quot;).ToString" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Nothing" />
+          </InArgument>
+          <OutArgument x:TypeArguments="scg:List(str:Match)" x:Key="out_ListMatches">
+            <mva:VisualBasicReference x:TypeArguments="scg:List(str:Match)" ExpressionText="MatchTableText" />
+          </OutArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
+      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484,52" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+        <ui:CommentOut.Body>
+          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,224" sap2010:WorkflowViewState.IdRef="Sequence_11">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TestGetResultsFromReturnPage workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Tests\TestGetResultsFromReturnPage.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">[in_Config("StateBalancing_HI_RegexExtractTableText").ToString]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey">[Nothing]</InArgument>
+                <OutArgument x:TypeArguments="str:MatchCollection" x:Key="out_ListMatches">[MatchTableText]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+          </Sequence>
+        </ui:CommentOut.Body>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:CommentOut>
       <If Condition="[MatchTableText.Count = 0]" DisplayName="If table was  not found" sap:VirtualizedContainerService.HintSize="484,249" sap2010:WorkflowViewState.IdRef="If_1">
         <If.Then>
           <Throw DisplayName="Throw BE - Table was not found - " Exception="[new BusinessRuleException(&quot;Table &quot;)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_1" />

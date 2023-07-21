@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1141,1766</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1425,1766</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CheckByClickOnText_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -182,11 +182,16 @@
       </ui:MultipleAssign>
     </Sequence>
     <ui:Comment sap:VirtualizedContainerService.HintSize="546,56" sap2010:WorkflowViewState.IdRef="Comment_2" Text="// Second: apply the ClickOnText logic" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TestClickAndGetValue workflow" sap:VirtualizedContainerService.HintSize="546,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Tests\TestClickAndGetValue.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TestClickAndGetValue workflow" sap:VirtualizedContainerService.HintSize="546,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnWindow\ClickOnText_CheckTextIsZero.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_StringToClickOn">[TextToClickOn]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_StringToClickOn">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="TextToClickOn" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SendHotkey">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="HotkeysToApply" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="496,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;CheckByClickOnText ends&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="546,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;CheckByClickOnText ends&quot;]" />
   </Sequence>
 </Activity>

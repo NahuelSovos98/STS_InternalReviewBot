@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1162,2300</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>785,2300</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CheckByScreenScraping_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -75,7 +75,6 @@
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="CheckByScreenScraping" sap:VirtualizedContainerService.HintSize="608,2235" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -209,7 +208,7 @@
               </ui:MultipleAssign.AssignOperations>
             </ui:MultipleAssign>
             <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="431,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Message="[&quot;Check case n°: &lt;&quot;+RowIndex.ToString+&quot;&gt; with following regex: &lt;&quot;+RegexToApply+&quot;&gt;&quot;]" />
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ALTestCellIntersecting workflow" sap:VirtualizedContainerService.HintSize="431,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Tests\ALTestCellIntersecting.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ALTestCellIntersecting workflow" sap:VirtualizedContainerService.HintSize="431,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnWindow\ScreenScraping_CheckPositionItemIsZero.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">[RegexToApply]</InArgument>
                 <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedMatches">[Cint(AmountMatches)]</InArgument>

@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1162,1776</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>785,1776</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CheckByScreenScraping_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -74,7 +74,6 @@
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="CheckByScreenScraping" sap:VirtualizedContainerService.HintSize="608,1711" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -184,23 +183,13 @@
       </ui:MultipleAssign>
     </Sequence>
     <ui:Comment sap:VirtualizedContainerService.HintSize="546,75" sap2010:WorkflowViewState.IdRef="Comment_2" Text="// Second: apply Screen scraping logic with its parameters" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TestScreenScrapingLogic workflow" sap:VirtualizedContainerService.HintSize="546,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Tests\TestScreenScrapingLogic.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TestScreenScrapingLogic workflow" sap:VirtualizedContainerService.HintSize="546,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnWindow\ScreenScraping_CheckItemsAreZero.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="RegexToApply" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedMatches">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Cint(AmountMatches)" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_SplitRegex">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="SplitRegex" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedSplitElements">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Cint( If( String.IsNullOrWhiteSpace(ExpectedItems),&quot;0&quot;,ExpectedItems))" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="HotkeysToApply" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">[RegexToApply]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedMatches">[Cint(AmountMatches)]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SplitRegex">[SplitRegex]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedSplitElements">[Cint( If( String.IsNullOrWhiteSpace(ExpectedItems),"0",ExpectedItems))]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey">[HotkeysToApply]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="546,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;CheckByScreenScraping ends&quot;]" />
