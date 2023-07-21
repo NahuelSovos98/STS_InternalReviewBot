@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Activity mc:Ignorable="sap sap2010" x:Class="CO_StateBalancing" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
@@ -6,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1508,3036</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>598,3036</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CO_StateBalancing_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -68,7 +69,6 @@
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="CO_StateBalancing" sap:VirtualizedContainerService.HintSize="608,2971" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -119,18 +119,10 @@
     <ui:Comment sap:VirtualizedContainerService.HintSize="546,75" sap2010:WorkflowViewState.IdRef="Comment_3" Text="// Paste the information downloaded from TaxSolver into the CO Excel tool" />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CopyAndPaste Excel Information Workflow" sap:VirtualizedContainerService.HintSize="546,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" UnSafe="False" WorkflowFileName="Logic\CopyAndPasteExcelSheet.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pathFileToCopy">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_CO_PathCsvTemp&quot;).ToString" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_sheetnameToCopy">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_CO_SheetnameCsvTemp&quot;).ToString" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pathFileToPaste">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_pathCOToolCopy" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_sheetnameToPaste">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_CO_TabName&quot;).ToString" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pathFileToCopy">[in_Config("StateBalancing_CO_PathCsvTemp").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_sheetnameToCopy">[in_Config("StateBalancing_CO_SheetnameCsvTemp").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pathFileToPaste">[str_pathCOToolCopy]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_sheetnameToPaste">[in_Config("StateBalancing_CO_TabName").ToString]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:Comment sap:VirtualizedContainerService.HintSize="546,94" sap2010:WorkflowViewState.IdRef="Comment_4" Text="// I get the value of 'State Registration ID' and download from the website the necessary information for the Colorado tool file" />
@@ -140,87 +132,45 @@
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:Comment sap:VirtualizedContainerService.HintSize="546,75" sap2010:WorkflowViewState.IdRef="Comment_5" Text="// Get the value with regex reusing the workflow created for the GA state" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GATestGetRegexValue workflow" sap:VirtualizedContainerService.HintSize="546,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="Tests\GATestGetRegexValue.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GATestGetRegexValue workflow" sap:VirtualizedContainerService.HintSize="546,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnWindow\ScreenScraping_GetResultByPosition.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_CO_RegexGetStateRegistrationID&quot;).ToString" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedMatches">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;StateBalancing_CO_ExpectedMatches&quot;).ToString)" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_SplitRegex">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_CO_RegexToSplit&quot;).ToString" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedSplitElements">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;StateBalancing_CO_ExpectedSplitMatches&quot;).ToString)" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_positionInList">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;StateBalancing_CO_PositionInList&quot;).ToString)" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">[in_Config("StateBalancing_CO_RegexGetStateRegistrationID").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedMatches">[CInt(in_Config("StateBalancing_CO_ExpectedMatches").ToString)]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_SplitRegex">[in_Config("StateBalancing_CO_RegexToSplit").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_ExpectedSplitElements">[CInt(in_Config("StateBalancing_CO_ExpectedSplitMatches").ToString)]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_positionInList">[CInt(in_Config("StateBalancing_CO_PositionInList").ToString)]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey" />
-        <OutArgument x:TypeArguments="x:Double" x:Key="out_value">
-          <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="dbl_stateRegistrationID" />
-        </OutArgument>
+        <OutArgument x:TypeArguments="x:Double" x:Key="out_value">[dbl_stateRegistrationID]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:Comment sap:VirtualizedContainerService.HintSize="546,75" sap2010:WorkflowViewState.IdRef="Comment_6" Text="// enter to the Colorado website to find the information needed for the file tool" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ProcessInColoradoWebSite workflow" sap:VirtualizedContainerService.HintSize="546,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_22" UnSafe="False" WorkflowFileName="Tests\ProcessInColoradoWebSite.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ProcessInColoradoWebSite workflow" sap:VirtualizedContainerService.HintSize="546,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_22" UnSafe="False" WorkflowFileName="Sub-Process\SpecificWorkflows\ProcessInColoradoWebSite.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_urlCOWebsite">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_CO_urlWebsite&quot;).ToString" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_stateRegistrationID">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="dbl_stateRegistrationID.ToString" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pathTXTCO">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_CO_pathTXTCOWeb&quot;).ToString" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pathTempFolder">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;PathTempDirectory&quot;).ToString" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_urlCOWebsite">[in_Config("StateBalancing_CO_urlWebsite").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_stateRegistrationID">[dbl_stateRegistrationID.ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pathTXTCO">[in_Config("StateBalancing_CO_pathTXTCOWeb").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pathTempFolder">[in_Config("PathTempDirectory").ToString]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:Comment sap:VirtualizedContainerService.HintSize="546,75" sap2010:WorkflowViewState.IdRef="Comment_7" Text="//transcribe Colorado TXT file from webpage to Colorado xslm tool file" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TransformTextDelimited workflow" sap:VirtualizedContainerService.HintSize="546,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_23" UnSafe="False" WorkflowFileName="Tests\TransformTextDelimited.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TransformTextDelimited workflow" sap:VirtualizedContainerService.HintSize="546,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_23" UnSafe="False" WorkflowFileName="Sub-Process\SpecificWorkflows\TransformTextDelimited.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pathTxt">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_CO_pathTXTCOWeb&quot;).ToString" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_maximumColumn">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;StateBalancing_CO_MaximumColumn&quot;).ToString)" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pathCOTool">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_pathCOToolCopy" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_sheetnameCOTool">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_CO_SheetnameWebCOTool&quot;).ToString" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pathTxt">[in_Config("StateBalancing_CO_pathTXTCOWeb").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_maximumColumn">[CInt(in_Config("StateBalancing_CO_MaximumColumn").ToString)]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pathCOTool">[str_pathCOToolCopy]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_sheetnameCOTool">[in_Config("StateBalancing_CO_SheetnameWebCOTool").ToString]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:Comment sap:VirtualizedContainerService.HintSize="546,56" sap2010:WorkflowViewState.IdRef="Comment_8" Text="// VALIDATION WITHIN CO TOOL EXCEL FILE" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckCOExcelTool workflow" sap:VirtualizedContainerService.HintSize="546,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="Tests\CheckCOExcelTool.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckCOExcelTool workflow" sap:VirtualizedContainerService.HintSize="546,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="Sub-Process\SpecificWorkflows\CO_CheckExcelTool.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pathCOTool">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_pathCOToolCopy" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_firstSheetCOTool">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_CO_firstSheetCOTool&quot;).ToString" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_firstCellCOTool">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_CO_firstCellCOTool&quot;).ToString" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_DifferenceSheetCOTool">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_CO_DifferenceSheetCOTool&quot;).ToString" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_BalancingSheetCOTool">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_CO_BalancingSheetCOTool&quot;).ToString" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_firstCellBalancing">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_CO_firstCellBalancingCOTool&quot;).ToString" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_secondCellBalancing">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_CO_secondCellBalancingCOTool&quot;).ToString" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pathCOTool">[str_pathCOToolCopy]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_firstSheetCOTool">[in_Config("StateBalancing_CO_firstSheetCOTool").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_firstCellCOTool">[in_Config("StateBalancing_CO_firstCellCOTool").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_DifferenceSheetCOTool">[in_Config("StateBalancing_CO_DifferenceSheetCOTool").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_BalancingSheetCOTool">[in_Config("StateBalancing_CO_BalancingSheetCOTool").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_firstCellBalancing">[in_Config("StateBalancing_CO_firstCellBalancingCOTool").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_secondCellBalancing">[in_Config("StateBalancing_CO_secondCellBalancingCOTool").ToString]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="546,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;CO_StateBalancing workflow ends&quot;]" />
