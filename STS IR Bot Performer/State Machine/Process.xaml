@@ -1,10 +1,9 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Process" this:Process.in_LegalEntityInTFR="2015" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_PathOutputFolder" Type="InArgument(x:String)" />
     <x:Property Name="in_dtTaxFiledReport" Type="InArgument(sd:DataTable)" />
-    <x:Property sap2010:Annotation.AnnotationText="This is the TaxSolver ID (Customer Account)" Name="in_LegalEntityInTFR" Type="InArgument(x:String)" />
     <x:Property Name="in_PathReviewSheet" Type="InArgument(x:String)" />
     <x:Property Name="in_WorksheetReviewSheet" Type="InArgument(x:String)" />
   </x:Members>
@@ -83,7 +82,6 @@
       <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
       <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1041,2630" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -167,33 +165,15 @@
           </sap:WorkflowViewStateService.ViewState>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CompareValueToZero workflow" sap:VirtualizedContainerService.HintSize="538,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Sub-Process\ReviewSheet\CompareValueToZero.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtTFRFile">
-                <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dtTaxFiledReport" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_legalEntity">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="LegalEntity" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_state">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="ReturnState" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_returnName">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="ReturnName" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_ColumnName">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;CheckCreditHeld_ColumnName&quot;).ToString" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_pathReviewSheet">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PathReviewSheet" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_sheetReviewSheet">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_WorksheetReviewSheet" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_rangeReviewSheet">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ReviewSheet_StartCellReturnsFailedTable&quot;).ToString" />
-              </InArgument>
-              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-              </InArgument>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtTFRFile">[in_dtTaxFiledReport]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_legalEntity">[LegalEntity]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_state">[ReturnState]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_returnName">[ReturnName]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_ColumnName">[in_Config("CheckCreditHeld_ColumnName").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_pathReviewSheet">[in_PathReviewSheet]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_sheetReviewSheet">[in_WorksheetReviewSheet]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_rangeReviewSheet">[in_Config("ReviewSheet_StartCellReturnsFailedTable").ToString]</InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
           <TryCatch DisplayName="Try Catch - Process Return Name" sap:VirtualizedContainerService.HintSize="538,1595" sap2010:WorkflowViewState.IdRef="TryCatch_16">
@@ -214,24 +194,12 @@
                   <TryCatch.Try>
                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckAdjustment workflow" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_18" UnSafe="False" WorkflowFileName="Sub-Process\Adjustment\CheckAdjustment.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_legalEntity">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="LegalEntity" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_returnName">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="ReturnName" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_state">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="ReturnState" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtTfrCurrentPeriod">
-                          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dtTaxFiledReport" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_pathMarginsFile">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;PathMarginsList&quot;).ToString" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_legalEntity">[LegalEntity]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_returnName">[ReturnName]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_state">[ReturnState]</InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtTfrCurrentPeriod">[in_dtTaxFiledReport]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_pathMarginsFile">[in_Config("PathMarginsList").ToString]</InArgument>
+                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                   </TryCatch.Try>
@@ -265,24 +233,12 @@
                   <TryCatch.Try>
                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckOtherDeductions workflow" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="Sub-Process\CheckOtherDeductions\CheckOtherDeductions.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="ReturnName" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_State">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="ReturnState" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_CustomerAccount">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CustomerAccount" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_LegalEntity">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="LegalEntity" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_PathOutputFolder">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PathOutputFolder" />
-                        </InArgument>
+                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">[ReturnName]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_State">[ReturnState]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_CustomerAccount">[CustomerAccount]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_LegalEntity">[LegalEntity]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_PathOutputFolder">[in_PathOutputFolder]</InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                   </TryCatch.Try>

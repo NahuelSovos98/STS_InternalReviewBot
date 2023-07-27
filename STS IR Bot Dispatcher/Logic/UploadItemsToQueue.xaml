@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1726,2415</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1726,2587</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>UploadItemsToQueue_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -79,7 +79,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="UploadItemsToQueue" sap:VirtualizedContainerService.HintSize="1736,2350" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="UploadItemsToQueue" sap:VirtualizedContainerService.HintSize="1736,2522" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="Username" />
       <Variable x:TypeArguments="x:Int32" Name="AmountUploadedItems" />
@@ -122,13 +122,13 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dtReturns]" DisplayName="For Each Row in dtReturns" sap:VirtualizedContainerService.HintSize="1674,1487" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dtReturns]" DisplayName="For Each Row in dtReturns" sap:VirtualizedContainerService.HintSize="1674,1659" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1640,1370" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1640,1542" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="TransactionItemReference" />
               <Variable x:TypeArguments="x:String" Name="CurrentPeriod" />
@@ -196,13 +196,13 @@
                       <InArgument x:TypeArguments="x:String">["&lt;"+ReturnCustomerAccount+";"+ReturnLegalEntity+";"+ReturnName+";"+ReturnWorkflow+";"+ReturnState+"&gt;"]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
-                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                  <ui:AssignOperation sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="AssignOperation_1">
                     <ui:AssignOperation.To>
                       <OutArgument x:TypeArguments="x:String">[TransactionItemReference]</OutArgument>
                     </ui:AssignOperation.To>
                     <ui:AssignOperation.Value>
                       <InArgument x:TypeArguments="x:String" xml:space="preserve">[Username + "_" + in_CurrentMonth + "_" + in_CurrentYear.ToString + "_" + 
-in_CustomerName + "_" + ReturnLegalEntity + "_"  + ReturnName]</InArgument>
+ReturnCustomerAccount + "_" + ReturnLegalEntity + "_"  + ReturnName]</InArgument>
                     </ui:AssignOperation.Value>
                   </ui:AssignOperation>
                 </scg:List>
@@ -214,6 +214,7 @@ in_CustomerName + "_" + ReturnLegalEntity + "_"  + ReturnName]</InArgument>
               </sap:WorkflowViewStateService.ViewState>
             </ui:MultipleAssign>
             <ui:GetQueueItems Duration="{x:Null}" From="{x:Null}" Priority="{x:Null}" Skip="{x:Null}" TimeoutMS="{x:Null}" To="{x:Null}" Top="{x:Null}" DisplayName="Look for Return Queue Items in the Queue by Reference" FilterStrategy="Equals" FolderPath="[in_OrchestratorFolderName]" sap:VirtualizedContainerService.HintSize="1578,80" sap2010:WorkflowViewState.IdRef="GetQueueItems_1" QueueItemStates="New, Successful" QueueName="[in_OrchestratorQueueName]" Reference="[TransactionItemReference]" Result="[ResultQueueItems]" />
+            <ui:Comment sap:VirtualizedContainerService.HintSize="1578,132" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// PREGUNTAR A LA LISTA OBTENIDA COMO ARGUMENTO DE ENTRADA, SI DENTRO DE ESA LISTA ESTÁ EL CUSTOMER NAME CORRECTO (CurrentRow(&quot;Customer Account&quot;))" />
             <If Condition="[CurrentRow(&quot;Customer Account&quot;).ToString.Equals(in_CustomerName)]" DisplayName="If current row has the required customer account" sap:VirtualizedContainerService.HintSize="1578,710" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
                 <If Condition="[ResultQueueItems.Count = 0]" DisplayName="If Return Item was not processed yet" sap:VirtualizedContainerService.HintSize="1037,550" sap2010:WorkflowViewState.IdRef="If_2">
@@ -279,7 +280,7 @@ in_CustomerName + "_" + ReturnLegalEntity + "_"  + ReturnName]</InArgument>
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Warn" Message="[&quot;The following return item has another customer account: &quot; + ReturnItemDetails +&quot; instead of &lt;&quot;+in_CustomerName+&quot;&gt;. Item skipped.&quot;]" />
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Warn" Message="[&quot;The following return item has another customer account: &quot; + ReturnItemDetails +&quot; instead of &lt;&quot;+CurrentRow(&quot;Customer Account&quot;).ToString+&quot;&gt;. Item skipped.&quot;]" />
                   <Assign DisplayName="Assign - AmountSkippedItems" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_3">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:Int32">[AmountSkippedItems]</OutArgument>
