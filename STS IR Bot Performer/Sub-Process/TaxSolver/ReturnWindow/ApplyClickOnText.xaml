@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1129,2867</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1502,2867</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ApplyClickOnText_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -219,7 +219,7 @@
                                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="06ff2622-14e5-44bc-b8ea-b0991fc56376" TimeoutMS="2000" WaitForReady="COMPLETE" />
                               </ui:ClickText.Target>
                             </ui:ClickText>
-                            <ui:CopySelectedText SendWindowMessages="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Copy Selected Text" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="CopySelectedText_3">
+                            <ui:CopySelectedText SendWindowMessages="{x:Null}" DisplayName="Copy Selected Text" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="CopySelectedText_3" TimeoutMS="3000">
                               <ui:CopySelectedText.Result>
                                 <OutArgument x:TypeArguments="x:String">[out_Result]</OutArgument>
                               </ui:CopySelectedText.Result>
