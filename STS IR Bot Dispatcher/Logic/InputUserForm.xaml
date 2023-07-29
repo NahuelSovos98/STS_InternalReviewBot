@@ -2,11 +2,11 @@
   <x:Members>
     <x:Property Name="out_Month" Type="OutArgument(x:String)" />
     <x:Property Name="out_Year" Type="OutArgument(x:Int32)" />
-    <x:Property Name="out_CustomerName" Type="OutArgument(x:String)" />
     <x:Property Name="out_PathTaxFiledReport" Type="OutArgument(x:String)" />
     <x:Property Name="out_PathOutputFolder" Type="OutArgument(x:String)" />
     <x:Property Name="out_PathReviewSheet" Type="OutArgument(x:String)" />
     <x:Property Name="in_PathCustomerAccountList" Type="InArgument(x:String)" />
+    <x:Property Name="out_ListCustomerName" Type="OutArgument(scg:List(x:String))" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
@@ -86,6 +86,7 @@
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>ATOS.Map_Network_Drive.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="InputUserForm" sap:VirtualizedContainerService.HintSize="648,1691" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -197,34 +198,19 @@
               </ActivityAction>
             </ufa:FormActivity.DelayBody>
             <ufa:FormActivity.FormFieldsCollection>
-              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="Month_dropdown">
-                <mva:VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="ListMonths.ToList" />
-              </InArgument>
-              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="Year_dropdown">
-                <mva:VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="ListYear" />
-              </InArgument>
-              <OutArgument x:TypeArguments="x:String" x:Key="Month">
-                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_Month" />
-              </OutArgument>
-              <OutArgument x:TypeArguments="x:Int32" x:Key="Year">
-                <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="out_Year" />
-              </OutArgument>
-              <OutArgument x:TypeArguments="x:String" x:Key="SelectTfrFile">
-                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_PathTaxFiledReport" />
-              </OutArgument>
-              <OutArgument x:TypeArguments="x:String" x:Key="SelectOutputFolder">
-                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_PathOutputFolder" />
-              </OutArgument>
-              <OutArgument x:TypeArguments="x:String" x:Key="SelectReviewSheetFile">
-                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_PathReviewSheet" />
-              </OutArgument>
-              <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="CustomerName_dropdown">
-                <mva:VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="ListCustomerAccount" />
-              </InOutArgument>
+              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="Month_dropdown">[ListMonths.ToList]</InArgument>
+              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="Year_dropdown">[ListYear]</InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="Month">[out_Month]</OutArgument>
+              <OutArgument x:TypeArguments="x:Int32" x:Key="Year">[out_Year]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="SelectTfrFile">[out_PathTaxFiledReport]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="SelectOutputFolder">[out_PathOutputFolder]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="SelectReviewSheetFile">[out_PathReviewSheet]</OutArgument>
+              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="CustomerName_dropdown">[ListCustomerAccount]</InArgument>
+              <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="CustomerName">[out_ListCustomerName]</OutArgument>
             </ufa:FormActivity.FormFieldsCollection>
           </ufa:FormActivity>
           <ui:Comment sap:VirtualizedContainerService.HintSize="488,75" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// If the user exits, the output is a blank string." />
-          <ui:MessageBox AutoCloseAfter="00:00:00" Buttons="YesNo" Caption="User inputs - Check if values are correct." ChosenButton="[ChosenButton]" DisplayName="Message Box - Ask user to continue" sap:VirtualizedContainerService.HintSize="488,85" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;You entered the following info: &quot; + vbCrLf + vbCrLf +&#xA;&quot;Customer Name: &quot; + out_CustomerName + vbCrLf +&#xA;&quot;Month: &quot; + out_Month + vbCrLf +&#xA;&quot;Year: &quot; + out_Year.ToString + vbCrLf +&#xA;&quot;Path Output folder: &quot; + out_PathOutputFolder + vbCrLf +&#xA;&quot;Path TFR file: &quot; + out_PathTaxFiledReport + vbCrLf +&#xA;&quot;Path Review Sheet file: &quot; + out_PathReviewSheet + vbCrLf + vbCrLf +&#xA;&quot;Would you like to continue? (Press 'No' if you want to select the inputs again)&quot;]" TopMost="True" />
+          <ui:MessageBox AutoCloseAfter="00:00:00" Buttons="YesNo" Caption="User inputs - Check if values are correct." ChosenButton="[ChosenButton]" DisplayName="Message Box - Ask user to continue" sap:VirtualizedContainerService.HintSize="488,85" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;You entered the following info: &quot; + vbCrLf + vbCrLf +&#xD;&#xA;&quot;Customer Name: &quot; + String.Join(&quot;,&quot;,out_ListCustomerName) + vbCrLf +&#xD;&#xA;&quot;Month: &quot; + out_Month + vbCrLf +&#xD;&#xA;&quot;Year: &quot; + out_Year.ToString + vbCrLf +&#xD;&#xA;&quot;Path Output folder: &quot; + out_PathOutputFolder + vbCrLf +&#xD;&#xA;&quot;Path TFR file: &quot; + out_PathTaxFiledReport + vbCrLf +&#xD;&#xA;&quot;Path Review Sheet file: &quot; + out_PathReviewSheet + vbCrLf + vbCrLf +&#xD;&#xA;&quot;Would you like to continue? (Press 'No' if you want to select the inputs again)&quot;]" TopMost="True" />
         </Sequence>
       </ui:InterruptibleDoWhile.Body>
     </ui:InterruptibleDoWhile>

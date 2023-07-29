@@ -2,7 +2,7 @@
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property Name="in_CustomerName" Type="InArgument(x:String)" />
+    <x:Property Name="in_CustomerName" Type="InArgument(scg:List(x:String))" />
     <x:Property Name="in_PathOutputFolder" Type="InArgument(x:String)" />
     <x:Property Name="in_CurrentMonth" Type="InArgument(x:String)" />
     <x:Property Name="in_CurrentYear" Type="InArgument(x:Int32)" />
@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1141,866</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>502,866</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="50">
@@ -151,8 +151,8 @@
         <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtReturns">
           <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dtReturns" />
         </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_CustomerName">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_CustomerName" />
+        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_CustomerName">
+          <mva:VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="in_CustomerName" />
         </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_CurrentMonth">
           <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_CurrentMonth" />

@@ -3,14 +3,14 @@
     <x:Property Name="in_OrchestratorQueueName" Type="InArgument(x:String)" />
     <x:Property Name="in_OrchestratorFolderName" Type="InArgument(x:String)" />
     <x:Property Name="in_dtReturns" Type="InArgument(sd:DataTable)" />
-    <x:Property Name="in_CustomerName" Type="InArgument(x:String)" />
+    <x:Property Name="in_CustomerName" Type="InArgument(scg:List(x:String))" />
     <x:Property Name="in_CurrentMonth" Type="InArgument(x:String)" />
     <x:Property Name="in_CurrentYear" Type="InArgument(x:Int32)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1726,2587</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1726,2415</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>UploadItemsToQueue_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -76,10 +76,9 @@
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="UploadItemsToQueue" sap:VirtualizedContainerService.HintSize="1736,2522" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="UploadItemsToQueue" sap:VirtualizedContainerService.HintSize="1736,2350" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="Username" />
       <Variable x:TypeArguments="x:Int32" Name="AmountUploadedItems" />
@@ -122,13 +121,13 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dtReturns]" DisplayName="For Each Row in dtReturns" sap:VirtualizedContainerService.HintSize="1674,1659" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dtReturns]" DisplayName="For Each Row in dtReturns" sap:VirtualizedContainerService.HintSize="1674,1487" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1640,1542" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1640,1370" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="TransactionItemReference" />
               <Variable x:TypeArguments="x:String" Name="CurrentPeriod" />
@@ -214,8 +213,7 @@ ReturnCustomerAccount + "_" + ReturnLegalEntity + "_"  + ReturnName]</InArgument
               </sap:WorkflowViewStateService.ViewState>
             </ui:MultipleAssign>
             <ui:GetQueueItems Duration="{x:Null}" From="{x:Null}" Priority="{x:Null}" Skip="{x:Null}" TimeoutMS="{x:Null}" To="{x:Null}" Top="{x:Null}" DisplayName="Look for Return Queue Items in the Queue by Reference" FilterStrategy="Equals" FolderPath="[in_OrchestratorFolderName]" sap:VirtualizedContainerService.HintSize="1578,80" sap2010:WorkflowViewState.IdRef="GetQueueItems_1" QueueItemStates="New, Successful" QueueName="[in_OrchestratorQueueName]" Reference="[TransactionItemReference]" Result="[ResultQueueItems]" />
-            <ui:Comment sap:VirtualizedContainerService.HintSize="1578,132" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// PREGUNTAR A LA LISTA OBTENIDA COMO ARGUMENTO DE ENTRADA, SI DENTRO DE ESA LISTA ESTÁ EL CUSTOMER NAME CORRECTO (CurrentRow(&quot;Customer Account&quot;))" />
-            <If Condition="[CurrentRow(&quot;Customer Account&quot;).ToString.Equals(in_CustomerName)]" DisplayName="If current row has the required customer account" sap:VirtualizedContainerService.HintSize="1578,710" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[in_CustomerName.Contains(CurrentRow(&quot;Customer Account&quot;).ToString)]" DisplayName="If current row has the required customer account" sap:VirtualizedContainerService.HintSize="1578,710" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
                 <If Condition="[ResultQueueItems.Count = 0]" DisplayName="If Return Item was not processed yet" sap:VirtualizedContainerService.HintSize="1037,550" sap2010:WorkflowViewState.IdRef="If_2">
                   <If.Then>

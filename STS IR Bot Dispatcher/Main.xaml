@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1162,864" sap2010:WorkflowViewState.IdRef="Main2_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1502,864" sap2010:WorkflowViewState.IdRef="Main2_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -72,6 +72,7 @@
       <AssemblyReference>System.Windows.Forms</AssemblyReference>
       <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <StateMachine InitialState="{x:Reference __ReferenceID3}" sap2010:Annotation.AnnotationText="RI bot - Dispatcher&#xA;[Process description]&#xA;[Additional information (e.g., author, contact information and applications involved and required external setup)]" DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="687,799" sap2010:WorkflowViewState.IdRef="StateMachine_1">
@@ -198,7 +199,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <Transition.To>
-            <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Process a single transaction. &#xA;The result of the processing can be: 1) Success, 2) Business Exception, 3) System Exception. &#xA;In the case of a system exception, the transaction can be automatically retried." DisplayName="Process Transaction" sap:VirtualizedContainerService.HintSize="231,188" sap2010:WorkflowViewState.IdRef="State_3">
+            <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Process a single transaction. &#xA;The result of the processing can be: 1) Success, 2) Business Exception, 3) System Exception. &#xA;In the case of a system exception, the transaction can be automatically retried." DisplayName="Process Transaction" sap:VirtualizedContainerService.HintSize="584,1449" sap2010:WorkflowViewState.IdRef="State_3">
               <State.Entry>
                 <TryCatch DisplayName="Try to process transaction" sap:VirtualizedContainerService.HintSize="538,977" sap2010:WorkflowViewState.IdRef="TryCatch_9">
                   <sap:WorkflowViewStateService.ViewState>
@@ -224,12 +225,24 @@
                       </Assign>
                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Process workflow" sap:VirtualizedContainerService.HintSize="438,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="Framework\Process.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[TransactionItem]</InArgument>
-                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_CustomerName">[str_CustomerName]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_PathOutputFolder">[str_PathOutputFolder]</InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_CurrentMonth">[str_CurrentMonth]</InArgument>
-                          <InArgument x:TypeArguments="x:Int32" x:Key="in_CurrentYear">[int_CurrentYear]</InArgument>
+                          <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
+                            <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="TransactionItem" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                            <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_CustomerName">
+                            <mva:VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="list_CustomerName" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_PathOutputFolder">
+                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_PathOutputFolder" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_CurrentMonth">
+                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_CurrentMonth" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:Int32" x:Key="in_CurrentYear">
+                            <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="int_CurrentYear" />
+                          </InArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                       <TryCatch DisplayName="Try Catch Set Transaction Status (Success)" sap:VirtualizedContainerService.HintSize="438,341" sap2010:WorkflowViewState.IdRef="TryCatch_10">
@@ -542,13 +555,27 @@
                                     </ui:InvokeWorkflowFile>
                                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke InputUserForm workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_36" UnSafe="False" WorkflowFileName="Logic\InputUserForm.xaml">
                                       <ui:InvokeWorkflowFile.Arguments>
-                                        <OutArgument x:TypeArguments="x:String" x:Key="out_Month">[str_CurrentMonth]</OutArgument>
-                                        <OutArgument x:TypeArguments="x:Int32" x:Key="out_Year">[int_CurrentYear]</OutArgument>
-                                        <OutArgument x:TypeArguments="x:String" x:Key="out_CustomerName">[str_CustomerName]</OutArgument>
-                                        <OutArgument x:TypeArguments="x:String" x:Key="out_PathTaxFiledReport">[str_PathTaxFiledReport]</OutArgument>
-                                        <OutArgument x:TypeArguments="x:String" x:Key="out_PathOutputFolder">[str_PathOutputFolder]</OutArgument>
-                                        <OutArgument x:TypeArguments="x:String" x:Key="out_PathReviewSheet">[str_PathReviewSheet]</OutArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_PathCustomerAccountList">[Config("PathCustomerNameList").ToString]</InArgument>
+                                        <OutArgument x:TypeArguments="x:String" x:Key="out_Month">
+                                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="str_CurrentMonth" />
+                                        </OutArgument>
+                                        <OutArgument x:TypeArguments="x:Int32" x:Key="out_Year">
+                                          <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="int_CurrentYear" />
+                                        </OutArgument>
+                                        <OutArgument x:TypeArguments="x:String" x:Key="out_PathTaxFiledReport">
+                                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="str_PathTaxFiledReport" />
+                                        </OutArgument>
+                                        <OutArgument x:TypeArguments="x:String" x:Key="out_PathOutputFolder">
+                                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="str_PathOutputFolder" />
+                                        </OutArgument>
+                                        <OutArgument x:TypeArguments="x:String" x:Key="out_PathReviewSheet">
+                                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="str_PathReviewSheet" />
+                                        </OutArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_PathCustomerAccountList">
+                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;PathCustomerNameList&quot;).ToString" />
+                                        </InArgument>
+                                        <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_ListCustomerName">
+                                          <mva:VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="list_CustomerName" />
+                                        </OutArgument>
                                       </ui:InvokeWorkflowFile.Arguments>
                                     </ui:InvokeWorkflowFile>
                                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DeleteOldItemsFromQueue workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_39" UnSafe="False" WorkflowFileName="Logic\DeleteOldItemsFromQueue.xaml">
@@ -561,14 +588,30 @@
                                     </ui:InvokeWorkflowFile>
                                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TranscribeToTempFile Workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_38" UnSafe="False" WorkflowFileName="Logic\TranscribeToTempFile.xaml">
                                       <ui:InvokeWorkflowFile.Arguments>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_CustomerName">[str_CustomerName]</InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_pathReviewSheetFile">[str_PathReviewSheet]</InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_pathTaxFiledReport">[str_PathTaxFiledReport]</InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_pathTempDirectory">[Config("PathTempDirectory").ToString]</InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_currentMont">[str_CurrentMonth]</InArgument>
-                                        <InArgument x:TypeArguments="x:Int32" x:Key="in_currentYear">[int_CurrentYear]</InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_nameTempFile">[Config("TempFile_FileName").ToString]</InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_pathOutputFolder">[str_PathOutputFolder]</InArgument>
+                                        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_CustomerName">
+                                          <mva:VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="list_CustomerName" />
+                                        </InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_pathReviewSheetFile">
+                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_PathReviewSheet" />
+                                        </InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_pathTaxFiledReport">
+                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_PathTaxFiledReport" />
+                                        </InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_pathTempDirectory">
+                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;PathTempDirectory&quot;).ToString" />
+                                        </InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_currentMont">
+                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_CurrentMonth" />
+                                        </InArgument>
+                                        <InArgument x:TypeArguments="x:Int32" x:Key="in_currentYear">
+                                          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="int_CurrentYear" />
+                                        </InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_nameTempFile">
+                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;TempFile_FileName&quot;).ToString" />
+                                        </InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_pathOutputFolder">
+                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_PathOutputFolder" />
+                                        </InArgument>
                                       </ui:InvokeWorkflowFile.Arguments>
                                     </ui:InvokeWorkflowFile>
                                     <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="CommentOut_2">
@@ -858,7 +901,7 @@
       <Variable x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="Used to control the number of consecutive system exceptions." Default="0" Name="ConsecutiveSystemExceptions" />
       <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="Allows the Orchestrator queue name to be passed as an argument, instead of only being defined in the configuration file." Name="in_OrchestratorQueueName" />
       <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="Allows the Orchestrator folder name where the queue is created to be passed as an argument, instead of only being defined in the configuration file." Name="in_OrchestratorQueueFolder" />
-      <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="This is the TaxSolver ID (Customer Account)" Name="str_CustomerName" />
+      <Variable x:TypeArguments="scg:List(x:String)" sap2010:Annotation.AnnotationText="This is the TaxSolver ID (Customer Account)" Name="list_CustomerName" />
       <Variable x:TypeArguments="x:String" Name="str_CurrentMonth" />
       <Variable x:TypeArguments="x:Int32" Name="int_CurrentYear" />
       <Variable x:TypeArguments="x:String" Name="str_PathOutputFolder" />
