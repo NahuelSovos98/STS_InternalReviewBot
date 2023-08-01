@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="CheckAdjustment" this:CheckAdjustment.in_state="NY" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="CheckAdjustment" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_legalEntity" Type="InArgument(x:String)" />
     <x:Property Name="in_returnName" Type="InArgument(x:String)" />
@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1502,794</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1502,702</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CheckAdjustment_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -90,6 +90,7 @@
       <Variable x:TypeArguments="x:Double" Name="dbl_priorPayment" />
       <Variable x:TypeArguments="x:Double" Name="dbl_resultPaymentAdjust" />
       <Variable x:TypeArguments="x:Boolean" Name="bool_filterByContain" />
+      <Variable x:TypeArguments="x:String" Name="returnNameForFilter" />
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -109,7 +110,7 @@
           <av:Size x:Key="ShapeSize">200,52</av:Size>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ReadRange AddHeaders="True" DataTable="[in_dtTfrCurrentPeriod]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="ReadRange_1" Range="A4:V9999" SheetName="Current Period Returns" WorkbookPath="C:\Users\martin.martinez\Downloads\PATREON Tax Filed Report 202306.xlsx" />
+      <ui:ReadRange AddHeaders="True" DataTable="[in_dtTfrCurrentPeriod]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="ReadRange_1" Range="A4:V9999" SheetName="Current Period Returns" WorkbookPath="C:\Users\martin.martinez\Desktop\filesForTesting\osv1 Tax Filed Report 202306.xlsx" />
     </FlowStep>
     <FlowStep x:Name="__ReferenceID0">
       <sap:WorkflowViewStateService.ViewState>
@@ -118,16 +119,16 @@
           <av:Size x:Key="ShapeSize">200,52</av:Size>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <TryCatch DisplayName="TryCatch adjustment validation" sap:VirtualizedContainerService.HintSize="2716,3829" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch DisplayName="TryCatch adjustment validation" sap:VirtualizedContainerService.HintSize="2716,3946" sap2010:WorkflowViewState.IdRef="TryCatch_1">
         <TryCatch.Try>
-          <Sequence DisplayName="Get datatable's value with filter" sap:VirtualizedContainerService.HintSize="2678,3601" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Get datatable's value with filter" sap:VirtualizedContainerService.HintSize="2678,3718" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Sequence sap2010:Annotation.AnnotationText="sometimes the return name value in the TFR file is not the same as in Tax Solver. A list was created in the Config file of the possible values ​​that are different in the TFR file and in Tax Solver and in this sequence their existence is validated." DisplayName="check if value in TFR is not equal to value in Tax Solver" sap:VirtualizedContainerService.HintSize="2616,1068" sap2010:WorkflowViewState.IdRef="Sequence_14">
+            <Sequence sap2010:Annotation.AnnotationText="sometimes the return name value in the TFR file is not the same as in Tax Solver. A list was created in the Config file of the possible values ​​that are different in the TFR file and in Tax Solver and in this sequence their existence is validated." DisplayName="check if value in TFR is not equal to value in Tax Solver" sap:VirtualizedContainerService.HintSize="2616,1187" sap2010:WorkflowViewState.IdRef="Sequence_14">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:String" Name="str_valuesConfig" />
                 <Variable x:TypeArguments="s:String[]" Name="arr_valuesConfig" />
@@ -143,7 +144,7 @@
               <ui:MultipleAssign DisplayName="Multiple Assign - List of return names to check" sap:VirtualizedContainerService.HintSize="1135,163" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
                 <ui:MultipleAssign.AssignOperations>
                   <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                    <ui:AssignOperation sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="AssignOperation_1">
                       <ui:AssignOperation.To>
                         <OutArgument x:TypeArguments="x:String">[str_valuesConfig]</OutArgument>
                       </ui:AssignOperation.To>
@@ -170,27 +171,35 @@
                   </scg:List>
                 </ui:MultipleAssign.AssignOperations>
               </ui:MultipleAssign>
-              <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1135,712" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[list_returnsConfig]">
+              <Assign DisplayName="Initialize return name for filter" sap:VirtualizedContainerService.HintSize="1135,82" sap2010:WorkflowViewState.IdRef="Assign_13">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[returnNameForFilter]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[in_returnName]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1135,709" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[list_returnsConfig]">
                 <ui:ForEach.Body>
                   <ActivityAction x:TypeArguments="x:String">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="x:String" Name="item" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1099,586" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1099,583" sap2010:WorkflowViewState.IdRef="Sequence_17">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <If Condition="[in_returnName.ToString.ToUpper.StartsWith(item.ToString.ToUpper)]" DisplayName="If - value start equals" sap:VirtualizedContainerService.HintSize="1037,475" sap2010:WorkflowViewState.IdRef="If_6">
+                      <If Condition="[in_returnName.ToString.ToUpper.StartsWith(item.ToString.ToUpper)]" DisplayName="If - value start equals" sap:VirtualizedContainerService.HintSize="1037,472" sap2010:WorkflowViewState.IdRef="If_6">
                         <If.Then>
-                          <Sequence sap:VirtualizedContainerService.HintSize="496,315" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                          <Sequence sap:VirtualizedContainerService.HintSize="496,313" sap2010:WorkflowViewState.IdRef="Sequence_15">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <Assign DisplayName="return name to filter in TFR" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_8">
+                            <Assign DisplayName="return name to filter in TFR" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_8">
                               <Assign.To>
                                 <OutArgument x:TypeArguments="x:String">[in_returnName]</OutArgument>
                               </Assign.To>
@@ -198,7 +207,7 @@
                                 <InArgument x:TypeArguments="x:String">[item.ToString]</InArgument>
                               </Assign.Value>
                             </Assign>
-                            <Assign DisplayName="bool flag to filter ReturnName in TFR datatable" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_9">
+                            <Assign DisplayName="bool flag to filter ReturnName in TFR datatable" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_9">
                               <Assign.To>
                                 <OutArgument x:TypeArguments="x:Boolean">[bool_filterByContain]</OutArgument>
                               </Assign.To>
@@ -209,13 +218,13 @@
                           </Sequence>
                         </If.Then>
                         <If.Else>
-                          <Sequence sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                          <Sequence sap:VirtualizedContainerService.HintSize="496,192" sap2010:WorkflowViewState.IdRef="Sequence_16">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <Assign DisplayName="bool flag to filter ReturnName in TFR datatable" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_10">
+                            <Assign DisplayName="bool flag to filter ReturnName in TFR datatable" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_10">
                               <Assign.To>
                                 <OutArgument x:TypeArguments="x:Boolean">[bool_filterByContain]</OutArgument>
                               </Assign.To>
@@ -231,9 +240,9 @@
                 </ui:ForEach.Body>
               </ui:ForEach>
             </Sequence>
-            <TryCatch DisplayName="Try Catch - filteredValues" sap:VirtualizedContainerService.HintSize="2616,368" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+            <TryCatch DisplayName="Try Catch - filteredValues" sap:VirtualizedContainerService.HintSize="2616,370" sap2010:WorkflowViewState.IdRef="TryCatch_2">
               <TryCatch.Try>
-                <Assign sap2010:Annotation.AnnotationText="Column(&quot;Legal Entity&quot;) Contains in_LegalEntity AND Column(&quot;State&quot;) contains to in_state AND&#xA;in_ReturnName.toupper contains Column(&quot;Return Name&quot;).toupper" DisplayName="Assign - filteredValues" sap:VirtualizedContainerService.HintSize="434,140" sap2010:WorkflowViewState.IdRef="Assign_11">
+                <Assign sap2010:Annotation.AnnotationText="Column(&quot;Legal Entity&quot;) Contains in_LegalEntity AND Column(&quot;State&quot;) contains to in_state AND&#xA;in_ReturnName.toupper contains Column(&quot;Return Name&quot;).toupper" DisplayName="Assign - filteredValues" sap:VirtualizedContainerService.HintSize="434,142" sap2010:WorkflowViewState.IdRef="Assign_11">
                   <Assign.To>
                     <OutArgument x:TypeArguments="sd:DataTable">[dt_filteredValues]</OutArgument>
                   </Assign.To>
@@ -262,7 +271,7 @@ r("Return Name").ToString.ToUpper.Trim.Contains(in_ReturnName.ToUpper.Trim)).Cop
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                     </ActivityAction.Argument>
-                    <Assign sap2010:Annotation.AnnotationText="Column(&quot;Legal Entity&quot;) Contains in_LegalEntity AND Column(&quot;State&quot;) contains to in_state AND&#xA;in_ReturnName.toupper contains Column(&quot;Return Name&quot;).toupper" DisplayName="Assign - filteredValues" sap:VirtualizedContainerService.HintSize="434,139" sap2010:WorkflowViewState.IdRef="Assign_12">
+                    <Assign sap2010:Annotation.AnnotationText="Column(&quot;Legal Entity&quot;) Contains in_LegalEntity AND Column(&quot;State&quot;) contains to in_state AND&#xA;in_ReturnName.toupper contains Column(&quot;Return Name&quot;).toupper" DisplayName="Assign - filteredValues" sap:VirtualizedContainerService.HintSize="434,138" sap2010:WorkflowViewState.IdRef="Assign_12">
                       <Assign.To>
                         <OutArgument x:TypeArguments="sd:DataTable">[dt_filteredValues]</OutArgument>
                       </Assign.To>
@@ -331,9 +340,9 @@ r("Return Name").ToString.ToUpper.Trim.Contains(in_ReturnName.ToUpper.Trim)).Cop
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:CommentOut>
-            <If Condition="[dt_filteredValues.Rows.Count &gt; 0]" DisplayName="Check if filtered datatable return some value" sap:VirtualizedContainerService.HintSize="2616,296" sap2010:WorkflowViewState.IdRef="If_3">
+            <If Condition="[dt_filteredValues.Rows.Count &gt; 0]" DisplayName="Check if filtered datatable return some value" sap:VirtualizedContainerService.HintSize="2616,295" sap2010:WorkflowViewState.IdRef="If_3">
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="1110,103" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <Sequence sap:VirtualizedContainerService.HintSize="1270,103" sap2010:WorkflowViewState.IdRef="Sequence_7">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -342,17 +351,17 @@ r("Return Name").ToString.ToUpper.Trim.Contains(in_ReturnName.ToUpper.Trim)).Cop
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence sap:VirtualizedContainerService.HintSize="1110,136" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                <Sequence sap:VirtualizedContainerService.HintSize="1270,136" sap2010:WorkflowViewState.IdRef="Sequence_8">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Throw Exception="[new BusinessRuleException(&quot;no records were found in the file with the entered values. (&quot;+in_legalEntity+&quot;, &quot;+in_returnName+&quot;, &quot;+in_state+&quot; &quot;+&quot;)&quot;)]" sap:VirtualizedContainerService.HintSize="1048,25" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                  <Throw Exception="[new BusinessRuleException(&quot;no records were found in the file with the entered values. (&quot;+in_legalEntity+&quot;, &quot;+in_returnName+&quot;, &quot;+in_state+&quot; &quot;+&quot;)&quot;)]" sap:VirtualizedContainerService.HintSize="1208,25" sap2010:WorkflowViewState.IdRef="Throw_1" />
                 </Sequence>
               </If.Else>
             </If>
-            <Assign DisplayName="set value Adjustments" sap:VirtualizedContainerService.HintSize="2616,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign DisplayName="set value Adjustments" sap:VirtualizedContainerService.HintSize="2616,81" sap2010:WorkflowViewState.IdRef="Assign_1">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:Double">[dbl_adjustments]</OutArgument>
               </Assign.To>
@@ -360,7 +369,7 @@ r("Return Name").ToString.ToUpper.Trim.Contains(in_ReturnName.ToUpper.Trim)).Cop
                 <InArgument x:TypeArguments="x:Double">[Double.Parse(dt_filteredValues.Rows(0)("Adjustments").ToString)]</InArgument>
               </Assign.Value>
             </Assign>
-            <If Condition="[dbl_adjustments = 0]" DisplayName="Validate that adjustment's value be zero" sap:VirtualizedContainerService.HintSize="2616,1424" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[dbl_adjustments = 0]" DisplayName="Validate that adjustment's value be zero" sap:VirtualizedContainerService.HintSize="2616,1422" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
                 <Sequence DisplayName="Its Zero" sap:VirtualizedContainerService.HintSize="450,203" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <sap:WorkflowViewStateService.ViewState>
@@ -372,22 +381,22 @@ r("Return Name").ToString.ToUpper.Trim.Contains(in_ReturnName.ToUpper.Trim)).Cop
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence DisplayName="Do the rounding with tax imported" sap:VirtualizedContainerService.HintSize="2121,1264" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <Sequence DisplayName="Do the rounding with tax imported" sap:VirtualizedContainerService.HintSize="2121,1263" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <If Condition="[(dbl_adjustments &gt;= 1) or (dbl_adjustments&lt;= -1)]" DisplayName="Check if the adjustment is greater than or equal to 1" sap:VirtualizedContainerService.HintSize="2059,1153" sap2010:WorkflowViewState.IdRef="If_4">
+                  <If Condition="[(dbl_adjustments &gt;= 1) or (dbl_adjustments&lt;= -1)]" DisplayName="Check if the adjustment is greater than or equal to 1" sap:VirtualizedContainerService.HintSize="2059,1152" sap2010:WorkflowViewState.IdRef="If_4">
                     <If.Then>
-                      <Sequence DisplayName="Should check the margins" sap:VirtualizedContainerService.HintSize="1007,854" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                      <Sequence DisplayName="Should check the margins" sap:VirtualizedContainerService.HintSize="1007,851" sap2010:WorkflowViewState.IdRef="Sequence_10">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                         <ui:Comment sap:VirtualizedContainerService.HintSize="945,75" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// First, the bot will check if sum between adjustment and prior payment is 0." />
-                        <Assign DisplayName="set value Prior Payment" sap:VirtualizedContainerService.HintSize="945,82" sap2010:WorkflowViewState.IdRef="Assign_6">
+                        <Assign DisplayName="set value Prior Payment" sap:VirtualizedContainerService.HintSize="945,81" sap2010:WorkflowViewState.IdRef="Assign_6">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:Double">[dbl_priorPayment]</OutArgument>
                           </Assign.To>
@@ -395,7 +404,7 @@ r("Return Name").ToString.ToUpper.Trim.Contains(in_ReturnName.ToUpper.Trim)).Cop
                             <InArgument x:TypeArguments="x:Double">[Double.Parse(dt_filteredValues.Rows(0)("Prior Payments").ToString)]</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <Assign DisplayName="result sum between adjustment and prior payments" sap:VirtualizedContainerService.HintSize="945,82" sap2010:WorkflowViewState.IdRef="Assign_7">
+                        <Assign DisplayName="result sum between adjustment and prior payments" sap:VirtualizedContainerService.HintSize="945,81" sap2010:WorkflowViewState.IdRef="Assign_7">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:Double">[dbl_resultPaymentAdjust]</OutArgument>
                           </Assign.To>
@@ -403,7 +412,7 @@ r("Return Name").ToString.ToUpper.Trim.Contains(in_ReturnName.ToUpper.Trim)).Cop
                             <InArgument x:TypeArguments="x:Double">[dbl_adjustments + dbl_priorPayment]</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <If Condition="[dbl_resultPaymentAdjust.Equals(0)]" DisplayName="If - result of sum is 0" sap:VirtualizedContainerService.HintSize="945,384" sap2010:WorkflowViewState.IdRef="If_5">
+                        <If Condition="[dbl_resultPaymentAdjust.Equals(0)]" DisplayName="If - result of sum is 0" sap:VirtualizedContainerService.HintSize="945,383" sap2010:WorkflowViewState.IdRef="If_5">
                           <If.Then>
                             <Sequence sap:VirtualizedContainerService.HintSize="450,203" sap2010:WorkflowViewState.IdRef="Sequence_12">
                               <sap:WorkflowViewStateService.ViewState>
@@ -423,10 +432,18 @@ r("Return Name").ToString.ToUpper.Trim.Contains(in_ReturnName.ToUpper.Trim)).Cop
                               </sap:WorkflowViewStateService.ViewState>
                               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckMargins Workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Sub-Process\Adjustment\CheckMargins.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_pathMargins">[in_pathMarginsFile]</InArgument>
-                                  <InArgument x:TypeArguments="x:Double" x:Key="in_valueAdjustment">[dbl_adjustments]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_state">[in_state]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_returnName">[in_returnName]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_pathMargins">
+                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_pathMarginsFile" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:Double" x:Key="in_valueAdjustment">
+                                    <mva:VisualBasicValue x:TypeArguments="x:Double" ExpressionText="dbl_adjustments" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_state">
+                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_state" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_returnName">
+                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="returnNameForFilter" />
+                                  </InArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
                               </ui:InvokeWorkflowFile>
                             </Sequence>
@@ -492,10 +509,18 @@ r("Return Name").ToString.ToUpper.Trim.Contains(in_ReturnName.ToUpper.Trim)).Cop
                               <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;the adjustment is not .00, we should check margins.&quot;]" />
                               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Sub-Process\Adjustment\CheckMargins.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_pathMargins">[in_pathMarginsFile]</InArgument>
-                                  <InArgument x:TypeArguments="x:Double" x:Key="in_valueAdjustment">[dbl_adjustments]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_state">[in_state]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_returnName">[in_returnName]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_pathMargins">
+                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_pathMarginsFile" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:Double" x:Key="in_valueAdjustment">
+                                    <mva:VisualBasicValue x:TypeArguments="x:Double" ExpressionText="dbl_adjustments" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_state">
+                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_state" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_returnName">
+                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="returnNameForFilter" />
+                                  </InArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
                               </ui:InvokeWorkflowFile>
                             </Sequence>

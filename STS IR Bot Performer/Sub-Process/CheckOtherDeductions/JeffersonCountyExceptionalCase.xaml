@@ -2,11 +2,12 @@
   <x:Members>
     <x:Property Name="in_returnName" Type="InArgument(x:String)" />
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_CustomerAccount" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1514,4121</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1189,4121</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>JeffersonCountyExceptionalCase_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -78,11 +79,11 @@
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="JeffersonCountyExceptionalCase" sap:VirtualizedContainerService.HintSize="1199,4056" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -90,11 +91,7 @@
       <Variable x:TypeArguments="x:String" Name="ExtractedText" />
       <Variable x:TypeArguments="x:Boolean" Name="existPDF" />
       <Variable x:TypeArguments="str:MatchCollection" Name="listMatches" />
-      <Variable x:TypeArguments="scg:List(x:String)" Name="ListItemsToCheck">
-        <Variable.Default>
-          <mva:VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="new List(Of String)" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="scg:List(x:String)" Default="[new List(Of String)]" Name="ListItemsToCheck" />
       <Variable x:TypeArguments="s:String[]" Name="arr_positionInList" />
       <Variable x:TypeArguments="x:String" Name="str_regexToApply" />
       <Variable x:TypeArguments="x:String" Name="str_SplitRegex" />
@@ -251,7 +248,7 @@
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Download PDF Workflow" sap:VirtualizedContainerService.HintSize="1137,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnsMenu\PressPrintCurrentTab.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_PathTempPDFFile">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;PathTempToPDF&quot;).ToString" />
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;PathTempToPDF&quot;).ToString.Replace(&quot;&lt;CUSTOMER&gt;&quot;,in_CustomerAccount)" />
         </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
@@ -265,9 +262,7 @@
           </sap:WorkflowViewStateService.ViewState>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Download PDF Workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnsMenu\PressPrintCurrentTab.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_PathTempPDFFile">
-                <Literal x:TypeArguments="x:String">C:\Users\martin.martinez\Desktop\filesForTesting\pdftest.pdf</Literal>
-              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_PathTempPDFFile">C:\Users\martin.martinez\Desktop\filesForTesting\pdftest.pdf</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
         </Sequence>
@@ -279,7 +274,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:FileExistsX DisplayName="PDF Temp Exist" Exists="[existPDF]" sap:VirtualizedContainerService.HintSize="1137,133" sap2010:WorkflowViewState.IdRef="FileExistsX_3" Path="[in_Config(&quot;PathTempToPDF&quot;).ToString]" />
+    <ui:FileExistsX DisplayName="PDF Temp Exist" Exists="[existPDF]" sap:VirtualizedContainerService.HintSize="1137,133" sap2010:WorkflowViewState.IdRef="FileExistsX_3" Path="[in_Config(&quot;PathTempToPDF&quot;).ToString.Replace(&quot;&lt;CUSTOMER&gt;&quot;,in_CustomerAccount)]" />
     <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1137,52" sap2010:WorkflowViewState.IdRef="CommentOut_10">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,244" sap2010:WorkflowViewState.IdRef="Sequence_20">
@@ -319,7 +314,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read Temp PDF" FileName="[in_Config(&quot;PathTempToPDF&quot;).ToString]" sap:VirtualizedContainerService.HintSize="1137,60" sap2010:WorkflowViewState.IdRef="ReadPDFText_3" Range="All" Text="[ExtractedText]" />
+    <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read Temp PDF" FileName="[in_Config(&quot;PathTempToPDF&quot;).ToString.Replace(&quot;&lt;CUSTOMER&gt;&quot;,in_CustomerAccount)]" sap:VirtualizedContainerService.HintSize="1137,60" sap2010:WorkflowViewState.IdRef="ReadPDFText_3" Range="All" Text="[ExtractedText]" />
     <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1137,52" sap2010:WorkflowViewState.IdRef="CommentOut_11">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,171" sap2010:WorkflowViewState.IdRef="Sequence_21">

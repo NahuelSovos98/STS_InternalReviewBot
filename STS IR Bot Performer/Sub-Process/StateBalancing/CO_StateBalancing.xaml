@@ -1,13 +1,13 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Activity mc:Ignorable="sap sap2010" x:Class="CO_StateBalancing" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="CO_StateBalancing" this:CO_StateBalancing.in_pathOutputFolder="C:\Users\martin.martinez\Documents\github-IRBot\STS_InternalReviewBot\STS IR Bot Performer\Data\Output" this:CO_StateBalancing.in_CustomerAccount="osv1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_pathOutputFolder" Type="InArgument(x:String)" />
+    <x:Property Name="in_CustomerAccount" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>598,3036</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1502,3036</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CO_StateBalancing_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -69,6 +69,7 @@
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="CO_StateBalancing" sap:VirtualizedContainerService.HintSize="608,2971" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -96,7 +97,7 @@
           <OutArgument x:TypeArguments="x:String">[str_pathCOToolCopy]</OutArgument>
         </Assign.To>
         <Assign.Value>
-          <InArgument x:TypeArguments="x:String">[in_pathOutputFolder +"\CO DR-0100 XML tool.xlsm"]</InArgument>
+          <InArgument x:TypeArguments="x:String">[in_pathOutputFolder +"\CO DR-0100 XML tool "+in_CustomerAccount.Trim+".xlsm"]</InArgument>
         </Assign.Value>
       </Assign>
       <ui:FileExistsX DisplayName="CO Excel tool file Exists" Exists="[bool_ExcelToolCOExist]" sap:VirtualizedContainerService.HintSize="484,133" sap2010:WorkflowViewState.IdRef="FileExistsX_1" Path="[str_pathCOToolCopy]" />
@@ -114,7 +115,7 @@
           </Sequence>
         </If.Else>
       </If>
-      <ui:CopyFile ContinueOnError="{x:Null}" Destination="[in_pathOutputFolder]" DisplayName="Copy Excel CO tool File in output" sap:VirtualizedContainerService.HintSize="484,158" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[in_Config(&quot;StateBalancing_CO_PathCOToolTemplate&quot;).ToString]" />
+      <ui:CopyFile ContinueOnError="{x:Null}" Destination="[in_pathOutputFolder +&quot;\&quot;+ path.GetFileName(str_pathCOToolCopy)]" DisplayName="Copy Excel CO tool File in output" sap:VirtualizedContainerService.HintSize="484,158" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[in_Config(&quot;StateBalancing_CO_PathCOToolTemplate&quot;).ToString]" />
     </Sequence>
     <ui:Comment sap:VirtualizedContainerService.HintSize="546,75" sap2010:WorkflowViewState.IdRef="Comment_3" Text="// Paste the information downloaded from TaxSolver into the CO Excel tool" />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CopyAndPaste Excel Information Workflow" sap:VirtualizedContainerService.HintSize="546,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" UnSafe="False" WorkflowFileName="Logic\CopyAndPasteExcelSheet.xaml">

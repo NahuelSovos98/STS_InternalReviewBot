@@ -2,6 +2,7 @@
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_PathOutputFolder" Type="InArgument(x:String)" />
+    <x:Property Name="in_CustomerAccount" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
@@ -142,7 +143,7 @@
               <OutArgument x:TypeArguments="x:String">[PathDestinationScTool]</OutArgument>
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">[Path.Combine(in_PathOutputFolder,Path.GetFileName(PathScTool))]</InArgument>
+              <InArgument x:TypeArguments="x:String">[in_Config("StateBalancing_SC_PathToolDestination").ToString.Replace("&lt;CUSTOMER&gt;",in_CustomerAccount)]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
         </scg:List>
@@ -285,15 +286,9 @@ Replace("&lt;COUNTY_LIST&gt;",in_Config("StateBalancing_SC_CountyList").toString
       </Assign>
       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ApplyScreenScraping workflow" sap:VirtualizedContainerService.HintSize="532,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnWindow\ApplyScreenScraping.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="RegexGetCounty" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey">
-            <Literal x:TypeArguments="x:String">[k(pgup)]</Literal>
-          </InArgument>
-          <OutArgument x:TypeArguments="scg:List(str:Match)" x:Key="out_ListMatches">
-            <mva:VisualBasicReference x:TypeArguments="scg:List(str:Match)" ExpressionText="ListLocalTaxes" />
-          </OutArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">[RegexGetCounty]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey">%[k(pgup)]</InArgument>
+          <OutArgument x:TypeArguments="scg:List(str:Match)" x:Key="out_ListMatches">[ListLocalTaxes]</OutArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
       <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="532,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
@@ -372,15 +367,9 @@ Replace("&lt;COUNTY_LIST&gt;",in_Config("StateBalancing_SC_CountyList").toString
       </ui:CommentOut>
       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ApplyScreenScraping workflow" sap:VirtualizedContainerService.HintSize="532,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnWindow\ApplyScreenScraping.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="RegexGetCounty" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey">
-            <Literal x:TypeArguments="x:String">[k(pgdn)]</Literal>
-          </InArgument>
-          <OutArgument x:TypeArguments="scg:List(str:Match)" x:Key="out_ListMatches">
-            <mva:VisualBasicReference x:TypeArguments="scg:List(str:Match)" ExpressionText="ListLocalTaxes2" />
-          </OutArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">[RegexGetCounty]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey">%[k(pgdn)]</InArgument>
+          <OutArgument x:TypeArguments="scg:List(str:Match)" x:Key="out_ListMatches">[ListLocalTaxes2]</OutArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
     </Sequence>
