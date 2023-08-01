@@ -11,7 +11,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1502,1756</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1501,2570</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>InputUserForm_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -89,7 +89,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="InputUserForm" sap:VirtualizedContainerService.HintSize="648,1691" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="InputUserForm" sap:VirtualizedContainerService.HintSize="648,2505" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="FormOutputData" />
       <Variable x:TypeArguments="x:String" Name="SelectedButton" />
@@ -97,6 +97,7 @@
       <Variable x:TypeArguments="scg:List(x:String)" Name="ListYear" />
       <Variable x:TypeArguments="scg:List(x:String)" Name="ListCustomerAccount" />
       <Variable x:TypeArguments="x:String" Name="ChosenButton" />
+      <Variable x:TypeArguments="x:String" Name="str_environment" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -104,7 +105,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="586,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;InputUserForm starts&quot;]" />
-    <Sequence DisplayName="Get Customer Name list" sap:VirtualizedContainerService.HintSize="586,407" sap2010:WorkflowViewState.IdRef="Sequence_4">
+    <Sequence DisplayName="Get Customer Name list" sap:VirtualizedContainerService.HintSize="586,1221" sap2010:WorkflowViewState.IdRef="Sequence_4">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="ColumnName" />
         <Variable x:TypeArguments="sd:DataTable" Name="dtCustomerList" />
@@ -114,7 +115,7 @@
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Assign DisplayName="Assign ColumnName" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign DisplayName="Assign ColumnName" sap:VirtualizedContainerService.HintSize="484,82" sap2010:WorkflowViewState.IdRef="Assign_2">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[ColumnName]</OutArgument>
         </Assign.To>
@@ -122,7 +123,7 @@
           <InArgument x:TypeArguments="x:String">TaxSolver ID</InArgument>
         </Assign.Value>
       </Assign>
-      <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope in_PathCustomerNameList" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" ReadOnly="True" Visible="False" WorkbookPath="[in_PathCustomerAccountList]">
+      <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope in_PathCustomerNameList" sap:VirtualizedContainerService.HintSize="484,401" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" ReadOnly="True" Visible="False" WorkbookPath="[in_PathCustomerAccountList]">
         <ui:ExcelApplicationScope.Body>
           <ActivityAction x:TypeArguments="ui:WorkbookApplication">
             <ActivityAction.Argument>
@@ -150,12 +151,45 @@
         </ui:ExcelApplicationScope.Body>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:ExcelApplicationScope>
-      <Assign DisplayName="Assign - ListCustomerAccount" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Sequence DisplayName="recognize environment in TaxSolver" sap:VirtualizedContainerService.HintSize="484,224" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TaxSolver-RecognizeEnvironment workflow" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Logic\TaxSolver-RecognizeEnvironment.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_environment">
+              <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="str_environment" />
+            </OutArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+      </Sequence>
+      <ui:FilterDataTable DataTable="[dtCustomerList]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="484,161" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dtCustomerList]" SelectColumnsMode="Keep">
+        <ui:FilterDataTable.Filters>
+          <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+            <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+              <ui:FilterOperationArgument.Column>
+                <InArgument x:TypeArguments="x:String">["Instance"]</InArgument>
+              </ui:FilterOperationArgument.Column>
+              <ui:FilterOperationArgument.Operand>
+                <InArgument x:TypeArguments="x:String">[str_environment]</InArgument>
+              </ui:FilterOperationArgument.Operand>
+            </ui:FilterOperationArgument>
+          </scg:List>
+        </ui:FilterDataTable.Filters>
+        <ui:FilterDataTable.SelectColumns>
+          <scg:List x:TypeArguments="InArgument" Capacity="4">
+            <x:Null />
+          </scg:List>
+        </ui:FilterDataTable.SelectColumns>
+      </ui:FilterDataTable>
+      <Assign DisplayName="Assign - ListCustomerAccount" sap:VirtualizedContainerService.HintSize="484,82" sap2010:WorkflowViewState.IdRef="Assign_3">
         <Assign.To>
           <OutArgument x:TypeArguments="scg:List(x:String)">[ListCustomerAccount]</OutArgument>
         </Assign.To>
@@ -210,7 +244,7 @@
             </ufa:FormActivity.FormFieldsCollection>
           </ufa:FormActivity>
           <ui:Comment sap:VirtualizedContainerService.HintSize="488,75" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// If the user exits, the output is a blank string." />
-          <ui:MessageBox AutoCloseAfter="00:00:00" Buttons="YesNo" Caption="User inputs - Check if values are correct." ChosenButton="[ChosenButton]" DisplayName="Message Box - Ask user to continue" sap:VirtualizedContainerService.HintSize="488,85" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;You entered the following info: &quot; + vbCrLf + vbCrLf +&#xD;&#xA;&quot;Customer Name: &quot; + String.Join(&quot;,&quot;,out_ListCustomerName) + vbCrLf +&#xD;&#xA;&quot;Month: &quot; + out_Month + vbCrLf +&#xD;&#xA;&quot;Year: &quot; + out_Year.ToString + vbCrLf +&#xD;&#xA;&quot;Path Output folder: &quot; + out_PathOutputFolder + vbCrLf +&#xD;&#xA;&quot;Path TFR file: &quot; + out_PathTaxFiledReport + vbCrLf +&#xD;&#xA;&quot;Path Review Sheet file: &quot; + out_PathReviewSheet + vbCrLf + vbCrLf +&#xD;&#xA;&quot;Would you like to continue? (Press 'No' if you want to select the inputs again)&quot;]" TopMost="True" />
+          <ui:MessageBox AutoCloseAfter="00:00:00" Buttons="YesNo" Caption="User inputs - Check if values are correct." ChosenButton="[ChosenButton]" DisplayName="Message Box - Ask user to continue" sap:VirtualizedContainerService.HintSize="488,85" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;You entered the following info: &quot; + vbCrLf + vbCrLf +&#xA;&quot;Customer Name: &quot; + String.Join(&quot;,&quot;,out_ListCustomerName) + vbCrLf +&#xA;&quot;Month: &quot; + out_Month + vbCrLf +&#xA;&quot;Year: &quot; + out_Year.ToString + vbCrLf +&#xA;&quot;Path Output folder: &quot; + out_PathOutputFolder + vbCrLf +&#xA;&quot;Path TFR file: &quot; + out_PathTaxFiledReport + vbCrLf +&#xA;&quot;Path Review Sheet file: &quot; + out_PathReviewSheet + vbCrLf + vbCrLf +&#xA;&quot;Would you like to continue? (Press 'No' if you want to select the inputs again)&quot;]" TopMost="True" />
         </Sequence>
       </ui:InterruptibleDoWhile.Body>
     </ui:InterruptibleDoWhile>
