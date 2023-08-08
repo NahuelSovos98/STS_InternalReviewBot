@@ -3,16 +3,15 @@
     <x:Property Name="in_pathTempFile" Type="InArgument(x:String)" />
     <x:Property Name="in_nameTempFile" Type="InArgument(x:String)" />
     <x:Property Name="out_pathOutputFolder" Type="OutArgument(x:String)" />
-    <x:Property Name="out_pathReviewSheetFile" Type="OutArgument(x:String)" />
-    <x:Property Name="out_pathTaxFiledReport" Type="OutArgument(x:String)" />
     <x:Property Name="out_periodMonth" Type="OutArgument(x:String)" />
     <x:Property Name="out_periodYear" Type="OutArgument(x:Int32)" />
     <x:Property Name="out_listCustomerName" Type="OutArgument(scg:List(x:String))" />
+    <x:Property Name="out_pathTFRRSFolder" Type="OutArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>862,1688</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1501,1657</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ReadTempFile_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -83,7 +82,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ReadTempFile" sap:VirtualizedContainerService.HintSize="710,1623" sap2010:WorkflowViewState.IdRef="Sequence_3">
+  <Sequence DisplayName="ReadTempFile" sap:VirtualizedContainerService.HintSize="710,1592" sap2010:WorkflowViewState.IdRef="Sequence_3">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="str_CustomerName" />
     </Sequence.Variables>
@@ -92,9 +91,9 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="648,1512" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="648,1481" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <Sequence DisplayName="TRY - ReadTempFile" sap:VirtualizedContainerService.HintSize="610,1284" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="TRY - ReadTempFile" sap:VirtualizedContainerService.HintSize="610,1253" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <Sequence.Variables>
             <Variable x:TypeArguments="sd:DataTable" Name="dt_tempFile" />
             <Variable x:TypeArguments="s:String[]" Name="array_CustomerName" />
@@ -111,7 +110,7 @@
               </InArgument>
             </ui:ReadRange.Range>
           </ui:ReadRange>
-          <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="548,256" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+          <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="548,225" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
             <ui:MultipleAssign.AssignOperations>
               <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
                 <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -130,20 +129,12 @@
                     <InArgument x:TypeArguments="x:String">[dt_tempFile.Rows(0)("pathOutputFolder").ToString]</InArgument>
                   </ui:AssignOperation.Value>
                 </ui:AssignOperation>
-                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
-                  <ui:AssignOperation.To>
-                    <OutArgument x:TypeArguments="x:String">[out_pathReviewSheetFile]</OutArgument>
-                  </ui:AssignOperation.To>
-                  <ui:AssignOperation.Value>
-                    <InArgument x:TypeArguments="x:String">[dt_tempFile.Rows(0)("pathReviewSheetFile").ToString]</InArgument>
-                  </ui:AssignOperation.Value>
-                </ui:AssignOperation>
                 <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
                   <ui:AssignOperation.To>
-                    <OutArgument x:TypeArguments="x:String">[out_pathTaxFiledReport]</OutArgument>
+                    <OutArgument x:TypeArguments="x:String">[out_pathTFRRSFolder]</OutArgument>
                   </ui:AssignOperation.To>
                   <ui:AssignOperation.Value>
-                    <InArgument x:TypeArguments="x:String">[dt_tempFile.Rows(0)("pathTaxFiledReport").ToString]</InArgument>
+                    <InArgument x:TypeArguments="x:String">[dt_tempFile.Rows(0)("pathTFRandRSfolder").ToString]</InArgument>
                   </ui:AssignOperation.Value>
                 </ui:AssignOperation>
                 <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
