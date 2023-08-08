@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>584,1588</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1794,2394</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CopyInputFiles_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -61,7 +61,6 @@
       <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
@@ -70,9 +69,10 @@
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CopyInputFiles" sap:VirtualizedContainerService.HintSize="594,1523" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CopyInputFiles" sap:VirtualizedContainerService.HintSize="806,2329" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(x:String)" Name="ListAssets" />
     </Sequence.Variables>
@@ -81,8 +81,8 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="532,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Copy Input Files starts&quot;]" />
-    <Assign sap2010:Annotation.AnnotationText="Each asset must have a input file path" DisplayName="Assign - ListAssets" sap:VirtualizedContainerService.HintSize="532,113" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="744,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Copy Input Files starts&quot;]" />
+    <Assign sap2010:Annotation.AnnotationText="Each asset must have a input file path" DisplayName="Assign - ListAssets" sap:VirtualizedContainerService.HintSize="744,113" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:List(x:String)">[ListAssets]</OutArgument>
       </Assign.To>
@@ -95,13 +95,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each asset" sap:VirtualizedContainerService.HintSize="532,995" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[ListAssets]">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each asset" sap:VirtualizedContainerService.HintSize="744,1801" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[ListAssets]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="AssetValue" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,869" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="708,1675" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="PathDestinationInputFile" />
               <Variable x:TypeArguments="x:String" Name="PathOriginInputFile" />
@@ -111,7 +111,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign DisplayName="Assign - PathDestinationInputFile" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <Assign DisplayName="Assign - PathDestinationInputFile" sap:VirtualizedContainerService.HintSize="646,82" sap2010:WorkflowViewState.IdRef="Assign_2">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[PathDestinationInputFile]</OutArgument>
               </Assign.To>
@@ -119,7 +119,7 @@
                 <InArgument x:TypeArguments="x:String">[in_Config(AssetValue).ToString]</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign DisplayName="Assign - PathOriginInputFile" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign DisplayName="Assign - PathOriginInputFile" sap:VirtualizedContainerService.HintSize="646,82" sap2010:WorkflowViewState.IdRef="Assign_3">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[PathOriginInputFile]</OutArgument>
               </Assign.To>
@@ -127,19 +127,67 @@
                 <InArgument x:TypeArguments="x:String">[Path.Combine(in_Config("PathPDriveFolder").ToString, Path.GetFileName(PathDestinationInputFile))]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[&quot;File to copy from the P drive: &lt;&quot;+PathOriginInputFile+&quot;&gt;&quot;]" />
-            <If Condition="[Not File.Exists(PathOriginInputFile)]" DisplayName="If file does not exist" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="If_1">
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="646,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[&quot;File to copy from the P drive: &lt;&quot;+PathOriginInputFile+&quot;&gt;&quot;]" />
+            <If Condition="[Not File.Exists(PathOriginInputFile)]" DisplayName="If file does not exist" sap:VirtualizedContainerService.HintSize="646,858" sap2010:WorkflowViewState.IdRef="If_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <Throw Exception="[new BusinessRuleException(&quot;The following input file was not found in the P drive: &lt;&quot;+PathOriginInputFile+&quot;&gt;&quot;)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                <Sequence sap:VirtualizedContainerService.HintSize="610,669" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Sequence DisplayName="test changing of path for specific users" sap:VirtualizedContainerService.HintSize="548,558" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign DisplayName="Assign - PathOriginInputFile" sap:VirtualizedContainerService.HintSize="486,82" sap2010:WorkflowViewState.IdRef="Assign_4">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[PathOriginInputFile]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[Path.Combine(in_Config("PathDifferentPDriveFolder").ToString, Path.GetFileName(PathDestinationInputFile))]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <If Condition="[Not File.Exists(PathOriginInputFile)]" DisplayName="If file does not exist" sap:VirtualizedContainerService.HintSize="486,325" sap2010:WorkflowViewState.IdRef="If_2">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If.Then>
+                        <Sequence sap:VirtualizedContainerService.HintSize="450,136" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Throw Exception="[new BusinessRuleException(&quot;The following input file was not found in the P drive: &lt;&quot;+PathOriginInputFile+&quot;&gt;&quot;)]" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="Throw_2" />
+                        </Sequence>
+                      </If.Then>
+                      <If.Else>
+                        <Sequence sap:VirtualizedContainerService.HintSize="450,103" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </Sequence>
+                      </If.Else>
+                    </If>
+                  </Sequence>
+                </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence sap:VirtualizedContainerService.HintSize="450,103" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -148,12 +196,12 @@
                 </Sequence>
               </If.Else>
             </If>
-            <ui:CopyFile ContinueOnError="{x:Null}" Destination="[PathDestinationInputFile]" DisplayName="Copy File to destination folder" sap:VirtualizedContainerService.HintSize="434,158" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[PathOriginInputFile]" />
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Message="[&quot;File input &lt;&quot;+Path.GetFileName(PathOriginInputFile)+&quot;&gt; was copied successfully.&quot;]" />
+            <ui:CopyFile ContinueOnError="{x:Null}" Destination="[PathDestinationInputFile]" DisplayName="Copy File to destination folder" sap:VirtualizedContainerService.HintSize="646,158" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[PathOriginInputFile]" />
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="646,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Message="[&quot;File input &lt;&quot;+Path.GetFileName(PathOriginInputFile)+&quot;&gt; was copied successfully.&quot;]" />
           </Sequence>
         </ActivityAction>
       </ui:ForEach.Body>
     </ui:ForEach>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="532,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;Copy Input Files ends&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="744,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;Copy Input Files ends&quot;]" />
   </Sequence>
 </Activity>
