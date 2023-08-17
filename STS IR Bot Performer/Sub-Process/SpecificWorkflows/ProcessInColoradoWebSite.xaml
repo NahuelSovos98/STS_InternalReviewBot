@@ -5,11 +5,12 @@
     <x:Property Name="in_pathTXTCO" Type="InArgument(x:String)" />
     <x:Property Name="in_pathTempFolder" Type="InArgument(x:String)" />
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="out_pathTXTCO" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1501,5213</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1501,5335</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessInColoradoWebSite_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -76,10 +77,9 @@
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ProcessInColoradoWebSite" sap:VirtualizedContainerService.HintSize="1468,5148" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ProcessInColoradoWebSite" sap:VirtualizedContainerService.HintSize="1468,5270" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:Browser" Name="ui_Browser" />
       <Variable x:TypeArguments="si:FileInfo" Name="str_File" />
@@ -407,6 +407,14 @@
     <ui:CloseTab Browser="[ui_Browser]" ContinueOnError="True" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="1406,25" sap2010:WorkflowViewState.IdRef="CloseTab_1" />
     <ui:KillProcess ContinueOnError="{x:Null}" Process="{x:Null}" AppliesTo="OnlyCurrentUser" DisplayName="Kill Chrome Process" sap:VirtualizedContainerService.HintSize="1406,133" sap2010:WorkflowViewState.IdRef="KillProcess_1" ProcessName="chrome" />
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1406,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[str_File.ToString + &quot; is already downloaded&quot;]" />
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="680,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;Process in Colorado website ends&quot;]" />
+    <Assign sap:VirtualizedContainerService.HintSize="1406,82" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_pathTXTCO]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_pathTXTCO]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1406,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;Process in Colorado website ends&quot;]" />
   </Sequence>
 </Activity>
