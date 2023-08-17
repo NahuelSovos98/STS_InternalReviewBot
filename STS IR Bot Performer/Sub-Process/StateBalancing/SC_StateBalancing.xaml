@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1502,5364</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1501,6368</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SC_StateBalancing_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -49,6 +49,7 @@
       <x:String>System.Security</x:String>
       <x:String>UiPath.Core.Activities.SAP</x:String>
       <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -95,7 +96,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SC_StateBalancing" sap:VirtualizedContainerService.HintSize="656,5299" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SC_StateBalancing" sap:VirtualizedContainerService.HintSize="1468,6303" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="PathDestinationScTool" />
       <Variable x:TypeArguments="x:String" Name="PathDetailCsv" />
@@ -110,18 +111,72 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="594,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;SC State Balancing starts&quot;]" />
-    <ui:MultipleAssign DisplayName="Multiple Assign - Constants" sap:VirtualizedContainerService.HintSize="594,194" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1406,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;SC State Balancing starts&quot;]" />
+    <Sequence DisplayName="Check if P drive path exist" sap:VirtualizedContainerService.HintSize="1406,995" sap2010:WorkflowViewState.IdRef="Sequence_25">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:Boolean" Name="bool_pathPDriveExist" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists - first P drive Path" Exists="[bool_pathPDriveExist]" sap:VirtualizedContainerService.HintSize="1344,90" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_Config(&quot;PathPDriveFolder&quot;).ToString]" PathType="Folder" />
+      <If Condition="[Not bool_pathPDriveExist]" DisplayName="If path doesnt exist" sap:VirtualizedContainerService.HintSize="1344,754" sap2010:WorkflowViewState.IdRef="If_10">
+        <If.Then>
+          <Sequence DisplayName="Try with other path to P Drive" sap:VirtualizedContainerService.HintSize="803,594" sap2010:WorkflowViewState.IdRef="Sequence_27">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists - first P DRIVE path" Exists="[bool_pathPDriveExist]" sap:VirtualizedContainerService.HintSize="741,90" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[in_Config(&quot;PathDifferentPDriveFolder&quot;).ToString]" PathType="Folder" />
+            <If Condition="[Not bool_pathPDriveExist]" DisplayName="If path doesnt exist" sap:VirtualizedContainerService.HintSize="741,353" sap2010:WorkflowViewState.IdRef="If_9">
+              <If.Then>
+                <Throw Exception="[new System.Exception(&quot;Access to P drive with the paths that the bot has configured is not possible for download South Carolina Detail csv file.&quot;)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_6" />
+              </If.Then>
+              <If.Else>
+                <Sequence sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_14">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[PathDetailCsv]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[in_Config("PathDifferentPDriveFolder").ToString + "\tempScCsv " + system.Environment.UserName.ToString + ".csv"]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </If.Else>
+            </If>
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_28">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_15">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[PathDetailCsv]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[in_Config("PathPDriveFolder").ToString + "\tempScCsv " + system.Environment.UserName.ToString + ".csv"]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+        </If.Else>
+      </If>
+    </Sequence>
+    <ui:MultipleAssign DisplayName="Multiple Assign - Constants" sap:VirtualizedContainerService.HintSize="1406,163" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
-          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
-            <ui:AssignOperation.To>
-              <OutArgument x:TypeArguments="x:String">[PathDetailCsv]</OutArgument>
-            </ui:AssignOperation.To>
-            <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">[in_Config("StateBalancing_SC_PathCsvTemp").ToString]</InArgument>
-            </ui:AssignOperation.Value>
-          </ui:AssignOperation>
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
             <ui:AssignOperation.To>
               <OutArgument x:TypeArguments="x:String">[PathScTool]</OutArgument>
@@ -149,7 +204,7 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <Sequence DisplayName="Go to Detail tab" sap:VirtualizedContainerService.HintSize="594,377" sap2010:WorkflowViewState.IdRef="Sequence_4">
+    <Sequence DisplayName="Go to Detail tab" sap:VirtualizedContainerService.HintSize="1406,377" sap2010:WorkflowViewState.IdRef="Sequence_4">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -167,12 +222,12 @@
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
     </Sequence>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ExportCurrentPageAsWorksheet workflow" sap:VirtualizedContainerService.HintSize="594,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnsMenu\ExportCurrentPageAsWorksheet.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ExportCurrentPageAsWorksheet workflow" sap:VirtualizedContainerService.HintSize="1406,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnsMenu\ExportCurrentPageAsWorksheet.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_PathTempCsvFile">[PathDetailCsv]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <Sequence DisplayName="Copy both csv and tool files into Output folder" sap:VirtualizedContainerService.HintSize="594,467" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Copy both csv and tool files into Output folder" sap:VirtualizedContainerService.HintSize="1406,467" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -182,7 +237,7 @@
       <ui:CopyFile ContinueOnError="{x:Null}" Destination="[PathDestinationDetailFile]" DisplayName="Copy File - Detail csv file" sap:VirtualizedContainerService.HintSize="434,158" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="True" Path="[PathDetailCsv]" />
       <ui:CopyFile ContinueOnError="{x:Null}" Destination="[PathDestinationScTool]" DisplayName="Copy File - Tool file" sap:VirtualizedContainerService.HintSize="434,158" sap2010:WorkflowViewState.IdRef="CopyFile_2" Overwrite="True" Path="[PathScTool]" />
     </Sequence>
-    <ui:Comment sap:VirtualizedContainerService.HintSize="594,56" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// Copy detail worksheet into the Tool file" />
+    <ui:Comment sap:VirtualizedContainerService.HintSize="1406,56" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// Copy detail worksheet into the Tool file" />
     <Sequence DisplayName="Copy paste Detail worksheet" sap:VirtualizedContainerService.HintSize="594,1034" sap2010:WorkflowViewState.IdRef="Sequence_14">
       <Sequence.Variables>
         <Variable x:TypeArguments="sd:DataTable" Name="dtDetail" />

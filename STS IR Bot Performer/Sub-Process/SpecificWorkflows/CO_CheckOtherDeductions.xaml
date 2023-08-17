@@ -2,11 +2,12 @@
   <x:Members>
     <x:Property Name="in_PathTempCsvFile" Type="InArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="A List of cells with its format. Example: A1 , AM2, etc" Name="in_ListCells" Type="InArgument(scg:List(x:String))" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>863,2093</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1501,3128</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>TestExportAsWorksheet_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -88,7 +89,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="TestExportAsWorksheet" sap:VirtualizedContainerService.HintSize="873,2028" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="TestExportAsWorksheet" sap:VirtualizedContainerService.HintSize="1468,3063" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Object" Name="FirstResult" />
       <Variable x:TypeArguments="x:Object" Name="SecondResult" />
@@ -98,13 +99,75 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="811,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;CO_CheckOtherDeductions starts&quot;]" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ExportCurrentPageAsWorksheet workflow" sap:VirtualizedContainerService.HintSize="811,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnsMenu\ExportCurrentPageAsWorksheet.xaml">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1406,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;CO_CheckOtherDeductions starts&quot;]" />
+    <Sequence DisplayName="Check if P drive path exist" sap:VirtualizedContainerService.HintSize="1406,995" sap2010:WorkflowViewState.IdRef="Sequence_6">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:Boolean" Name="bool_pathPDriveExist" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists - first P drive Path" Exists="[bool_pathPDriveExist]" sap:VirtualizedContainerService.HintSize="1344,90" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_Config(&quot;PathPDriveFolder&quot;).ToString]" PathType="Folder" />
+      <If Condition="[Not bool_pathPDriveExist]" DisplayName="If path doesnt exist" sap:VirtualizedContainerService.HintSize="1344,754" sap2010:WorkflowViewState.IdRef="If_3">
+        <If.Then>
+          <Sequence DisplayName="Try with other path to P Drive" sap:VirtualizedContainerService.HintSize="803,594" sap2010:WorkflowViewState.IdRef="Sequence_8">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists - first P DRIVE path" Exists="[bool_pathPDriveExist]" sap:VirtualizedContainerService.HintSize="741,90" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[in_Config(&quot;PathDifferentPDriveFolder&quot;).ToString]" PathType="Folder" />
+            <If Condition="[Not bool_pathPDriveExist]" DisplayName="If path doesnt exist" sap:VirtualizedContainerService.HintSize="741,353" sap2010:WorkflowViewState.IdRef="If_2">
+              <If.Then>
+                <Throw Exception="[new System.Exception(&quot;Access to P drive with the paths that the bot has configured is not possible for download Colorado TXT file.&quot;)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_3" />
+              </If.Then>
+              <If.Else>
+                <Sequence sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[in_PathTempCsvFile]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[in_Config("PathDifferentPDriveFolder").ToString + "\tempCoCsv " + system.Environment.UserName.ToString + ".csv"]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </If.Else>
+            </If>
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_9">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_4">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[in_PathTempCsvFile]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[in_Config("PathPDriveFolder").ToString + "\tempCoCsv " + system.Environment.UserName.ToString + ".csv"]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+        </If.Else>
+      </If>
+    </Sequence>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ExportCurrentPageAsWorksheet workflow" sap:VirtualizedContainerService.HintSize="1406,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnsMenu\ExportCurrentPageAsWorksheet.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_PathTempCsvFile">[in_PathTempCsvFile]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - In_PathTempCsvFile" sap:VirtualizedContainerService.HintSize="811,1408" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[in_PathTempCsvFile]">
+    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - In_PathTempCsvFile" sap:VirtualizedContainerService.HintSize="1406,1408" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[in_PathTempCsvFile]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>

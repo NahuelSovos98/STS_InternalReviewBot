@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1502,3036</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1501,3036</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CO_StateBalancing_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -147,10 +147,21 @@
     <ui:Comment sap:VirtualizedContainerService.HintSize="546,75" sap2010:WorkflowViewState.IdRef="Comment_6" Text="// enter to the Colorado website to find the information needed for the file tool" />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ProcessInColoradoWebSite workflow" sap:VirtualizedContainerService.HintSize="546,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_22" UnSafe="False" WorkflowFileName="Sub-Process\SpecificWorkflows\ProcessInColoradoWebSite.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_urlCOWebsite">[in_Config("StateBalancing_CO_urlWebsite").ToString]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_stateRegistrationID">[dbl_stateRegistrationID.ToString]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pathTXTCO">[in_Config("StateBalancing_CO_pathTXTCOWeb").ToString]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pathTempFolder">[in_Config("PathTempDirectory").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_urlCOWebsite">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_CO_urlWebsite&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_stateRegistrationID">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="dbl_stateRegistrationID.ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pathTXTCO">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_CO_pathTXTCOWeb&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pathTempFolder">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;PathTempDirectory&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:Comment sap:VirtualizedContainerService.HintSize="546,75" sap2010:WorkflowViewState.IdRef="Comment_7" Text="//transcribe Colorado TXT file from webpage to Colorado xslm tool file" />

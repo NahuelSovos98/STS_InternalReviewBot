@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1174,1314</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1501,1578</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CheckDatatableIsCorrect_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -79,9 +79,10 @@
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CheckDatatableIsCorrect" sap:VirtualizedContainerService.HintSize="1007,1249" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CheckDatatableIsCorrect" sap:VirtualizedContainerService.HintSize="1007,1513" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="bool_LegalEntityExist" />
       <Variable x:TypeArguments="x:Boolean" Name="bool_returnNameExist" />
@@ -100,6 +101,7 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="945,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Check datatable is correct starts&quot;]" />
     <Assign DisplayName="bool TFR Validation" sap:VirtualizedContainerService.HintSize="945,82" sap2010:WorkflowViewState.IdRef="Assign_10">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Boolean">[out_boolTFRValidation]</OutArgument>
@@ -306,5 +308,6 @@
         </Sequence>
       </If.Else>
     </If>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="945,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Check datatable is correct ends&quot;]" />
   </Sequence>
 </Activity>

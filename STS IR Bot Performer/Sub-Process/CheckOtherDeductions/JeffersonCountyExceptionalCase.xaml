@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1189,4121</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1501,4121</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>JeffersonCountyExceptionalCase_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -249,6 +249,12 @@
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_PathTempPDFFile">
           <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;PathTempToPDF&quot;).ToString.Replace(&quot;&lt;CUSTOMER&gt;&quot;,in_CustomerAccount)" />
+        </InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_customerAccount">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_CustomerAccount" />
         </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>

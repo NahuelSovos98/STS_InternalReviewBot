@@ -1,8 +1,8 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="LA_StateBalancing_CompleteReviewSheet" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property Name="in_PathReviewSheetFile" Type="InArgument(x:String)" />
     <x:Property Name="in_WorksheetReviewSheet" Type="InArgument(x:String)" />
+    <x:Property Name="in_ListPathReviewSheet" Type="InArgument(scg:List(x:String))" />
   </x:Members>
   <this:LA_StateBalancing_CompleteReviewSheet.in_WorksheetReviewSheet>
     <InArgument x:TypeArguments="x:String" />
@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>922,2011</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1822,3705</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>LA_StateBalancing_CompleteReviewSheet_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -81,35 +81,38 @@
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="LA_StateBalancing_CompleteReviewSheet" sap:VirtualizedContainerService.HintSize="1032,2165" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="LA_StateBalancing_CompleteReviewSheet" sap:VirtualizedContainerService.HintSize="1832,3640" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dtLuissianaReturns" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtNonLocalReturns" />
+      <Variable x:TypeArguments="s:String[]" Name="array_strPathReviewSheet" />
+      <Variable x:TypeArguments="x:String" Name="str_pathReviewSheet" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="970,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;LA_StateBalancing_CompleteReviewSheet starts&quot;]" />
-    <TryCatch DisplayName="Try Catch Check returns of Luissiana" sap:VirtualizedContainerService.HintSize="970,1790" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1770,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;LA_StateBalancing_CompleteReviewSheet starts&quot;]" />
+    <TryCatch DisplayName="Try Catch Check returns of Luissiana" sap:VirtualizedContainerService.HintSize="1770,3265" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <Sequence DisplayName="Check returns and complete review sheet" sap:VirtualizedContainerService.HintSize="932,1562" sap2010:WorkflowViewState.IdRef="Sequence_13">
+        <Sequence DisplayName="Check returns and complete review sheet" sap:VirtualizedContainerService.HintSize="1732,3037" sap2010:WorkflowViewState.IdRef="Sequence_13">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Get Luissiana Returns" sap:VirtualizedContainerService.HintSize="870,81" sap2010:WorkflowViewState.IdRef="Sequence_11">
+          <Sequence DisplayName="Get Luissiana Returns" sap:VirtualizedContainerService.HintSize="1670,776" sap2010:WorkflowViewState.IdRef="Sequence_11">
             <Sequence.Variables>
               <Variable x:TypeArguments="scg:List(x:String)" Name="ListColumns" />
               <Variable x:TypeArguments="x:Int32" Name="ColumnIndex" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
@@ -122,19 +125,19 @@
                 <InArgument x:TypeArguments="scg:List(x:String)">[in_Config("StateBalancing_LA_TableColumns").ToString.Split(","c).ToList]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:ForEach x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="As It does not save the column names, add them to the datatable" CurrentIndex="[ColumnIndex]" DisplayName="For Each column " sap:VirtualizedContainerService.HintSize="532,349" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[ListColumns]">
+            <ui:ForEach x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="As It does not save the column names, add them to the datatable" CurrentIndex="[ColumnIndex]" DisplayName="For Each column " sap:VirtualizedContainerService.HintSize="532,350" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[ListColumns]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="x:String">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:String" Name="item" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,192" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_12">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Assign DisplayName="Assign ColumnName" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_5">
+                    <Assign DisplayName="Assign ColumnName" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_5">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:String">[dtLuissianaReturns.Columns(ColumnIndex).ColumnName]</OutArgument>
                       </Assign.To>
@@ -152,7 +155,7 @@
               </sap:WorkflowViewStateService.ViewState>
             </ui:ForEach>
           </Sequence>
-          <ui:FilterDataTable sap2010:Annotation.AnnotationText="Get - NotLocalStates returns" DataTable="[dtLuissianaReturns]" DisplayName="Filter Data Table by  ReturnType = &quot;N&quot;" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="870,192" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dtNonLocalReturns]" SelectColumnsMode="Keep">
+          <ui:FilterDataTable sap2010:Annotation.AnnotationText="Get - NotLocalStates returns" DataTable="[dtLuissianaReturns]" DisplayName="Filter Data Table by  ReturnType = &quot;N&quot;" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="1670,192" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dtNonLocalReturns]" SelectColumnsMode="Keep">
             <ui:FilterDataTable.Filters>
               <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                 <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
@@ -176,13 +179,13 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:FilterDataTable>
-          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtNonLocalReturns]" DisplayName="For Each Row in dtNonLocalReturns" sap:VirtualizedContainerService.HintSize="870,1098" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtNonLocalReturns]" DisplayName="For Each Row in dtNonLocalReturns" sap:VirtualizedContainerService.HintSize="1670,1878" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
             <ui:ForEachRow.Body>
               <ActivityAction x:TypeArguments="sd:DataRow">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="sd:DataRow" Name="NonLocalRow" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="836,981" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1636,1761" sap2010:WorkflowViewState.IdRef="Sequence_6">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="sd:DataTable" Name="dtReturnsByLegalEntity" />
                     <Variable x:TypeArguments="x:Double" Name="GrossSalesToCompare" />
@@ -193,7 +196,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign DisplayName="Assign - GrossSales To compare" sap:VirtualizedContainerService.HintSize="774,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+                  <Assign DisplayName="Assign - GrossSales To compare" sap:VirtualizedContainerService.HintSize="1574,82" sap2010:WorkflowViewState.IdRef="Assign_1">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:Double">[GrossSalesToCompare]</OutArgument>
                     </Assign.To>
@@ -201,8 +204,8 @@
                       <InArgument x:TypeArguments="x:Double">[Cdbl(NonLocalRow("GrossSales").ToString)]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="774,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[&quot;Comparison to the following NonLocal Return &lt;&quot;+NonLocalRow(&quot;ReturnName&quot;).ToString+&#xA;&quot;&gt; : LegalEntity: &lt;&quot;+NonLocalRow(&quot;LegalEntity&quot;).ToString+&#xA;&quot;&gt; and Gross Sales: &lt;&quot;+NonLocalRow(&quot;GrossSales&quot;).ToString+&quot;&gt;.&quot;]" />
-                  <ui:FilterDataTable sap2010:Annotation.AnnotationText="Get Local returns corresponding to the NonLocalReturn (LA R1029)&#xA;- ReturnType != NonLocalReturn.ReturnType&#xA;- LegalEntity = NonLocalReturn.LegalEntity" DataTable="[dtLuissianaReturns]" DisplayName="Filter Data Table by LegalEntity and ReturnType" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="774,218" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[dtReturnsByLegalEntity]" SelectColumnsMode="Keep">
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1574,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[&quot;Comparison to the following NonLocal Return &lt;&quot;+NonLocalRow(&quot;ReturnName&quot;).ToString+&#xA;&quot;&gt; : LegalEntity: &lt;&quot;+NonLocalRow(&quot;LegalEntity&quot;).ToString+&#xA;&quot;&gt; and Gross Sales: &lt;&quot;+NonLocalRow(&quot;GrossSales&quot;).ToString+&quot;&gt;.&quot;]" />
+                  <ui:FilterDataTable sap2010:Annotation.AnnotationText="Get Local returns corresponding to the NonLocalReturn (LA R1029)&#xA;- ReturnType != NonLocalReturn.ReturnType&#xA;- LegalEntity = NonLocalReturn.LegalEntity" DataTable="[dtLuissianaReturns]" DisplayName="Filter Data Table by LegalEntity and ReturnType" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="1574,218" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[dtReturnsByLegalEntity]" SelectColumnsMode="Keep">
                     <ui:FilterDataTable.Filters>
                       <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                         <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
@@ -234,22 +237,22 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:FilterDataTable>
-                  <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtReturnsByLegalEntity]" DisplayName="For Each Row in dtReturnsByLegalEntity" sap:VirtualizedContainerService.HintSize="774,358" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                  <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtReturnsByLegalEntity]" DisplayName="For Each Row in dtReturnsByLegalEntity" sap:VirtualizedContainerService.HintSize="1574,1138" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
                     <ui:ForEachRow.Body>
                       <ActivityAction x:TypeArguments="sd:DataRow">
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                         </ActivityAction.Argument>
-                        <If Condition="[CurrentRow(&quot;FilingType&quot;).ToString.Equals(&quot;Q&quot;)]" DisplayName="If FilingType is quarterly" sap:VirtualizedContainerService.HintSize="740,241" sap2010:WorkflowViewState.IdRef="If_1">
+                        <If Condition="[CurrentRow(&quot;FilingType&quot;).ToString.Equals(&quot;Q&quot;)]" DisplayName="If FilingType is quarterly" sap:VirtualizedContainerService.HintSize="1540,1021" sap2010:WorkflowViewState.IdRef="If_1">
                           <If.Then>
-                            <Sequence DisplayName="Write Quarterly row to Review Sheet" sap:VirtualizedContainerService.HintSize="450,81" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                            <Sequence DisplayName="Write Quarterly row to Review Sheet" sap:VirtualizedContainerService.HintSize="558,701" sap2010:WorkflowViewState.IdRef="Sequence_9">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <Assign DisplayName="Assign - ExceptionMessage" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
+                              <Assign DisplayName="Assign - ExceptionMessage" sap:VirtualizedContainerService.HintSize="496,82" sap2010:WorkflowViewState.IdRef="Assign_2">
                                 <Assign.To>
                                   <OutArgument x:TypeArguments="x:String">[ExceptionMessage]</OutArgument>
                                 </Assign.To>
@@ -257,34 +260,69 @@
                                   <InArgument x:TypeArguments="x:String">[in_Config("StateBalancing_LA_ExceptionMessageQuarterlyReturn").ToString + CurrentRow("GrossSales").ToString]</InArgument>
                                 </Assign.Value>
                               </Assign>
-                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AddNewRow workflow" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Sub-Process\ReviewSheet\AddNewRow.xaml">
+                              <Sequence DisplayName="get the correct path of Reviewsheet" sap:VirtualizedContainerService.HintSize="496,315" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Assign DisplayName="Assign - path review sheet" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_6">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="s:String[]">[array_strPathReviewSheet]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="s:String[]">[in_ListPathReviewSheet.Where(Function (x) x.Contains(CurrentRow("CustomerName").ToString)).ToArray]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <Assign DisplayName="Assign - path review sheet" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[str_pathReviewSheet]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">[array_strPathReviewSheet(0).ToString]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </Sequence>
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AddNewRow workflow" sap:VirtualizedContainerService.HintSize="496,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Sub-Process\ReviewSheet\AddNewRow.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_PathReviewSheetFile">[in_PathReviewSheetFile]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_WorksheetReviewSheet">[in_WorksheetReviewSheet]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">[ExceptionMessage]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">[CurrentRow("ReturnName").ToString]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_LegalEntity">[CurrentRow("LegalEntity").ToString]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_ReturnsTableStartCell">[in_Config("ReviewSheet_StartCellReturnsFailedTable").ToString]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_PathReviewSheetFile">
+                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_pathReviewSheet" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_WorksheetReviewSheet">
+                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_WorksheetReviewSheet" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">
+                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="ExceptionMessage" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">
+                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentRow(&quot;ReturnName&quot;).ToString" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_LegalEntity">
+                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentRow(&quot;LegalEntity&quot;).ToString" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_ReturnsTableStartCell">
+                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ReviewSheet_StartCellReturnsFailedTable&quot;).ToString" />
+                                  </InArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
                               </ui:InvokeWorkflowFile>
                             </Sequence>
                           </If.Then>
                           <If.Else>
-                            <If Condition="[Not GrossSalesToCompare.Equals(Cdbl(CurrentRow(&quot;GrossSales&quot;).ToString))]" DisplayName="If Gross Sales are not the same" sap:VirtualizedContainerService.HintSize="245,52" sap2010:WorkflowViewState.IdRef="If_2">
+                            <If Condition="[Not GrossSalesToCompare.Equals(Cdbl(CurrentRow(&quot;GrossSales&quot;).ToString))]" DisplayName="If Gross Sales are not the same" sap:VirtualizedContainerService.HintSize="937,861" sap2010:WorkflowViewState.IdRef="If_2">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                               <If.Then>
-                                <Sequence DisplayName="Write Monthly row to Review sheet" sap:VirtualizedContainerService.HintSize="496,346" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                                <Sequence DisplayName="Write Monthly row to Review sheet" sap:VirtualizedContainerService.HintSize="558,701" sap2010:WorkflowViewState.IdRef="Sequence_10">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <Assign DisplayName="Assign - ExceptionMessage" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_3">
+                                  <Assign DisplayName="Assign - ExceptionMessage" sap:VirtualizedContainerService.HintSize="496,82" sap2010:WorkflowViewState.IdRef="Assign_3">
                                     <Assign.To>
                                       <OutArgument x:TypeArguments="x:String">[ExceptionMessage]</OutArgument>
                                     </Assign.To>
@@ -292,14 +330,49 @@
                                       <InArgument x:TypeArguments="x:String">["Gross sales are not the same for return &lt;"+NonLocalRow("ReturnName").ToString+"&gt;. Gross sales expected: &lt;"+GrossSalesToCompare.ToString+"&gt; but it is &lt;"+CurrentRow("GrossSales").ToString+"&gt;"]</InArgument>
                                     </Assign.Value>
                                   </Assign>
-                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AddNewRow workflow" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Sub-Process\ReviewSheet\AddNewRow.xaml">
+                                  <Sequence DisplayName="get the correct path of Reviewsheet" sap:VirtualizedContainerService.HintSize="496,315" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <Assign DisplayName="Assign - path review sheet" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_8">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="s:String[]">[array_strPathReviewSheet]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="s:String[]">[in_ListPathReviewSheet.Where(Function (x) x.Contains(CurrentRow("CustomerName").ToString)).ToArray]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                    <Assign DisplayName="Assign - path review sheet" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_9">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:String">[str_pathReviewSheet]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:String">[array_strPathReviewSheet(0).ToString]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                  </Sequence>
+                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke AddNewRow workflow" sap:VirtualizedContainerService.HintSize="496,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Sub-Process\ReviewSheet\AddNewRow.xaml">
                                     <ui:InvokeWorkflowFile.Arguments>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_PathReviewSheetFile">[in_PathReviewSheetFile]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_WorksheetReviewSheet">[in_WorksheetReviewSheet]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">[ExceptionMessage]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">[CurrentRow("ReturnName").ToString]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_LegalEntity">[CurrentRow("LegalEntity").ToString]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_ReturnsTableStartCell">[in_Config("ReviewSheet_StartCellReturnsFailedTable").ToString]</InArgument>
+                                      <InArgument x:TypeArguments="x:String" x:Key="in_PathReviewSheetFile">
+                                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_pathReviewSheet" />
+                                      </InArgument>
+                                      <InArgument x:TypeArguments="x:String" x:Key="in_WorksheetReviewSheet">
+                                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_WorksheetReviewSheet" />
+                                      </InArgument>
+                                      <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">
+                                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="ExceptionMessage" />
+                                      </InArgument>
+                                      <InArgument x:TypeArguments="x:String" x:Key="in_ReturnName">
+                                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentRow(&quot;ReturnName&quot;).ToString" />
+                                      </InArgument>
+                                      <InArgument x:TypeArguments="x:String" x:Key="in_LegalEntity">
+                                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentRow(&quot;LegalEntity&quot;).ToString" />
+                                      </InArgument>
+                                      <InArgument x:TypeArguments="x:String" x:Key="in_ReturnsTableStartCell">
+                                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ReviewSheet_StartCellReturnsFailedTable&quot;).ToString" />
+                                      </InArgument>
                                     </ui:InvokeWorkflowFile.Arguments>
                                   </ui:InvokeWorkflowFile>
                                 </Sequence>
@@ -326,7 +399,7 @@
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="936,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="1736,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -345,6 +418,6 @@
         <ui:DeleteFileX DisplayName="Delete Temp CSV File" sap:VirtualizedContainerService.HintSize="434,80" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[in_Config(&quot;StateBalancing_LA_TemporalCsvFile&quot;).ToString]" />
       </TryCatch.Finally>
     </TryCatch>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="970,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;LA_StateBalancing_CompleteReviewSheet ends&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1770,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;LA_StateBalancing_CompleteReviewSheet ends&quot;]" />
   </Sequence>
 </Activity>

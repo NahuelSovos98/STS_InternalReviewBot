@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1513.33333333333,1596</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1501,1743</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CheckMargins_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -79,7 +79,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CheckMargins" sap:VirtualizedContainerService.HintSize="1070,1531.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CheckMargins" sap:VirtualizedContainerService.HintSize="1165,1678" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_margins" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_filteredMargins" />
@@ -90,7 +90,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Read Margins Excel file" sap:VirtualizedContainerService.HintSize="1008,402.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Read Margins Excel file" sap:VirtualizedContainerService.HintSize="1103,400" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -103,7 +103,7 @@
           </InArgument>
         </ui:ReadRange.Range>
       </ui:ReadRange>
-      <ui:FilterDataTable DataTable="[dt_margins]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="434,164" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dt_filteredMargins]" SelectColumnsMode="Keep">
+      <ui:FilterDataTable DataTable="[dt_margins]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="434,161" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dt_filteredMargins]" SelectColumnsMode="Keep">
         <ui:FilterDataTable.Filters>
           <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
             <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
@@ -131,13 +131,13 @@
         </ui:FilterDataTable.SelectColumns>
       </ui:FilterDataTable>
     </Sequence>
-    <Sequence DisplayName="check if the margin corresponds" sap:VirtualizedContainerService.HintSize="1008,978" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <Sequence DisplayName="check if the margin corresponds" sap:VirtualizedContainerService.HintSize="1103,1127" sap2010:WorkflowViewState.IdRef="Sequence_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <If Condition="[dt_filteredmargins.Rows.Count &gt; 0]" DisplayName="Check if filtered datatable return some value" sap:VirtualizedContainerService.HintSize="946,330" sap2010:WorkflowViewState.IdRef="If_1">
+      <If Condition="[dt_filteredmargins.Rows.Count &gt; 0]" DisplayName="Check if filtered datatable return some value" sap:VirtualizedContainerService.HintSize="1041,491" sap2010:WorkflowViewState.IdRef="If_1">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -145,21 +145,21 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <If.Then>
-          <Sequence sap:VirtualizedContainerService.HintSize="450,164.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence sap:VirtualizedContainerService.HintSize="450,163" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="388,54" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
               <ui:CommentOut.Body>
-                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="594.666666666667,578" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="595,578" sap2010:WorkflowViewState.IdRef="Sequence_10">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <If Condition="[dt_filteredmargins.Rows.Count &gt; 1]" DisplayName="limit filter to one record" sap:VirtualizedContainerService.HintSize="532.666666666667,467.333333333333" sap2010:WorkflowViewState.IdRef="If_3">
+                  <If Condition="[dt_filteredmargins.Rows.Count &gt; 1]" DisplayName="limit filter to one record" sap:VirtualizedContainerService.HintSize="533,467" sap2010:WorkflowViewState.IdRef="If_3">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -224,17 +224,24 @@
           </Sequence>
         </If.Then>
         <If.Else>
-          <Sequence sap:VirtualizedContainerService.HintSize="450,136" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <Sequence sap:VirtualizedContainerService.HintSize="546,331" sap2010:WorkflowViewState.IdRef="Sequence_5">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Throw Exception="[new BusinessRuleException(&quot;no records were found in the margins file with the entered values. (&quot;+in_state+&quot;, &quot;+in_returnName+&quot;). The adjustment is not correct.&quot;)]" sap:VirtualizedContainerService.HintSize="388,25.3333333333333" sap2010:WorkflowViewState.IdRef="Throw_1" />
+            <If Condition="[in_state.ToString.ToUpper.Contains(&quot;NE&quot;)]" sap:VirtualizedContainerService.HintSize="484,220" sap2010:WorkflowViewState.IdRef="If_4">
+              <If.Then>
+                <Throw Exception="[new BusinessRuleException(&quot;no records were found in the margins file with the entered values. (&quot;+in_state+&quot;, &quot;+in_returnName+&quot;). The adjustment is not correct, review credit amount.&quot;)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_3" />
+              </If.Then>
+              <If.Else>
+                <Throw Exception="[new BusinessRuleException(&quot;no records were found in the margins file with the entered values. (&quot;+in_state+&quot;, &quot;+in_returnName+&quot;). The adjustment is not correct.&quot;)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_1" />
+              </If.Else>
+            </If>
           </Sequence>
         </If.Else>
       </If>
-      <Assign DisplayName="set value Margin to compare" sap:VirtualizedContainerService.HintSize="946,85.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign DisplayName="set value Margin to compare" sap:VirtualizedContainerService.HintSize="1041,82" sap2010:WorkflowViewState.IdRef="Assign_1">
         <Assign.To>
           <OutArgument x:TypeArguments="x:Double">[dbl_margin]</OutArgument>
         </Assign.To>
@@ -242,15 +249,15 @@
           <InArgument x:TypeArguments="x:Double">[Double.Parse(dt_filteredMargins.Rows(0)("Margin").ToString)]</InArgument>
         </Assign.Value>
       </Assign>
-      <If Condition="[(in_valueAdjustment &lt;= dbl_margin) and (in_valueAdjustment &gt;= (-1* dbl_margin))]" sap:VirtualizedContainerService.HintSize="946,372" sap2010:WorkflowViewState.IdRef="If_2">
+      <If Condition="[(in_valueAdjustment &lt;= dbl_margin) and (in_valueAdjustment &gt;= (-1* dbl_margin))]" sap:VirtualizedContainerService.HintSize="1041,363" sap2010:WorkflowViewState.IdRef="If_2">
         <If.Then>
-          <Sequence sap:VirtualizedContainerService.HintSize="450,206.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <Sequence sap:VirtualizedContainerService.HintSize="450,203" sap2010:WorkflowViewState.IdRef="Sequence_6">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,96" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;The adjustment is correct because is within the margins &quot;]" />
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;The adjustment is correct because is within the margins &quot;]" />
           </Sequence>
         </If.Then>
         <If.Else>
@@ -260,7 +267,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Throw Exception="[new BusinessRuleException(&quot;the adjustment is not correct because is not within the margins.&quot;)]" sap:VirtualizedContainerService.HintSize="388,25.3333333333333" sap2010:WorkflowViewState.IdRef="Throw_2" />
+            <Throw Exception="[new BusinessRuleException(&quot;the adjustment is not correct because is not within the margins.&quot;)]" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="Throw_2" />
           </Sequence>
         </If.Else>
       </If>
