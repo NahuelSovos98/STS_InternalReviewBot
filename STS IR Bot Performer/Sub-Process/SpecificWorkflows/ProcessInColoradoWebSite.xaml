@@ -5,12 +5,12 @@
     <x:Property Name="in_pathTXTCO" Type="InArgument(x:String)" />
     <x:Property Name="in_pathTempFolder" Type="InArgument(x:String)" />
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property Name="out_pathTXTCO" Type="InArgument(x:String)" />
+    <x:Property Name="out_pathTXTCO" Type="OutArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1501,5335</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1501,5330</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessInColoradoWebSite_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -79,7 +79,7 @@
       <AssemblyReference>UiPath.Platform</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ProcessInColoradoWebSite" sap:VirtualizedContainerService.HintSize="1468,5270" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ProcessInColoradoWebSite" sap:VirtualizedContainerService.HintSize="1468,5265" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:Browser" Name="ui_Browser" />
       <Variable x:TypeArguments="si:FileInfo" Name="str_File" />
@@ -90,7 +90,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1406,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Process in Colorado website starts&quot;]" />
-    <Sequence DisplayName="Check if P drive path exist" sap:VirtualizedContainerService.HintSize="1406,995" sap2010:WorkflowViewState.IdRef="Sequence_15">
+    <Sequence DisplayName="Check if P drive path exist" sap:VirtualizedContainerService.HintSize="1406,992" sap2010:WorkflowViewState.IdRef="Sequence_15">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Boolean" Name="bool_pathPDriveExist" />
       </Sequence.Variables>
@@ -100,27 +100,27 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists - first P drive Path" Exists="[bool_pathPDriveExist]" sap:VirtualizedContainerService.HintSize="1344,90" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_Config(&quot;PathPDriveFolder&quot;).ToString]" PathType="Folder" />
-      <If Condition="[Not bool_pathPDriveExist]" DisplayName="If path doesnt exist" sap:VirtualizedContainerService.HintSize="1344,754" sap2010:WorkflowViewState.IdRef="If_3">
+      <If Condition="[Not bool_pathPDriveExist]" DisplayName="If path doesnt exist" sap:VirtualizedContainerService.HintSize="1344,751" sap2010:WorkflowViewState.IdRef="If_3">
         <If.Then>
-          <Sequence DisplayName="Try with other path to P Drive" sap:VirtualizedContainerService.HintSize="803,594" sap2010:WorkflowViewState.IdRef="Sequence_17">
+          <Sequence DisplayName="Try with other path to P Drive" sap:VirtualizedContainerService.HintSize="803,592" sap2010:WorkflowViewState.IdRef="Sequence_17">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists - first P DRIVE path" Exists="[bool_pathPDriveExist]" sap:VirtualizedContainerService.HintSize="741,90" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[in_Config(&quot;PathDifferentPDriveFolder&quot;).ToString]" PathType="Folder" />
-            <If Condition="[Not bool_pathPDriveExist]" DisplayName="If path doesnt exist" sap:VirtualizedContainerService.HintSize="741,353" sap2010:WorkflowViewState.IdRef="If_2">
+            <If Condition="[Not bool_pathPDriveExist]" DisplayName="If path doesnt exist" sap:VirtualizedContainerService.HintSize="741,351" sap2010:WorkflowViewState.IdRef="If_2">
               <If.Then>
                 <Throw Exception="[new System.Exception(&quot;Access to P drive with the paths that the bot has configured is not possible for download Colorado TXT file.&quot;)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_3" />
               </If.Then>
               <If.Else>
-                <Sequence sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                <Sequence sap:VirtualizedContainerService.HintSize="496,192" sap2010:WorkflowViewState.IdRef="Sequence_16">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+                  <Assign sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_1">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[in_pathTXTCO]</OutArgument>
                     </Assign.To>
@@ -134,13 +134,13 @@
           </Sequence>
         </If.Then>
         <If.Else>
-          <Sequence sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_18">
+          <Sequence sap:VirtualizedContainerService.HintSize="496,192" sap2010:WorkflowViewState.IdRef="Sequence_18">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <Assign sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_2">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[in_pathTXTCO]</OutArgument>
               </Assign.To>
@@ -152,12 +152,12 @@
         </If.Else>
       </If>
     </Sequence>
-    <If Condition="[File.Exists(in_PathTXTCO)]" DisplayName="If temp file already exists" sap:VirtualizedContainerService.HintSize="1406,269" sap2010:WorkflowViewState.IdRef="If_4">
+    <If Condition="[File.Exists(in_PathTXTCO)]" DisplayName="If temp file already exists" sap:VirtualizedContainerService.HintSize="1406,268" sap2010:WorkflowViewState.IdRef="If_4">
       <If.Then>
         <ui:DeleteFileX DisplayName="Delete TXTFile" sap:VirtualizedContainerService.HintSize="434,80" sap2010:WorkflowViewState.IdRef="DeleteFileX_2" Path="[in_pathTXTCO]" />
       </If.Then>
       <If.Else>
-        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_19">
+        <Sequence sap:VirtualizedContainerService.HintSize="450,103" sap2010:WorkflowViewState.IdRef="Sequence_19">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -407,7 +407,7 @@
     <ui:CloseTab Browser="[ui_Browser]" ContinueOnError="True" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="1406,25" sap2010:WorkflowViewState.IdRef="CloseTab_1" />
     <ui:KillProcess ContinueOnError="{x:Null}" Process="{x:Null}" AppliesTo="OnlyCurrentUser" DisplayName="Kill Chrome Process" sap:VirtualizedContainerService.HintSize="1406,133" sap2010:WorkflowViewState.IdRef="KillProcess_1" ProcessName="chrome" />
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1406,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[str_File.ToString + &quot; is already downloaded&quot;]" />
-    <Assign sap:VirtualizedContainerService.HintSize="1406,82" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <Assign sap:VirtualizedContainerService.HintSize="1406,81" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_pathTXTCO]</OutArgument>
       </Assign.To>

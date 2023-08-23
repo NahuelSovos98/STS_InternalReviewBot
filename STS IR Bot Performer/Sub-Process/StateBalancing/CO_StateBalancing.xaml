@@ -163,26 +163,18 @@
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
           <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
         </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="out_pathTXTCO">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_pathTXTCO" />
-        </InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_pathTXTCO">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="str_pathTXTCO" />
+        </OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:Comment sap:VirtualizedContainerService.HintSize="546,75" sap2010:WorkflowViewState.IdRef="Comment_7" Text="//transcribe Colorado TXT file from webpage to Colorado xslm tool file" />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TransformTextDelimited workflow" sap:VirtualizedContainerService.HintSize="546,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_23" UnSafe="False" WorkflowFileName="Sub-Process\SpecificWorkflows\TransformTextDelimited.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pathTxt">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_pathTXTCO" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_maximumColumn">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;StateBalancing_CO_MaximumColumn&quot;).ToString)" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pathCOTool">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_pathCOToolCopy" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_sheetnameCOTool">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_CO_SheetnameWebCOTool&quot;).ToString" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pathTxt">[str_pathTXTCO]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_maximumColumn">[CInt(in_Config("StateBalancing_CO_MaximumColumn").ToString)]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_pathCOTool">[str_pathCOToolCopy]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_sheetnameCOTool">[in_Config("StateBalancing_CO_SheetnameWebCOTool").ToString]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:Comment sap:VirtualizedContainerService.HintSize="546,56" sap2010:WorkflowViewState.IdRef="Comment_8" Text="// VALIDATION WITHIN CO TOOL EXCEL FILE" />
