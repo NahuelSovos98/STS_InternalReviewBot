@@ -86,6 +86,7 @@
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>ATOS.Map_Network_Drive.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="InputUserForm" sap:VirtualizedContainerService.HintSize="648,2505" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -229,37 +230,19 @@
               </ActivityAction>
             </ufa:FormActivity.DelayBody>
             <ufa:FormActivity.FormFieldsCollection>
-              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="Month_dropdown">
-                <mva:VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="ListMonths.ToList" />
-              </InArgument>
-              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="Year_dropdown">
-                <mva:VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="ListYear" />
-              </InArgument>
-              <OutArgument x:TypeArguments="x:String" x:Key="Month">
-                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_Month" />
-              </OutArgument>
-              <OutArgument x:TypeArguments="x:Int32" x:Key="Year">
-                <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="out_Year" />
-              </OutArgument>
-              <OutArgument x:TypeArguments="x:String" x:Key="SelectTfrRSFolder">
-                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_PathTFRRSFolder" />
-              </OutArgument>
-              <OutArgument x:TypeArguments="x:String" x:Key="SelectOutputFolder">
-                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_PathOutputFolder" />
-              </OutArgument>
-              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="CustomerName_dropdown">
-                <mva:VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="ListCustomerAccount" />
-              </InArgument>
-              <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="CustomerName">
-                <mva:VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="out_ListCustomerName" />
-              </OutArgument>
-              <OutArgument x:TypeArguments="x:String" x:Key="userEmail">
-                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_userEmail" />
-              </OutArgument>
+              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="Month_dropdown">[ListMonths.ToList]</InArgument>
+              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="Year_dropdown">[ListYear]</InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="Month">[out_Month]</OutArgument>
+              <OutArgument x:TypeArguments="x:Int32" x:Key="Year">[out_Year]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="SelectTfrRSFolder">[out_PathTFRRSFolder]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="SelectOutputFolder">[out_PathOutputFolder]</OutArgument>
+              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="CustomerName_dropdown">[ListCustomerAccount]</InArgument>
+              <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="CustomerName">[out_ListCustomerName]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="userEmail">[out_userEmail]</OutArgument>
             </ufa:FormActivity.FormFieldsCollection>
           </ufa:FormActivity>
           <ui:Comment sap:VirtualizedContainerService.HintSize="488,75" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// If the user exits, the output is a blank string." />
-          <ui:MessageBox AutoCloseAfter="00:00:00" Buttons="YesNo" Caption="User inputs - Check if values are correct." ChosenButton="[ChosenButton]" DisplayName="Message Box - Ask user to continue" sap:VirtualizedContainerService.HintSize="488,85" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;You entered the following info: &quot; + vbCrLf + vbCrLf +&#xA;&quot;Customer Name: &quot; + String.Join(&quot;,&quot;,out_ListCustomerName) + vbCrLf +&#xA;&quot;Month: &quot; + out_Month + vbCrLf +&#xA;&quot;Year: &quot; + out_Year.ToString + vbCrLf +&#xA;&quot;Path Output folder: &quot; + out_PathOutputFolder + vbCrLf +&#xA;&quot;Path TFR and Review Sheet folder: &quot; + out_PathTFRRSFolder + vbCrLf +&#xA;&quot;Would you like to continue? (Press 'No' if you want to select the inputs again)&quot;]" TopMost="True" />
+          <ui:MessageBox AutoCloseAfter="00:00:00" Buttons="YesNo" Caption="User inputs - Check if values are correct." ChosenButton="[ChosenButton]" DisplayName="Message Box - Ask user to continue" sap:VirtualizedContainerService.HintSize="488,85" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;You entered the following info: &quot; + vbCrLf + vbCrLf +&#xD;&#xA;&quot;Customer Name: &quot; + String.Join(&quot;,&quot;,out_ListCustomerName) + vbCrLf +&#xD;&#xA;&quot;Month: &quot; + out_Month + vbCrLf +&#xD;&#xA;&quot;Year: &quot; + out_Year.ToString + vbCrLf +&#xD;&#xA;&quot;Path Output folder: &quot; + out_PathOutputFolder + vbCrLf +&#xD;&#xA;&quot;Path TFR and Review Sheet folder: &quot; + out_PathTFRRSFolder + vbCrLf +&#xD;&#xA;&quot;User Email: &quot; + out_userEmail + vbCrLf +&#xD;&#xA;&quot;Would you like to continue? (Press 'No' if you want to select the inputs again)&quot;]" TopMost="True" />
         </Sequence>
       </ui:InterruptibleDoWhile.Body>
     </ui:InterruptibleDoWhile>

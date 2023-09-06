@@ -7,11 +7,12 @@
     <x:Property Name="out_periodYear" Type="OutArgument(x:Int32)" />
     <x:Property Name="out_listCustomerName" Type="OutArgument(scg:List(x:String))" />
     <x:Property Name="out_pathTFRRSFolder" Type="OutArgument(x:String)" />
+    <x:Property Name="out_userEmail" Type="OutArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1501,1921</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1501,1952</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ReadTempFile_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -82,7 +83,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ReadTempFile" sap:VirtualizedContainerService.HintSize="710,1856" sap2010:WorkflowViewState.IdRef="Sequence_3">
+  <Sequence DisplayName="ReadTempFile" sap:VirtualizedContainerService.HintSize="710,1887" sap2010:WorkflowViewState.IdRef="Sequence_3">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="str_CustomerName" />
     </Sequence.Variables>
@@ -92,9 +93,9 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="648,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Read temp file starts&quot;]" />
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="648,1481" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="648,1512" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <Sequence DisplayName="TRY - ReadTempFile" sap:VirtualizedContainerService.HintSize="610,1253" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="TRY - ReadTempFile" sap:VirtualizedContainerService.HintSize="610,1284" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <Sequence.Variables>
             <Variable x:TypeArguments="sd:DataTable" Name="dt_tempFile" />
             <Variable x:TypeArguments="s:String[]" Name="array_CustomerName" />
@@ -111,7 +112,7 @@
               </InArgument>
             </ui:ReadRange.Range>
           </ui:ReadRange>
-          <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="548,225" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+          <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="548,256" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
             <ui:MultipleAssign.AssignOperations>
               <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
                 <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -152,6 +153,14 @@
                   </ui:AssignOperation.To>
                   <ui:AssignOperation.Value>
                     <InArgument x:TypeArguments="x:Int32">[CInt(dt_tempFile.Rows(0)("periodYear").ToString)]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="x:String">[out_userEmail]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="x:String">[dt_tempFile.Rows(0)("UserMail").ToString]</InArgument>
                   </ui:AssignOperation.Value>
                 </ui:AssignOperation>
               </scg:List>
