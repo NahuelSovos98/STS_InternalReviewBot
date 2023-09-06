@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1501,4050</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1598,4321</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>LA_StateBalancing_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -46,6 +46,7 @@
       <x:String>UiPath.Platform.ResourceHandling</x:String>
       <x:String>UiPath.CSV</x:String>
       <x:String>UiPath.CSV.Activities</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -85,7 +86,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="LA_StateBalancing" sap:VirtualizedContainerService.HintSize="1502,3985" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="LA_StateBalancing" sap:VirtualizedContainerService.HintSize="1608,4256" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Double" Name="GrossSales" />
       <Variable x:TypeArguments="x:String" Default="M" Name="FilingType" />
@@ -96,17 +97,17 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1440,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;LA_StateBalancing workflow starts&quot;]" />
-    <If Condition="[not in_ReturnName.ToUpper.Contains(&quot;REMOTE SELLER&quot;)]" sap:VirtualizedContainerService.HintSize="1440,3742" sap2010:WorkflowViewState.IdRef="If_6">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1546,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;LA_StateBalancing workflow starts&quot;]" />
+    <If Condition="[not in_ReturnName.ToUpper.Contains(&quot;REMOTE SELLER&quot;)]" sap:VirtualizedContainerService.HintSize="1546,4013" sap2010:WorkflowViewState.IdRef="If_6">
       <If.Then>
-        <Sequence DisplayName="Sequence for all LA states" sap:VirtualizedContainerService.HintSize="975,3582" sap2010:WorkflowViewState.IdRef="Sequence_24">
+        <Sequence DisplayName="Sequence for all LA states" sap:VirtualizedContainerService.HintSize="1051,3853" sap2010:WorkflowViewState.IdRef="Sequence_24">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:Comment sap:VirtualizedContainerService.HintSize="913,94" sap2010:WorkflowViewState.IdRef="Comment_5" Text="// It needs to define 3 answers. Belong to Local State or not ; Monthly or Quarterly ; Gross Sales" />
-          <If sap2010:Annotation.AnnotationText="&quot;L&quot; = Local State&#xA;&quot;N&quot; = Non-Local State" Condition="[in_Config(&quot;StateBalancing_LA_ListNonLocalStates&quot;).ToString.Split(&quot;,&quot;c).Contains(in_ReturnName.ToUpper.Trim)]" DisplayName="If return belongs to Non-Local states" sap:VirtualizedContainerService.HintSize="913,284" sap2010:WorkflowViewState.IdRef="If_3">
+          <ui:Comment sap:VirtualizedContainerService.HintSize="989,94" sap2010:WorkflowViewState.IdRef="Comment_5" Text="// It needs to define 3 answers. Belong to Local State or not ; Monthly or Quarterly ; Gross Sales" />
+          <If sap2010:Annotation.AnnotationText="&quot;L&quot; = Local State&#xA;&quot;N&quot; = Non-Local State" Condition="[in_Config(&quot;StateBalancing_LA_ListNonLocalStates&quot;).ToString.Split(&quot;,&quot;c).Contains(in_ReturnName.ToUpper.Trim)]" DisplayName="If return belongs to Non-Local states" sap:VirtualizedContainerService.HintSize="989,284" sap2010:WorkflowViewState.IdRef="If_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -133,8 +134,8 @@
               </Assign>
             </If.Else>
           </If>
-          <ui:Comment sap:VirtualizedContainerService.HintSize="913,56" sap2010:WorkflowViewState.IdRef="Comment_3" Text="// Get Gross Sales" />
-          <Sequence DisplayName="Get Gross sales" sap:VirtualizedContainerService.HintSize="913,530" sap2010:WorkflowViewState.IdRef="Sequence_15">
+          <ui:Comment sap:VirtualizedContainerService.HintSize="989,56" sap2010:WorkflowViewState.IdRef="Comment_3" Text="// Get Gross Sales" />
+          <Sequence DisplayName="Get Gross sales" sap:VirtualizedContainerService.HintSize="989,801" sap2010:WorkflowViewState.IdRef="Sequence_15">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="GrossSalesResult" />
             </Sequence.Variables>
@@ -144,21 +145,61 @@
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SelectTab workflow" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\TabMenu\SelectTab.xaml">
-              <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="in_PageName">[in_Config("StateBalancing_LA_GrossSalesTab").ToString]</InArgument>
-              </ui:InvokeWorkflowFile.Arguments>
-            </ui:InvokeWorkflowFile>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ApplyClickOnText workflow" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnWindow\ApplyClickOnText.xaml">
-              <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="in_StringToClickOn">[in_Config("StateBalancing_LA_GrossSalesClickOnText").ToString]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_SendHotkey">
-                  <Literal x:TypeArguments="x:String" Value="" />
-                </InArgument>
-                <OutArgument x:TypeArguments="x:String" x:Key="out_Result">[GrossSalesResult]</OutArgument>
-              </ui:InvokeWorkflowFile.Arguments>
-            </ui:InvokeWorkflowFile>
-            <Assign sap2010:Annotation.AnnotationText="convert result to Double" DisplayName="Assign - GrossSales" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <If Condition="[ReturnType = &quot;N&quot;]" DisplayName="If return name is LA R-1029 or LA R-1029E" sap:VirtualizedContainerService.HintSize="927,537" sap2010:WorkflowViewState.IdRef="If_7">
+              <If.Then>
+                <Sequence DisplayName="Process for non-local states" sap:VirtualizedContainerService.HintSize="441,377" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SelectTab workflow" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\TabMenu\SelectTab.xaml">
+                    <ui:InvokeWorkflowFile.Arguments>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_PageName">
+                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_LA_GrossSalesTabR1029&quot;).ToString" />
+                      </InArgument>
+                    </ui:InvokeWorkflowFile.Arguments>
+                  </ui:InvokeWorkflowFile>
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ApplyClickOnText workflow" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnWindow\ApplyClickOnText.xaml">
+                    <ui:InvokeWorkflowFile.Arguments>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_StringToClickOn">
+                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;StateBalancing_LA_GrossSalesClickOnTextR1029&quot;).ToString" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_SendHotkey">
+                        <Literal x:TypeArguments="x:String" Value="" />
+                      </InArgument>
+                      <OutArgument x:TypeArguments="x:String" x:Key="out_Result">
+                        <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="GrossSalesResult" />
+                      </OutArgument>
+                    </ui:InvokeWorkflowFile.Arguments>
+                  </ui:InvokeWorkflowFile>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Process for Local States" sap:VirtualizedContainerService.HintSize="441,377" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SelectTab workflow" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\TabMenu\SelectTab.xaml">
+                    <ui:InvokeWorkflowFile.Arguments>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_PageName">[in_Config("StateBalancing_LA_GrossSalesTab").ToString]</InArgument>
+                    </ui:InvokeWorkflowFile.Arguments>
+                  </ui:InvokeWorkflowFile>
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ApplyClickOnText workflow" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnWindow\ApplyClickOnText.xaml">
+                    <ui:InvokeWorkflowFile.Arguments>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_StringToClickOn">[in_Config("StateBalancing_LA_GrossSalesClickOnText").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_SendHotkey">
+                        <Literal x:TypeArguments="x:String" Value="" />
+                      </InArgument>
+                      <OutArgument x:TypeArguments="x:String" x:Key="out_Result">[GrossSalesResult]</OutArgument>
+                    </ui:InvokeWorkflowFile.Arguments>
+                  </ui:InvokeWorkflowFile>
+                </Sequence>
+              </If.Else>
+            </If>
+            <Assign sap2010:Annotation.AnnotationText="convert result to Double" DisplayName="Assign - GrossSales" sap:VirtualizedContainerService.HintSize="927,113" sap2010:WorkflowViewState.IdRef="Assign_3">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:Double">[GrossSales]</OutArgument>
               </Assign.To>
@@ -172,8 +213,8 @@
               </sap:WorkflowViewStateService.ViewState>
             </Assign>
           </Sequence>
-          <ui:Comment sap:VirtualizedContainerService.HintSize="913,56" sap2010:WorkflowViewState.IdRef="Comment_4" Text="// Get Filing Type - Only if it is a local state" />
-          <If Condition="[ReturnType.Equals(&quot;L&quot;)]" DisplayName="If it is Local State" sap:VirtualizedContainerService.HintSize="913,702" sap2010:WorkflowViewState.IdRef="If_5">
+          <ui:Comment sap:VirtualizedContainerService.HintSize="989,56" sap2010:WorkflowViewState.IdRef="Comment_4" Text="// Get Filing Type - Only if it is a local state" />
+          <If Condition="[ReturnType.Equals(&quot;L&quot;)]" DisplayName="If it is Local State" sap:VirtualizedContainerService.HintSize="989,702" sap2010:WorkflowViewState.IdRef="If_5">
             <If.Then>
               <Sequence DisplayName="Get FilingType" sap:VirtualizedContainerService.HintSize="496,542" sap2010:WorkflowViewState.IdRef="Sequence_16">
                 <Sequence.Variables>
@@ -221,7 +262,7 @@ If(ListMatches.Item(0).Value.Trim.ToUpper.Equals("X"), "M" ,
               <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;This return &quot; + in_ReturnName + &quot; belongs to a Non-Local state&quot;]" />
             </If.Else>
           </If>
-          <Sequence DisplayName="Write Output in a temporal CSV file" sap:VirtualizedContainerService.HintSize="913,1377" sap2010:WorkflowViewState.IdRef="Sequence_22">
+          <Sequence DisplayName="Write Output in a temporal CSV file" sap:VirtualizedContainerService.HintSize="989,1377" sap2010:WorkflowViewState.IdRef="Sequence_22">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="LineTxt" />
               <Variable x:TypeArguments="sd:DataTable" Name="dtLineText" />
@@ -325,17 +366,17 @@ If(ListMatches.Item(0).Value.Trim.ToUpper.Equals("X"), "M" ,
               </TryCatch.Catches>
             </TryCatch>
           </Sequence>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="913,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;LA_StateBalancing workflow ends&quot;]" />
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="989,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;LA_StateBalancing workflow ends&quot;]" />
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Sequence for LA Remote Seller" sap:VirtualizedContainerService.HintSize="420,203" sap2010:WorkflowViewState.IdRef="Sequence_25">
+        <Sequence DisplayName="Sequence for LA Remote Seller" sap:VirtualizedContainerService.HintSize="450,203" sap2010:WorkflowViewState.IdRef="Sequence_25">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="358,92" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[in_ReturnName + &quot; must not check state balancing&quot;]" />
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,92" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[in_ReturnName + &quot; must not check state balancing&quot;]" />
         </Sequence>
       </If.Else>
     </If>
