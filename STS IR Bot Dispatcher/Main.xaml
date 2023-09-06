@@ -543,44 +543,43 @@
                                     </ui:InvokeWorkflowFile>
                                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke InputUserForm workflow" sap:VirtualizedContainerService.HintSize="484,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_36" UnSafe="False" WorkflowFileName="Logic\InputUserForm.xaml">
                                       <ui:InvokeWorkflowFile.Arguments>
-                                        <OutArgument x:TypeArguments="x:String" x:Key="out_Month">[str_CurrentMonth]</OutArgument>
-                                        <OutArgument x:TypeArguments="x:Int32" x:Key="out_Year">[int_CurrentYear]</OutArgument>
-                                        <OutArgument x:TypeArguments="x:String" x:Key="out_PathOutputFolder">[str_PathOutputFolder]</OutArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_PathCustomerAccountList">[Config("PathCustomerNameList").ToString]</InArgument>
-                                        <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_ListCustomerName">[list_CustomerName]</OutArgument>
-                                        <OutArgument x:TypeArguments="x:String" x:Key="out_PathTFRRSFolder">[str_PathTFRRSFolder]</OutArgument>
+                                        <OutArgument x:TypeArguments="x:String" x:Key="out_Month">
+                                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="str_CurrentMonth" />
+                                        </OutArgument>
+                                        <OutArgument x:TypeArguments="x:Int32" x:Key="out_Year">
+                                          <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="int_CurrentYear" />
+                                        </OutArgument>
+                                        <OutArgument x:TypeArguments="x:String" x:Key="out_PathOutputFolder">
+                                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="str_PathOutputFolder" />
+                                        </OutArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_PathCustomerAccountList">
+                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;PathCustomerNameList&quot;).ToString" />
+                                        </InArgument>
+                                        <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_ListCustomerName">
+                                          <mva:VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="list_CustomerName" />
+                                        </OutArgument>
+                                        <OutArgument x:TypeArguments="x:String" x:Key="out_PathTFRRSFolder">
+                                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="str_PathTFRRSFolder" />
+                                        </OutArgument>
+                                        <OutArgument x:TypeArguments="x:String" x:Key="out_userEmail">
+                                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="str_userEmail" />
+                                        </OutArgument>
                                       </ui:InvokeWorkflowFile.Arguments>
                                     </ui:InvokeWorkflowFile>
                                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ValidateTFRInTFRFolder workflow" sap:VirtualizedContainerService.HintSize="484,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_41" UnSafe="False" WorkflowFileName="Logic\ValidateTFRInTFRFolder.xaml">
                                       <ui:InvokeWorkflowFile.Arguments>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_pathTFRFolder">
-                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_PathTFRRSFolder" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_ListCustomerAccount">
-                                          <mva:VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="list_CustomerName" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_outputFolder">
-                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_PathOutputFolder" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_PathCustomerAccountList">
-                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;PathCustomerNameList&quot;).ToString" />
-                                        </InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_pathTFRFolder">[str_PathTFRRSFolder]</InArgument>
+                                        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_ListCustomerAccount">[list_CustomerName]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_outputFolder">[str_PathOutputFolder]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_PathCustomerAccountList">[Config("PathCustomerNameList").ToString]</InArgument>
                                       </ui:InvokeWorkflowFile.Arguments>
                                     </ui:InvokeWorkflowFile>
                                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ValidateReviewSheetInFolder workflow" sap:VirtualizedContainerService.HintSize="484,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_42" UnSafe="False" WorkflowFileName="Logic\ValidateReviewSheetInFolder.xaml">
                                       <ui:InvokeWorkflowFile.Arguments>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_pathReviewSheetFolder">
-                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_PathTFRRSFolder" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_ListCustomerAccount">
-                                          <mva:VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="list_CustomerName" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_outputFolder">
-                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_PathOutputFolder" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_PathCustomerAccountList">
-                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;PathCustomerNameList&quot;).ToString" />
-                                        </InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_pathReviewSheetFolder">[str_PathTFRRSFolder]</InArgument>
+                                        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_ListCustomerAccount">[list_CustomerName]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_outputFolder">[str_PathOutputFolder]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_PathCustomerAccountList">[Config("PathCustomerNameList").ToString]</InArgument>
                                       </ui:InvokeWorkflowFile.Arguments>
                                     </ui:InvokeWorkflowFile>
                                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DeleteOldItemsFromQueue workflow" sap:VirtualizedContainerService.HintSize="484,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_43" UnSafe="False" WorkflowFileName="Logic\DeleteOldItemsFromQueue.xaml">
@@ -593,13 +592,30 @@
                                     </ui:InvokeWorkflowFile>
                                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TranscribeToTempFile Workflow" sap:VirtualizedContainerService.HintSize="484,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_38" UnSafe="False" WorkflowFileName="Logic\TranscribeToTempFile.xaml">
                                       <ui:InvokeWorkflowFile.Arguments>
-                                        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_CustomerName">[list_CustomerName]</InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_pathTempDirectory">[Config("PathTempDirectory").ToString]</InArgument>
-                                        <InArgument x:TypeArguments="x:Int32" x:Key="in_currentYear">[int_CurrentYear]</InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_nameTempFile">[Config("TempFile_FileName").ToString]</InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_pathOutputFolder">[str_PathOutputFolder]</InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_pathTFRandRSFolder">[str_PathTFRRSFolder]</InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_currentMonth">[str_CurrentMonth]</InArgument>
+                                        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_CustomerName">
+                                          <mva:VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="list_CustomerName" />
+                                        </InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_pathTempDirectory">
+                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;PathTempDirectory&quot;).ToString" />
+                                        </InArgument>
+                                        <InArgument x:TypeArguments="x:Int32" x:Key="in_currentYear">
+                                          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="int_CurrentYear" />
+                                        </InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_nameTempFile">
+                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;TempFile_FileName&quot;).ToString" />
+                                        </InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_pathOutputFolder">
+                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_PathOutputFolder" />
+                                        </InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_pathTFRandRSFolder">
+                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_PathTFRRSFolder" />
+                                        </InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_currentMonth">
+                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_CurrentMonth" />
+                                        </InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_userMail">
+                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_userEmail" />
+                                        </InArgument>
                                       </ui:InvokeWorkflowFile.Arguments>
                                     </ui:InvokeWorkflowFile>
                                     <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484,52" sap2010:WorkflowViewState.IdRef="CommentOut_2">
@@ -894,6 +910,7 @@
       <Variable x:TypeArguments="x:Int32" Name="int_CurrentYear" />
       <Variable x:TypeArguments="x:String" Name="str_PathOutputFolder" />
       <Variable x:TypeArguments="x:String" Name="str_PathTFRRSFolder" />
+      <Variable x:TypeArguments="x:String" Name="str_userEmail" />
     </StateMachine.Variables>
   </StateMachine>
 </Activity>
