@@ -868,13 +868,13 @@
                                             <Literal x:TypeArguments="x:String">The 'Internal Review Bot' process has completed successfully. Output files of the process are attached. If you have any questions, contact the automation development team.</Literal>
                                           </InArgument>
                                           <InArgument x:TypeArguments="x:String" x:Key="in_attachFile">
-                                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_PathOutputFolder + &quot;\outputZip&quot;" />
+                                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_PathOutputFolder + &quot;\outputZip.zip&quot;" />
                                           </InArgument>
                                         </ui:InvokeWorkflowFile.Arguments>
                                       </ui:InvokeWorkflowFile>
                                       <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="CommentOut_5">
                                         <ui:CommentOut.Body>
-                                          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="500,163" sap2010:WorkflowViewState.IdRef="Sequence_38">
+                                          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,163" sap2010:WorkflowViewState.IdRef="Sequence_38">
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
