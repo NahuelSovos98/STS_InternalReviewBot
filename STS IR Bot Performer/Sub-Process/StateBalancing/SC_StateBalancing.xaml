@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1501,6368</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1458,7755</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SC_StateBalancing_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -96,7 +96,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SC_StateBalancing" sap:VirtualizedContainerService.HintSize="1468,6303" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SC_StateBalancing" sap:VirtualizedContainerService.HintSize="1468,7690" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="PathDestinationScTool" />
       <Variable x:TypeArguments="x:String" Name="PathDetailCsv" />
@@ -238,7 +238,7 @@
       <ui:CopyFile ContinueOnError="{x:Null}" Destination="[PathDestinationScTool]" DisplayName="Copy File - Tool file" sap:VirtualizedContainerService.HintSize="434,158" sap2010:WorkflowViewState.IdRef="CopyFile_2" Overwrite="True" Path="[PathScTool]" />
     </Sequence>
     <ui:Comment sap:VirtualizedContainerService.HintSize="1406,56" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// Copy detail worksheet into the Tool file" />
-    <Sequence DisplayName="Copy paste Detail worksheet" sap:VirtualizedContainerService.HintSize="594,1034" sap2010:WorkflowViewState.IdRef="Sequence_14">
+    <Sequence DisplayName="Copy paste Detail worksheet" sap:VirtualizedContainerService.HintSize="1406,1034" sap2010:WorkflowViewState.IdRef="Sequence_14">
       <Sequence.Variables>
         <Variable x:TypeArguments="sd:DataTable" Name="dtDetail" />
       </Sequence.Variables>
@@ -307,14 +307,14 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:ExcelApplicationScope>
     </Sequence>
-    <ui:Comment sap2010:Annotation.AnnotationText="Taxsolver TAX column = TS Gross * 0.01&#xA;Taxsolver DIF column = TAX column - Taxsolver TAX column&#xA;TS Gross column = from Local taxes in tax solver" sap:VirtualizedContainerService.HintSize="594,166" sap2010:WorkflowViewState.IdRef="Comment_2" Text="// Get TaxSolver gross column for the following states in SC: &#xA;Aiken, Charleston, Horry, Berkeley">
+    <ui:Comment sap2010:Annotation.AnnotationText="Taxsolver TAX column = TS Gross * 0.01&#xA;Taxsolver DIF column = TAX column - Taxsolver TAX column&#xA;TS Gross column = from Local taxes in tax solver" sap:VirtualizedContainerService.HintSize="1406,166" sap2010:WorkflowViewState.IdRef="Comment_2" Text="// Get TaxSolver gross column for the following states in SC: &#xA;Aiken, Charleston, Horry, Berkeley">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:Comment>
-    <Sequence DisplayName="GetLocalTaxesCounty" sap:VirtualizedContainerService.HintSize="594,1241" sap2010:WorkflowViewState.IdRef="Sequence_5">
+    <Sequence DisplayName="GetLocalTaxesCounty" sap:VirtualizedContainerService.HintSize="1406,837" sap2010:WorkflowViewState.IdRef="Sequence_5">
       <Sequence.Variables>
         <Variable x:TypeArguments="str:MatchCollection" Name="ResultMatchCollection" />
         <Variable x:TypeArguments="x:String" Name="RegexGetCounty" />
@@ -325,12 +325,12 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SelectTab workflow" sap:VirtualizedContainerService.HintSize="532,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\TabMenu\SelectTab.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SelectTab workflow" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\TabMenu\SelectTab.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="x:String" x:Key="in_PageName">[in_Config("StateBalancing_SC_LocalTaxesPageName").ToString]</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <Assign DisplayName="Assign - RegexGetCounty" sap:VirtualizedContainerService.HintSize="532,83" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign DisplayName="Assign - RegexGetCounty" sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_2">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[RegexGetCounty]</OutArgument>
         </Assign.To>
@@ -339,16 +339,16 @@
 Replace("&lt;COUNTY_LIST&gt;",in_Config("StateBalancing_SC_CountyList").toString)]</InArgument>
         </Assign.Value>
       </Assign>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ApplyScreenScraping workflow" sap:VirtualizedContainerService.HintSize="532,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnWindow\ApplyScreenScraping.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ApplyScreenScraping workflow" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnWindow\ApplyScreenScraping.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">[RegexGetCounty]</InArgument>
           <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey">%[k(pgup)]</InArgument>
           <OutArgument x:TypeArguments="scg:List(str:Match)" x:Key="out_ListMatches">[ListLocalTaxes]</OutArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="532,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
         <ui:CommentOut.Body>
-          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,377" sap2010:WorkflowViewState.IdRef="Sequence_23">
+          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,344" sap2010:WorkflowViewState.IdRef="Sequence_23">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -383,7 +383,7 @@ Replace("&lt;COUNTY_LIST&gt;",in_Config("StateBalancing_SC_CountyList").toString
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:CommentOut>
-      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="532,456" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="CommentOut_2">
         <ui:CommentOut.Body>
           <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,377" sap2010:WorkflowViewState.IdRef="Sequence_24">
             <sap:WorkflowViewStateService.ViewState>
@@ -415,12 +415,12 @@ Replace("&lt;COUNTY_LIST&gt;",in_Config("StateBalancing_SC_CountyList").toString
         </ui:CommentOut.Body>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:CommentOut>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ApplyScreenScraping workflow" sap:VirtualizedContainerService.HintSize="532,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnWindow\ApplyScreenScraping.xaml">
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ApplyScreenScraping workflow" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Sub-Process\TaxSolver\ReturnWindow\ApplyScreenScraping.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="x:String" x:Key="in_RegexToApply">[RegexGetCounty]</InArgument>
           <InArgument x:TypeArguments="x:String" x:Key="in_sendHotkey">%[k(pgdn)]</InArgument>
@@ -428,7 +428,7 @@ Replace("&lt;COUNTY_LIST&gt;",in_Config("StateBalancing_SC_CountyList").toString
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
     </Sequence>
-    <ui:ForEach x:TypeArguments="str:Match" CurrentIndex="{x:Null}" DisplayName="For Each LocalTax" sap:VirtualizedContainerService.HintSize="594,52" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[ListLocalTaxes]">
+    <ui:ForEach x:TypeArguments="str:Match" CurrentIndex="{x:Null}" DisplayName="For Each LocalTax" sap:VirtualizedContainerService.HintSize="1406,52" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[ListLocalTaxes]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="str:Match">
           <ActivityAction.Argument>
@@ -543,7 +543,7 @@ Replace("&lt;COUNTY_LIST&gt;",in_Config("StateBalancing_SC_CountyList").toString
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEach>
-    <ui:ForEach x:TypeArguments="str:Match" CurrentIndex="{x:Null}" DisplayName="For Each LocalTax2" sap:VirtualizedContainerService.HintSize="594,52" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[ListLocalTaxes2]">
+    <ui:ForEach x:TypeArguments="str:Match" CurrentIndex="{x:Null}" DisplayName="For Each LocalTax2" sap:VirtualizedContainerService.HintSize="1406,52" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[ListLocalTaxes2]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="str:Match">
           <ActivityAction.Argument>
@@ -671,7 +671,7 @@ Replace("&lt;COUNTY_LIST&gt;",in_Config("StateBalancing_SC_CountyList").toString
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEach>
-    <Sequence DisplayName="Complete table" sap:VirtualizedContainerService.HintSize="594,772" sap2010:WorkflowViewState.IdRef="Sequence_11">
+    <Sequence DisplayName="Complete table" sap:VirtualizedContainerService.HintSize="1406,2563" sap2010:WorkflowViewState.IdRef="Sequence_11">
       <Sequence.Variables>
         <Variable x:TypeArguments="sd:DataTable" Name="dtGrossSales" />
         <Variable x:TypeArguments="scg:Dictionary(x:String, x:Double)" Name="dictDiffGrossSales" />
@@ -682,7 +682,7 @@ Replace("&lt;COUNTY_LIST&gt;",in_Config("StateBalancing_SC_CountyList").toString
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Assign DisplayName="Assign - dictDiffGrossSales" sap:VirtualizedContainerService.HintSize="532,82" sap2010:WorkflowViewState.IdRef="Assign_5">
+      <Assign DisplayName="Assign - dictDiffGrossSales" sap:VirtualizedContainerService.HintSize="1226,82" sap2010:WorkflowViewState.IdRef="Assign_5">
         <Assign.To>
           <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Double)">[dictDiffGrossSales]</OutArgument>
         </Assign.To>
@@ -690,26 +690,26 @@ Replace("&lt;COUNTY_LIST&gt;",in_Config("StateBalancing_SC_CountyList").toString
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Double)">[new Dictionary(Of String, Double)]</InArgument>
         </Assign.Value>
       </Assign>
-      <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="532,52" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[PathDestinationScTool]">
+      <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="1226,1843" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[PathDestinationScTool]">
         <ui:ExcelApplicationScope.Body>
           <ActivityAction x:TypeArguments="ui:WorkbookApplication">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1192,1734" sap2010:WorkflowViewState.IdRef="Sequence_9">
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1192,1733" sap2010:WorkflowViewState.IdRef="Sequence_9">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <ui:ExcelReadRange AddHeaders="True" DataTable="[dtGrossSales]" DisplayName="Read Range - dtGrossSales" sap:VirtualizedContainerService.HintSize="1130,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" Range="[in_Config(&quot;StateBalancing_SC_Tool_StartCell&quot;).ToString]" SheetName="[in_Config(&quot;StateBalancing_SC_Tool_MainWorksheet&quot;).ToString]" />
-              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtGrossSales]" DisplayName="For Each Row in dtGrossSales" sap:VirtualizedContainerService.HintSize="1130,1395" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtGrossSales]" DisplayName="For Each Row in dtGrossSales" sap:VirtualizedContainerService.HintSize="1130,1394" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
                 <ui:ForEachRow.Body>
                   <ActivityAction x:TypeArguments="sd:DataRow">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1096,1280" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1096,1279" sap2010:WorkflowViewState.IdRef="Sequence_10">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="x:String" Name="CountyName" />
                         <Variable x:TypeArguments="x:Double" Name="Gross" />
@@ -752,13 +752,13 @@ Replace("&lt;COUNTY_LIST&gt;",in_Config("StateBalancing_SC_CountyList").toString
                       </ui:MultipleAssign>
                       <If Condition="[DictLocalTaxes.ContainsKey(CountyName)]" DisplayName="If dictionary has this county name" sap:VirtualizedContainerService.HintSize="1034,533" sap2010:WorkflowViewState.IdRef="If_7">
                         <If.Then>
-                          <Sequence DisplayName="Set TS gross and TS tax" sap:VirtualizedContainerService.HintSize="496,313" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                          <Sequence DisplayName="Set TS gross and TS tax" sap:VirtualizedContainerService.HintSize="496,315" sap2010:WorkflowViewState.IdRef="Sequence_20">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <Assign DisplayName="Assign - TS gross in currentrow" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_6">
+                            <Assign DisplayName="Assign - TS gross in currentrow" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_6">
                               <Assign.To>
                                 <OutArgument x:TypeArguments="x:Object">[CurrentRow("TS Gross")]</OutArgument>
                               </Assign.To>
@@ -766,7 +766,7 @@ Replace("&lt;COUNTY_LIST&gt;",in_Config("StateBalancing_SC_CountyList").toString
                                 <InArgument x:TypeArguments="x:Object">[DictLocalTaxes(CountyName)]</InArgument>
                               </Assign.Value>
                             </Assign>
-                            <Assign DisplayName="Assign - TS Tax in currentrow" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_7">
+                            <Assign DisplayName="Assign - TS Tax in currentrow" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_7">
                               <Assign.To>
                                 <OutArgument x:TypeArguments="x:Object">[CurrentRow("TS Tax")]</OutArgument>
                               </Assign.To>
@@ -809,19 +809,19 @@ Replace("&lt;COUNTY_LIST&gt;",in_Config("StateBalancing_SC_CountyList").toString
                           </Sequence>
                         </If.Else>
                       </If>
-                      <Assign DisplayName="Assign - DIFF in current row" sap:VirtualizedContainerService.HintSize="1034,85" sap2010:WorkflowViewState.IdRef="Assign_8">
+                      <Assign DisplayName="Assign - DIFF in current row" sap:VirtualizedContainerService.HintSize="1034,83" sap2010:WorkflowViewState.IdRef="Assign_8">
                         <Assign.To>
                           <OutArgument x:TypeArguments="x:Object">[CurrentRow("DIF")]</OutArgument>
                         </Assign.To>
                         <Assign.Value>
-                          <InArgument x:TypeArguments="x:Double" xml:space="preserve">[Math.Round(
+                          <InArgument x:TypeArguments="x:Object" xml:space="preserve">[Math.Round(
 Math.Abs(Tax - CDbl(CurrentRow("TS Tax"))
 ), 2)]</InArgument>
                         </Assign.Value>
                       </Assign>
-                      <If Condition="[Not Cdbl(CurrentRow(&quot;DIF&quot;)).Equals(0)]" DisplayName="If Diff is not 0" sap:VirtualizedContainerService.HintSize="1034,268" sap2010:WorkflowViewState.IdRef="If_3">
+                      <If Condition="[Not Math.Round(CDbl(CurrentRow(&quot;DIF&quot;)),2).Equals(0.00)]" DisplayName="If Diff is not 0" sap:VirtualizedContainerService.HintSize="1034,269" sap2010:WorkflowViewState.IdRef="If_3">
                         <If.Then>
-                          <Assign DisplayName="Assign - add Diff in dictDiffGrossSale" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_9">
+                          <Assign DisplayName="Assign - add Diff in dictDiffGrossSale" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_9">
                             <Assign.To>
                               <OutArgument x:TypeArguments="x:Double">[dictDiffGrossSales(CountyName)]</OutArgument>
                             </Assign.To>
@@ -856,12 +856,12 @@ Math.Abs(Tax - CDbl(CurrentRow("TS Tax"))
         </ui:ExcelApplicationScope.Body>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:ExcelApplicationScope>
-      <If Condition="[dictDiffGrossSales.Count &lt;&gt; 0]" DisplayName="If there are diff in gross sales" sap:VirtualizedContainerService.HintSize="532,447" sap2010:WorkflowViewState.IdRef="If_4">
+      <If Condition="[dictDiffGrossSales.Count &lt;&gt; 0]" DisplayName="If there are diff in gross sales" sap:VirtualizedContainerService.HintSize="1226,447" sap2010:WorkflowViewState.IdRef="If_4">
         <If.Then>
           <Sequence DisplayName="Inform diff" sap:VirtualizedContainerService.HintSize="496,258" sap2010:WorkflowViewState.IdRef="Sequence_13">
             <Sequence.Variables>
@@ -885,6 +885,6 @@ Math.Abs(Tax - CDbl(CurrentRow("TS Tax"))
         </If.Then>
       </If>
     </Sequence>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="594,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;SC State Balancing ends&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1406,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;SC State Balancing ends&quot;]" />
   </Sequence>
 </Activity>
