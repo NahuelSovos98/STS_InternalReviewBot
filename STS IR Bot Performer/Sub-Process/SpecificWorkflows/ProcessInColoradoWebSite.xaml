@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1501,5334</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1458,5334</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessInColoradoWebSite_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -220,7 +220,7 @@
                       </ui:CursorPosition>
                     </ui:Click.CursorPosition>
                     <ui:Click.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="01bf1d26-0583-4c9d-976b-9519c3c61576" InformativeScreenshot="3342d241ec8556f1d30ac57c444fb7b7" Selector="&lt;webctrl id='Dg-b' tag='TABLE' /&gt;&lt;webctrl aaname='Find Sales and Use Tax Rates' tag='SPAN' /&gt;" WaitForReady="COMPLETE">
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="01bf1d26-0583-4c9d-976b-9519c3c61576" InformativeScreenshot="3342d241ec8556f1d30ac57c444fb7b7" Selector="&lt;webctrl id='Dg-3' tag='TABLE' /&gt;&lt;webctrl aaname='Find Sales and Use Tax Rates' parentid='l_Dg-1-14' innertext='Find Sales and Use Tax Rates' rowName='Find Sales and Use Tax Rates' /&gt;" WaitForReady="COMPLETE">
                         <ui:Target.TimeoutMS>
                           <InArgument x:TypeArguments="x:Int32" />
                         </ui:Target.TimeoutMS>
