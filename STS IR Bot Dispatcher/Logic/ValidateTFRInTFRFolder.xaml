@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>4090,3687</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>4090,3684</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ValidateTFRInTFRFolder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -85,12 +85,12 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.Form.Activities</AssemblyReference>
       <AssemblyReference>ATOS.Map_Network_Drive.Activities</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ValidateTFRInTFRFolder" sap:VirtualizedContainerService.HintSize="4100,3622" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ValidateTFRInTFRFolder" sap:VirtualizedContainerService.HintSize="4100,3619" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:String[]" Name="array_splitNameTFR" />
       <Variable x:TypeArguments="x:String" Name="str_customerAccountFile" />
@@ -153,7 +153,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:ExcelApplicationScope>
     </Sequence>
-    <ui:ForEachFileX DisplayName="For Each TFR in TFR Folder" Folder="[in_pathTFRFolder]" sap:VirtualizedContainerService.HintSize="4038,2148" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
+    <ui:ForEachFileX DisplayName="For Each TFR in TFR Folder" Folder="[in_pathTFRFolder]" sap:VirtualizedContainerService.HintSize="4038,2145" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
       <ui:ForEachFileX.Body>
         <ActivityAction x:TypeArguments="si:FileInfo, x:Int32">
           <ActivityAction.Argument1>
@@ -162,21 +162,24 @@
           <ActivityAction.Argument2>
             <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
           </ActivityAction.Argument2>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="4004,1898" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1986,1895" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[Path.GetFileName(TFRFile.ToString).ToString.ToUpper.Contains(&quot;TFR&quot;) or Path.GetFileName(TFRFile.ToString).ToString.ToUpper.Contains(&quot;TAX FILED REPORT&quot;)]" DisplayName="If is a TFR File?" sap:VirtualizedContainerService.HintSize="3942,1787" sap2010:WorkflowViewState.IdRef="If_3">
+            <If Condition="[Path.GetFileName(TFRFile.ToString).ToString.ToUpper.Contains(&quot;TFR&quot;) or Path.GetFileName(TFRFile.ToString).ToString.ToUpper.Contains(&quot;TAX FILED REPORT&quot;)]" DisplayName="If is a TFR File?" sap:VirtualizedContainerService.HintSize="1924,1784" sap2010:WorkflowViewState.IdRef="If_3">
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="1610,1629" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <Sequence sap:VirtualizedContainerService.HintSize="692,1626" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="sd:DataTable" Name="dtLegalEntityListFiltered" />
+                  </Sequence.Variables>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign DisplayName="Split to get the Customer Name" sap:VirtualizedContainerService.HintSize="1548,82" sap2010:WorkflowViewState.IdRef="Assign_2">
+                  <Assign DisplayName="Split to get the Customer Name" sap:VirtualizedContainerService.HintSize="630,81" sap2010:WorkflowViewState.IdRef="Assign_2">
                     <Assign.To>
                       <OutArgument x:TypeArguments="s:String[]">[array_splitNameTFR]</OutArgument>
                     </Assign.To>
@@ -184,7 +187,7 @@
                       <InArgument x:TypeArguments="s:String[]">[Path.GetFileName(TFRFile.ToString).ToString.Split(" "c)]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <Assign DisplayName="Customer Account from name of TFR file" sap:VirtualizedContainerService.HintSize="1548,82" sap2010:WorkflowViewState.IdRef="Assign_3">
+                  <Assign DisplayName="Customer Account from name of TFR file" sap:VirtualizedContainerService.HintSize="630,81" sap2010:WorkflowViewState.IdRef="Assign_3">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[str_customerAccountFile]</OutArgument>
                     </Assign.To>
@@ -192,7 +195,7 @@
                       <InArgument x:TypeArguments="x:String">[array_splitNameTFR(0).ToString]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:FilterDataTable DataTable="[dtLegalEntityList]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="1548,161" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[dtLegalEntityList]" SelectColumnsMode="Keep">
+                  <ui:FilterDataTable DataTable="[dtLegalEntityList]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="630,161" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[dtLegalEntityListFiltered]" SelectColumnsMode="Keep">
                     <ui:FilterDataTable.Filters>
                       <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                         <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
@@ -211,23 +214,23 @@
                       </scg:List>
                     </ui:FilterDataTable.SelectColumns>
                   </ui:FilterDataTable>
-                  <Assign DisplayName="Assign - ListCustomerAccount" sap:VirtualizedContainerService.HintSize="1548,82" sap2010:WorkflowViewState.IdRef="Assign_6">
+                  <Assign DisplayName="Assign - ListCustomerAccount" sap:VirtualizedContainerService.HintSize="630,81" sap2010:WorkflowViewState.IdRef="Assign_6">
                     <Assign.To>
                       <OutArgument x:TypeArguments="scg:List(x:String)">[ListLegalEntity]</OutArgument>
                     </Assign.To>
                     <Assign.Value>
-                      <InArgument x:TypeArguments="scg:List(x:String)">[( From row in dtLegalEntityList.AsEnumerable() Select Convert.Tostring(row(ColumnName)) ).Distinct.ToList()]</InArgument>
+                      <InArgument x:TypeArguments="scg:List(x:String)">[( From row in dtLegalEntityListFiltered.AsEnumerable() Select Convert.Tostring(row(ColumnName)) ).Distinct.ToList()]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <If Condition="[not in_ListCustomerAccount.Contains(str_customerAccountFile) and not in_ListCustomerAccount.Contains(str_customerAccountFile.ToUpper)]" DisplayName="If - List of input form contain the same files" sap:VirtualizedContainerService.HintSize="1548,951" sap2010:WorkflowViewState.IdRef="If_1">
+                  <If Condition="[not in_ListCustomerAccount.Contains(str_customerAccountFile) and not in_ListCustomerAccount.Contains(str_customerAccountFile.ToUpper)]" DisplayName="If - List of input form contain the same files" sap:VirtualizedContainerService.HintSize="630,951" sap2010:WorkflowViewState.IdRef="If_1">
                     <If.Then>
-                      <Sequence sap:VirtualizedContainerService.HintSize="1053,764" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                      <Sequence sap:VirtualizedContainerService.HintSize="594,764" sap2010:WorkflowViewState.IdRef="Sequence_3">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <If Condition="[not ListLegalEntity.Contains(str_customerAccountFile) and not ListLegalEntity.Contains(str_customerAccountFile.ToUpper)]" DisplayName="If - validate for legal entity name as well" sap:VirtualizedContainerService.HintSize="991,653" sap2010:WorkflowViewState.IdRef="If_5">
+                        <If Condition="[not ListLegalEntity.Contains(str_customerAccountFile) and not ListLegalEntity.Contains(str_customerAccountFile.ToUpper)]" DisplayName="If - validate for legal entity name as well" sap:VirtualizedContainerService.HintSize="532,653" sap2010:WorkflowViewState.IdRef="If_5">
                           <If.Then>
                             <Sequence sap:VirtualizedContainerService.HintSize="496,466" sap2010:WorkflowViewState.IdRef="Sequence_15">
                               <sap:WorkflowViewStateService.ViewState>
@@ -265,15 +268,15 @@
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence sap:VirtualizedContainerService.HintSize="2287,735" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                <Sequence sap:VirtualizedContainerService.HintSize="1187,735" sap2010:WorkflowViewState.IdRef="Sequence_8">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <If Condition="[Path.GetFileName(TFRFile.ToString).ToString.ToUpper.Contains(&quot;REVIEWSHEET&quot;)]" DisplayName="If is a Review Sheet File?" sap:VirtualizedContainerService.HintSize="2225,624" sap2010:WorkflowViewState.IdRef="If_4">
+                  <If Condition="[Path.GetFileName(TFRFile.ToString).ToString.ToUpper.Contains(&quot;REVIEWSHEET&quot;)]" DisplayName="If is a Review Sheet File?" sap:VirtualizedContainerService.HintSize="1125,624" sap2010:WorkflowViewState.IdRef="If_4">
                     <If.Then>
-                      <Sequence sap:VirtualizedContainerService.HintSize="1090,103" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                      <Sequence sap:VirtualizedContainerService.HintSize="562,103" sap2010:WorkflowViewState.IdRef="Sequence_9">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -282,15 +285,15 @@
                       </Sequence>
                     </If.Then>
                     <If.Else>
-                      <Sequence sap:VirtualizedContainerService.HintSize="1090,466" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                      <Sequence sap:VirtualizedContainerService.HintSize="518,466" sap2010:WorkflowViewState.IdRef="Sequence_11">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="[in_outputFolder]" DisplayName="Move TFR File was not added in the input user form" sap:VirtualizedContainerService.HintSize="1028,158" sap2010:WorkflowViewState.IdRef="MoveFile_3" Overwrite="True" Path="[TFRFile.ToString]" />
-                        <AddToCollection x:TypeArguments="x:String" Collection="[list_TFRMoved]" DisplayName="Add To List of TFR Moved" sap:VirtualizedContainerService.HintSize="1028,25" sap2010:WorkflowViewState.IdRef="AddToCollection`1_3" Item="[Path.GetFileName(TFRFile.ToString).ToString]" />
-                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1028,92" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Warn" Message="[Path.GetFileName(TFRFile.ToString).ToString + &quot; was moved to the output folder because it is not among the pending Customer Accounts in the input form completed by the user&quot;]" />
+                        <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="[in_outputFolder]" DisplayName="Move TFR File was not added in the input user form" sap:VirtualizedContainerService.HintSize="456,158" sap2010:WorkflowViewState.IdRef="MoveFile_3" Overwrite="True" Path="[TFRFile.ToString]" />
+                        <AddToCollection x:TypeArguments="x:String" Collection="[list_TFRMoved]" DisplayName="Add To List of TFR Moved" sap:VirtualizedContainerService.HintSize="456,25" sap2010:WorkflowViewState.IdRef="AddToCollection`1_3" Item="[Path.GetFileName(TFRFile.ToString).ToString]" />
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="456,92" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Warn" Message="[Path.GetFileName(TFRFile.ToString).ToString + &quot; was moved to the output folder because it is not among the pending Customer Accounts in the input form completed by the user&quot;]" />
                       </Sequence>
                     </If.Else>
                   </If>
