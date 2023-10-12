@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>2927,3931</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>2927,3926</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ValidateReviewSheetInFolder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -86,10 +86,12 @@
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Form.Activities</AssemblyReference>
       <AssemblyReference>ATOS.Map_Network_Drive.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.Entity</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ValidateReviewSheetInFolder" sap:VirtualizedContainerService.HintSize="2937,3866" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ValidateReviewSheetInFolder" sap:VirtualizedContainerService.HintSize="2937,3861" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:String[]" Name="array_splitNameReviewSheet" />
       <Variable x:TypeArguments="x:String" Name="str_customerAccountFile" />
@@ -104,13 +106,13 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="2875,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Validate Review Sheet File in Review Sheet Folder starts&quot;]" />
-    <Sequence DisplayName="Get Legal Entity list" sap:VirtualizedContainerService.HintSize="2875,634" sap2010:WorkflowViewState.IdRef="Sequence_43">
+    <Sequence DisplayName="Get Legal Entity list" sap:VirtualizedContainerService.HintSize="2875,633" sap2010:WorkflowViewState.IdRef="Sequence_43">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Assign DisplayName="Assign ColumnName" sap:VirtualizedContainerService.HintSize="484,82" sap2010:WorkflowViewState.IdRef="Assign_6">
+      <Assign DisplayName="Assign ColumnName" sap:VirtualizedContainerService.HintSize="484,81" sap2010:WorkflowViewState.IdRef="Assign_6">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[ColumnName]</OutArgument>
         </Assign.To>
@@ -152,7 +154,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:ExcelApplicationScope>
     </Sequence>
-    <ui:ForEachFileX DisplayName="For Each Review Sheet in Review Sheet Folder" Folder="[in_pathReviewSheetFolder]" sap:VirtualizedContainerService.HintSize="2875,2392" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
+    <ui:ForEachFileX DisplayName="For Each Review Sheet in Review Sheet Folder" Folder="[in_pathReviewSheetFolder]" sap:VirtualizedContainerService.HintSize="2875,2388" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
       <ui:ForEachFileX.Body>
         <ActivityAction x:TypeArguments="si:FileInfo, x:Int32">
           <ActivityAction.Argument1>
@@ -161,21 +163,24 @@
           <ActivityAction.Argument2>
             <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
           </ActivityAction.Argument2>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="2841,2142" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="2422,2138" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[Path.GetFileName(ReviewSheet.ToString).ToString.ToUpper.Contains(&quot;REVIEWSHEET&quot;)]" DisplayName="If is a review sheet file?" sap:VirtualizedContainerService.HintSize="2779,2031" sap2010:WorkflowViewState.IdRef="If_14">
+            <If Condition="[Path.GetFileName(ReviewSheet.ToString).ToString.ToUpper.Contains(&quot;REVIEWSHEET&quot;)]" DisplayName="If is a review sheet file?" sap:VirtualizedContainerService.HintSize="2360,2027" sap2010:WorkflowViewState.IdRef="If_14">
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="1151,1873" sap2010:WorkflowViewState.IdRef="Sequence_35">
+                <Sequence sap:VirtualizedContainerService.HintSize="692,1869" sap2010:WorkflowViewState.IdRef="Sequence_35">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="sd:DataTable" Name="dtLegalEntityListFiltered" />
+                  </Sequence.Variables>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign DisplayName="Split to get the Customer Name" sap:VirtualizedContainerService.HintSize="1089,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+                  <Assign DisplayName="Split to get the Customer Name" sap:VirtualizedContainerService.HintSize="630,81" sap2010:WorkflowViewState.IdRef="Assign_1">
                     <Assign.To>
                       <OutArgument x:TypeArguments="s:String[]">[array_splitNameReviewSheet]</OutArgument>
                     </Assign.To>
@@ -183,7 +188,7 @@
                       <InArgument x:TypeArguments="s:String[]">[Path.GetFileName(ReviewSheet.ToString).ToString.Split("_"c)]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <Assign DisplayName="Customer Account from name of Review Sheet file" sap:VirtualizedContainerService.HintSize="1089,82" sap2010:WorkflowViewState.IdRef="Assign_2">
+                  <Assign DisplayName="Customer Account from name of Review Sheet file" sap:VirtualizedContainerService.HintSize="630,81" sap2010:WorkflowViewState.IdRef="Assign_2">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[str_customerAccountFile]</OutArgument>
                     </Assign.To>
@@ -191,7 +196,7 @@
                       <InArgument x:TypeArguments="x:String">[array_splitNameReviewSheet(2).ToString]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <Assign DisplayName="get only customer name" sap:VirtualizedContainerService.HintSize="1089,82" sap2010:WorkflowViewState.IdRef="Assign_4">
+                  <Assign DisplayName="get only customer name" sap:VirtualizedContainerService.HintSize="630,81" sap2010:WorkflowViewState.IdRef="Assign_4">
                     <Assign.To>
                       <OutArgument x:TypeArguments="s:String[]">[array_splitNameReviewSheet]</OutArgument>
                     </Assign.To>
@@ -199,7 +204,7 @@
                       <InArgument x:TypeArguments="s:String[]">[str_customerAccountFile.Split("."c)]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <Assign DisplayName="get only customer name" sap:VirtualizedContainerService.HintSize="1089,82" sap2010:WorkflowViewState.IdRef="Assign_5">
+                  <Assign DisplayName="get only customer name" sap:VirtualizedContainerService.HintSize="630,81" sap2010:WorkflowViewState.IdRef="Assign_5">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[str_customerAccountFile]</OutArgument>
                     </Assign.To>
@@ -207,7 +212,7 @@
                       <InArgument x:TypeArguments="x:String">[array_splitNameReviewSheet(0).ToString]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:FilterDataTable DataTable="[dtLegalEntityList]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="1089,161" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dtLegalEntityList]" SelectColumnsMode="Keep">
+                  <ui:FilterDataTable DataTable="[dtLegalEntityList]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="630,161" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dtLegalEntityListFiltered]" SelectColumnsMode="Keep">
                     <ui:FilterDataTable.Filters>
                       <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                         <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
@@ -226,15 +231,15 @@
                       </scg:List>
                     </ui:FilterDataTable.SelectColumns>
                   </ui:FilterDataTable>
-                  <Assign DisplayName="Assign - ListCustomerAccount" sap:VirtualizedContainerService.HintSize="1089,82" sap2010:WorkflowViewState.IdRef="Assign_7">
+                  <Assign DisplayName="Assign - ListCustomerAccount" sap:VirtualizedContainerService.HintSize="630,82" sap2010:WorkflowViewState.IdRef="Assign_7">
                     <Assign.To>
                       <OutArgument x:TypeArguments="scg:List(x:String)">[ListLegalEntity]</OutArgument>
                     </Assign.To>
                     <Assign.Value>
-                      <InArgument x:TypeArguments="scg:List(x:String)">[( From row in dtLegalEntityList.AsEnumerable() Select Convert.Tostring(row(ColumnName)) ).Distinct.ToList()]</InArgument>
+                      <InArgument x:TypeArguments="scg:List(x:String)">[( From row in dtLegalEntityListFiltered.AsEnumerable() Select Convert.Tostring(row(ColumnName)) ).Distinct.ToList()]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <If Condition="[not in_ListCustomerAccount.Contains(str_customerAccountFile) and not in_ListCustomerAccount.Contains(str_customerAccountFile.ToUpper)]" DisplayName="If - List of input form contain the same files" sap:VirtualizedContainerService.HintSize="1089,951" sap2010:WorkflowViewState.IdRef="If_15">
+                  <If Condition="[not in_ListCustomerAccount.Contains(str_customerAccountFile) and not in_ListCustomerAccount.Contains(str_customerAccountFile.ToUpper)]" DisplayName="If - List of input form contain the same files" sap:VirtualizedContainerService.HintSize="630,951" sap2010:WorkflowViewState.IdRef="If_15">
                     <If.Then>
                       <Sequence sap:VirtualizedContainerService.HintSize="594,764" sap2010:WorkflowViewState.IdRef="Sequence_38">
                         <sap:WorkflowViewStateService.ViewState>
@@ -280,15 +285,15 @@
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence sap:VirtualizedContainerService.HintSize="1583,735" sap2010:WorkflowViewState.IdRef="Sequence_36">
+                <Sequence sap:VirtualizedContainerService.HintSize="1623,735" sap2010:WorkflowViewState.IdRef="Sequence_36">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <If Condition="[Path.GetFileName(ReviewSheet.ToString).ToString.ToUpper.Contains(&quot;TFR&quot;) or  Path.GetFileName(ReviewSheet.ToString).ToString.ToUpper.Contains(&quot;TAX FILED REPORT&quot;)]" DisplayName="If is a TFR File?" sap:VirtualizedContainerService.HintSize="1521,624" sap2010:WorkflowViewState.IdRef="If_16">
+                  <If Condition="[Path.GetFileName(ReviewSheet.ToString).ToString.ToUpper.Contains(&quot;TFR&quot;) or  Path.GetFileName(ReviewSheet.ToString).ToString.ToUpper.Contains(&quot;TAX FILED REPORT&quot;)]" DisplayName="If is a TFR File?" sap:VirtualizedContainerService.HintSize="1561,624" sap2010:WorkflowViewState.IdRef="If_16">
                     <If.Then>
-                      <Sequence sap:VirtualizedContainerService.HintSize="738,103" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                      <Sequence sap:VirtualizedContainerService.HintSize="778,103" sap2010:WorkflowViewState.IdRef="Sequence_40">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
